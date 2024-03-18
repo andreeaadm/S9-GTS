@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>CMS Tile Collection</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="itemsPerPage"               label="Items Per Page"                  type="Integer"  default="24"    max="24"        description="The number of blog items to display before pagination begins." />
+            <property name="managedContentType"         label="Content Type"                    type="String"   default=""          required="true" description="The API name of the CMS Content Type you'd like to display as a tile collection."></property>
+            <property name="titleFieldName"             label="Title field name"                type="String"   default="Title"     required="true"></property>
+            <property name="subtitleFieldName"          label="Subtitle field name"             type="String"   default="Summary"   required="true"></property>
+            <property name="orderingFieldName"          label="Ordering field name"             type="String"   default=""          required="false"></property>
+            <property name="imageFieldName"             label="Image field name"                type="String"   default=""          required="false"></property>
+            <property name="buttonLabel"                label="Button Label"                    type="String"   default="Read More"></property>
+            <property name="titleColour"                label="Title Colour"                    type="Color"></property>
+            <property name="subtitleColour"             label="Subtitle Colour"                 type="Color"></property>
+            <property name="bodyColour"                 label="Body Colour"                     type="Color"></property>
+            <property name="buttonLabelColour"          label="Button Label Colour"             type="Color"></property>
+            <property name="buttonBorderColour"         label="Button Border Colour"            type="Color"></property>
+            <property name="buttonVariant"              label="Button Type"                     type="String"   default="btn2"  description="Additional style classes that you'd like to apply to buttons within the tile collection. This enables you to style one set of tile collection buttons differently to another, in Theme CSS."></property>
+            <property name="colOrRowContents"           label="Column or Row"                   type="String"   default="row"   datasource="col,row"></property>
+            <property name="alignContentsV"             label="Align Contents Vertically"       type="Boolean"  default="true"></property>
+            <property name="alignContentsH"             label="Align Contents Horizontally"     type="Boolean"></property>
+            <property name="reverseContents"            label="Reverse Layout"                  type="Boolean"></property>
+            <property name="additionalClasses"          label="Additional Style Classes"        type="String"   default="cms-tile"  description="Additional style classes that you'd like to apply to the component. This enables you to style one tile collection differently to another, in Theme CSS."></property>
+            <property name="showTitle"                  label="Show CMS Item Title"             type="Boolean"  default="true"></property>
+            <property name="disableLinkify"             label="Disable Linkifying"              type="Boolean"  description="Disables the linkification of URLs in tile content."></property>
+            <property name="enableTwoColumns"           label="Enable Two Columns"              type="Boolean"  default="true"></property>
+        </targetConfig>
+    </targetConfigs>
+    <capabilities>
+        <capability>lightningCommunity__RelaxedCSP</capability>
+    </capabilities>
+</LightningComponentBundle>

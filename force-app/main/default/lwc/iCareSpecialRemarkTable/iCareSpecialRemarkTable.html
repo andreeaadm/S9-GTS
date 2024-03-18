@@ -1,0 +1,18 @@
+<template>
+  <div class="container-table">
+    <h2 class="listTitle" data-aura-rendered-by="11:345;a">
+      {tableHeaderLabel}
+    </h2>
+    <div class="container-datatable">
+      <template if:true={specialRemarks}>
+        <lightning-datatable
+          key-field="Id"
+          data={specialRemarks}
+          columns={columns}
+          hide-checkbox-column="true"
+          hide-table-header="true"
+        ></lightning-datatable>
+      </template>
+    </div>
+  </div>
+</template>

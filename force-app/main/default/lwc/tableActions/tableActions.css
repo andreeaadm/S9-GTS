@@ -1,0 +1,20 @@
+:host {
+    display:inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #d8d8d8;
+    border-right:0;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top:-1px;
+    margin-bottom: 14px;
+}
+
+c-checkbox {
+    padding: 10px 0 10px 13px;
+    margin: 0 11px 0 0;
+}
+
+c-button {border-left: 1px solid #d8d8d8;}
+c-button:first-of-type {margin-left:12px;}
+c-button:last-of-type {border-right: 1px solid #d8d8d8;}

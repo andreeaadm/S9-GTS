@@ -1,0 +1,12 @@
+<template>
+    <header>
+        <slot name="header"><c-siteheader enable-platform-cache="true"></c-siteheader></slot>
+    </header>
+    <section>
+        <slot></slot>
+    </section>
+    <footer>
+        <slot name="footer"></slot>
+    </footer>
+    <c-scrolltotop></c-scrolltotop>
+</template>

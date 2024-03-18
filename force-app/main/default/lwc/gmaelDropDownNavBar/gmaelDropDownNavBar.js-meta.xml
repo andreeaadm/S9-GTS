@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+		<targetConfig targets="lightningCommunity__Default">
+            <property
+                type="ContentReference"
+                name="contentId"
+                label="Content ID"
+                filter="cms_image"
+            />
+            <property name="title" label="Tile" description="Insert Title" type="String"></property>
+            <property name="paragraph" label="Paragraph" description="Insert Paragraph" type="String"></property>
+			<property name="item1" label="Item" description="Insert Item" type="String"></property>
+            <property name="item2" label="Item" description="Insert Item" type="String"></property>
+			<property name="item3" label="Item" description="Insert Item" type="String"></property>
+			<property name="item4" label="Item" description="Insert Item" type="String"></property>
+			<property name="item5" label="Item" description="Insert Item" type="String"></property>
+			<property name="item6" label="Item" description="Insert Item" type="String"></property>
+			<property name="item7" label="Item" description="Insert Item" type="String"></property>
+			<property name="item8" label="Item" description="Insert Item" type="String"></property>
+            <property name="links" label="links" description="Insert Paragraph and Links" type="String"></property>
+            <property name="boton" label="Button" description="Buttom name" type="String" default="Send a request"></property>
+            <property name="strUrl" label="Image name with the formato" description="image.png" type="String" default=""></property>
+            <property name="isDisabled" label="Disable button?" type="Boolean" description="Indicates whether the button should be clickable or not" default="false"></property>
+
+        </targetConfig>
+	</targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,88 @@
+:host {
+	box-shadow: 3px 4px 6px rgba(0,0,0,.16);
+	display: block;
+	border: 1px solid #efefef;
+	color:#474E54;
+	font-size:15px;
+	line-height:22px;
+}
+
+:host:not(:last-of-type) {margin: 0 0 22px;}
+
+.item-content {
+	max-height: 0;
+	overflow: hidden;
+	padding: 0 15px;	/* horiz padding only: top/bottom messes with max-heights */
+}
+
+.active .item-content {padding-bottom:15px;} /* Max-height: Mark R has adjusted calc */
+
+/* avoids max-height issues */
+/* vert padding only: avoids max-height issues */
+.item-content > slot {
+	display:block;		/* overwrite SF display:contents */
+	/*box-sizing:content-box;
+	min-height:1px;*/
+	/* height:100%; */
+	/* padding: 15px 0; */
+	/* transition:all 1s ease; */
+	/*display:none;*/
+}
+
+/*.item-content > * {
+	display:block;
+	padding:15px 0;
+}*/
+
+/*.active .item-content {*/
+	/* border-top: 1px solid transparent; */		/* #efefef */
+	/* overflow:visible; */ 				/* this is an issue */
+/*}*/
+
+/*.active .item-content > slot {*/
+	/* display:block;*/
+/*}*/
+
+.active > .item-content.inner-accordion-active {max-height:unset!important;}	/* outer item-content grow in height when inner accordion clicked */
+
+.item-content:not(.no-animate) {
+	transition: max-height 1s ease;
+}
+.item-header .right {
+    position:relative;
+    display: flex;
+	align-items: center;
+	color:#0e8fce;
+	padding-right: 56px;
+	flex-basis: 15px;
+	justify-content: flex-end;
+}
+.item-header .right c-iconchevron {
+    position:absolute;
+    transition: transform 250ms ease;
+    stroke:#0e8fce;
+    top: calc(50% - 4px);
+    right:18px;
+    height:9px;
+}
+
+.active > .item-header c-iconchevron {transform:rotate(180deg);}
+
+.item-header {
+	display:flex;
+	justify-content:space-between;
+	padding: 15px 0 15px 15px;
+	cursor:pointer;
+	background:#fff;
+	align-items: center;
+	/*min-height: 52px;*/
+	transition: 1s;
+}
+
+.item-header .label {
+	/*flex-basis: 40%;*/
+	flex-grow: 1;
+	font-size: 17px;
+	line-height: 20px;
+	color:#007D99;
+}

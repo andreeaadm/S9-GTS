@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <description>Gts Job History</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Gts Job History</masterLabel>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" label="Record Id" type="String" default="{!recordId}"/>
+        </targetConfig>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="recordId" label="Record Id" type="String"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,45 @@
+<template>
+  <c-intertek-tile if:false={hasLoaded} title="Users" has-loaded="true">
+    <div slot="contentSlotBottom">
+      <div>
+        <c-spinner></c-spinner>
+      </div>
+    </div>
+  </c-intertek-tile>
+  <c-intertek-tile
+    title="Users"
+    has-loaded={hasLoaded}
+    header-btn-label-1={labelForUnassignedButton}
+    onbtn1click={navToUnassignedList}
+    header-btn-class-1="IntkBrandOneBtn arrow"
+    header-btn-icon-1="iconarrowsvg"
+    header-btn-label-2="MANAGE USERS"
+    onbtn2click={navToUsersList}
+    header-btn-class-2="IntkBrandOneBtn arrow"
+    header-btn-icon-2="iconarrowsvg"
+    header-btn-icon-fill=""
+    header-btn-icon-stroke="#007d99"
+  >
+    <div slot="contentSlotBottom">
+      <div if:true={isEmpty}>
+        <p if:false={recordId}>
+          As an admin you are authorized to manage your organization's users.<br />
+          <a onclick={navToUsersList}>Add a user in order to assign reports</a>.
+        </p>
+        <p if:true={recordId}>
+          Users added to this group will automatically gain access to any
+          reports assigned to this group.<br />
+          <a onclick={navToUsersList}>Add a user</a>.
+        </p>
+        <c-usersvg></c-usersvg>
+      </div>
+      <c-datatable
+        if:false={isEmpty}
+        table-cols={tableData.columns}
+        table-rows={tableData.rows}
+        additional-classes="tile-table"
+        all-shown
+      ></c-datatable>
+    </div>
+  </c-intertek-tile>
+</template>

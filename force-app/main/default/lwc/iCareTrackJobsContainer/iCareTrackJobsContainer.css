@@ -1,0 +1,106 @@
+.container-table {
+    border: 1px solid #D8D8D8;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    background: white;
+    margin-top: 25px;
+
+}
+
+.container-datatable {
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    border-radius: 8px;
+}
+
+lightning-layout {
+    justify-content: center;
+}
+
+.container-selectors {
+    display: flex;
+    flex-direction: column;
+}
+
+lightning-tabset {
+
+    font-family: var(--calibri-regular);
+    font-size: 16px;
+    line-height: 20px;
+}
+
+lightning-datatable span.slds-truncate {
+    font-family: var(--calibri-bold);
+    font-size: 14px;
+    line-height: 20px;
+    color: black;
+
+}
+
+lightning-datatable {
+    font-family: var(--calibri-regular);
+    font-size: 14px;
+    line-height: 20px;
+    color: black;
+
+}
+
+.total-number{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.total-number span{
+   
+    font-family: var(--calibri-regular);
+    font-size: 14px;
+    line-height: 20px;
+    color: black;
+}
+.checkbox{
+    width: 42%;
+    position: relative;
+    right: 5%;
+}
+
+.status-options{
+    width: 22%;
+}
+@media screen and (min-width:768px) {
+    .container-table {
+    
+        padding: 15px 20px 20px;
+    
+    }
+    .container-selectors {
+        flex-direction: row;
+        justify-content: end;
+        gap: 2%;
+        margin-right: 16px;
+        align-items: end;
+    }
+
+    lightning-layout {
+        justify-content: end;
+    }
+    .dates-filter{
+        display: flex;
+        align-items: end;
+        position: relative;
+        right: 5%;
+    }
+    .search-box{
+        width: 35%;
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:768px) {
+       
+    lightning-layout, 
+    lightning-tabset{
+        display: none;
+    }
+    
+}

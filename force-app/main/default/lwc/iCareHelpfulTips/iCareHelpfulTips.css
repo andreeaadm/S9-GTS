@@ -1,0 +1,18 @@
+.container{
+    padding: 0 20px 20px;
+}
+h1 {
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--black-primary);
+    margin-bottom: 26px;
+}
+
+p {
+    font-family: var(--calibri-regular);
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--black-primary);
+
+}

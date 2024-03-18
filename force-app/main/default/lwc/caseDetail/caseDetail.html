@@ -1,0 +1,66 @@
+<template>
+  <div class="userDetailHeader slds-grid slds-p-vertical--medium">
+    <div class="slds-col">
+      <h1 class="h1 slds-m-bottom--none slds-wrap">
+        <span class="profileName slds-show_inline-block" title={caseNumber}>
+          {caseNumber}
+        </span>
+      </h1>
+      <p class="userBadge"></p>
+    </div>
+    <template if:true={isUpdateable}>
+      <div class="userActions slds-no-flex slds-grid slds-align-top"></div>
+      <div class="slds-no-flex slds-grid slds-align-top">
+        <c-button
+          if:false={editMode}
+          label={labels.EDIT}
+          variant="IntkBrandTwoBtn"
+          onclick={toggleEdit}
+        ></c-button>
+      </div>
+    </template>
+  </div>
+  <lightning-record-form
+    record-id={recordId}
+    object-api-name="Case"
+    layout-type="Full"
+    mode="readonly"
+    density="comfy"
+    columns="2"
+  ></lightning-record-form>
+  <c-modal
+    showmodal={editMode}
+    maxwidth="830"
+    additional-classes="narrowContent"
+  >
+    <span slot="header">{labels.EDIT} {caseNumber}</span>
+    <div slot="content">
+      <c-input
+        label={labels.SUBJECT}
+        value={subject}
+        field-id="Subject"
+        required
+      ></c-input>
+      <c-input
+        label={labels.DESCRIPTION}
+        value={description}
+        field-id="Description"
+        required
+      ></c-input>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        disabled={isWorking}
+        onclick={toggleEdit}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={labels.SAVE}
+        disabled={isWorking}
+        onclick={handleUpdateCase}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

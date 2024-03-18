@@ -1,0 +1,144 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 42px;
+  margin-bottom: 25px;
+}
+
+.filters {
+  background: #f8f8f8;
+}
+
+c-button.mobfiltersubmit {
+  display: none;
+}
+
+/* flex for lg & sml desktop + lg tablets */
+@media screen and (min-width: 768px) {
+  .filters {
+    display: flex;
+    padding: 10px 15px 15px;
+    margin-bottom: 35px;
+  }
+}
+
+/* sml & lg tablets + sml desktop */
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .filters {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .filters:not(.active) {
+    display: none;
+  }
+  .mobFilterTrigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 42px;
+    margin-bottom: 25px;
+  }
+
+  .filters {
+    background: #f8f8f8;
+  }
+
+  c-button.mobfiltersubmit {
+    display: none;
+  }
+}
+
+/* flex for lg & sml desktop + lg tablets */
+@media screen and (min-width: 768px) {
+  .filters {
+    display: flex;
+    padding: 10px 15px 15px;
+    margin-bottom: 35px;
+  }
+}
+
+/* mob: (no flex) */
+@media screen and (max-width: 767px) {
+  .filters {
+    padding: 50px 25px 0;
+  }
+  c-button.mobfiltersubmit {
+    display: block;
+    margin-top: 30px;
+  }
+}
+
+  /*** TEMP HERE? ***/
+
+  @media screen and (min-width: 768px) {
+    .mobFilterTrigger {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+  .filters:not(.active) {
+    display: none;
+  }
+  .mobFilterTrigger {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #21b6d7;
+    width: 100%;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-family: "NeoSans-Bold";
+    margin-bottom: 15px;
+  }
+  .filters.active {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+  }
+  .filters.active:before {
+    display: block;
+    content: "Filter Results";
+    font-family: "NeoSans-ExtraBold";
+    font-size: 17px;
+    line-height: 23px;
+    margin-bottom: 25px;
+  }
+
+  a.close {
+    display: block;
+    width: 20px;
+    height: 17px;
+    position: absolute;
+    top: 17px;
+    right: 24px;
+    z-index: 5;
+  }
+
+  a.close:before,
+  a.close:after {
+    display: block;
+    content: "";
+    background: #000;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition: all 0.25s ease-in-out;
+  }
+
+  a.close:before {
+    top: 0px;
+    transform: translateY(10px) translateY(-50%) rotate(-45deg);
+  }
+  a.close:after {
+    transform: translateY(-7px) translateY(50%) rotate(45deg);
+    bottom: 0px;
+  }
+}

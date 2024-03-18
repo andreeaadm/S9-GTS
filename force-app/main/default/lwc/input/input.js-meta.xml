@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="type"               type="String"   datasource="Text,Textarea,Number,Currency,Radio,Percent,Checkbox,SelectList,Date,DateTime,File,Formula" default="Text"   label="Type" />
+            <property name="label"              type="String"   label="Label" />
+            <property name="required"           type="Boolean"  label="Required" />
+            <property name="disabled"           type="Boolean"  label="Disabled" />
+            <property name="placeholder"        type="String"   label="Placeholder" />
+            <property name="minLength"          type="Integer"  label="Min length" />
+            <property name="maxLength"          type="Integer"  label="Max length" />
+            <property name="regexPattern"       type="String"   label="Regex pattern" />
+            <property name="fileAcceptList"     type="String"   label="File accept list" />
+            <property name="styleClass"         type="String"   label="Style class" />
+            <property name="hideLabel"          type="String"   label="Hide label" />
+            <property name="errorOnRequired"    type="String"   label="Required error message" />
+            <property name="errorOnLength"      type="String"   label="Length error message" />
+            <property name="errorOnPattern"     type="String"   label="Pattern error message" />
+            <property name="value"              type="String"   label="Value" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

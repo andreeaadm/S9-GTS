@@ -1,0 +1,27 @@
+<template>
+	<div class="container-datatable">
+		<template if:true={checkRecords}>
+			<template if:true={records}>
+				<lightning-datatable
+					key-field="Id"
+					columns={columns}
+					data={records}
+					hide-checkbox-column
+					default-sort-direction={defaultSortDirection}
+					sorted-direction={sortDirection}
+					sorted-by={sortedBy}
+					onsort={onHandleSort}>
+				</lightning-datatable>
+
+			</template>
+			      <lightning-accordion allow-multiple-sections-open>
+			        <lightning-accordion-section name="1" label={labels.SHIPMENT_DOC}>
+								<c-gts-files-list
+									record-id={record.Id}
+								>
+								</c-gts-files-list>
+			        </lightning-accordion-section>
+			      </lightning-accordion>
+		</template>
+	</div>
+</template>

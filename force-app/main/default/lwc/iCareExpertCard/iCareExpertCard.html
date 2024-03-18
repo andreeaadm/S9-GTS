@@ -1,0 +1,32 @@
+<!-- TO DO REPLACE CONTACT BUTTON WITH CUSTOM LABEL-->
+<template>
+    <lightning-card>
+        <lightning-record-view-form record-id={recordid} object-api-name={objectApiName}>
+            <div>
+                <lightning-output-field variant="label-hidden" field-name={expertName}
+                    class="expert-name"></lightning-output-field>
+            </div>
+            <div>
+        <!--        <lightning-output-field variant="label-hidden" field-name={gtsExpertRole}
+                    class="expert-role"></lightning-output-field>  -->
+                    <lightning-formatted-text value={gtsExpertRole} 
+                    class="expert-role"></lightning-formatted-text>                 
+                <lightning-formatted-text value={countryValue} 
+                    class="expert-country"></lightning-formatted-text>
+            </div>
+            <div class="container-picture">
+                <lightning-output-field variant="label-hidden" field-name={expertPicture}
+                    class="expert-picture"></lightning-output-field>
+            </div>
+       <!--     <lightning-output-field variant="label-hidden" field-name={gtsExpertBio}
+                class="expert-bio"></lightning-output-field>-->
+                <lightning-formatted-text value={gtsExpertBio} 
+                class="expert-bio"></lightning-formatted-text>
+            <div class="container-button">
+                <button class="blue-button" onclick={selectExpert}>
+                    {customLabel.CONTACT_BUTTON}
+                </button>
+            </div>
+        </lightning-record-view-form>
+    </lightning-card>
+</template>

@@ -1,0 +1,43 @@
+/**
+ * Created by andreea.adam on 16.10.2023.
+ */
+
+ h1{
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 17px;
+    margin-top: 17px;
+
+ }
+
+ lightning-input{
+    width: 100%;
+ }
+
+ .blue-button {
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 55px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+    margin-bottom: 17px;
+}
+
+ @media screen and (min-width:768px) {
+    lightning-input, 
+    c-gts-custom-lookup,
+    lightning-combobox{
+        width: 47%;
+     }
+     .container-inputs{
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 45px;
+   }
+    
+ }

@@ -1,0 +1,2 @@
+.crumb {font-size: 16px;}
+.crumb:not(:last-child):after {content:' > ';}

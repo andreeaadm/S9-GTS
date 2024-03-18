@@ -1,0 +1,10 @@
+<template>
+    <div class="container-card">
+        <h1>{question}</h1>
+         <a href={telephone}>{clientBrowserGeoCountryPhone}</a>
+         <p>{paragraph}</p>
+         <button onclick={handleSendRequest}>{button}</button>
+    </div>
+    <c-gmael-send-a-request-model lwc:ref="sendARequestModel"></c-gmael-send-a-request-model>
+    <iframe id="LWCWithVFPage" src={geolocationVFURL} width="0%" height="0px"> </iframe>
+</template>

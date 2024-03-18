@@ -1,0 +1,20 @@
+<template>
+    <template if:true={showmodal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="oegenCustomModal">
+					<header>
+						<slot name="header"></slot>
+					</header>
+					<div class={modalcontentclass} id="modal-content-id-1">
+						<slot name="content"></slot>
+					</div>
+					<footer>
+						<slot name="footer"></slot>
+					</footer>
+				</div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

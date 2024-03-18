@@ -1,0 +1,75 @@
+<template>
+  <template if:true={isDefaultGroup}>
+    <c-page-header if:true={name} title={name}></c-page-header>
+  </template>
+  <template if:false={isDefaultGroup}>
+    <c-page-header
+      if:true={name}
+      title={name}
+      btn-label="EDIT GROUP"
+      onclick={handleBtnClick}
+    ></c-page-header>
+  </template>
+  <c-modal
+    showmodal={showModal}
+    maxwidth="830"
+    additional-classes="narrowContent"
+  >
+    <span slot="header">Edit group</span>
+    <div slot="content">
+      <c-input
+        label="Group name"
+        required
+        placeholder="Enter group name"
+        field-id="Group_Name__c"
+        data-id="GroupName"
+        value={name}
+        error-on-custom="That group name is already taken. Please try again."
+        onchange={handleEditGroupInputChange}
+      ></c-input>
+      <c-input
+        label="Group description"
+        placeholder="Enter group description"
+        field-id="Group_Description__c"
+        data-id="GroupDescription"
+        value={description}
+        onchange={handleEditGroupInputChange}
+      ></c-input>
+      <!--
+        <c-input
+          if:true={wiredAccountOptions.data}
+          label="Account"
+          required
+          placeholder="Select an account"
+          type="SelectList"
+          select-options={wiredAccountOptions.data}
+          field-id="Account__c"
+          value={account}
+          onchange={handleEditGroupInputChange}
+        ></c-input>
+        -->
+      <c-input
+        label="Expiry date (optional)"
+        placeholder="Enter expiry date"
+        type="Date"
+        field-id="Expiry__c"
+        value={expiry}
+        onchange={handleEditGroupInputChange}
+      ></c-input>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label="CANCEL"
+        disabled={isWorking}
+        onclick={toggleModal}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label="SAVE"
+        disabled={isWorking}
+        onclick={handleConfirmEditGroup}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

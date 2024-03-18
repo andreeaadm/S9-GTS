@@ -1,0 +1,14 @@
+<template>
+    <div>
+        <div>
+            <c-card title={recordDetailTitle}>
+                <c-recorddetail slot="body" mode="edit" record-id={recordId} object-api-name={objectApiName} layout-type={layoutType}></c-recorddetail>
+            </c-card>
+        </div>
+        <div>
+            <c-card title={relatedListTitle}>
+                <c-relatedlist slot="body" record-id={recordId} related-object-api-name={relatedObjectApiName} parent-field-api-name={parentFieldApiName}></c-relatedlist>
+            </c-card>
+        </div>
+    </div>
+</template>

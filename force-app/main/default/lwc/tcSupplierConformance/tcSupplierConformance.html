@@ -1,0 +1,21 @@
+<template>
+  <c-intertek-tile has-loaded={wireResponse.data} title={title}>
+    <div slot="contentSlotBottom" if:true={wireResponse.data}>
+      <div>
+        <c-input
+          type="SelectList"
+          label={labels.FILTER_MONTH}
+          select-options={wireResponse.data.dateOptions}
+          value={wireResponse.data.currentMonth}
+          onchange={handleMonthChange}
+        ></c-input>
+      </div>
+      <c-datatable
+        all-shown
+        table-cols={wireResponse.data.table.columns}
+        table-rows={wireResponse.data.table.rows}
+        additional-classes="tile-table with-header no-mob-hide-header supp-conf-percent-tbl"
+      ></c-datatable>
+    </div>
+  </c-intertek-tile>
+</template>

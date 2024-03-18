@@ -1,0 +1,159 @@
+<template>
+  <template if:true={sumbitJobRequestPage}>
+    <div class="slds-grid slds-grid_vertical">
+      <div class="container-background">
+        <div class="container-content">
+          <div class="slds-col">
+            <h1>
+              Submit a Shipment Certificate, Registration/Licence or Commercial
+              Services
+            </h1>
+            <p>
+              Tip: To make a quick start, use a saved favourite or pick up where
+              you left off on a saved draft
+            </p>
+            <p>{customLabel.TIP2}</p>
+          </div>
+          <div class="container-buttons">
+            <button
+              class="buttons-header"
+              title="Certificate Of Conformity"
+              name="Certificate Of Conformity"
+              onclick={handleCoCClick}
+            >
+            {customLabel.SHIPMENT_CERTIFICATE}
+            </button>
+            <button
+              class="buttons-header"
+              title="License or Registration"
+              name="License or Registration"
+              onclick={handleLicenseOrRegistrationClick}
+            >
+            {customLabel.REGISTRATION_LICENSE}
+            </button>
+            <button
+              class="buttons-header"
+              title="Tradeable"
+              name="Tradeable"
+              onclick={handleTradeableClick}
+            >
+            {customLabel.COMMERCIAL_SERVICES_TRADEABLE}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+      </template>
+      <template if:false= {showSpinner}>
+        <div class="container-tables">
+        <lightning-layout>
+          <lightning-layout-item>
+            <lightning-card title={customLabel.SAVED_DRAFTS}>
+              <lightning-datatable
+                key-field="Id"
+                data={draftData}
+                columns={draftColumns}
+                hide-checkbox-column="true"
+                onrowaction={handleRowAction}
+              >
+              </lightning-datatable>
+              <button
+                class="buttons-table"
+                name="iCare_Job_Request"
+                title={customLabel.VIEW_ALL}
+                onclick={viewAllDraftRecords}
+              >
+                {customLabel.VIEW_ALL}
+              </button>
+            </lightning-card>
+          </lightning-layout-item>
+
+          <lightning-layout-item>
+            <lightning-card title={customLabel.FAVOURITES}>
+              <lightning-datatable
+                key-field="Id"
+                data={favouritesData}
+                columns={favouriteColumns}
+                hide-checkbox-column="true"
+                onrowaction={handleRowAction}
+              >
+              </lightning-datatable>
+              <button
+                class="buttons-table"
+                name="Favourite_Job_Request"
+                title={customLabel.VIEW_ALL}
+                onclick={viewAllFavRecords}
+              >
+                {customLabel.VIEW_ALL}
+              </button>
+            </lightning-card>
+          </lightning-layout-item>
+        </lightning-layout>
+      </div>
+      </template>
+    </div>
+  </template>
+
+  <template if:true={viewAllJobRequests}>
+    <c-gts-view-all-job-requests
+      is-favorite={isFavorite}
+      onlaunchflow={handleSelectRow}
+    >
+    </c-gts-view-all-job-requests>
+  </template>
+
+  <template if:true={showCoCPage}>
+    <c-gts-co-c-controller
+      job-request-input={jobRequestRecord}
+      account-record={account}
+      contact-record={contact}
+      record-type-id={recordTypeId}
+      input-content-version-ids= {contentVersionIds}
+      ondisplaysubmitatestrequestpage={handleBackToSubmitATestRequestPage}
+    >
+    </c-gts-co-c-controller>
+  </template>
+
+  <template if:true={showLicensePage}>
+    <c-gts-license-container
+      job-request-input={jobRequestRecord}
+      account-record={account}
+      contact-record={contact}
+      record-type-id={recordTypeId}
+      input-content-version-ids= {contentVersionIds}
+      ondisplaysubmitatestrequestpage={handleBackToSubmitATestRequestPage}
+    >
+    </c-gts-license-container>
+  </template>
+
+  <template if:true={showTradeablePage}>
+    <c-gts-tradeable-controller
+      job-request-input={jobRequestRecord}
+      account-record={account}
+      contact-record={contact}
+      record-type-id={recordTypeId}
+      input-content-version-ids= {contentVersionIds}
+      ondisplaysubmitatestrequestpage={handleBackToSubmitATestRequestPage}
+    >
+    </c-gts-tradeable-controller>
+  </template>
+  <template if:true={showRenewReviewPage}>
+    <template if:false={showRenewSpinner}>
+      <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    <template if:true={showRenewSpinner}>
+      <c-gts-license-renew-revision-container
+        job-request-input= {jobRequestRecord}
+        job-id={jobId}
+        account-record={account}
+        contact-record={contact}
+        record-type-id={recordTypeId}
+        input-content-version-ids={contentVersionIds}
+        ondisplaysubmitatestrequestpage={handleBackToSubmitATestRequestPage}
+      >
+      </c-gts-license-renew-revision-container>
+    </template>
+  </template>
+</template>

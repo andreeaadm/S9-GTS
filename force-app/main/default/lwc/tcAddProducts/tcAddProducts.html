@@ -1,0 +1,17 @@
+<template>
+  <c-tc-get-page-reference-data
+    onretrievedstate={handleRetrievedState}
+  ></c-tc-get-page-reference-data>
+  <c-tc-add-products-form
+    onsearch={handleSearch}
+    onreset={handleReset}
+  ></c-tc-add-products-form>
+  <c-tc-add-products-search-results
+    inventory-id={inventoryId}
+    show-loader={showResultsLoader}
+    onaddinventoryline={handleAddInventoryLine}
+    zdhcgw-disc-colour={zdhcgwDiscColour}
+    intertek-disc-colour={intertekDiscColour}
+    crowd-sourced-disc-colour={crowdSourcedDiscColour}
+  ></c-tc-add-products-search-results>
+</template>

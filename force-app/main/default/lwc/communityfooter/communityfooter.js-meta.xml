@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Community Footer</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="label1" type="String" label="Label 1"></property>
+            <property name="link1"  type="String" label="Link 1"></property>
+            <property name="label2" type="String" label="Label 2"></property>
+            <property name="link2"  type="String" label="Link 2"></property>
+            <property name="label3" type="String" label="Label 3"></property>
+            <property name="link3"  type="String" label="Link 3"></property>
+            <property name="label4" type="String" label="Label 4"></property>
+            <property name="link4"  type="String" label="Link 4"></property>
+            <property name="label5" type="String" label="Label 5"></property>
+            <property name="link5"  type="String" label="Link 5"></property>
+            <property name="label6" type="String" label="Label 6"></property>
+            <property name="link6"  type="String" label="Link 6"></property>
+            <property name="label7" type="String" label="Label 7"></property>
+            <property name="link7"  type="String" label="Link 7"></property>
+            <property name="label8" type="String" label="Label 8"></property>
+            <property name="link8"  type="String" label="Link 8"></property>
+            <property name="twitterUrl"         type="String"   label="Twitter URL"></property>
+            <property name="linkedInUrl"        type="String"   label="LinkedIn URL"></property>
+            <property name="facebookUrl"        type="String"   label="Facebook URL"></property>
+            <property name="instagramUrl"       type="String"   label="Instagram URL"></property>
+            <property name="footerText"         type="String"   label="Footer Text"></property>
+            <property name="logo1"              type="String"   label="Bottom Logo 1"       default="/resources/siteLogo1"></property>
+            <property name="logo2"              type="String"   label="Bottom Logo 2"       default="/resources/siteLogo2"></property>
+            <property name="logo3"              type="String"   label="Bottom Logo 3"></property>
+            <property name="bottomText1"        type="String"   label="Bottom Text 1"       default="Registered Office: oe:gen, No.1 Nottingham Science Park, University Boulevard, Nottingham, NG7 2RU"></property>
+            <property name="bottomText2"        type="String"   label="Bottom Text 2"       default="Registered in England and Wales 05392544"></property>
+            <property name="bottomText3"        type="String"   label="Bottom Text 3"       default="© 2021. All Rights Reserved Oegen Limited. Salesforce®, Salesforce.com®, AppExchange, Sales Cloud, Service Cloud, Chatter, and others are trademarks of salesforce.com®, inc. and are used here with permission"></property>
+            <property name="bottomLinkText1"    type="String"   label="Bottom Link Text 1"  default="Contact Us"></property>
+            <property name="bottomLinkText2"    type="String"   label="Bottom Link Text 2"  default="Terms &amp; Conditions"></property>
+            <property name="bottomLink1"        type="String"   label="Bottom Link 1"       default="https://www.intertek.com/contact/"></property>
+            <property name="bottomLink2"        type="String"   label="Bottom Link 2"       default="https://www.intertek.com/terms/"></property>
+            <property name="backgroundColour"       type="Color"    label="Background Colour"           default="#003865"></property>
+            <property name="textColour"             type="Color"    label="Text Colour"                 default="#FFF"></property>
+            <property name="bottomBackgroundColour" type="Color"    label="Bottom Background Colour"    default="#000"></property>
+            <property name="bottomTextColour"       type="Color"    label="Bottom Text Colour"          default="#FFF"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

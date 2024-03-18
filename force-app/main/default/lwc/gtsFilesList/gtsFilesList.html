@@ -1,0 +1,14 @@
+<template>
+	<template if:true={documentsExists}>
+		<lightning-accordion allow-multiple-sections-open>
+			<template for:each={keys} for:item="key">
+				<lightning-accordion-section key={key} label={key}>
+					<c-gts-documents-table records={mapData} key-value={key}></c-gts-documents-table>
+				</lightning-accordion-section>
+			</template>
+		</lightning-accordion>
+	</template>
+	<template if:false={documentsExists}>
+		{customLabels.NO_DOCS}
+	</template>
+</template>

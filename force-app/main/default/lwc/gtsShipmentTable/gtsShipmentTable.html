@@ -1,0 +1,13 @@
+<template>
+	<template if:true={records}>
+		<template for:each={records} for:item="record">
+			<c-gts-shipment-row
+				key={record.Id}
+				record={record}
+				sort-direction= {sortDirection}
+				onsortrecords={handleSortRecords}
+			></c-gts-shipment-row>
+		</template>
+	</template>
+</template>
+</template>

@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-grid slds-grid_vertical">
+        <div class="slds-col">   
+            <div style="overflow-x:auto;">
+                <table class="orderTable">
+                    <thead>
+                        <tr>
+                            <th><div class="slds-wrap">{label.timestamp}</div></th>
+                            <th><div class="slds-wrap">{label.solution}</div></th> 
+                            <th><div class="slds-wrap">{label.product}</div></th> 
+                            <th><div class="slds-wrap">{label.market}</div></th> 
+                            <th><div class="slds-wrap">{label.token}</div></th>
+                            <th><div class="slds-wrap">{label.generatedBy}</div></th>
+                            <th><div class="slds-wrap">{label.download}</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                        <template for:each={selectedRecords} for:item="record" for:index="index">
+                            <tr key={record.recordId}>
+                                <td><div class="slds-wrap">{record.timeStamp}</div></td>
+                                <td><div class="slds-wrap">{record.solution}</div></td>
+                                <td><div class="slds-wrap">{record.product}</div></td>
+                                <td><div class="slds-wrap">{record.market}</div></td>
+                                <td><div class="slds-wrap">{record.token}</div></td>
+                                <td><div class="slds-wrap">{record.generatedBy}</div></td>
+                                <td><div class="slds-wrap">
+                                    <a if:true={record.isDownloadLabel} onclick={generateDownloadLink} data-id={record.recordId}>{record.downloadLabel}</a>
+                                    <p if:false={record.isDownloadLabel}> {record.downloadLabel} </p>
+                                </div></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="slds-col">
+            <div class="defaultPadding">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-12">
+                        <lightning-combobox name="pageSelect" data-id="pageSelector" value={pageNo} options={pageNoOptions} variant="label-hidden" onchange={handlePageChange}></lightning-combobox>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</template>

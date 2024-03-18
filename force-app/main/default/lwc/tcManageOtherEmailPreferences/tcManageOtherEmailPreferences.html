@@ -1,0 +1,46 @@
+<template>
+  <div if:true={userDetailRecord}>
+    <p>{labels.TC_INTRO_TEXT_EMAIL_PREFERENCES}</p>
+    <c-input
+      type="Checkbox"
+      label={labels.TC_BULLETIN_EMAIL_NOTIFICATIONS}
+      value={bulletinValue}
+      field-id="Bulletin_Notifications__c"
+    >
+    </c-input>
+    <c-input
+      type="Checkbox"
+      label={labels.TC_INVENTORY_REPORT_REMINDER}
+      value={inventoryValue}
+      field-id="Inventory_Report_Reminder_Notifications__c"
+    >
+    </c-input>
+    <c-input
+      type="Checkbox"
+      label={labels.TC_CONNECTION_REQUEST}
+      value={connectionValue}
+      field-id="Connection_Request_Notifications__c"
+    >
+    </c-input>
+    <c-input
+      if:true={userDetailRecord.fields.Supplier_Conformance_Notifications__c}
+      type="Checkbox"
+      label={labels.TC_SUPPLIER_CONFORMANCE_TARGETS}
+      value={supplierValue}
+      field-id="Supplier_Conformance_Notifications__c"
+    ></c-input>
+    <div id="buttons">
+      <c-button
+        onclick={revertChanges}
+        label={labels.CANCEL}
+        variant="slds-look slds-neutral"
+      ></c-button>
+      <c-button
+        onclick={updateUserRecord}
+        label={labels.SAVE}
+        variant=" slds-look slds-brand"
+      >
+      </c-button>
+    </div>
+  </div>
+</template>

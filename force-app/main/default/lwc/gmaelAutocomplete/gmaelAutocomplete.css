@@ -1,0 +1,19 @@
+input {
+    width: 100%;
+    padding-right: 5px;
+}
+
+ input[list]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.custom-input {
+    border: 2px solid rgb(234, 0, 30);
+}
+
+.req-field {
+    border: 2px solid rgb(234, 0, 30);
+}

@@ -1,0 +1,67 @@
+<template>
+  <c-button
+    if:true={showNewButton}
+    label={labels.INVENTORY_NEW_BUTTON}
+    onclick={handleNewClick}
+    variant="IntkBrandTwoBtn"
+  ></c-button>
+  <c-datatable
+    if:false={noData}
+    table-cols={tableData.columns}
+    table-rows={tableData.rows}
+    is-loading={isLoading}
+    all-shown
+    additional-classes="clickablecells-nowidth clickablecells-noabspos"
+    mob-enabled="true"
+  ></c-datatable>
+  <div if:true={noData} class="noitems">{labels.NO_RESULTS_FOUND}</div>
+  <c-modal showmodal={showNewModal} additional-classes="noMob">
+    <div slot="header">{labels.INVENTORY_MODAL_TITLE}</div>
+    <div slot="content">
+      <c-input
+        label={labels.INVENTORY_MODAL_TYPE}
+        value={selectedType}
+        select-options={typePicklist}
+        placeholder={labels.INVENTORY_MODAL_PLACEHOLDER}
+        type="SelectList"
+        onchange={handleTypeChange}
+        required
+      ></c-input>
+      <c-input
+        label={labels.INVENTORY_MODAL_MONTH}
+        value={selectedDate}
+        select-options={monthOptions}
+        placeholder={labels.INVENTORY_MODAL_PLACEHOLDER}
+        type="SelectList"
+        onchange={handleInventoryMonthChange}
+        required
+      ></c-input>
+      <c-input
+        if:true={showCloneOptions}
+        label={labels.INVENTORY_MODAL_CLONE}
+        select-options={cloneOptions}
+        type="SelectList"
+        onchange={handleCloneMonthChange}
+        placeholder={labels.NONE}
+      ></c-input>
+      <c-input
+        if:true={showCloneCheckbox}
+        label={cloneOptionText}
+        type="Checkbox"
+        onchange={handleCheckboxChange}
+      ></c-input>
+    </div>
+    <div slot="footer">
+      <c-button
+        label={labels.CANCEL}
+        variant="Neutral ModalFooterBtn"
+        onclick={handleCancelClick}
+      ></c-button>
+      <c-button
+        label={labels.SAVE}
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        onclick={handleSaveClick}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

@@ -1,0 +1,42 @@
+<template>
+    <h1>{labels.GENERAL_INFO}</h1>
+    <div>
+        <c-gts-custom-lookup icon-name="standard:asset_object" s-object-api-name="GTS_Program__c"
+            label={labels.COMMERCIAL_SERVICE_REQUIRED} onlookupupdate={handleProgramSelection}
+            placeholder={labels.COMMERCIAL_SERVICE_REQUIRED} is-read-only={isReadOnly} is-required="true"
+            fields-api-name-with-value-map={programFilters} value={jobRequestRecord.ProgramName} label-api-name="Name"
+            value-api-name="Id">
+        </c-gts-custom-lookup>
+        <template if:true={isOtherValue}>
+            <lightning-input type="text" label={labels.OTHER_VALUE}
+                value={jobRequestRecord.GTS_ComSer_Prog_Please_Specify__c} onchange={handleOtherValueChange}
+                readonly={isReadOnly}></lightning-input>
+        </template>
+    </div>
+    <br />
+
+  <lightning-layout>
+    <lightning-layout-item size="12">
+      <lightning-textarea
+        label={labels.STATEMENT_OF_WORK}
+        value={jobRequestRecord.GTS_Statement_of_Work__c}
+        readonly={isReadOnly}
+        onchange={handleSOWChange}
+        required=true
+      ></lightning-textarea>
+    </lightning-layout-item>
+  </lightning-layout>
+
+  <br />
+
+  <lightning-layout>
+    <lightning-layout-item size="12">
+      <lightning-textarea
+        label={labels.FINAL_REPORT_LABEL}
+        value={jobRequestRecord.GTS_Final_Report_Required__c}
+        readonly={isReadOnly}
+        onchange={handleFinalReportChange}
+      ></lightning-textarea>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

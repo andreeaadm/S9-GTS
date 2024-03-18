@@ -1,0 +1,83 @@
+.dates {
+  display: flex;
+}
+
+/* lg tablets & sml desktops: 1) drop checkboxes onto row 2 */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .dates {
+    margin-right: 0 !important;
+  }
+  c-input.checkbox {
+    flex-basis: 260px;
+    padding: 15px 0 0;
+  }
+  .checkbox {
+    margin: 0 !important;
+  }
+}
+
+/* all desktops & tablets: flex */
+@media screen and (min-width: 768px) {
+  c-input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  .dates {
+    flex-basis: 300px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-right: 10px;
+  }
+  .status,
+  .report-type {
+    flex-basis: 200px;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  .search {
+    flex-basis: 270px;
+  }
+  .checkbox {
+    flex-basis: 120px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0 7px !important;
+  }
+}
+
+/* sml & lg tablets: 2) drop dates onto row 2 */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .search {
+    margin-right: 0 !important;
+  }
+  .dates {
+    flex-basis: 58%;
+    padding-top: 15px;
+  }
+  c-input.checkbox {
+    flex-basis: 96px;
+    padding: 15px 0 0;
+  }
+  c-input.checkbox + c-input.checkbox {
+    flex-basis: 142px;
+  }
+}
+
+/* sml & lg tablets + sml desktop */
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+}
+
+/* mob: no flex */
+@media screen and (max-width: 767px) {
+  c-input {
+    padding-bottom: 20px;
+  }
+  .dates {
+    justify-content: space-between;
+  }
+  .dates c-input {
+    flex-basis: calc(50% - 8px);
+    min-width: 0;
+    padding-bottom: 30px;
+  }
+}

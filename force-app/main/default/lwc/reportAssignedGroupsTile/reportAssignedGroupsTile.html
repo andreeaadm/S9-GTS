@@ -1,0 +1,65 @@
+<template>
+  <template if:false={booleanExpiry}>
+  <template if:false={isHiddenByITK}>
+    <c-intertek-tile
+      has-loaded={hasLoaded}
+      additional-classes={additionalClasses}
+      title="Assigned Groups"
+      header-btn-label-1={conditionalButtonManageAccess}
+      header-btn-class-1="IntkBrandOneBtn arrow"
+      header-btn-icon-1="iconarrowsvg"
+      header-btn-icon-fill=""
+      header-btn-icon-stroke="#007d99"
+      onbtn1click={showManageAccessModal}
+    >
+      <div slot="contentSlotBottom">
+        <c-datatable
+          is-loading={isLoading}
+          table-cols={tableData.columns}
+          table-rows={tableData.rows}
+          additional-classes="tile-table"
+          oncellclick={handleActionClick}
+          no-results-message="No groups found"
+          all-shown
+        ></c-datatable>
+      </div>
+    </c-intertek-tile>
+
+    <c-manage-report-access
+      if:true={showManageModal}
+      onclose={handleCancelModal}
+      selected-row-ids={reportIdInArray}
+      mode={manageMode}
+    ></c-manage-report-access>
+
+    <c-modal
+      showmodal={showRemoveModal}
+      maxwidth="830"
+      additional-classes="noMob"
+    >
+      <span slot="header"
+        >{labels.USER_GROUP_MGMT_ACTION_REMOVE_FROM_GROUP}</span
+      >
+      <div slot="content">
+        <div>
+          <h3>{unlinkModalText}</h3>
+        </div>
+      </div>
+      <div slot="footer">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label="CANCEL"
+          disabled={isWorking}
+          onclick={handleCancelModal}
+        ></c-button>
+        <c-button
+          variant="Delete ModalFooterBtn"
+          label="REMOVE"
+          disabled={isWorking}
+          onclick={handleConfirmDelete}
+        ></c-button>
+      </div>
+    </c-modal>
+  </template>
+  </template>
+</template>

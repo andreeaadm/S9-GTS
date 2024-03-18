@@ -1,0 +1,39 @@
+<template>
+    <div class="container-content">
+    <lightning-card title={label.FREQUENTLY_USED_BUYERS}>
+        <template if:false={isDataLoaded}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <template if:true={isDataLoaded}>
+            <template if:true={frequentlyBuyersList.length}>
+
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                    <tr class="title-cell-table slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title={label.BUYER_PROGRAM}>{label.BUYER_PROGRAM}</div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <template for:each={frequentlyBuyersList} for:item="buyer">
+
+                        <tr class="slds-hint-parent" key={buyer.id} data-id={buyer.id} onclick={handleListClick}>
+                        <td data-label={label.BUYER_PROGRAM}>
+                            <div title={buyer.buyerName}>{buyer.buyerName}</div>
+                        </td>
+                    </tr>
+                    </template>
+
+                    </tbody>
+                </table>
+            </template>
+            <template if:false={frequentlyBuyersList.length}>
+                {label.NO_FREQUENTLY_USED_BUYERS}
+            </template>
+        </template>
+    </lightning-card>
+</div>
+</template>

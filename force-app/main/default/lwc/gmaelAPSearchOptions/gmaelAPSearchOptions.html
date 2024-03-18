@@ -1,0 +1,83 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" class="bottom-padding" size="12">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-col-custom">
+                    <span>{labels.GMAEL_Country_Map_View}</span>
+                </div>
+                <div class="slds-col slds-col-custom">
+                    <lightning-input type="toggle" label="Country List View" name="countryListView"
+                        variant="label-hidden" message-toggle-active="" message-toggle-inactive=""
+                        onchange={handleCountryListViewToggle}></lightning-input>
+                </div>
+                <div class="slds-col slds-col-custom">
+                    <span>{labels.GMAEL_Country_List_View}</span>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" class="bottom-padding" size="12">
+            <c-gmael-autocomplete label={labels.GMAEL_Product_Category} placeholder={labels.GMAEL_Product_Category}
+                values={approvedProductCategories} data-name="pc" onautochange={handleChange}
+                default-value={selectedApprovedProductCategory}></c-gmael-autocomplete>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="12">
+            <c-gmael-autocomplete disabled={disableProductDescription} label={labels.GMAEL_Product_Description}
+                placeholder={labels.GMAEL_Product_Description} values={approvedProductDescriptions}
+                data-name="pd" onautochange={handleChange}
+                default-value={selectedApprovedProductDescriptionId}></c-gmael-autocomplete>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="12">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <button onclick={handelReset}
+                        class="slds-button slds-button_outline-brand slds-button_stretch button-reset">{labels.GMAEL_Reset}</button>
+                </div>
+                <div class="slds-col">
+                    <template if:true={disablePreviewButton}>
+                        <button disabled
+                            class="slds-button slds-button_outline-brand slds-button_stretch button-download"
+                            style="cursor: initial;">{labels.GMAEL_Preview}</button>
+                    </template>
+                    <template if:false={disablePreviewButton}>
+                        <button
+                            class="slds-button slds-button_brand slds-button_stretch button-preview" 
+                            onclick={handlePreview}>{labels.GMAEL_Preview}</button>
+                    </template>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="12">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <template if:true={enableApprovalButton}>
+                        <button 
+                            class="slds-button slds-button_outline-brand slds-button_stretch button-submit"
+                            onclick={handelApproval}>{labels.GMAEL_Approval}</button>
+                    </template>
+                    <template if:false={enableApprovalButton}>
+                        <button disabled
+                            class="slds-button slds-button_outline-brand slds-button_stretch button-download">{labels.GMAEL_Approval}</button>
+                    </template>                
+                </div>
+                <div class="slds-col">                    
+                    <template if:true={enableDownloadButton}>
+                        <button onclick={handleDownload}
+                            class="slds-button slds-button_outline-brand slds-button_stretch button-submit">{labels.GMAEL_Download}</button>
+                    </template>
+                    <template if:false={enableDownloadButton}>
+                        <button disabled
+                            class="slds-button slds-button_outline-brand slds-button_stretch button-download">{labels.GMAEL_Download}</button>
+                    </template>
+                </div>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout><br /><br />
+    
+    <div if:true={showLoader} class="spinner-padding">
+        <lightning-spinner variant="brand"
+                           alternative-text="Loading..."
+                           size="medium"
+                           class="spinner-container">
+        </lightning-spinner>
+    </div>
+</template>

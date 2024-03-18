@@ -1,0 +1,9 @@
+:host > div {text-align: center;}
+
+@media screen and (max-width:600px) {
+    :host > div {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    :host > div c-button:last-of-type {margin-bottom:20px;} /* last because they're flex reversed */
+}

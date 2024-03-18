@@ -1,0 +1,32 @@
+.relate-product {padding: 0 1rem;}
+.relate-product__action {text-align: center;padding-bottom: 10px;}
+/*.manage-formulator__table {height: 28rem;}*/
+
+.relate-product__logo {
+  display: block;  
+  max-width: 150px;
+  margin: 0 auto 25px; 
+}
+.relate-product__logo_small {max-width: 20%;}
+
+.relate-product__title {font-size: 1rem;}
+.relate-product__content {height: 70vh;}
+
+/* below for custom add products inside modal */
+
+c-tc-add-products-form {margin:0;}
+.slds-modal__content {padding:0;}
+
+/* new create */
+
+.create-product__modal {
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.create-product__content {height: 20vh;line-height: 19vh;}
+
+.slds-modal__container lightning-button.create-btn {margin-left:10px;}
+
+p.create-product {text-align:center;padding-left:15px;padding-right:15px;}

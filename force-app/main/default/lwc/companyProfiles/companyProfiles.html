@@ -1,0 +1,97 @@
+<template>
+  <h1>{labels.COMPANY_PROFILES}</h1>
+  <template for:each={companies} for:item="c">
+    <div key={c.Id} class="row">
+      <div>
+        <div>{labels.COMPANY_NAME}</div>
+        <div>{c.Name}</div>
+      </div>
+      <div>
+        <div>{labels.COMPANY_ADDRESS}</div>
+        <lightning-formatted-address
+          street={c.Street}
+          city={c.City}
+          country={c.Country}
+          province={c.Province}
+          postal-code={c.PostalCode}
+        ></lightning-formatted-address>
+      </div>
+      <c-button
+        label={labels.EDIT}
+        variant="IntkBrandOneBtn"
+        index-one={c.Id}
+        onclick={handleEdit}
+      ></c-button>
+    </div>
+    <hr key={c.Id} />
+  </template>
+
+  <c-modal
+    showmodal={showEditModal}
+    maxwidth="830"
+    additional-classes="narrowContent mobOverflow footerBtnRightAlign headerfootertwo leftCheckbox"
+  >
+    <div slot="header">
+      <h3>{labels.EDIT_ADDRESS}</h3>
+    </div>
+    <div slot="content">
+      <div>
+        <h3>{labels.REQUEST_CHANGES}</h3>
+        <i>{labels.REQUEST_PROCESSED_SOON}</i>
+      </div>
+      <div class="form" if:true={selectedCompany}>
+        <c-input
+          label={labels.STREET}
+          required
+          value={selectedCompany.Street}
+          field-id="Street"
+        ></c-input>
+        <c-input
+          label={labels.CITY}
+          required
+          value={selectedCompany.City}
+          field-id="City"
+        ></c-input>
+        <c-input
+          label={labels.STATE}
+          value={selectedCompany.Province}
+          field-id="Province"
+        ></c-input>
+        <c-input
+          label={labels.COUNTRY}
+          required
+          value={selectedCompany.Country}
+          field-id="Country"
+        ></c-input>
+        <c-input
+          label={labels.ZIP_CODE}
+          required
+          value={selectedCompany.PostalCode}
+          field-id="PostalCode"
+        ></c-input>
+      </div>
+    </div>
+    <div slot="footer" class="footer">
+      <span>
+        <c-input
+          type="Checkbox"
+          label="Request address deletion"
+          class="modalFooterCheckBox"
+          disabled={isWorking}
+        ></c-input>
+      </span>
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        onclick={handleCancel}
+        disabled={isWorking}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={labels.SUBMIT_CHANGES}
+        onclick={handleSubmit}
+        disabled={isWorking}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

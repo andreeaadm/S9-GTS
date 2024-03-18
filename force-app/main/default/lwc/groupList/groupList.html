@@ -1,0 +1,166 @@
+<template>
+  <c-object-home
+    title="Groups"
+    onbtnclick={handleBtnClick}
+    btn-label="ADD GROUP"
+    btn-two-label={conditionalExport}
+    table-data={tableData}
+    scroll-after-x-pixels={scrollAfterXPixels}
+    onviewmore={handleViewMore}
+    actions={actions}
+    onactionclick={handleActionClick}
+    onactionscheckboxchange={handleActionsCheckboxChange}
+    onselectedrowschange={handleSelectedRowsChange}
+    onorderby={handleOrderBy}
+    is-loading={isLoading}
+    load-more-message={loadMoreMessage}
+    all-shown={allShown}
+  >
+    <c-input
+      class="status"
+      slot="filters"
+      type="SelectList"
+      select-options={filterStatusOptions}
+      label="Status"
+      placeholder="Active"
+      onchange={handleFilterChange}
+      field-id="filterStatus"
+      value={filterStatus}
+    ></c-input>
+    <c-input
+      slot="filters"
+      class="search"
+      label="Search"
+      placeholder="Group name..."
+      onchange={handleFilterChange}
+      field-id="filterGroupName"
+      value={filterGroupName}
+    ></c-input>
+  </c-object-home>
+
+  <c-modal
+    showmodal={showAddGroupModal}
+    maxwidth="830"
+    additional-classes="narrowContent"
+  >
+    <span slot="header">Add new group</span>
+    <div slot="content">
+      <div>
+        <h3>Create a new group to add users to and assign reports.</h3>
+        <i>Group names must be unique.</i>
+      </div>
+      <div>
+        <c-input
+          label="Group name"
+          required
+          placeholder="Enter group name"
+          field-id="Group_Name__c"
+          data-id="GroupName"
+          error-on-custom="That group name is already taken. Please try again."
+          onchange={handleAddGroupInputChange}
+        ></c-input>
+        <c-input
+          label="Group description"
+          placeholder="Enter description"
+          field-id="Group_Description__c"
+          data-id="GroupDescription"
+          onchange={handleAddGroupInputChange}
+        ></c-input>
+        <c-input
+          if:true={accountOptions}
+          label="Account"
+          required
+          placeholder="Select an account"
+          type="SelectList"
+          select-options={accountOptions}
+          field-id="Account__c"
+          data-id="AccountId"
+          value={defaultAccountWhenOnlyOne}
+          onchange={handleAddGroupInputChange}
+        ></c-input>
+        <c-input
+          label="Expiry date (optional)"
+          placeholder="Enter expiry date"
+          type="Date"
+          field-id="Expiry__c"
+          onchange={handleAddGroupInputChange}
+        ></c-input>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label="CANCEL"
+        disabled={isWorking}
+        onclick={handleCancelModal}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label="SAVE"
+        disabled={isWorking}
+        onclick={handleConfirmAddGroup}
+      ></c-button>
+    </div>
+  </c-modal>
+
+  <c-modal
+    showmodal={showDeleteModal}
+    maxwidth="830"
+    additional-classes="noMob"
+  >
+    <span slot="header">Deactivate Groups?</span>
+    <div slot="content">
+      <div>
+        <h3>
+          Are you sure you want to deactivate the {selectedRowCount} selected
+          group(s)?
+        </h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label="CANCEL"
+        disabled={isWorking}
+        onclick={handleCancelModal}
+      ></c-button>
+      <c-button
+        variant="Delete ModalFooterBtn"
+        label="DEACTIVATE"
+        disabled={isWorking}
+        onclick={handleConfirmDeactivate}
+      ></c-button>
+    </div>
+  </c-modal>
+
+  <!--Restore Group Modal-->
+  <c-modal
+    showmodal={showRestoreModal}
+    maxwidth="830"
+    additional-classes="noMob"
+  >
+    <span slot="header">Restore Groups?</span>
+    <div slot="content">
+      <div>
+        <h3>
+          Are you sure you want to restore the {selectedRowCount} selected
+          group(s)?
+        </h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label="CANCEL"
+        disabled={isWorking}
+        onclick={handleCancelModal}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label="RESTORE"
+        disabled={isWorking}
+        onclick={handleConfirmRestore}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

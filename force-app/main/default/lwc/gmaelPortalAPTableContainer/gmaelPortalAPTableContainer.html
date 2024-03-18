@@ -1,0 +1,171 @@
+<template>
+
+    <template if:true={reportData}>
+
+        <template if:true={reportCountryData}>
+            <section>
+                <div class="selector">
+                    <select class="slds-select" onchange={countrySelectHandler}>
+                        <template for:each={reportData.reportCountries} for:item="rc" for:index="index">
+                            <option value={rc.reportCountry.GMAEL_Country_Name__c}
+                                key={rc.reportCountry.GMAEL_System_Id__c}>{rc.reportCountry.GMAEL_Country_Name__c}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+
+                <div class="header-div-grey" style="text-align: center;">
+                    <span>
+                        {reportCountryData.reportCountry.GMAEL_Country_Name__c}
+                        <template if:true={reportCountryData.reportCountry.GMAEL_Region_Name__c}>
+                            &nbsp;- {reportCountryData.reportCountry.GMAEL_Region_Name__c}
+                        </template>
+                    </span>
+                </div>
+                <div class="small-text-section" style="text-align: center;">
+                    {clabels.GMAEL_Portal_Report_Header}
+                    <br />
+                </div>
+            </section>
+
+            <template if:true={reportCountryData.reportCountry.GMAEL_Region_Flag_URL__c}>
+                <ul class="slds-tabs_default__nav_imgs" role="tablist" part="tab-bar">
+                    <li class="itemsFlagImg">
+                        <img src={reportCountryData.reportCountry.GMAEL_Flag_URL__c} />
+                    </li>
+                    <li class="itemsFlagImg" if:true={reportCountryData.reportCountry.GMAEL_Flag_URL__c}>
+
+                    </li>
+                    <li class="itemsFlagImg">
+                        <img src={reportCountryData.reportCountry.GMAEL_Region_Flag_URL__c} />
+                    </li>
+                </ul>
+            </template>
+            <template if:false={reportCountryData.reportCountry.GMAEL_Region_Flag_URL__c}>
+                <ul class="slds-tabs_default__nav_imgs" role="tablist" part="tab-bar">
+                    <li class="itemsFlagImg">
+
+                    </li>
+                    <li class="itemsFlagImg" if:true={reportCountryData.reportCountry.GMAEL_Flag_URL__c}>
+                        <img src={reportCountryData.reportCountry.GMAEL_Flag_URL__c} />
+                    </li>
+                    <li class="itemsFlagImg">
+
+                    </li>
+                </ul>
+            </template>
+            <lightning-tabset variant="standard" active-tab-value={clabels.GMAEL_Portal_Report_Plug_Type}>
+                <div class="container-tabs-inf">
+
+                    <lightning-tab label={clabels.GMAEL_Portal_Report_Plug_Type} value={clabels.GMAEL_Portal_Report_Plug_Type}>
+                            <table class="table">
+                                <tr>
+                                    <th >
+                                        {clabels.GMAEL_Portal_Report_Supply_Voltage}
+                                    </th>
+                                    <th >
+                                        {reportCountryData.reportCountry.GMAEL_National_Deviation_Supply_Voltage__c}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {clabels.GMAEL_Portal_Report_Frequency}
+                                    </td>
+                                    <td>
+                                        {reportCountryData.reportCountry.GMAEL_National_Deviation_Supply_Freqncy__c}
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        {clabels.GMAEL_Portal_Report_Plug_types}
+                                    </th>
+                                </tr>
+                            </table>
+                            <ul class="two-column-list">
+                                <template for:each={reportCountryData.reportCountryPlugTypes} for:item="rcpt">
+
+                                    <li key={rcpt.reportCountryPlugObj.Name}>
+                                        <div>{rcpt.reportCountryPlugObj.Name}</div>
+                                        <img src={rcpt.reportCountryPlugObj.GMAEL_Logo_File_URL__c} />
+                                    </li>
+                                    
+                                </template>
+                            </ul>
+                    </lightning-tab>
+                    <lightning-tab label={clabels.GMAEL_Portal_Report_General_Information} value={clabels.GMAEL_Portal_Report_General_Information}>
+                            <template if:true={reportCountryData.reportCountry.GMAEL_Region_Name__c}>
+                                <div class="general-information">
+                                    {reportCountryData.reportCountry.GMAEL_Region_Name__c}
+                                </div>
+                            </template>
+                            <template if:false={reportCountryData.reportCountry.GMAEL_Region_Name__c}>
+                                <div class="general-information">
+                                    {reportCountryData.reportCountry.GMAEL_Country_Name__c}
+                                </div>
+                            </template>
+                        <div class="generalInfoContent">
+                            <lightning-formatted-rich-text
+                                value={reportCountryData.reportCountry.GMAEL_General_Information__c}></lightning-formatted-rich-text>
+                        </div>
+                    </lightning-tab>
+                    <lightning-tab label={clabels.GMAEL_Portal_Report_Engineering_Application} value={clabels.GMAEL_Portal_Report_Engineering_Application}>
+                        <table class="table-plug-type">
+                            <tr class="second-row">
+                                <th >
+                                    <lightning-formatted-rich-text
+                                        value={clabels.GMAEL_Portal_Report_Engineering_Application}></lightning-formatted-rich-text>
+                                </th>
+                                <th >
+                                    <lightning-formatted-rich-text
+                                        value={clabels.GMAEL_Portal_Report_EU_Directive_Regulation}></lightning-formatted-rich-text>
+                                </th>
+                                <th class="columnContent">
+                                    <lightning-formatted-rich-text
+                                        value={clabels.GMAEL_Portal_Report_Mandatory_Voluntary}></lightning-formatted-rich-text>
+                                </th>
+                                <th class="columnContent">
+                                    <lightning-formatted-rich-text
+                                        value={clabels.GMAEL_Portal_Report_Conformity_Marking_Labelling}></lightning-formatted-rich-text>
+                                </th>
+                            </tr>
+                            <template for:each={reportCountryData.reportCountryLines} for:item="rcl">
+                                <tr class="third-row" key={rcl.reportLineObj.GMAEL_Engineering_Application__c}>
+                                    <template if:true={rcl.isRowApplicable}>
+                                        <td>
+                                            {rcl.reportLineObj.GMAEL_Engineering_Application__c}
+                                        </td>
+                                        <td>
+                                            <template for:each={rcl.legislationSummaries} for:item="l">
+                                                <lightning-formatted-rich-text value={l}
+                                                    key={l}></lightning-formatted-rich-text><br key={s} />
+                                            </template>
+                                        </td>
+                                        <td class="columnContent">
+                                            <template for:each={rcl.schemes} for:item="s">
+                                                <lightning-formatted-rich-text value={s}
+                                                    key={s}></lightning-formatted-rich-text><br key={s} />
+                                            </template>
+                                        </td>
+                                        <td class="columnContent fourColumnImages">
+                                            <template for:each={rcl.countryMarks} for:item="cm">
+                                                <img src={cm} key={cm} />
+                                            </template>
+                                        </td>
+                                    </template>
+                                    <template if:false={rcl.isRowApplicable}>
+                                        <td colspan="4" class="no-result">
+                                            <lightning-formatted-rich-text
+                                                value={labels.GMAEL_Result_Not_Found}></lightning-formatted-rich-text>
+                                        </td>
+                                    </template>
+                                </tr>
+                            </template>
+                        </table>
+                    </lightning-tab>
+                </div>
+            </lightning-tabset>
+        </template>
+    </template>
+</template>

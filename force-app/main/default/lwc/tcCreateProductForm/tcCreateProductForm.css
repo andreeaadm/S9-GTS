@@ -1,0 +1,13 @@
+c-form {display:block;}
+:host > div {margin: 20px 0;}
+c-tc-search-formulators-input {display:block;margin-bottom: 20px;}
+@media screen and (min-width:768px) {
+    c-tc-search-formulators-input {
+        display: flex;
+        min-height: 45px;
+        align-items: center;       
+        justify-content: space-between;
+        max-width: 480px;
+    }
+    c-form {max-width:480px;}
+}

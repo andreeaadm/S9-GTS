@@ -1,0 +1,119 @@
+.container-background {
+    background-image: url('/sfsites/c/resource/iconsiCare/background-submit-a-test-request.svg');
+    background-position: top center;
+    background-size: cover;
+}
+
+.container-content {
+    padding: 54px 15px 92px 15px;
+}
+
+
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+}
+
+p {
+    font-family: var(--calibri-regular);
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.005em;
+    color: var(--black-primary);
+}
+
+.container-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    margin-top: 40px;
+}
+
+.buttons-header {
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 55px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+
+.container-tables {
+    position: relative;
+    bottom: 32px;
+}
+
+.container-tables lightning-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.buttons-table {
+    display: flex;
+    margin: 10px auto;
+    background-color: white;
+    border: none;
+    font-family: var(--calibri-regular);
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--blue-link);
+}
+
+@media screen and (min-width:768px) {
+    .container-buttons {
+        flex-direction: row;
+    }
+
+}
+
+@media screen and (min-width:1280px) {
+    .container-content {
+        width: 1280px;
+        margin: auto;
+    }
+
+    lightning-flow {
+        /* display: block;
+        width: 1280px;
+        margin: auto; */
+    }
+
+    .container-tables lightning-layout {
+        width: 1280px;
+        margin: auto;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    lightning-layout-item {
+        width: 48%;
+
+    }
+}
+
+
+
+@media screen and (min-width:1920px) {
+
+    .container-background {
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 320px;
+    }
+}
+
+@media screen and (max-width:1279px) {
+    lightning-layout-item {
+        width: 90%;
+    }
+
+}

@@ -1,0 +1,13 @@
+.legend~* {
+    display: block !important;
+}
+
+c-chart{
+    pointer-events: none;
+}
+@media screen and (min-width:768px) {
+    c-chart{
+        margin-top: 130px;
+    }
+    
+}

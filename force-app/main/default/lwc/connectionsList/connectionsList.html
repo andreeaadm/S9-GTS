@@ -1,0 +1,16 @@
+<template>
+  <template if:true={isLoaded}>
+    <c-datatable
+      if:false={noResults}
+      table-cols={connectionTable.columns}
+      table-rows={connectionTable.rows}
+      all-shown={allShown}
+      onviewmore={handleViewMore}
+      additional-classes="clickablecells-nowidth clickablecells-noabspos moblist-lg-lbl mob-longStringFix centeralignlastcols conn-list"
+      oncellclick={navToPage}
+      mob-enabled="true"
+    >
+    </c-datatable>
+    <div if:true={noResults} class="noitems">{labels.NO_RESULTS_FOUND}</div>
+  </template>
+</template>

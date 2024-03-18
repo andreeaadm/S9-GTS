@@ -1,0 +1,70 @@
+<template>
+  <template if:true={isUpdateable}>
+    <template if:true={approvalRequested}>
+      <c-button
+        label={labels.APPROVE_ACCESS}
+        onclick={toggleModal}
+        variant="IntkBrandOneBtn"
+        disabled={disableBtn}
+        index-one="grant access to MTC for"
+        index-two="approve"
+      ></c-button>
+      <c-button
+        label={labels.DECLINE_ACCESS}
+        onclick={toggleModal}
+        variant="IntkBrandOneBtn"
+        disabled={disableBtn}
+        index-one="decline access to MTC for"
+        index-two="decline"
+      ></c-button>
+    </template>
+    <template if:false={approvalRequestedOrRejected}>
+      <c-button
+        if:false={isActive}
+        label={labels.ENABLE}
+        onclick={toggleModal}
+        variant="IntkBrandOneBtn"
+        disabled={disableBtn}
+        index-one="enable"
+      ></c-button>
+      <c-button
+        if:true={isActive}
+        label={labels.DISABLE}
+        onclick={toggleModal}
+        variant="IntkBrandOneBtn"
+        disabled={disableBtn}
+        index-one="disable"
+      ></c-button>
+    </template>
+  </template>
+  <c-modal showmodal={showModal} maxwidth="830" additional-classes="noMob">
+    <span slot="header">{labels.ARE_YOU_SURE}</span>
+    <div slot="content">
+      <div>
+        <h3>{labels.ARE_YOU_SURE_YOU_WANT_TO} {action} {labels.THIS_USER}</h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        onclick={toggleModal}
+        disabled={disableBtn}
+      ></c-button>
+      <c-button
+        if:false={approvalRequested}
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={labels.SUBMIT}
+        onclick={handleConfirm}
+        disabled={disableBtn}
+      ></c-button>
+      <c-button
+        if:true={approvalRequested}
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={labels.CONFIRM}
+        onclick={handleConfirmApproveDecline}
+        disabled={disableBtn}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

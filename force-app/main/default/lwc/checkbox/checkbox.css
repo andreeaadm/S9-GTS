@@ -1,0 +1,68 @@
+:host {
+	margin: 0 auto;
+	display: block;
+}
+
+label.checkbox input:indeterminate + div {background:#21B6D7;} /*#21B6D7*/
+label.checkbox input:indeterminate + div:before {content:"";display:block;position:absolute;width: 8px;height:2px;background: rgba(255,255,255,0.95);}
+
+label.checkbox  {
+	cursor:pointer;
+	display: flex;
+}
+
+label.checkbox input {display:none!important;}
+
+label.checkbox > div {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing:border-box;
+	transition: border-color 0.1s ease-in;		/* for transition of other 'states' such as disabled */
+	flex-shrink: 0; 							/* stops squashing in some contexts */
+}
+
+label.checkbox > div c-icontick {
+	opacity:0;
+	transition: opacity 0.1s ease-in;			/* for transition of icon :checked */
+	/*text-align:center;*/
+}
+
+label.checkbox input:checked + div c-icontick {opacity:1;}		/* checked */
+
+label.checkbox.disabled {cursor: not-allowed;}
+label.checkbox.disabled > div {
+	border-color:#CCCCCC!important;
+	background:unset!important; /* cancel any checkbox bg colour */
+}
+label.checkbox.disabled > div c-icontick {fill:#CCCCCC!important;}
+
+label.checkbox > span.cc {
+	display:flex;
+	align-items:center;
+}
+
+/*** STYLE  ***/
+
+:host {min-width: 22px;}
+
+/* removed to stop wrapping text vert-align middle */ 
+/* label.checkbox {height:22px;}*/ 
+
+label.checkbox > div {
+	height: 22px;
+	width: 22px;
+	border: 2px solid;
+	border-color:#21B6D7;
+	border-radius: 3px;
+	background-color: #fff;
+	transition: background-color 0.3s ease;
+}
+
+label.checkbox > div c-icontick {fill: #fff;width:12px;}
+
+label.checkbox > span.cc{margin: 0 0 0 10px;}
+
+label.checkbox input:checked + div {background:#21B6D7;}
+
+:host.has-error label.checkbox > div {border-color:#c23934;}

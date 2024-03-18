@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <description>A reusable record edit component with a related list</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Record Edit</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default,lightning__RecordPage">
+            <property name="recordId"               label="Record Id"                   type="String"   default=""></property>
+            <property name="objectApiName"          label="Object API Name"             type="String"   default=""></property>
+            <property name="layoutType"             label="Layout Type"                 type="String"   default="Full"  datasource="Full,Compact" />
+            <property name="recordDetailTitle"      label="Detail Title"                type="String"   default="Record Detail" />
+            <property name="relatedListTitle"       label="Related List Title"          type="String" />
+            <property name="relatedObjectApiName"   label="Related Object API Name"     type="String" />
+            <property name="parentFieldApiName"     label="Parent Field API Name"       type="String" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,29 @@
+<template>
+    <article class="slds-card" style="padding:20px"> 
+    
+    <p style="font-size:24px">Custom Lookup Use</p>
+    
+    <!--Custom Lookup with Pre-Populate Value for User Object-->
+    <c-gts-custom-lookup icon-name="standard:user"
+                         s-object-api-name="user"
+                         label="Owner [Pre-Populate Demo]"
+                         onlookupupdate={lookupRecord}
+                         default-record-id='005RK000000EUXiYAO'
+                         placeholder="type here..."></c-gts-custom-lookup>
+   <br/>
+   <!--Custom Lookup without Pre-Populate Value for account Object-->
+    <c-gts-custom-lookup icon-name="standard:account"
+                         s-object-api-name="account"
+                         label="My Fev Account"
+                         onlookupupdate={lookupRecord}
+                         placeholder="Search Account here..."></c-gts-custom-lookup>
+   <!--Custom Lookup without Pre-Populate Value for account Object-->
+    <c-gts-custom-lookup icon-name="standard:asset_object"
+                         s-object-api-name="iCare_Job__c"
+                         label="My Fev Job"
+                         onlookupupdate={lookupRecord}
+                         filter-field-api-name="iCare_Buyer_Program_formula__c"
+                         filter-value="Buyer Program 1"
+                         placeholder="Search Job here..."></c-gts-custom-lookup>
+     </article>                    
+</template>

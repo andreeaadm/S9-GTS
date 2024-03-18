@@ -1,0 +1,22 @@
+<template>
+	<h1>{labels.PURPOSE_APPLICATION}</h1>
+
+	<section  class="container">
+
+	<lightning-radio-group name="radioGroup"
+												 label={labels.RENEWAL_REVISION}
+												 options={options}
+												 value={renewRevisionValue}
+												 disabled={isReadOnly}
+												 onchange={handleChange}
+												 type="radio">
+	</lightning-radio-group>
+
+	<lightning-input
+		label={labels.EXISTING_NUMBER}
+		value={jobRequestRecord.GTS_Existing_Number__c}
+		read-only="true"
+	></lightning-input>
+	</section>
+  
+</template>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>CMS Accordion</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="managedContentType" label="Managed Content Type"    type="String"  default="FAQ"  />
+            <property name="titleFieldName"     label="Title Field Name"        type="String"  default="Question"  />
+            <property name="contentFieldName"   label="Content Field Name"      type="String"  default="Answer"  />
+            <property name="orderingFieldName"  label="Ordering Field Name"     type="String"  default="Order"  />
+            <property name="topics"             label="Topics"                  type="String"  default=""  />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  height:100%;
+}
+.location {
+  padding-left: 15px;
+  padding-top: 0px;
+  width: 55% !important;
+}
+.locationInput {
+  padding-left : 15px;
+}
+.iBubble {
+  width: 50px;
+  float: left;
+  margin: -20px;
+}
+.typeDiv {
+  margin-top: 20px !important;
+  width: 100%;
+  display: flex;
+}
+.suppType {
+  width: 32% !important;
+}
+.invType {
+  width: 32% !important;
+  margin-left: 12px !important;
+}
+.confType {
+  width: 32% !important;
+  margin-left: 12px !important;
+}
+.classfication {
+  width: 32% !important;
+  margin-left: auto;
+  text-align: right !important;
+}

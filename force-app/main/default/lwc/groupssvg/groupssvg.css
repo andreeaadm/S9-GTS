@@ -1,0 +1,7 @@
+:host {display:block;height:63px;}
+
+.a {fill: none;}
+.b {clip-path: url(#a);}
+.c {fill: #140f10;}
+.d {clip-path: url(#b);}
+.e {fill: #ffc20e;}

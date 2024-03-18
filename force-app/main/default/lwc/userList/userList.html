@@ -1,0 +1,185 @@
+<template>
+  <c-object-home
+    title="Users"
+    onbtnclick={handleBtnClick}
+    btn-label={labels.USER_LIST_ADD_USER_BUTTON}
+    btn-two-label={conditionalExport}
+    table-data={tableData}
+    scroll-after-x-pixels={scrollAfterXPixels}
+    onviewmore={handleViewMore}
+    actions={actions}
+    onactionclick={handleActionClick}
+    onactionscheckboxchange={handleActionsCheckboxChange}
+    onselectedrowschange={handleSelectedRowsChange}
+    onorderby={handleOrderBy}
+    is-loading={isLoading}
+    load-more-message={loadMoreMessage}
+    all-shown={allShown}
+  >
+    <c-input
+      class="status"
+      slot="filters"
+      type="SelectList"
+      select-options={filterStatusOptions}
+      label={labels.USER_LIST_FILTER_TABLE_STATUSFIELD}
+      placeholder={labels.USER_LIST_FILTER_TABLE_STATUSFIELD_PLACEHOLDER}
+      onchange={handleFilterChange}
+      field-id="filterStatus"
+      value={filterStatus}
+    ></c-input>
+    <!--select-needs-empty-option-->
+    <c-input
+      class="search"
+      slot="filters"
+      label={labels.USER_LIST_FILTER_TABLE_SEARCHFIELD}
+      placeholder={labels.USER_LIST_FILTER_TABLE_SEARCHFIELD_PLACEHOLDER}
+      onchange={handleFilterChange}
+      field-id="filterSearch"
+      value={filterSearch}
+    ></c-input>
+    <div slot="filters" class="dates">
+      <c-input
+        slot="filters"
+        type="Date"
+        label={labels.USER_LIST_FILTER_TABLE_LASTLOGINFIELD}
+        placeholder={labels.USER_LIST_FILTER_TABLE_LASTLOGINFIELD_DATEFROM}
+        onchange={handleFilterChange}
+        field-id="filterDateFrom"
+        value={filterDateFrom}
+      ></c-input>
+      <c-input
+        slot="filters"
+        type="Date"
+        placeholder={labels.USER_LIST_FILTER_TABLE_LASTLOGINFIELD_DATETO}
+        onchange={handleFilterChange}
+        field-id="filterDateTo"
+        value={filterDateTo}
+      ></c-input>
+    </div>
+    <c-input
+      class="checkbox"
+      slot="filters"
+      type="Checkbox"
+      label={labels.USER_LIST_FILTER_TABLE_UNASSIGNED_CHECKBOXFIELD}
+      onchange={handleFilterChange}
+      field-id="filterUnassignedOnly"
+      value={filterUnassignedOnly}
+    ></c-input>
+  </c-object-home>
+  <c-modal
+    showmodal={showAddUserModal}
+    maxwidth="830"
+    additional-classes="narrowContent mobOverflow"
+  >
+    <div slot="header">
+      <h3>{labels.USER_LIST_CONTENT}</h3>
+    </div>
+    <div slot="content">
+      <c-user-detail-record
+        onsaveuser={handleUserCreationEvent}
+        ontoggleisworking={toggleIsWorking}
+      ></c-user-detail-record>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        onclick={handleCancelModal}
+        disabled={isWorking}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={labels.SAVE}
+        onclick={handleConfirmAddUser}
+        disabled={isWorking}
+      ></c-button>
+    </div>
+  </c-modal>
+
+  <c-modal
+    showmodal={showEnableUserModal}
+    maxwidth="830"
+    additional-classes="noMob"
+  >
+    <span slot="header">{labels.ENABLE_USER}</span>
+    <div slot="content">
+      <div>
+        <h3>
+          {labels.USER_LIST_ENABLEAREYOUSURE}&nbsp;{selectedRowCount}&nbsp;{labels.USER_LIST_SELECTEDUSERS}
+        </h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        onclick={handleCancelModal}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label="ENABLE"
+        onclick={handleConfirmEnable}
+      ></c-button>
+    </div>
+  </c-modal>
+
+  <c-modal
+    showmodal={showResetPwdModal}
+    maxwidth="830"
+    additional-classes="noMob"
+  >
+    <span slot="header">{labels.USER_MGMT_MODAL_TITLE}</span>
+    <div slot="content">
+      <div>
+        <h3>{labels.USER_MGMT_MODAL_CONFIRM_TEXT}</h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        onclick={handleCancelModal}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label="RESET"
+        onclick={handleConfirmResetPassword}
+      ></c-button>
+    </div>
+  </c-modal>
+
+  <c-modal
+    showmodal={showDisableUserModal}
+    maxwidth="830"
+    additional-classes="noMob"
+  >
+    <span slot="header">{labels.DISABLE_USER}</span>
+    <div slot="content">
+      <div>
+        <!--Are you sure you want to disable the {selectedRowCount} selected user(s)?-->
+        <h3>
+          {labels.USER_LIST_DISABLEAREYOUSURE}&nbsp;{selectedRowCount}&nbsp;{labels.USER_LIST_SELECTEDUSERS}
+        </h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        onclick={handleCancelModal}
+      ></c-button>
+      <c-button
+        variant="Delete ModalFooterBtn"
+        label={labels.DISABLE}
+        onclick={handleConfirmDisable}
+      ></c-button>
+    </div>
+  </c-modal>
+
+  <c-manage-user-group-access
+    if:true={showManageModal}
+    onclose={handleCancelModal}
+    selected-row-ids={selectedRowIds}
+    mode={manageMode}
+  ></c-manage-user-group-access>
+</template>

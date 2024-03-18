@@ -1,0 +1,18 @@
+<template>
+  <template if:true={showButton}>
+    <div class={containerClass} onclick={doClick}>
+      <template if:true={disabled}>
+        <input disabled type="button" value={label} />
+        <template if:true={icon}>
+          <c-icon icon={icon} fill={iconFill} stroke={iconStroke}></c-icon>
+        </template>
+      </template>
+      <template if:false={disabled}>
+        <input type="button" value={label} />
+        <template if:true={icon}>
+          <c-icon icon={icon} fill={iconFill} stroke={iconStroke}></c-icon>
+        </template>
+      </template>
+    </div>
+  </template>
+</template>

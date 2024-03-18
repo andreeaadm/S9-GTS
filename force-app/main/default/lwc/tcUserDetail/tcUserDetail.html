@@ -1,0 +1,30 @@
+<template>
+  <template if:true={viewingOwnUser}>
+    <h1>{labels.TC_MY_PROFILE}</h1>
+    <c-record
+      object-api-name="User"
+      record-id={recordId}
+      editable-field-api-names="FirstName,LastName,Email,Phone,Title,Street,City,State,PostalCode,Country,ZDHC_User_Access_Key__c"
+      required-field-api-names="FirstName,LastName,Email"
+      title-field-api-name="Name"
+    ></c-record>
+  </template>
+
+  <template if:false={viewingOwnUser}>
+    <h1>{labels.TC_USER_DETAILS}</h1>
+    <div class="slds-form-element slds-form-element_horizontal">
+      <span class="slds-form-element__label">{labels.NAME}</span>
+      <lightning-formatted-text
+        class="slds-form-element__static"
+        value={name}
+      ></lightning-formatted-text>
+    </div>
+    <div class="slds-form-element slds-form-element_horizontal">
+      <span class="slds-form-element__label">{labels.TITLE}</span>
+      <lightning-formatted-text
+        class="slds-form-element__static"
+        value={title}
+      ></lightning-formatted-text>
+    </div>
+  </template>
+</template>

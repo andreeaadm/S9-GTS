@@ -1,0 +1,10 @@
+a {
+	text-overflow: ellipsis!important;
+	white-space: nowrap!important;
+	overflow: hidden!important;
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover {transition: 300ms color ease;}
+b {margin-right: 7px!important;}

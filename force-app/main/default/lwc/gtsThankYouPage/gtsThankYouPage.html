@@ -1,0 +1,59 @@
+<template>
+  <div class="background">
+    
+  </div>
+
+  <template if:true={showSpinner} class="overlay">
+    <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+  </template>
+
+  <section>
+    <div class="content-left">
+      <img src="/sfsites/c/resource/iconsiCare/thank-you.svg" alt="thank you">
+    </div>
+    <div class="content-right">
+ <h1>{labels.THANK_YOU}</h1>
+  <h2>{labels.JOB_SUBMITTED}</h2>
+  <p>{labels.THANK_YOU_NOTE}</p>
+      <template if:false={hideFavorite}>
+        <p>{labels.FAVOURITE_FIELD_LABEL}</p>
+        <!--<p>Enter a name to save this submission as a favourite for next time or print your form</p>-->
+
+          <lightning-layout-item>
+            <lightning-input
+              type="text"
+              placeholder={labels.FAVOURITE_NAME}
+              onchange={handleFavouriteChange}
+            ></lightning-input>
+          </lightning-layout-item>
+      </template>
+
+      <lightning-layout class="container-buttons">
+        <lightning-layout-item>
+          <button
+            class="white-button"
+            label="Print eTRF"
+            disabled={showSpinner}
+            onclick={handlePrint}
+            >{labels.PRINT_ETRF}
+          </button>
+        </lightning-layout-item>
+
+        <template if:false={hideFavorite}>
+          <lightning-layout-item>
+            <button
+              class={saveButtonClass}
+              variant="brand"
+              label="Save"
+              onclick={handleSave}
+              disabled={disabled}
+             >{labels.SAVE}
+            </button>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </div>
+
+  </section>
+ 
+</template>

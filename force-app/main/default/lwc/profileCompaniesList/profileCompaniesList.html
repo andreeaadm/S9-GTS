@@ -1,0 +1,209 @@
+<template>
+  <template if:true={isMyUserOrInApproval}>
+    <c-intertek-tile
+      has-loaded={hasLoaded}
+      additional-classes={additionalClasses}
+      title="Accounts"
+    >
+      <div slot="contentSlotBottom" class="stopBuilderStyles">
+        <div class="accounts">
+          <div class="companyName">
+            <span>Account (Account #)</span>
+          </div>
+          <div class="accessLevel"><span>Access Level</span></div>
+          <div class="finalCol"></div>
+        </div>
+
+        <template for:each={companies} for:item="acc">
+          <div class={acc.class} key={acc.acr.AccountId}>
+            <div class="companyName">
+              <span>{acc.acr.Account_Name_FF__c}</span>
+            </div>
+            <div class="accessLevel"><span>{acc.uiFriendlyRole}</span></div>
+            <template if:false={acc.isAssignedOnThisAccount}>
+              <div class="finalCol">
+                <span>Unassigned</span>
+              </div>
+            </template>
+            <template if:true={acc.isAssignedOnThisAccount}>
+              <div class="finalCol"></div>
+            </template>
+            <div if:true={acc.acr.IsDirect} key={acc.acr.Id} class="info">
+              <span
+                ><span>Primary account</span> Primary accounts can't be
+                removed.</span
+              >
+            </div>
+          </div>
+        </template>
+      </div>
+    </c-intertek-tile>
+  </template>
+  <template if:false={isMyUserOrInApproval}>
+    <template if:false={inEditMode}>
+      <c-intertek-tile
+        has-loaded={hasLoaded}
+        additional-classes={additionalClasses}
+        header-btn-label-1="Add Account"
+        header-btn-class-1="IntkBrandOneBtn"
+        header-btn-label-2="Edit"
+        header-btn-class-2="IntkBrandOneBtn"
+        title="Accounts"
+        onbtn1click={showAddAccount}
+        onbtn2click={enableEditMode}
+      >
+        <div slot="contentSlotBottom" class="stopBuilderStyles">
+          <div class="accounts">
+            <div class="companyName">
+              <span>Account (Account #)</span>
+            </div>
+            <div class="accessLevel"><span>Access Level</span></div>
+            <div class="finalCol"></div>
+          </div>
+
+          <template for:each={companies} for:item="acc">
+            <div class={acc.class} key={acc.acr.AccountId}>
+              <div class="companyName">
+                <span>{acc.acr.Account_Name_FF__c}</span>
+              </div>
+              <div class="accessLevel"><span>{acc.uiFriendlyRole}</span></div>
+              <template if:false={acc.isAssignedOnThisAccount}>
+                <div class="finalCol">
+                  <span>Unassigned</span>
+                </div>
+              </template>
+              <template if:true={acc.isAssignedOnThisAccount}>
+                <div class="finalCol"></div>
+              </template>
+              <div if:true={acc.acr.IsDirect} key={acc.acr.Id} class="info">
+                <span
+                  ><span>Primary account</span> Primary accounts can't be
+                  removed.</span
+                >
+              </div>
+            </div>
+          </template>
+        </div>
+      </c-intertek-tile>
+    </template>
+    <template if:true={inEditMode}>
+      <c-intertek-tile
+        has-loaded={hasLoaded}
+        additional-classes={additionalClasses}
+        title="Accounts"
+        header-btn-label-1="Cancel"
+        header-btn-label-2="Save"
+        onbtn1click={handleOnCancel}
+        onbtn2click={handleSaveAccounts}
+        header-btn-class-1="Neutral pnlActionBtn"
+        header-btn-class-2="IntkBrandTwoBtn pnlActionBtn"
+      >
+        <div slot="contentSlotBottom" class="accountsContainer">
+          <div class="accounts">
+            <div class="companyName">
+              <span>Account (Account #)</span>
+            </div>
+            <div class="accessLevel"><span>Access Level</span></div>
+            <div class="finalCol"></div>
+          </div>
+
+          <template for:each={companies} for:item="acc">
+            <div class={acc.class} key={acc.acr.Id}>
+              <div class="companyName">
+                <span>{acc.acr.Account_Name_FF__c}</span>
+              </div>
+              <template if:false={acc.cannotManage}>
+                <div class="accessLevel">
+                  <c-input
+                    data-id={acc.acr.Id}
+                    data-name="MTC_Role__c"
+                    field-id="MTC_Role__c"
+                    title="Select access Level"
+                    required
+                    placeholder={acc.uiFriendlyRole}
+                    type="SelectList"
+                    select-options={acc.roleOptions}
+                    style-class="pnlActionSelect"
+                    value={acc.acr.MTC_Role__c}
+                  ></c-input>
+                </div>
+              </template>
+              <template if:true={acc.cannotManage}>
+                <div class="accessLevelTextOnly">{acc.acr.MTC_Role__c}</div>
+              </template>
+              <div class="finalCol">
+                <a
+                  if:false={acc.isReadOnly}
+                  data-id={acc.acr.Id}
+                  onclick={handleRemove}
+                  >Disable Access</a
+                >
+              </div>
+              <div if:true={acc.acr.IsDirect} key={acc.acr.Id} class="info">
+                <span
+                  ><span>Primary account</span> Primary accounts can’t be
+                  removed.</span
+                >
+              </div>
+            </div>
+          </template>
+        </div>
+      </c-intertek-tile>
+    </template>
+
+    <c-modal
+      showmodal={showAddAccountModal}
+      maxwidth="830"
+      additional-classes="narrowContent mobOverflow"
+    >
+      <div slot="header">
+        <h3>Add Account</h3>
+      </div>
+      <div slot="content">
+        <lightning-record-edit-form
+          object-api-name="AccountContactRelation"
+          onsubmit={handleAddAccount}
+          onload={handleOnLoad}
+        >
+          <c-input
+            label="Select Account"
+            data-name="AccountId"
+            field-id="AccountId"
+            title="Access Level"
+            required
+            placeholder={addAccountPlaceholder}
+            type="SelectList"
+            select-options={accountOptions}
+          ></c-input>
+
+          <c-input
+            label="Select access level"
+            data-name="MTC_Role__c"
+            field-id="MTC_Role__c"
+            title="Select access Level"
+            required
+            placeholder="Select Access Level"
+            type="SelectList"
+            select-options={accessOptions}
+          ></c-input>
+
+          <!-- <input type="submit" class="hidden"></input>-->
+        </lightning-record-edit-form>
+      </div>
+      <div slot="footer">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label={labels.CANCEL}
+          onclick={handleCancelModal}
+          disabled={isLoading}
+        ></c-button>
+        <c-button
+          variant="IntkBrandTwoBtn ModalFooterBtn"
+          label={labels.SAVE}
+          onclick={handleAddAccount}
+          disabled={disableAddAccount}
+        ></c-button>
+      </div>
+    </c-modal>
+  </template>
+</template>

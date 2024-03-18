@@ -1,0 +1,87 @@
+section {
+    background: var(--blue-snow-light);
+
+}
+
+:host {
+  --lwc-squareIconLargeBoundary: 7rem;
+}
+
+.container-background {
+    background-image: url(/sfsites/c/resource/iconsiCare/background-ask-our-experts.svg);
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: right;
+    width: 100%;
+    height: 288px;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.container {
+    padding: 30px 20px;
+}
+
+.container-avatar-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+lightning-avatar {
+    height: 114px;
+    width: 114px;
+}
+
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+}
+
+p {
+    font-family: var(--calibri-regular);
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--black-primary);
+
+}
+
+.profile-description{
+    padding-left: 20px;
+}
+
+@media screen and (min-width:768px) {
+    .container-background {
+        position: absolute;
+        background-position: right;
+        width: 100%;
+        height: 222px;
+        z-index: 0;
+    }
+
+    .container-avatar-upload {
+        padding-left: 10px;
+    }
+
+    .profile-description{
+        padding-left: 0px;
+    }
+
+}
+
+@media screen and (min-width:1280px) {
+    .container {
+        width: 1280px;
+        margin: auto;
+        flex-direction: row;
+    }
+}

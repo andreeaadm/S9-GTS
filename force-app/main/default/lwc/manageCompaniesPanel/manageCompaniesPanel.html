@@ -1,0 +1,19 @@
+<template>
+  <template if:true={renderMe}>
+    <div if:false={wiredData.data.isCga}>
+      <lightning-formatted-rich-text
+        if:true={wiredData.data.message}
+        value={wiredData.data.message}
+      ></lightning-formatted-rich-text>
+    </div>
+    <div if:false={buttonHidden}>
+      <c-button
+        label="MANAGE COMPANY PROFILES"
+        destination-page="Company_Profiles__c"
+        variant="IntkBrandOneBtn lg arrow"
+        icon="iconarrowsvg"
+        icon-stroke="rgb(0, 125, 153)"
+      ></c-button>
+    </div>
+  </template>
+</template>

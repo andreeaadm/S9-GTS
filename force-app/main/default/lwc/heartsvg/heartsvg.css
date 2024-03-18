@@ -1,0 +1,9 @@
+svg {
+    stroke: rgb(232, 74, 67);
+    stroke-width: 1.5px;
+    transition: fill 0.25s ease 0s;
+}
+
+svg.inactive {fill: transparent;}
+
+svg.active {fill: rgb(232, 74, 67);}

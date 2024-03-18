@@ -1,0 +1,15 @@
+:host {
+  width: 13.207px;
+  height: 13.414px;
+  display: block;
+}
+svg {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}
+.a {
+  stroke-linecap: round;
+  stroke: inherit;
+  fill: inherit;
+}

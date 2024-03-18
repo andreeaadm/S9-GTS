@@ -1,0 +1,28 @@
+.pageHeading{
+    font-weight: bolder;
+    font-size: medium;
+    padding-left: 15px;
+}
+.defaultPadding{
+    padding-left: 15px;
+}
+.orderTable {
+    border-collapse: separate;
+    border-spacing: 15px;
+    width: 100%;
+}
+.orderTable td,
+.orderTable th {
+    background-color : #fcf4cf;
+    text-align: center;
+    padding: 5px;
+}
+.orderTable th{
+    background-color : #ffc604 !important;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+lightning-combobox[data-id="pageSelector"]{
+    border-bottom : none;
+}

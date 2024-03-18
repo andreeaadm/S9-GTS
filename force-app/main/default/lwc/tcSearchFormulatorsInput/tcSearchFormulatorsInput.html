@@ -1,0 +1,24 @@
+<template>
+  <label>
+    <abbr if:true={required} class="slds-required" title="required">* </abbr>
+    {labels.TC_FORMULATOR_NAME}
+  </label>
+  <a
+    if:false={showSelectedFormulator}
+    href="javascript:void(0);"
+    onclick={handleSearchFormulator}
+    >{labels.TC_SELECT_AND_SEARCH_FORMULATOR}</a
+  >
+  <c-tc-search-formulators
+    if:true={showSearchFormulator}
+    onselectformulator={handleSelectFormulator}
+    oncreatedformulator={handleCreatedFormulator}
+    oncloseformulatormodal={handleCloseModal}
+    allow-create-formulator={allowCreateFormulator}
+  ></c-tc-search-formulators>
+  <lightning-pill
+    if:true={showSelectedFormulator}
+    label={selectedFormulatorName}
+    onremove={handleRemoveFormulator}
+  ></lightning-pill>
+</template>

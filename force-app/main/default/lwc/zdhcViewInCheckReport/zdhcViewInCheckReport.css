@@ -1,0 +1,10 @@
+.view_incheck_report__logo {
+  display: block;  
+  max-width: 150px;
+  margin: 0 auto 25px; 
+}
+.view_incheck_report__logo_small {max-width: 20%;}
+.view_incheck_report__button {
+  padding: 0 1rem;
+  text-align: center;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>iCare Ask Our Experts LWC</masterLabel>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>  
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="isCountrySelectionEnabled" type="Boolean" default="false" label="is Country Selection Enabled?"/>
+            <property name="isRegulatoryUpdatesVisible" type="Boolean" default="false" label="is Regulatory updates Visible?"/>
+            <property name="title" type="String"  default="ASK_OUR_EXPERTS" label="Options:ASK_OUR_EXPERTS,CONNECT_WITH_US"/>
+            <property name="indexTitle" type="Integer" default="0" label="no used"/>
+            <property name="output" type="String" default="Local" label="Options:Local,Global"/>
+            <property name="text" type="String" default="ASK_OUR_EXPERTS_TEXT_1" label="Options:ASK_OUR_EXPERTS_TEXT_1,ASK_OUR_EXPERTS_TEXT_2"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

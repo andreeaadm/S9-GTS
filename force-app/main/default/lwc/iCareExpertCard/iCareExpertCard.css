@@ -1,0 +1,43 @@
+.expert-country{
+    display: block;
+    margin-bottom: 16px;
+    font-family: var(--calibri-bold);
+    font-size: 16px ;
+    line-height: 19px;
+    color: var(--black-primary);
+    opacity: 0.8;
+}
+.expert-bio{
+    margin: 13px 0;
+    font-family: var(--calibri-regular);
+    font-size: 14px ;
+    line-height: 17px;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.expert-role{
+    display: block;
+    font-family: var(--calibri-bold);
+    font-size: 16px ;
+    line-height: 19px;
+    color: var(--black-primary);
+    opacity: 0.8;
+
+}
+
+.blue-button {
+    border: 1px solid var(--blue-link);
+    border-radius: 5px;
+    background-color: var(--blue-light);
+    color: white;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.015em;
+    width: 100%;
+    padding: 10px;
+}

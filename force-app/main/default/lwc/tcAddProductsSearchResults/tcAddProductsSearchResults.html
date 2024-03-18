@@ -1,0 +1,37 @@
+<template>
+  <c-spinner if:true={showLoader}></c-spinner>
+  <c-datatable
+    if:true={hasSearchResults}
+    table-cols={tableColumns}
+    table-rows={searchResults}
+    is-loading={showLoader}
+    all-shown={allResultsShown}
+    mob-enabled
+    additional-classes="mob-longStringFix indicators"
+    onviewmore={handleViewMore}
+    oncellclick={handleAddProduct}
+  ></c-datatable>
+  
+  <div if:true={noSearchResults} class="noitems">{labels.TC_NO_PRODUCT_SEARCH_RESULTS}</div>
+  
+  <div class="key-and-add-products">
+    
+    <div if:true={hasSearchResults} class="key-indicators">
+      <div class="zdhcgw">{labels.TC_PRODUCTS_SOURCE_ZDHC}</div>
+      <div class="intertek">{labels.TC_INTERTEK_MASTER_CHEMICAL_LIST}</div>
+      <div class="crowdsourced">{labels.TC_CROWD_SOURCED}</div>
+      <div class="key-indicators-inditex"></div><div class="inditexmatchedwithzdhc">{labels.TC_INDITEXMATCHEDWITHZDHC}</div>
+      <div class="inditex">{labels.TC_INDITEX}</div>
+    </div>
+    
+    <div if:true={showCreateProduct} class="createproductsection">
+      <div>{labels.TC_CANT_FIND_WHAT_YOURE_LOOKING_FOR}</div>
+      <c-button
+        label={createProductLabel}
+        onclick={handleCreateNewProduct}
+        variant="IntkBrandTwoBtn"
+      ></c-button>
+
+    </div>
+  </div>
+</template>

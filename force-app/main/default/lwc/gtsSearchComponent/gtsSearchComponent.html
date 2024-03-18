@@ -1,0 +1,25 @@
+<template>
+    <div>
+        <lightning-input name="search-buyer" label={searchInputLabel} placeholder={searchInputPlaceholder} type="search"
+                         value={searchItemValue} onchange={handleSearchInputChange} autocomplete="off"
+                         role="search">
+        </lightning-input>
+        <template if:true={showSuggestions}>
+            <template if:true={filteredRecords.length}>
+                <div class=" search slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+                     role="listbox">
+                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                        <template for:each={filteredRecords} for:item="recordItem">
+                            <li key={recordItem} data-id={recordItem.Id} data-name={recordItem.Name} role="presentation"
+                                onclick={handlePreselect}>
+                                        <span class="slds-lookup__item-action" role="option">
+                                            <span class="slds-truncate">{recordItem.Name}</span>
+                                        </span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

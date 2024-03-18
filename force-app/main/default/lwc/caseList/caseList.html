@@ -1,0 +1,45 @@
+<template>
+  <c-tile
+    if:false={isEmpty}
+    title={labels.YOUR_CASES}
+    additional-classes="greybordertile headingStyle2"
+    type="Info"
+  >
+    <div slot="contentSlotBottom">
+      <c-datatable
+        table-cols={tableData.columns}
+        table-rows={tableData.rows}
+        additional-classes="tile-table with-header mob-longStringFix"
+        all-shown={allShown}
+        load-more-message={loadMoreMessage}
+        is-loading={isLoading}
+        onsortclick={handleOrderBy}
+        onviewmore={handleViewMore}
+        mob-enabled="true"
+      ></c-datatable>
+    </div>
+  </c-tile>
+  <c-tile
+    nav-page="Raise_Ticket__c"
+    title={labels.NEED_HELP}
+    content-text={labels.NEED_HELP_CONTENT}
+    type="Nav"
+    button-label={labels.RAISE_A_TICKET}
+    button-variant="IntkBrandTwoBtn"
+    img-src="/sfsites/c/resource/oegenResources/images/icon-faq.png"
+    col-or-row-contents="col"
+    align-contents-h
+    reverse-contents
+    hero-text-align-center
+    title-colour="rgb(47, 46, 46)"
+    sub-title-colour="rgb(47, 46, 46)"
+    content-colour="rgb(47, 46, 46)"
+    background-overlay-colour="rgba(0, 0, 0, 0)"
+    background-colour="rgba(0, 0, 0, 0)"
+    background-colour-content="rgb(26, 33, 94)"
+    border-colour="rgb(206, 206, 206)"
+    border-colour-hover="rgb(27, 82, 151)"
+    icon-colour="rgb(27, 82, 151)"
+    additional-classes="support-tile"
+  ></c-tile>
+</template>

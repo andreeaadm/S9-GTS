@@ -1,0 +1,86 @@
+<template>
+  <div class={styleClass} onclick={handleClick} data-id={scrollToId}>
+    <div class="content">
+      <template if:true={renderContentSlotTop}>
+        <slot name="contentSlotTop" class="contentslottop"></slot>
+      </template>
+      <template if:true={isHero}>
+        <h1 if:true={title}>
+          <lightning-formatted-rich-text
+            disable-linkify={disableLinkify}
+            value={title}
+          ></lightning-formatted-rich-text>
+        </h1>
+      </template>
+      <template if:false={isHero}>
+        <h4 if:true={title}>
+          <lightning-formatted-rich-text
+            disable-linkify={disableLinkify}
+            value={title}
+          ></lightning-formatted-rich-text>
+        </h4>
+      </template>
+      <h5 if:true={subTitle}>
+        <lightning-formatted-rich-text
+          disable-linkify={disableLinkify}
+          value={subTitle}
+        ></lightning-formatted-rich-text>
+      </h5>
+      <p if:true={contentText}>
+        <lightning-formatted-rich-text
+          disable-linkify={disableLinkify}
+          value={contentText}
+        ></lightning-formatted-rich-text>
+      </p>
+      <c-button
+        if:true={buttonLabel}
+        onclick={handleClick}
+        label={buttonLabel}
+        variant={buttonVariant}
+        data-id="btn1"
+        icon={btnIcon}
+        icon-fill={btnIconFill}
+        icon-stroke={btnIconStroke}
+      ></c-button>
+      <c-button
+        if:true={buttonLabel2}
+        onclick={handleClick}
+        label={buttonLabel2}
+        variant={buttonVariant2}
+        data-id="btn2"
+        icon={btnIcon2}
+        icon-fill={btnIconFill2}
+        icon-stroke={btnIconStroke2}
+      ></c-button>
+      <template if:true={isInput}>
+        <c-input
+          if:false={disabled}
+          type={type}
+          field-id={fieldId}
+          value={value}
+          label={label}
+          hide-label
+          onchange={handleChange}
+        ></c-input>
+        <c-input
+          if:true={disabled}
+          type={type}
+          field-id={fieldId}
+          disabled
+          value={value}
+          label={label}
+          hide-label
+        ></c-input>
+      </template>
+      <img if:true={contentImgSrc} src={contentImgSrc} alt={label} />
+      <div class="contentslotbottomcontainer" if:true={renderContentSlotBottom}>
+        <slot name="contentSlotBottom" class="contentslotbottom"></slot>
+      </div>
+    </div>
+    <div if:true={hasMedia} class="media">
+      <i if:true={faValue} class={faValue}></i>
+      <img if:true={imgSrc} src={imgSrc} alt={label} />
+      <slot name="svg" class="svg"></slot>
+    </div>
+  </div>
+</template>

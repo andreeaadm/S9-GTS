@@ -1,0 +1,6 @@
+svg {
+	display: block;
+	fill: inherit;  /* this can now be in the cmp the this is implemented in*/
+	width:100%;
+	height:auto;
+}

@@ -1,0 +1,27 @@
+h1{
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px; 
+    margin-bottom: 18px;
+}
+.check-input{
+    width: 100%;
+}
+label{
+    font-family: var(--calibri-regular);
+    font-size: 14px;
+    line-height: normal;
+    color: var(--black-labels) ;
+}
+@media screen and (min-width:768px) {
+    lightning-input, 
+    lightning-combobox{
+        width: 47%;
+     }
+     .container-inputs{
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 45px;
+     }
+    
+ }

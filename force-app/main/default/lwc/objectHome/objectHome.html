@@ -1,0 +1,62 @@
+<template>
+  <div class="header">
+    <h1>{title}</h1>
+    <div>
+      <c-button
+        if:true={btnTwoLabel}
+        label={btnTwoLabel}
+        variant="IntkBrandTwoBtn HeaderLeftButton"
+        onclick={handleBtnClick}
+      ></c-button>
+      <c-button
+        if:true={btnLabel}
+        label={btnLabel}
+        variant="IntkBrandTwoBtn"
+        onclick={handleBtnClick}
+      ></c-button>
+    </div>
+  </div>
+  <a onclick={openFilters} title="FILTER RESULTS" class="mobFilterTrigger">
+    FILTER RESULTS
+    <c-iconmobfiltersvg></c-iconmobfiltersvg>
+  </a>
+  <div class={filterClass}>
+    <slot name="filters"></slot>
+    <c-button
+      class="mobfiltersubmit"
+      label="APPLY FILTERS"
+      variant="IntkBrandTwoBtn mobFullWidth"
+      onclick={closeFilters}
+    ></c-button>
+    <a onclick={closeFilters} class="close"></a>
+  </div>
+  <div class="table">
+    <c-datatable
+      load-more-message={loadMoreMessage}
+      all-shown={allShown}
+      is-loading={isLoading}
+      onviewmore={handleViewMore}
+      onsortclick={handleSortClick}
+      scrollafterxpixels={scrollAfterXPixels}
+      mode="fixed-header"
+      oncheckboxchange={handleCheckboxChange}
+      onheadercheckboxchange={handleHeaderCheckboxChange}
+      table-cols={tableData.columns}
+      table-rows={tableData.rows}
+      table-header-actions-visible={tableHeaderActionsVisible}
+      mob-enabled="true"
+      additional-classes="mob-longStringFix"
+      oncellclick={onCellClick}
+    >
+      <c-table-actions
+        slot="tableHeaderActions"
+        actions={actions}
+        onactionclick={handleActionClick}
+        selected-row-count={selectedRowCount}
+        selected-state={selectedState}
+        oncheckboxchange={handleActionsCheckboxChange}
+        
+      ></c-table-actions>
+    </c-datatable>
+  </div>
+</template>

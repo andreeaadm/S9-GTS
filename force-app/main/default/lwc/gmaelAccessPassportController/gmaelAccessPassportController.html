@@ -1,0 +1,11 @@
+<template>
+    <template if:false={displayMap}>
+        <c-gmael-access-passport-preselection record-id={recordId}
+            onsubmitclick={handleSubmitClick}></c-gmael-access-passport-preselection>
+    </template>
+
+    <template if:true={displayMap}>
+        <c-gmael-access-passport record-id={recordId} gin-number={ginNumber}
+            selected-contact={selectedContact}></c-gmael-access-passport>
+    </template>
+</template>

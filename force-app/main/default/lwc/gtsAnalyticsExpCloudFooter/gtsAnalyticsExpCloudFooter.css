@@ -1,0 +1,62 @@
+/* HC - @Cristian: I Copied from iCareTitleViewReports.css */
+section {
+    background: var(--blue-snow-light);
+}
+.container {
+    padding: 30px 20px;
+}
+
+h1 {
+    font-family: var(--neo-sans-black);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+}
+p{
+font-family: var(--calibri-regular);
+font-size: 16px;
+font-style: normal;
+line-height: 140%;
+color:black;
+margin: 8px 0;
+}
+.container-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.blue-button {
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+
+a {
+    color: unset;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+@media screen and (min-width:768px) {
+
+    .container-buttons {
+        flex-direction: row;
+
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .container {
+        width: 1280px;
+        margin: auto;
+    }
+}

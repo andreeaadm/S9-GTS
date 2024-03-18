@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-grid slds-grid_vertical">
+        <template for:each={items} for:item="item" for:index="index">
+            <div class="slds-col slds-p-around_xx-small" key={item.contentKey}>
+                <div class="item-container slds-p-around_small">
+                    <div data-containerindex={index}>
+                        <div class="item-header" onclick={toggleActive} data-headerindex={index}>
+                            {item.contentNodes.title.value}
+                            <lightning-icon class="slds-float_right header-icon" icon-name="utility:chevrondown" size="xx-small" ></lightning-icon>
+                        </div>
+                        <div class="item-content slds-p-top_xx-small" data-contentindex={index}>
+                            <lightning-formatted-rich-text value={item.contentNodes.content.value}></lightning-formatted-rich-text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

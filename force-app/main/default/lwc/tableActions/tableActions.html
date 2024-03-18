@@ -1,0 +1,6 @@
+<template>
+    <c-checkbox onchange={handleCheckboxChange} checked={checked}></c-checkbox> {selectedRowCount} selected
+    <template for:each={actions} for:item="a">
+        <c-button key={a.label} variant="ActionBtn" label={a.label} onclick={handleClick} data-id={a.label}></c-button>
+    </template>
+</template>

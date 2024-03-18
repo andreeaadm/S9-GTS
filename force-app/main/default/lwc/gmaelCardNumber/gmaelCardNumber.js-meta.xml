@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+		<targetConfig targets="lightningCommunity__Default">
+            <property name="question" label="Question" description="Insert Question" type="String" default="Need help, or have question?"></property>
+            <property name="phone" label="Phone Number" description="Insert Phone" type="String" default="+44 1642 435 788"></property>
+            <property name="paragraph" label="Paragraph" description="Insert Paragraph" type="String"></property>
+            <property name="button" label="Button" description="Buttom name" type="String" default="Send a request"></property>
+        </targetConfig>
+	</targetConfigs>
+</LightningComponentBundle>

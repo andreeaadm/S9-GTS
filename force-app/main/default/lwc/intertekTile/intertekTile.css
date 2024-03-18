@@ -1,0 +1,46 @@
+:host {display:block;height:100%;}
+
+c-tile {height:100%;margin-bottom:0!important;}
+
+.header {
+    border-bottom:1px solid #e9eaea;
+    display:flex;
+    align-items: center;
+    padding: 0 26px;
+    min-height: 60px;
+}
+  
+.header h3 {
+    flex:1;
+    font-size: 18px;
+    line-height: 26px;
+    font-family: 'NeoSans-ExtraBold';
+    color:#130C0E;
+}
+  
+.header c-button {flex-shrink:0;}
+  
+.bottom {
+    display:block;
+    padding: 30px 26px;
+    text-align:center;
+    font-size: 17px;
+    line-height: 25px;
+    color:#474E54;
+}
+
+.header c-button + c-button {margin-left:10px;}
+
+@media screen and (max-width:767px) {
+    .header {border:0;padding: 25px 30px 20px;}
+    .bottom {padding:0 30px;}
+}
+
+/*  this matches a breakpoint in communitylayoutsidebar,
+    mainly for the purpose of pinching space for any tiles
+    that contain long strings such as within tables etc     */
+
+@media screen and (min-width:1025px) and (max-width:1250px) {
+    .header {padding: 0 15px;}
+    .bottom {padding: 30px 15px;}
+}

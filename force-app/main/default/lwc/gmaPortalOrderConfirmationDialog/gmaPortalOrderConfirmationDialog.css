@@ -1,0 +1,31 @@
+.gmaModal {
+    max-width: 30rem;
+}
+
+.gmaModal > .dialog-box {
+    border-bottom-left-radius: 2.0rem !important;
+    border-bottom-right-radius: 2.0rem !important;
+    border-radius: 2.0rem;
+    border: 0.4rem solid #00c0eb !important;
+    background-color: #ffc700;
+}
+
+.gmaModal > .dialog-box p {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.downloadSpinner {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+.hoverClass:hover{
+    background-color: #21B6D7;
+    cursor: pointer;
+    border-radius: 5%;
+    color:  #FFFFFF;
+}

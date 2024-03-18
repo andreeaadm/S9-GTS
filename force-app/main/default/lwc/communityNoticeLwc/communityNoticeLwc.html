@@ -1,0 +1,9 @@
+<template>
+    <div class="container">
+        <template for:each={messages} for:item="msg" for:index="i">
+            <div key={msg.DeveloperName} class="messageStyle">
+                {msg.Message__c}
+            </div>
+        </template>
+    </div>
+</template>

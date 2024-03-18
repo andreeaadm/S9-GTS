@@ -1,0 +1,211 @@
+<template>
+  <section class="container-content">
+    <template if:true={showGeneralInformation}>
+      <c-gts-tradeable-general-page
+        record-type-id={recordTypeId}
+        job-request-record={jobRequestRecord}
+        ongeneralinfochanged={handleGeneralInfoChange}
+        onsowchange={handleSOWChange}
+        onfinalreportchange={handleFinalReportChange}
+      ></c-gts-tradeable-general-page>
+    </template>
+
+    <template if:true={showApplicantPayer}>
+      <c-gts-tradeable-applicant-payer
+        record-type-id={recordTypeId}
+        job-request-record={jobRequestRecord}
+        account-record-type={accountRecordType}
+        is-read-only={isReadOnly}
+        onupdateapplicantpage={handleApplicantPageUpdate}
+      ></c-gts-tradeable-applicant-payer>
+    </template>
+
+    <template if:true={showInspectionDetails}>
+      <c-gts-tradeable-inspection
+        record-type-id={recordTypeId}
+        is-read-only={isReadOnly}
+        account-record-type={accountRecordType}
+        job-request-record={jobRequestRecord}
+        ondatevalidation={handleDateValidation}
+        onupdateinspectionpage={handleInspectionPageUpdate}
+      ></c-gts-tradeable-inspection>
+    </template>
+
+    <template if:true={showDocuments}>
+      <c-gts-tradeable-document-upload
+        job-request-record={jobRequestRecord}
+        is-read-only={isReadOnly}
+        content-version-ids={contentVersionIds}
+        ondocumentupload={handleDocumentUpload}
+      ></c-gts-tradeable-document-upload>
+    </template>
+
+    <template if:true={showDeclaration}>
+      <c-gts-declaration
+        declaration1={jobRequestRecord.GTS_ComSer_Declaration_1__c}
+        declaration2={jobRequestRecord.GTS_ComSer_Declaration_2__c}
+        declaration3={jobRequestRecord.GTS_ComServ_Declaration_3__c}
+        declaration4={jobRequestRecord.GTS_ComSer_Declaration_4__c}
+        declaration5={jobRequestRecord.GTS_CoC_Declaration_3__c}
+        ondeclarationcheckboxchange={handleDeclarationCheckboxChange}
+      ></c-gts-declaration>
+    </template>
+
+    <template if:true={showSummary}>
+      <template if:true={showSpinner}>
+        <lightning-spinner
+          alternative-text="Loading"
+          size="medium"
+        ></lightning-spinner>
+      </template>
+      <template if:false={showSpinner}>
+        <template if:true={isRequiredFieldsBlank}>
+          <div class="container-summary">
+            <h2>{labels.REQUIRED_FIELDS}</h2>
+            <template for:each={missingFields} for:item="item">
+              <li key={item}>{item}</li>
+            </template>
+          </div>
+        </template>
+        <lightning-accordion allow-multiple-sections-open>
+          <lightning-accordion-section
+            name={labels.GENERAL_INFO}
+            label={labels.GENERAL_INFO}
+          >
+            <c-gts-tradeable-general-page
+              is-read-only="true"
+              job-request-record={jobRequestRecord}
+              record-type-id={recordTypeId}
+              is-other-value={isOtherComServ}
+            ></c-gts-tradeable-general-page>
+          </lightning-accordion-section>
+
+          <lightning-accordion-section
+            name={labels.APPLICANT_PAYER}
+            label={labels.APPLICANT_PAYER}
+          >
+            <c-gts-tradeable-applicant-payer
+              is-read-only="true"
+              job-request-record={jobRequestRecord}
+              record-type-id={recordTypeId}
+            ></c-gts-tradeable-applicant-payer>
+          </lightning-accordion-section>
+
+          <lightning-accordion-section
+            name={labels.INSPECTION_DETAILS}
+            label={labels.INSPECTION_DETAILS}
+          >
+            <c-gts-tradeable-inspection
+              record-type-id={recordTypeId}
+              is-read-only="true"
+              job-request-record={jobRequestRecord}
+            ></c-gts-tradeable-inspection>
+          </lightning-accordion-section>
+
+          <lightning-accordion-section
+            name={labels.DOCUMENTS_SOW}
+            label={labels.DOCUMENTS_SOW}
+          >
+            <c-gts-tradeable-document-upload
+              job-request-record={jobRequestRecord}
+              is-read-only="true"
+              content-version-ids={contentVersionIds}
+            ></c-gts-tradeable-document-upload>
+          </lightning-accordion-section>
+
+          <lightning-accordion-section
+            name={labels.DECLARATION}
+            label={labels.DECLARATION}
+          >
+            <c-gts-declaration
+              is-read-only="true"
+              declaration1={jobRequestRecord.GTS_ComSer_Declaration_1__c}
+              declaration2={jobRequestRecord.GTS_ComSer_Declaration_2__c}
+              declaration3={jobRequestRecord.GTS_ComServ_Declaration_3__c}
+              declaration4={jobRequestRecord.GTS_ComSer_Declaration_4__c}
+              declaration5={jobRequestRecord.GTS_CoC_Declaration_3__c}
+            ></c-gts-declaration>
+          </lightning-accordion-section>
+        </lightning-accordion>
+      </template>
+    </template>
+
+    <template if:true={showThankYouPage}>
+      <c-gts-thank-you-page
+        job-request-record={jobRequestRecord}
+        job-request-record-id={jobRequestRecordId}
+        onsavefavouritejobrequestevent={handleSaveFavouriteJobRequest}
+      ></c-gts-thank-you-page>
+    </template>
+
+    <div class="container-buttons">
+      <div class="container-left-buttons">
+        <template if:true={showBackButton}>
+          <button
+            variant="brand-outline"
+            label={labels.BACK}
+            onclick={handleClickBack}
+            class="white-button"
+          >
+            {labels.BACK}
+          </button>
+        </template>
+        <template if:true={showCancelButton}>
+          <button
+            variant="brand-outline"
+            label={labels.CANCEL}
+            onclick={handleClickCancel}
+            class="white-button"
+          >
+            {labels.CANCEL}
+          </button>
+        </template>
+      </div>
+
+      <div class="container-right-buttons">
+        <template if:false={showSummary}>
+          <template if:false={showThankYouPage}>
+            <button
+              variant="brand-outline"
+              label={labels.SAVE_DRAFT}
+              onclick={handleClickSaveDraft}
+              class="white-button"
+            >
+              {labels.SAVE_DRAFT}
+            </button>
+          </template>
+        </template>
+
+        <template if:true={showContinueButton}>
+          <button
+            variant="brand"
+            label={labels.CONTINUE}
+            onclick={handleClickContinue}
+            class={continueButtonClass}
+            disabled={validationStatus}
+          >
+            {labels.CONTINUE}
+          </button>
+        </template>
+        <template if:true={showSummary}>
+          <button
+            variant="brand-outline"
+            label={labels.BACK_TO_EDIT}
+            onclick={handleClickBack}
+            class="blue-button"
+          >
+            {labels.BACK_TO_EDIT}
+          </button>
+          <button
+            variant="brand"
+            label={labels.SUBMIT}
+            onclick={handleClickConfirm}
+            class="blue-button"
+          >
+            {labels.SUBMIT}
+          </button>
+        </template>
+      </div>
+    </div>
+  </section>
+</template>

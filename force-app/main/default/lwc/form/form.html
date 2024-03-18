@@ -1,0 +1,36 @@
+<template>
+  <template for:each={fields} for:item="field">
+    <c-input
+      key={field.apiName}
+      label={field.label}
+      value={field.value}
+      field-id={field.apiName}
+      data-id={field.apiName}
+      required={field.required}
+      max-length={field.length}
+      type={field.type}
+      s-object-name={field.sObjectName}
+      select-options={field.selectOptions}
+      select-needs-empty-option={field.needsEmptyOption}
+      onchange={handleFieldChange}
+      error-on-required={field.errorOnRequired}
+      error-on-pattern={field.errorOnPattern}
+    ></c-input>
+  </template>
+  <template if:true={displayBtns}>
+    <div>
+      <c-button
+        label={cancelBtnLabel}
+        variant="neutral modal-footer-btn"
+        onclick={cancel}
+        disabled={isWorking}
+      ></c-button>
+      <c-button
+        label={saveBtnLabel}
+        variant="main modal-footer-btn"
+        onclick={save}
+        disabled={isWorking}
+      ></c-button>
+    </div>
+  </template>
+</template>

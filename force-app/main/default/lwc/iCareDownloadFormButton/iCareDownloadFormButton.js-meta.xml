@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>  
+    <targetConfigs>
+            <targetConfig targets="lightning__FlowScreen">
+                <property name="recordId" label="recordId" type="String" role="inputOnly" description="Enter the Id of the record related to the file you wish to download"></property>
+                <property name="siteURL" label="siteURL" type="String" role="inputOnly" description="Pass in the Site URL value for redirection"></property>
+            </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,64 @@
+.container-cards {
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px 30px  !important;
+}
+
+.container-card-inf {
+    width: 342px;
+    height: 471px;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.container {
+    padding: 30px 20px;
+}
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+    margin-top: 20px;
+}
+
+
+@media screen and (min-width:768px) {
+    .container-cards {
+        justify-content: start;
+        padding: 20px;
+    }
+
+    .container-form {
+        flex-direction: row;
+        gap: 45px;
+        padding: 20px;
+    }
+
+    c-i-care-enquiry-form {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:1280px) {
+
+    .container-cards {
+        width: 1280px;
+        margin: auto;
+        padding: 20px;
+        justify-content: start;
+    }
+
+    .container-card-inf {
+        min-width: 298px;
+        min-height: 456px;
+    }
+
+    .container-form {
+        width: 1280px;
+        margin: auto;
+    }
+}

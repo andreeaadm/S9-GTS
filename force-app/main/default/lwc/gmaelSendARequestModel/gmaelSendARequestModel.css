@@ -1,0 +1,99 @@
+.slds-modal__close.close-x {
+    position: absolute;
+    top: 0.6rem;
+    margin-right: 30px;
+    margin-left: 30px;
+
+    right: 0.5rem;
+    left: unset;
+    border-radius: 16px;
+    background-color: var(--Intertek-Cerello);
+    margin-top: 5px;
+
+}
+
+.slds-modal__close:hover,
+.slds-modal__close.back:hover {
+    background-color: black;
+}
+
+.slds-modal__close.back {
+    top: 0.5rem;
+    background-color: var(--Intertek-Cerello);
+    border-radius: 16px;
+    left: 2rem;
+}
+
+header {
+    padding: 0px;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+.header {
+    background-color: var(--Intertek-Cerello);
+    padding: 12px 80px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: 100%;
+}
+
+.sub-header {
+    background-color: var(--Dark-Blue);
+    padding: 5px;
+}
+
+.subject {
+    color: #fff;
+    float: left;
+}
+
+.slds-text-heading_medium,
+.slds-text-heading--medium {
+    font-family: var(--neo-sans-medium);
+    color: var(--Dark-Blue);
+}
+
+.slds-form-element label {
+    font-family: var(--neo-sans-medium);
+}
+
+.country-section-title {
+    font-family: var(--neo-sans-regular);
+    color: var(--Dark-Blue);
+}
+
+.slds-modal__content {
+    border-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-bottom: 6.5rem;
+
+}
+div::-webkit-scrollbar {
+    width: 16px;
+}
+div::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;
+}
+c-gmael-send-a-request-form {
+    display: block;
+    height: 60vh;
+
+}
+@media only screen and (min-width: 767px) {
+
+    .slds-modal__container {
+        width: 97% !important;
+        max-width: 90rem !important;
+        top: 8.5rem;
+        /* height: 900px; */
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+  
+}

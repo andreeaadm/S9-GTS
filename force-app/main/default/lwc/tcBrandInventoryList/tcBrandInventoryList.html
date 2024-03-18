@@ -1,0 +1,59 @@
+<template>
+  <c-tc-get-page-reference-data
+    onretrievedstate={handleRetrievedState}
+  ></c-tc-get-page-reference-data>
+
+  <!--{labels.TC_INCHECK_FILTERS}-->
+
+  <div>
+    <c-input
+      label="Type of Supplier:"
+      value={selectedSupplierType}
+      select-options={supplierTypeList}
+      type="SelectList"
+      onchange={handleSupplierTypeChange}
+      placeholder={labels.ALL}
+    ></c-input>
+    <c-input
+      label={labels.TC_INCHECK_SUPPLIER}
+      value={selectedSupplier}
+      select-options={supplierList}
+      type="SelectList"
+      onchange={handleSupplierChange}
+      placeholder={labels.ALL}
+    ></c-input>
+    <c-input
+      class="facilitySelect"
+      label={labels.TC_INCHECK_FACILITY}
+      value={selectedFacility}
+      select-options={facilityList}
+      type="SelectList"
+      onchange={handleFacilityChange}
+      oninputloaded={setFacilityBasedOnPageRef}
+      placeholder={labels.ALL}
+    ></c-input>
+    <c-input
+      label={labels.TC_INCHECK_INVENTORY}
+      value={selectedInventory}
+      select-options={inventoryList}
+      type="SelectList"
+      onchange={handleInventoryChange}
+      placeholder={labels.ALL}
+    ></c-input>
+    <a onclick={handleReset}>{labels.RESET}</a>
+  </div>
+  <c-datatable
+    if:false={noData}
+    table-cols={tableData.columns}
+    table-rows={currentRows}
+    is-loading={isLoading}
+    all-shown={allShown}
+    onviewmore={handleViewMore}
+    oncellclick={handleCellClick}
+    additional-classes="clickablecells-noabspos incheck-reports mob-longStringFix"
+    mob-enabled="true"
+  ></c-datatable>
+  <div if:true={noData} class="noitems">{labels.TC_INCHECK_NO_RESULTS}</div>
+  <c-tc-download-inventory></c-tc-download-inventory>
+  <c-zdhc-get-in-check-report></c-zdhc-get-in-check-report>
+</template>

@@ -1,0 +1,113 @@
+<template>
+  <lightning-card>
+    <img class="relate-product__logo" src={toxLogo} />
+    <div class="relate-product">
+      <div if:true={noUserAccessKeyFound} class="">
+        {labels.TC_RELATE_PRODUCT_NO_USER_ACCESS_KEY}
+      </div>
+      <div if:true={linkedToZdhc} class="relate-product__action">
+        <lightning-button
+          variant="brand"
+          label={labels.TC_UNRELATE_ZDHC_CHEMICAL_PRODUCT}
+          onclick={handleUnrelateProduct}
+        ></lightning-button>
+      </div>
+      <div if:true={linkToZdhc} class="relate-product__action">
+        <lightning-button
+          variant="brand"
+          label={labels.TC_RELATE_PRODUCT_ZDHC_ACTION}
+          onclick={handleRelateProduct}
+        ></lightning-button>
+      </div>
+    </div>
+  </lightning-card>
+  <template if:true={showModal}>
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open slds-modal_large"
+    >
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <img class="relate-product__logo_small" src={toxLogo} />
+          <p class="slds-var-m-top_x-small manage-facility__title">
+            {labels.TC_RELATE_PRODUCT_ZDHC_HEADER}
+          </p>
+        </header>
+        <div
+          class="
+            slds-modal__content
+            slds-var-p-around_medium
+            relate-product__content
+          "
+          id="modal-content-id-1"
+        >
+          <c-tc-add-products-form
+            onsearch={handleSearch}
+            onreset={handleReset}
+          ></c-tc-add-products-form>
+          <c-tc-add-products-search
+            is-internal-salesforce
+            search-params={searchParams}
+            onaddinventoryline={handleLinkProduct}
+            onsearcherror={handleSearchError}
+            oncreateproductsfbackend={handleCreateProduct}
+          ></c-tc-add-products-search>
+        </div>
+        <footer class="slds-modal__footer">
+          <lightning-button
+            label={labels.CANCEL}
+            onclick={handleCancel}
+          ></lightning-button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+
+  <template if:true={showConfirmModal}>
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open slds-modal_large"
+    >
+      <div class="slds-modal__container create-product__modal">
+        <header class="slds-modal__header">
+          <img class="relate-product__logo_small" src={toxLogo} />
+          <p class="slds-var-m-top_x-small manage-facility__title">
+            {labels.TC_RELATE_PRODUCT_ZDHC_HEADER}
+          </p>
+        </header>
+        <div
+          class="
+            slds-modal__content
+            slds-var-p-around_medium
+            create-product__content
+          "
+          id="modal-content-id-2"
+        >
+          <p class="create-product">{labels.TC_ARE_YOU_SURE_CREATE_PRODUCT}</p>
+        </div>
+        <footer class="slds-modal__footer">
+          <lightning-button
+            label={labels.TC_NO_CANCEL}
+            onclick={handleConfirmCancel}
+          ></lightning-button>
+          <lightning-button
+            label={labels.TC_YES_CONTINUE}
+            onclick={handleConfirmCreateProduct}
+            variant="brand"
+            class="create-btn"
+          ></lightning-button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

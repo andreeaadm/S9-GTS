@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.hidden {display: none;}
+
+.accountsContainer {padding:0;}
+
+.accountsContainer c-input {font-size: 14px;line-height: 16px;}
+
+.accounts {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap:wrap;
+  padding: 10px 10px 0;
+  border-radius:6px!important;
+  margin-top:5px;
+  font-size: 15px;
+  color: #130c0e;
+  text-align: left;
+}
+
+.accounts.primary {background: #e9e9e9;}
+
+.accounts > div > span {display:block;padding-top:4px;}
+
+.accounts .companyName {flex:1;}
+.accounts .accessLevel {flex-basis:170px;flex-grow:0;min-width:0;}
+.accounts .accessLevelTextOnly {flex-basis:170px;flex-grow:0;min-width:0;padding:10px 0;}
+.accounts .finalCol {flex-basis:120px;flex-shrink:0;text-align:right;}
+.accounts .finalCol a {color:#007D99;text-decoration:underline;font-family: 'NeoSans-Bold';padding-top: 4px;display: block;}
+
+.accounts > div:not(.info) {min-height: 33px;}
+
+.info {
+  flex-basis:100%!important;
+  line-height: 18px!important;
+  margin-top: 4px;
+  padding-bottom: 7px;
+}
+.info > span {font-size: 12px;font-style:italic;}
+.info > span span {color:#007D99;font-style:normal;}
+
+@media screen and (min-width:768px) and (max-width:1150px),
+screen and (max-width:570px) {
+  .accounts .finalCol {flex-basis:100%;min-height: unset!important;text-align:left;}
+  .accounts .finalCol a {padding-top:0!important;font-size: 12px;line-height:18px;/*margin-top:-7px;*/font-family: 'NeoSans-Regular';}
+  .accounts.primary .finalCol {display:none;}
+}

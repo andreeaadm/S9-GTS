@@ -1,0 +1,80 @@
+<template>
+  <div class={styleClass}>
+    <div class="container-top">
+      <div>
+        <template if:true={logoSrc}>
+          <a class="logo" onclick={navToRoot}>
+            <img src={logoSrc} />
+          </a>
+        </template>
+        <c-iconheadersvg></c-iconheadersvg>
+      </div>
+    </div>
+    <div class="container-bottom">
+      <div>
+        <span
+          if:false={isGuestUser}
+          class="hbm-cnt"
+          onclick={toggleMenu}
+          onblur={hideMenu}
+        >
+          <a class="hbm">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </span>
+        <div class="home">
+          <a onclick={navToRoot}>
+            <c-iconhomesvg></c-iconhomesvg>
+            My TestCentral
+          </a>
+        </div>
+        <div id="menu" class="mnuPnl">
+          <!--<a class="x" onclick={hideMenu}></a>-->
+          <ul>
+            <template for:each={menuItems} for:item="item" for:index="i">
+              <template if:false={item.subMenu}>
+                <li key={item.id}>
+                  <c-sitemenuitem
+                    onclick={hideMenu}
+                    item={item}
+                    current-url={currentUrl}
+                    icon-type={iconType}
+                    item-config={iconConfig}
+                  ></c-sitemenuitem>
+                </li>
+              </template>
+              <template if:true={item.subMenu}>
+                <li key={item.label} class="sub-list-wrapper">
+                  <span>{item.label}</span>
+                  <ul class="sub-list">
+                    <template for:each={item.subMenu} for:item="subItem">
+                      <li key={subItem.label}>
+                        <c-sitemenuitem
+                          onclick={hideMenu}
+                          item={subItem}
+                          current-url={currentUrl}
+                          icon-type={iconType}
+                          item-config={iconConfig}
+                        ></c-sitemenuitem>
+                      </li>
+                    </template>
+                  </ul>
+                </li>
+              </template>
+            </template>
+            <li if:false={isGuestUser}>
+              <div class="logout">
+                <a href={logoutLink}>
+                  Log out
+                  <!-- SVG or Font Awesome here? -->
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

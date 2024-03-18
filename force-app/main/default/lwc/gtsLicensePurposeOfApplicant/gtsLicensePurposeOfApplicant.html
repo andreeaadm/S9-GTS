@@ -1,0 +1,44 @@
+<template>
+    <h1>{labels.PURPOSE_APPLICATION}</h1>
+
+    <div>
+        <template if:true={isReadOnly}>
+            <lightning-input
+                label={labels.SHIPMENT_CERTIFICATE}
+                value={jobRequestRecord.ProgramName}
+                disabled="true"
+            ></lightning-input>
+        </template>
+        <template if:false={isReadOnly}>
+            <div class="container-search">
+                <c-gts-custom-lookup
+                    icon-name="standard:asset_object"
+                    s-object-api-name="GTS_Program__c"
+                    label={labels.SHIPMENT_CERTIFICATE}
+                    onlookupupdate={handleCertificateSelection}
+                    placeholder={labels.SEARCH_COMPANY}
+                    fields-api-name-with-value-map={programFilters}
+                    value={jobRequestRecord.ProgramName}
+                    label-api-name="Name"
+                    value-api-name="Id"
+                >
+                </c-gts-custom-lookup>
+            </div>
+        </template>
+
+        <lightning-combobox
+                label={labels.APPLICATION_TYPE}
+                value={applicationTypeOption}
+                options={options}
+                onchange={handleApplicantTypeChange}
+                required={isRequired}
+                readonly={isReadOnly}
+        ></lightning-combobox>
+
+        <template if:true={showOtherText}>
+            <lightning-input label={labels.IF_OTHER_TEXT}
+                             value={otherTextValue} onchange={handleOtherTextChanged} autocomplete="off" disabled= {isReadOnly}>
+            </lightning-input>
+        </template>
+    </div>
+</template>

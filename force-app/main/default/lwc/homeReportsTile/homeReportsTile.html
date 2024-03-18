@@ -1,0 +1,46 @@
+<template>
+  <c-intertek-tile if:false={hasLoaded} title="Reports" has-loaded="true">
+    <div slot="contentSlotBottom">
+      <div>
+        <c-spinner></c-spinner>
+      </div>
+    </div>
+  </c-intertek-tile>
+  <c-intertek-tile
+    title="Reports"
+    has-loaded={hasLoaded}
+    header-btn-label-1={labelForUnassignedButton}
+    onbtn1click={navToUnassignedList}
+    header-btn-class-1="IntkBrandOneBtn arrow"
+    header-btn-icon-1="iconarrowsvg"
+    header-btn-label-2="VIEW ALL"
+    onbtn2click={navToReportList}
+    header-btn-class-2="IntkBrandOneBtn arrow"
+    header-btn-icon-2="iconarrowsvg"
+    header-btn-icon-fill=""
+    header-btn-icon-stroke="#007d99"
+  >
+    <div slot="contentSlotBottom">
+      <div if:true={isEmpty}>
+        <p if:false={recordId}>
+          You currently don't have any reports assigned to you. Reports will be
+          displayed here to provide quick access to the most recent reports
+          assigned to you.
+        </p>
+        <p if:true={recordId}>
+          You haven't assigned any reports to this group yet.<br />
+          <a onclick={navToReportList}>Assign reports</a>.
+        </p>
+        <c-reportssvg></c-reportssvg>
+      </div>
+      <c-datatable
+        if:false={isEmpty}
+        table-cols={tableData.columns}
+        table-rows={tableData.rows}
+        additional-classes="tile-table"
+        all-shown
+      ></c-datatable>
+    </div>
+  </c-intertek-tile>
+  {error}
+</template>

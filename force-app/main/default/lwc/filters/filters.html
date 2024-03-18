@@ -1,0 +1,5 @@
+<template>
+    <template for:each={filters} for:item="filter">
+        <button key={filter.label} onmousedown={filterClick} data-id={filter.id}>{filter.label}</button>
+    </template>
+</template>

@@ -1,0 +1,29 @@
+<template>
+    <section>
+    <div class="container">
+        <div class="container-images">
+            <div class="track-image" data-div-name={step.name} onclick={handleStepClick}>
+                <lightning-progress-ring value={step.ringValue}  variant={step.ringVariant} class="very-large ">
+
+                </lightning-progress-ring>
+        
+            </div>
+
+        </div>
+        <div class="container-labels">
+            <p class="progress-label" data-div-name={step.name} onclick={handleStepClick}>{step.name}</p>
+            <p data-div-name={step.timestamp}>{step.timestamp}</p>
+        </div>
+    </div>
+
+        <template if:false={step.isLastStep}>
+            <div class="container-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </template>
+    </section>
+</template>

@@ -1,0 +1,29 @@
+.container {
+    height: 93px;
+    background: var(--blue-snow-light);
+    width: 100%;
+}
+
+h1 {
+    font-family: var(--neo-sans-black);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+    padding: 30px 20px;
+}
+
+@media screen and (min-width:768px) {
+    .container {
+
+        position: absolute;
+        z-index: -1;
+
+    }
+}
+
+@media screen and (min-width:1280px) {
+    h1 {
+        width: 1280px;
+        margin: auto;
+    }
+}

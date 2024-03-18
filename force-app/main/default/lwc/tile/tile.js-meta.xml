@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Tile</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="type"                       label="Tile Type"                   type="String"   default="Nav"   datasource="Nav,Info,Hero"></property>
+            <property name="navUrl"                     label="Destination URL"             type="String"></property>
+            <property name="navPage"                    label="Destination Page Name"       type="String"></property>
+            <property name="title"                      label="Title Text"                  type="String"   default="Placeholder title text" ></property>
+            <property name="subTitle"                   label="Subtitle Text"               type="String"   default="Placeholder subtitle text" ></property>
+            <property name="contentText"                label="Content Text"                type="String"   default="Placeholder content text" ></property>
+            <property name="disableLinkify"             label="Disable Linkifying"          type="Boolean"></property>
+            <property name="buttonLabel"                label="Button Label"                type="String"   default="The button label"></property>
+            <property name="buttonVariant"              label="Button Variant"              type="String"   default="The button variant"></property>
+            <property name="imgSrc"                     label="Image URL"                   type="String"></property>
+            <property name="imgFullWidth"               label="Full Width Image"            type="Boolean"></property>
+            <property name="bgSrc"                      label="Background Image URL"        type="String"></property>
+            <property name="bgSize"                     label="Background Image Size"       type="String"></property>
+            <property name="heroContentWidth"           label="Hero Content Width"          type="String"></property>
+            <property name="heroMinHeight"              label="Hero Min Height"             type="String"></property>
+            <property name="colOrRowContents"           label="Column or Row"               type="String"   default="row"   datasource="col,row"></property>
+            <property name="alignContentsV"             label="Align Contents Vertically"   type="Boolean"></property>
+            <property name="alignContentsH"             label="Align Contents Horizontally" type="Boolean"></property>
+            <property name="reverseContents"            label="Reverse Layout"              type="Boolean"></property>
+            <property name="floatingContentColumn"      label="Floating Content (column mode)" type="Boolean"></property>
+            <property name="heroTextAlignCenter"        label="Align text centrally"        type="Boolean"></property>
+            <property name="titleColour"                label="Title Colour"                type="Color"    default="rgb(47, 46, 46)"></property>
+            <property name="subTitleColour"             label="Subtitle Colour"             type="Color"    default="rgb(47, 46, 46)"></property>
+            <property name="contentColour"              label="Content Colour"              type="Color"    default="rgb(47, 46, 46)"></property>
+            <property name="backgroundOverlayColour"    label="Background Overlay Colour"   type="Color"    default="rgba(0,0,0,0)"></property>
+            <property name="backgroundColour"           label="Background Colour"           type="Color"    default="#1a215e"></property>
+            <property name="backgroundColourContent"    label="Background Colour Content"   type="Color"    default="#1a215e"></property>
+            <property name="borderColour"               label="Border Colour"               type="Color"    default="#cecece"></property>
+            <property name="borderColourHover"          label="Border Hover Colour"         type="Color"    default="#1b5297"></property>
+            <property name="iconColour"                 label="Icon Colour"                 type="Color"    default="#1b5297"></property>
+            <property name="additionalClasses"          label="Additional Style Classes"    type="String"></property>
+            <property name="scrollToId"                 label="Scroll-to Id"                type="String"></property>
+        </targetConfig>
+    </targetConfigs>
+    <capabilities>
+        <capability>lightningCommunity__RelaxedCSP</capability>
+    </capabilities>
+</LightningComponentBundle>

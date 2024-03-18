@@ -1,0 +1,35 @@
+.manage-formulator {padding: 0 1rem;}
+.manage-formulator__action {text-align: center;padding-bottom: 10px;}
+.manage-formulator__table {height: 28rem;}
+
+.manage-formulator__logo {
+  display: block;
+  max-width: 150px;
+  margin: 0 auto 25px;
+}
+.manage-formulator__logo_small {max-width: 20%;}
+
+/*.relate-product__title {font-size: 1rem;}*/
+.manage-formulator__content {height: 70vh;}
+
+.header-summary:not(:empty) {
+  max-width: 700px;
+  margin: 20px auto 10px;
+}
+
+.align-buttons lightning-button {margin-top:auto;}
+
+
+/* new create */
+
+.create-formulator__modal {
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.create-formulator__content {height: 20vh;line-height:19vh;padding:0;}
+
+.slds-modal__container lightning-button.create-btn {margin-left:10px;}
+
+p.create-formulator {text-align:center;padding-left:15px;padding-right:15px;}

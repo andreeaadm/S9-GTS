@@ -1,0 +1,38 @@
+<template>
+  <lightning-datatable
+    key-field="Id"
+    data={availableJobs}
+    columns={columns}
+    onsort={updateColumnSorting}
+    sorted-by={sortFieldName}
+    sorted-direction={sortDirection}
+    hide-checkbox-column="true"
+    onrowaction={handleRowAction}
+  >
+  </lightning-datatable>
+  <template if:true={viewAll}>
+    <template if:false={pagination}>
+      <div class="total-number">
+        <span
+          ><a onclick={handleListViewNavigation}
+            >{label.VIEW_ALL_LABEL}</a
+          ></span
+        >
+      </div>
+    </template>
+    <template if:true={pagination}>
+      <c-i-care-paginator
+        is-gts-track-job-tabel={isGtsTrackJobTable}
+        onprevious={previousHandler}
+        onnext={nextHandler}
+        onselected={changeHandler}
+        onfirstpage={firstpagehandler}
+        onlastpage={lastpagehandler}
+      >
+      </c-i-care-paginator>
+    </template>
+  </template>
+  <template if:false={viewAll}>
+    <div class="total-number"><span>{totalRecsLabel}</span></div>
+  </template>
+</template>

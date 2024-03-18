@@ -1,0 +1,28 @@
+<template>
+  <c-intertek-tile
+    has-loaded
+    title={labels.TC_INVENTORY_STATUS_MONTHLY_TITLE}
+    additional-classes="greytile"
+  >
+    <div slot="contentSlotBottom">
+      <c-datatable
+        if:true={hasLoaded}
+        table-cols={columns}
+        table-rows={rows}
+        additional-classes="tile-table with-header no-mob-hide-header inv-status-current-mth-tbl"
+        all-shown={allShown}
+        no-results-message={labels.TC_INVENTORY_STATUS_MONTHLY_NO_RESULTS}
+        is-loading={isLoading}
+      ></c-datatable>
+      <template if:true={error}>
+        <div class="slds-illustration slds-m-vertical_small">
+          <div class="slds-text-longform">
+            <p class="slds-text-body_regular">
+              {labels.TC_INVENTORY_STATUS_ERROR_MESSAGE}
+            </p>
+          </div>
+        </div>
+      </template>
+    </div>
+  </c-intertek-tile>
+</template>

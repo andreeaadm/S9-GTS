@@ -1,0 +1,51 @@
+<template>
+    <h1>{labels.DECLARATION}</h1>
+    <h2>{labels.SUBMITTING_APPLICATION}</h2>
+    <template if:false={isCoC}>
+        <div>
+            <lightning-input  type="checkbox" checked={declaration1Value} disabled={isReadOnly}
+                onchange={handleDeclaration1Change}> </lightning-input>
+            <label>{labels.DECLARATION_1}</label>
+        </div>
+
+    </template>
+    <template if:true={isCoC}>
+        <div>
+            <lightning-input type="checkbox" checked={declaration6} disabled={isReadOnly}
+                onchange={handleDeclaration6Change}></lightning-input>
+            <label>{labels.DECLARATION_6}</label>
+        </div>
+
+    </template>
+    <template if:false={isCoC}>
+        <div>
+            <lightning-input type="checkbox" checked={declaration2} disabled={isReadOnly}
+                onchange={handleDeclaration2Change}></lightning-input>
+            <label>{labels.DECLARATION_4}</label>
+        </div>
+        <div>
+            <lightning-input type="checkbox" checked={declaration3} disabled={isReadOnly}
+                onchange={handleDeclaration3Change}></lightning-input>
+            <label>{labels.DECLARATION_2}</label>
+        </div>
+    </template>
+    <div>
+        <lightning-input type="checkbox" checked={declaration4} disabled={isReadOnly}
+            onchange={handleDeclaration4Change}></lightning-input>
+        <label>
+            {labels.DECLARATION_3}
+            <a href={labels.DECLARATION_3_CO_LINK} target="_blank"> {labels.DECLARATION_3_CO_TEXT} </a>
+            {labels.DECLARATION_3_2}
+            <a href={labels.DECLARATION_3_TERMS_LINK} target="_blank"> {labels.DECLARATION_3_TERMS} </a>
+            {labels.DECLARATION_3_3}
+        </label>
+    </div>
+    <template if:true={isWetIssuingOffice}>
+        <div>
+            <lightning-input type="checkbox" checked={declaration5} disabled={isReadOnly}
+                onchange={handleDeclaration5Change}></lightning-input>
+                <label>{labels.DECLARATION_5}</label>
+        </div>
+
+    </template>
+</template>

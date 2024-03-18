@@ -1,0 +1,13 @@
+<template>
+  <lightning-card>
+    <img class="view_incheck_report__logo" src={toxLogo} />
+    <div class="view_incheck_report__button">
+      <lightning-button
+        variant="brand"
+        label={labels.TC_VIEW_INCHECK_REPORT}
+        onclick={handleViewInCheckReport}
+      ></lightning-button>
+    </div>
+  </lightning-card>
+  <c-zdhc-get-in-check-report></c-zdhc-get-in-check-report>
+</template>

@@ -1,0 +1,28 @@
+<template>        
+    <template if:true={showLoader}>
+        <div style="position: absolute;
+                    background-color: #c3c3c357;
+                    z-index: 1;
+                    height: 44rem;
+                    width: 90rem;"></div>
+        <div class="demo-only" style="height: 25%;
+                                position: absolute;
+                                left: 50%;
+                                z-index: 1;">
+            <div class="slds-spinner_container">
+                <div role="status" class="slds-spinner slds-spinner_large slds-spinner_brand">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </div>
+        <img src={jVectorMapPng} style="width: 100%;height: 100%;"/>
+    </template>
+    <template if:true={isMapLoaded}>
+        <div class="map-container" style="height: 0px;">
+            <div class="map-inner-container">
+            </div>
+        </div>
+    </template> 
+</template>

@@ -1,0 +1,36 @@
+<template>
+  <c-spinner if:true={showLoader}></c-spinner>
+  <div>
+    <c-tc-dynamic-header
+      if:true={inventoryRecord}
+      header-segments={headerSegments}
+    >
+      {inventoryRecord.fields.Status__c.displayValue}
+    </c-tc-dynamic-header>
+
+    <div class="inventoryRecords" if:true={inventoryRecord}>
+      <div if:true={isCompleted}>{labels.TC_DATE_COMPLETED}:</div>
+      <div if:true={isCompleted}>
+        {inventoryRecord.fields.Completed_Date__c.displayValue}
+      </div>
+      <div if:true={isSubmitted}>{labels.TC_DATE_SUBMITTED}:</div>
+      <div if:true={isSubmitted}>
+        {inventoryRecord.fields.Submitted_Date__c.displayValue}
+      </div>
+      <div if:true={isSubmitted}>{labels.TC_INCHECK_REPORT_STATUS}:</div>
+      <div if:true={isSubmitted}>
+        {inventoryRecord.fields.InCheck_Report_Status__c.value}
+      </div>
+      <div if:true={isSubmittedError}>
+        {labels.TC_INCHECK_REPORT_ERROR_MESSAGE}:
+      </div>
+      <div if:true={isSubmittedError}>
+        {inventoryRecord.fields.InCheck_Report_Error_Message__c.value}
+      </div>
+      <div if:true={isSubmitted}>{labels.TC_INCHECK_VERIFICATION_ID}:</div>
+      <div if:true={isSubmitted}>
+        {inventoryRecord.fields.InCheck_Report_Verification_Id__c.value}
+      </div>
+    </div>
+  </div>
+</template>

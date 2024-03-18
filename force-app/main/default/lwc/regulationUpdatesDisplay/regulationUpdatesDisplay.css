@@ -1,0 +1,28 @@
+.orderTable {
+    border-collapse: separate;
+    width: 100%;
+    table-layout:fixed;
+    border:1px solid #D4D4D4;
+}
+.orderTable td,
+.orderTable th {
+    background-color : #fcf4cf;
+    text-align: left;
+    padding: 5px;
+    border-bottom: 5px solid white;
+}
+.orderTable th{
+    background-color : #ffc604 !important;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center !important;
+}
+lightning-combobox[data-id="pageSelector"]{
+    border-bottom : none;
+} 
+.generateRegulatorySheetButton {
+    background-color: #21B6D7 !important;
+    color: white !important;
+    text-transform: uppercase;
+}

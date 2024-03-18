@@ -1,0 +1,6 @@
+.groups {
+    text-align:left;
+    font-size:15px;
+}
+.groups > div {padding:7px 0;}
+.groups > div:not(:last-of-type) {border-bottom: 1px solid #e9eaea!important;}

@@ -1,0 +1,16 @@
+:host {display:block;}
+
+:host > div {
+    font-size: 16px;
+    line-height: 21px;
+}
+
+@media screen and (min-width:601px) {
+    .inventoryRecords {display:flex;flex-wrap:wrap;}
+    .inventoryRecords > div:nth-child(odd) {flex-basis:200px;flex-shrink:0;}
+    .inventoryRecords > div:nth-child(even) {flex-basis:calc(100% - 200px);flex-shrink:1;}
+}
+
+@media screen and (max-width:600px) {
+    .inventoryRecords > div:nth-child(even) {margin-bottom:10px;}
+}

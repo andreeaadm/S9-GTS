@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="preSelectedValues" type="String" label="Current Selected Record Values" required="true" role="inputOnly" default="test"/>
+            <property name="objectName" type="String" label="Object API Name" description="Enter Object API Name" required="true" role="inputOnly" default="test"/>
+            <property name="dependentFieldName" type="String" label="Dependent Field Name" description="Enter Field API Name" required="true" role="inputOnly" default="test"/>
+            <property name="controllingFieldValue" type="String" label="Controlling Field Value" description="Enter Value of Controlling Field" required="true" role="inputOnly" default="test"/>
+            <property name="fieldLabel" type="String" label="Field Label" description="Enter the label for this field" role="inputOnly"/>      
+            <property name="returnedValues" type="String" label="Returned Values" role="outputOnly" description="Returns selected values as a semicolon seperated list"/>
+            <property name="returnedValuesText" type="String" label="Returned Values Text" role="outputOnly" description="Returns selected values as a comma seperated list"/>
+        </targetConfig>
+    </targetConfigs>    
+</LightningComponentBundle>

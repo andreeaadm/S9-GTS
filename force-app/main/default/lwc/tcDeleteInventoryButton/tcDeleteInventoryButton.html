@@ -1,0 +1,28 @@
+<template>
+  <c-button
+    if:true={showButton}
+    label={labels.TC_DELETE_INVENTORY}
+    onclick={handleDelete}
+    variant="Delete pnlActionBtn"
+  ></c-button>
+  <c-modal showmodal={showModal} additional-classes="noMob" maxwidth="830">
+    <div slot="header">Delete Inventory</div>
+    <div slot="content">
+      <div>
+        <h3>{labels.TC_DELETE_INVENTORY_CONFIRM}</h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        label={labels.CANCEL}
+        onclick={handleCancel}
+        variant="Neutral ModalFooterBtn"
+      ></c-button>
+      <c-button
+        label={labels.DELETE}
+        onclick={handleConfirmDelete}
+        variant="Delete ModalFooterBtn"
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

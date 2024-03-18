@@ -1,0 +1,14 @@
+<template>
+    <div if:true={records.data}>
+        <template for:each={records.data} for:item="rec">
+            <div key={rec.Id} class="slds-box">
+                <lightning-record-form record-id={rec.Id}
+                                    object-api-name={relatedObjectApiName}
+                                    layout-type="Compact"
+                                    mode="view"
+                                    columns="1">
+                </lightning-record-form>
+            </div>
+        </template>
+    </div>
+</template>

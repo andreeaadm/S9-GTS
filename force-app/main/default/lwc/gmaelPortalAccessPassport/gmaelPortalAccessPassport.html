@@ -1,0 +1,70 @@
+<template>
+    <template if:false={showResult}>
+        <div class="main-div">
+            <div class="header-div-yellow">
+                {clabels.GMAEL_Portal_Access_Passport_Header}
+            </div>
+            <div class="header-div-grey">
+                <p>
+                    {clabels.GMAEL_Portal_Access_Passport_Sub_Header}
+                </p>
+                <div class="button-section">
+                    <button class="mapViewBtn" onclick={handleCountryListViewToggle} data-action="mapView"
+                        label="Map view">{clabels.GMAEL_Portal_Map_View}</button>&nbsp;&nbsp;
+                    <button class="listViewBtn" onclick={handleCountryListViewToggle} data-action="listView"
+                        label="List view">{clabels.GMAEL_Portal_List_View}</button>
+                </div>
+            </div>
+            <div class="content-panel">
+                <template if:true={data}>
+                    <template if:false={countryListView}>
+                        <c-gmael-portal-a-p-dynamic-map report-data={data}
+                            oncountryselect={setSelectedCountries}></c-gmael-portal-a-p-dynamic-map>
+                    </template>
+
+                    <template if:true={countryListView}>
+                        <ul class="slds-accordion">
+                            <template for:each={countriesListView} for:item="continent">
+                                <li key={continent.key} class="slds-accordion__list-item">
+                                    <section class="slds-accordion__section slds-is-open">
+                                        <div class="slds-accordion__summary">
+                                            <h2 class="slds-accordion__summary-heading">
+                                                <button
+                                                    class="slds-button slds-button_reset slds-accordion__summary-action"
+                                                    aria-controls={continent.key} aria-expanded="true"
+                                                    title="Accordion summary" onclick={handleAccordionClick}>
+                                                    <span class="slds-accordion__summary-content">{continent.key}</span>
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div class="slds-accordion__content" id={continent.key}>
+                                            <ul class="four-column-list">
+                                                <template for:each={continent.value} for:item="country">
+                                                    <li key={country.Name} data-countryid={country.Id}
+                                                        onclick={handleCountryClick} class="li-padding">{country.Name}
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </section>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+
+                    <div class="header-div-grey-foot">
+                        <div class="button-section-foot">
+                            <button class="resetBtn" onclick={handleResetCountries}
+                                label={resetButtonLabel}>{resetButtonLabel}</button>
+                            <button class={buttonClass} label="Next" onclick={handleNext}
+                                disabled={isCountrySelected}>{clabels.GMAEL_Portal_Next}</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+    <template if:true={showResult}>
+        <c-gmael-portal-a-p-table-container countries={selectedCountries}></c-gmael-portal-a-p-table-container>
+    </template>
+</template>

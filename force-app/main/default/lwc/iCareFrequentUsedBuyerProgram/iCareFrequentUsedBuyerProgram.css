@@ -1,0 +1,20 @@
+.title-cell-table th {
+    background: #F8F8F8;
+    font-family: var(--calibri-bold);
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--grey-primary);
+}
+
+@media screen and (min-width:460px) {
+    .container-content {
+        width: 570px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .container-content {
+        padding: 0 16px;
+    }
+}

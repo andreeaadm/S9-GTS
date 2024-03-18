@@ -1,0 +1,33 @@
+<template>
+    <template if:true={allowNewCommentsReverse}>
+        <div>
+            <textarea onblur={handleBlur} placeholder="Enter a comment..."></textarea>
+            <button onclick={addComment} onblur={handleBlur}>Post</button>
+            <hr if:true={hasComments} />
+        </div>
+    </template>
+    <template if:true={hasComments}>
+        <div class={commentsClass}>
+            <template if:true={comments}>
+                <template for:each={comments} for:item='comment'>
+                    <div class={comment.userClass} key={comment.createdByDate}>
+                        <p>
+                            <span>{comment.createdByName}</span>
+                            <span>
+                                <lightning-formatted-date-time value={comment.createdByDate} year="2-digit" month="short" day="2-digit" weekday="long"></lightning-formatted-date-time>
+                            </span>
+                        </p>
+                        <p><lightning-formatted-rich-text value={comment.comment}></lightning-formatted-rich-text></p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </template>
+    <template if:true={allowNewComments}>
+        <hr if:true={hasComments} />
+        <div>
+            <textarea onblur={handleBlur} placeholder="Enter a comment..."></textarea>
+            <button onclick={addComment} onblur={handleBlur}>Post</button>
+        </div>
+    </template>
+</template>

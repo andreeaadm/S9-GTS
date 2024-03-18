@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>GMA E-services search selection</masterLabel>
+    <targets>
+       <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>  
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="regulatoryForUser" type="String" default="../s/product-search/regulatory-search" label="Regulatory Sheet page for portal users" description="Please specify relative page link"/>
+            <property name="regulatoryForGuest" type="String" default="../s/regulatory-sheet" label="Regulatory Sheet page for guest users" description="Please specify relative page link"/>
+
+            <property name="testplanForUser" type="String" default="../s/product-search/test-search" label="Test Plan page for portal users" description="Please specify relative page link"/>
+            <property name="testplanForGuest" type="String" default="../s/test-plan" label="Test Plan page for guest users" description="Please specify relative page link"/>
+
+            <property name="recallForUser" type="String" default="../s/product-search/recall-search" label="Recall Summary page for portal users" description="Please specify relative page link"/>
+            <property name="recallForGuest" type="String" default="../s/recall-summary" label="Recall Summary page for guest users" description="Please specify relative page link"/>
+
+            <property name="gapanalysisForUser" type="String" default="../s/product-search/gap-search" label="Gap Analysis page for portal users" description="Please specify relative page link"/>
+            <property name="gapanalysisForGuest" type="String" default="../s/gap-analysis-report" label="Gap Analysis page for guest users" description="Please specify relative page link"/>
+        </targetConfig>
+     </targetConfigs>
+</LightningComponentBundle>

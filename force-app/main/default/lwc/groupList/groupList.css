@@ -1,0 +1,10 @@
+/* all desktops & tablets: flex */
+@media screen and (min-width:768px) {
+    c-input.search {flex:1;max-width: 500px;}
+    c-input.status {
+        flex-basis: 155px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        margin-right: 10px;
+    }
+}

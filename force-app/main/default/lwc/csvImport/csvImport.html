@@ -1,0 +1,30 @@
+<template>
+  <lightning-card title={title}>
+    <div class="slds-is-relative">
+      <lightning-button
+        if:false={hideTemplateButton}
+        label={downloadCSVLabel}
+        onclick={downloadTemplateCSV}
+      ></lightning-button>
+      <c-input
+        type="File"
+        file-accept-list={acceptedFormats}
+        single-file
+        onfilechange={handleFileChange}
+      ></c-input>
+      <lightning-button
+        if:false={hideImportButton}
+        variant="brand"
+        label={importLabel}
+        onclick={doImport}
+        disabled={disableImport}
+        class="importbtn"
+        slot="footer"
+      ></lightning-button>
+      <lightning-spinner
+        variant="brand"
+        if:true={isLoading}
+      ></lightning-spinner>
+    </div>
+  </lightning-card>
+</template>

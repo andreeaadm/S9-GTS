@@ -1,0 +1,238 @@
+.header-div-yellow {
+    background-color: var(--Intertek-Cerello);
+    font-size: 25px;
+    padding: 10px 60px;
+    margin: 4px 0px;
+}
+
+.header-div-grey[c-gmaelPortalAPTableContainer_gmaelPortalAPTableContainer] {
+    background-color: #F5F5F5;
+    font-size: 30px;
+    padding: 15px;
+    margin: 4px 0px;
+    color: var(--Dark-Blue);
+    font-family: var(--neo-sans-medium);
+}
+
+.header-div-grey-foot {
+    background-color: #F5F5F5;
+    font-size: 20px;
+    padding: 15px 60px;
+    margin: 25px 0px;
+    height: 65px;
+}
+
+.button-section {
+    float: right;
+}
+
+.content-panel {
+    padding: 40px 0px;
+    margin: 0px;
+}
+
+.four-column-list {
+    column-count: 4;
+    column-width: auto;
+}
+
+.table {
+    border-spacing: 3px 1px;
+}
+
+.table th,
+.table td {
+    padding: 5px 15px;
+    width: 50%;
+    background-color: var(--Light-Grey);
+    color: var(--Dark-Blue);
+    font-family: var(--neo-sans-regular);
+    border: 1px solid white !important;
+}
+
+.table th {
+    background-color: var(--Intertek-Cerello);
+    color: var(--Dark-Blue);
+    height: 54px;
+    font-family: var(--neo-sans-medium);
+}
+
+.two-column-list {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid white;
+    
+}
+
+.two-column-list div {
+    border-bottom: 1px solid white;
+    width: 100%;
+    padding: 5px 15px
+}
+
+.two-column-list img {
+
+    padding: 10px 15px
+}
+
+.two-column-list li {
+    border-left: 1px solid white;
+    width: 50%;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+
+}
+
+.hidden {
+    display: none;
+}
+
+.countriesFlgsImg {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding-right: 165px;
+}
+
+.countriesFlgsImg img {
+    max-width: 100%;
+    height: auto;
+    margin-left: 205px;
+    align-self: center;
+}
+
+.slds-tabs_default__content,
+.slds-tabs--default__content {
+    /* background-color: var(--Light-Grey);
+    width: 100%; */
+}
+
+lightning-tab {
+    background-color: var(--Light-Grey);
+    color: var(--Dark-Blue);
+}
+
+.small-text-section {
+    font-size: 15px;
+    font-family: var(--neo-sans-light);
+    width: 83%;
+    margin: 1% auto;
+    line-height: 18px;
+}
+
+.second-row {
+    background-color: var(--Intertek-Cerello);
+    font-family: var(--neo-sans-regular);
+    height: 56px;
+}
+
+caption,
+th,
+td {
+    text-align: left;
+    padding: 1%;
+    border: 1px solid white;
+    width: 5%;
+}
+
+.slds-select {
+    background-color: var(--Light-Grey);
+}
+
+.columnContent {
+    text-align: center;
+}
+
+.fourColumnImages img {
+    padding: 2.5%;
+}
+
+.third-row td {
+    font-family: var(--neo-sans-light);
+    background: white;
+    border: 1px solid #ECECEC;
+}
+
+.generalInfoContent {
+    padding-left: 1%;
+    font-family: var(--neo-sans-light);
+    border: 1px solid white;
+    padding-top: 0.4%;
+    padding-bottom: 0.5%;
+}
+
+
+.itemsFlagImg {
+    color: var(--slds-c-tabs-item-text-color, var(--sds-c-tabs-item-text-color, var(--slds-g-color-neutral-base-30, var(--lwc-colorTextActionLabel, rgba(0, 0, 0, 0.6)))));
+    position: relative;
+    margin: 0.5% 0.1%;
+    font-family: var(--neo-sans-medium);
+    width: 35%;
+    padding: 0.5% !important;
+    letter-spacing: -0.6px;
+}
+
+.slds-tabs_default__nav_imgs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 16%; */
+    text-align: center;
+}
+
+.slds-tabs_default__nav,
+.slds-tabs--default__nav {
+    border: none !important;
+}
+
+.container-tabs-inf {
+    background-color: var(--Light-Grey);
+}
+
+.general-information {
+    background-color: var(--Intertek-Cerello);
+    padding: 10px;
+    font-family: var(--neo-sans-medium);
+    border: 1px solid white;
+}
+
+@media screen and (min-width:768px) {
+
+    lightning-tab{
+        padding-bottom: 100px;
+    }
+   
+}
+@media (min-width:768px) and (max-width:1440px) {
+    lightning-tab{
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+}
+
+@media screen and (min-width:1440px) {
+
+    lightning-tab,
+    section {
+        width: 1440px;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width:550px) {
+    .selector{
+        position: relative;
+        height: 0;
+        right: -51px;
+        top: 20px;
+        justify-content: flex-end;
+    }
+    .slds-select {
+        width: 13%;
+    }
+    .itemsFlagImg {
+        width: 178px;
+    }
+    
+}

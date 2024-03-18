@@ -1,0 +1,73 @@
+<template>
+
+	<div class="top">
+		<div>
+			<div if:true={hasLabels} class="slds-align_absolute-center">
+				<ul>
+					<li if:true={label1}>
+						<span if:false={link1} title={label1}>{label1}</span>
+						<a if:true={link1} title={label1} data-id=1 onclick={navigateToPage}>{label1}</a>
+					</li>
+					<li if:true={label2}>
+						<span if:false={link2} title={label2}>{label2}</span>
+						<a if:true={link2} title={label2} data-id=2 onclick={navigateToPage}>{label2}</a>
+					</li>
+					<li if:true={label3}>
+						<span if:false={link3} title={label3}>{label3}</span>
+						<a if:true={link3} title={label3} data-id=3 onclick={navigateToPage}>{label3}</a>
+					</li>
+					<li if:true={label4}>
+						<span if:false={link4} title={label4}>{label4}</span>
+						<a if:true={link4} title={label4} data-id=4 onclick={navigateToPage}>{label4}</a>
+					</li>
+					<li if:true={label5}>
+						<span if:false={link5} title={label5}>{label5}</span>
+						<a if:true={link5} title={label5} data-id=5 onclick={navigateToPage}>{label5}</a>
+					</li>
+					<li if:true={label6}>
+						<span if:false={link6} title={label6}>{label6}</span>
+						<a if:true={link6} title={label6} data-id=6 onclick={navigateToPage}>{label6}</a>
+					</li>
+				</ul>
+			</div>
+
+			<div if:true={hasSocial} class="slds-align_absolute-center">
+				<div if:true={twitterUrl} class="slds-p-around_x-small">
+					<a title="Twitter" href={twitterUrl} target="_blank">
+						<c-twittersvg text-colour={textColour}></c-twittersvg>
+					</a>
+				</div>
+				<div if:true={linkedInUrl} class="slds-p-around_x-small">
+					<a title="LinkedIn" href={linkedInUrl} target="_blank">
+						<c-linkedinsvg text-colour={textColour}></c-linkedinsvg>
+					</a>
+				</div>
+				<div if:true={facebookUrl} class="slds-p-around_x-small">
+					<a if:true={facebookUrl} title="Facebook" href={facebookUrl} target="_blank">
+						<c-facebooksvg text-colour={textColour}></c-facebooksvg>
+					</a>
+				</div>
+				<div if:true={instagramUrl} class="slds-p-around_x-small">
+					<a if:true={instagramUrl} title="Instagram" href={instagramUrl} target="_blank">
+						<c-instagramsvg text-colour={textColour}></c-instagramsvg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="bottom">
+		<div>
+			<div>
+				<div if:true={hasBottomLogos}>
+					<img if:true={bottomLogo} src={bottomLogo}></img>
+				</div>
+
+				<div if:true={hasBottomText}>
+					<p if:true={bottomText}>{bottomText}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>

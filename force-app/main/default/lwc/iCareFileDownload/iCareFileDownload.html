@@ -1,0 +1,19 @@
+<template>
+    <template if:true={filesList}>
+        <div class="container">
+            <h1>{customLabels.FILES_LABEL}</h1>
+            <template for:each={filesList} for:item="file">
+                <div key={file.value}>
+                    <div class="download-link">
+                        <lightning-icon icon-name='utility:download' alternative-text='download' size='x-small'
+                            title='download'></lightning-icon>
+                        <a href={file.url} download>{customLabels.DOWNLOAD_MY_LABEL} {file.label}</a>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <template if:true={error}>
+            {error}
+        </template>
+    </template>
+</template>

@@ -1,0 +1,175 @@
+<template>
+    
+    <template for:each={reportData.reportCountries} for:item="rc" for:index="rc_index">
+    
+        <table class="table" key={rc.reportCountry.GMAEL_Country_Name__c}>
+            <tr>
+                <th colspan="6" class="header-left">
+                    {rc.reportCountry.GMAEL_Country_Name__c} - {rc.reportCountry.GMAEL_Product_Category__c} - {rc.reportCountry.GMAEL_Product_Description__c}
+                    <br/><br/><lightning-formatted-rich-text value={rc.reportCountry.GMAEL_General_Information__c}></lightning-formatted-rich-text>
+                </th>
+                <th colspan="4" class="header-right">
+                    <table class="table-no-border">
+                        <tr>
+                            <td>
+                                <lightning-formatted-rich-text value={labels.GMAEL_Supply_Voltage}></lightning-formatted-rich-text>
+                            </td>
+                            <td style="white-space: pre-line;">
+                                {rc.reportCountry.GMAEL_National_Deviation_Supply_Voltage__c}
+                            </td>
+                            <td>
+                                @ {rc.reportCountry.GMAEL_National_Deviation_Supply_Freqncy__c}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="padding: 0px;">
+                                <div style="border: 1px solid #E8EAEB;margin: 0px -8px;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {labels.GMAEL_Plug_Type}
+                            </td>
+                            <td colspan="2">
+                                <template for:each={rc.reportCountryPlugTypes} for:item="rcpt">
+                                    {rcpt.reportCountryPlugObj.Name} <br key={rcpt.reportCountryPlugObj.Name}/>
+                                </template>
+                            </td>
+                        </tr>
+                    </table>
+                </th>
+            </tr>
+            <tr class="second-row">
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Engineering_Governance}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Legislation_Governance}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Scheme}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Governing_Body}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Standard}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Country_Mark}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_CAB_Accreditation}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Conformity_Method}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Pre_Shipment_Requirement}></lightning-formatted-rich-text>
+                </th>
+                <th>
+                    <lightning-formatted-rich-text value={labels.GMAEL_Additional_Information}></lightning-formatted-rich-text>
+                </th>
+            </tr>
+            <template if:true={rc.legislationFound}>
+                <template for:each={rc.reportCountryLines} for:item="rcl" for:index="rcl_index">
+                    <tr class="third-row" key={rcl.reportLineObj.GMAEL_Engineering_Application__c}>
+                        <template if:true={rcl.isRowApplicable}>
+                            <td>
+                                {rcl.reportLineObj.GMAEL_Engineering_Application__c}
+                            </td>
+                            <td>
+                                <a href={rcl.reportLineObj.GMAEL_Governance_URL__c} target="_blank">
+                                    {rcl.reportLineObj.GMAEL_Governance_URL_Label__c}
+                                </a><br/><br/>
+                                <span style="color:#000;">
+                                    <lightning-formatted-rich-text value={rcl.reportLineObj.GMAEL_Governance_Description__c}></lightning-formatted-rich-text>
+                                </span>
+                            </td>
+                            <td>
+                                {rcl.reportLineObj.GMAEL_Scheme__c}
+                            </td>
+                            <td>
+                                {rcl.reportLineObj.GMAEL_Governing_Body__c}
+                            </td>
+                            <td> 
+                                <lightning-formatted-rich-text value={rcl.reportLineObj.GMAEL_Standard__c}></lightning-formatted-rich-text>
+                            </td>
+                            <td>
+                                <img src={rcl.reportLineObj.GMAEL_Country_Mark__c}/>
+                            </td>
+                            <td>
+                                <lightning-formatted-rich-text value={rcl.reportLineObj.GMAEL_CAB_Accreditation__c}></lightning-formatted-rich-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-rich-text value={rcl.reportLineObj.GMAEL_Conformity_Method__c}></lightning-formatted-rich-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-rich-text value={rcl.reportLineObj.GMAEL_Pre_Shipment__c}></lightning-formatted-rich-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-rich-text value={rcl.reportLineObj.GMAEL_Legislation_Additional_Information__c}></lightning-formatted-rich-text>
+                            </td>
+                        </template>
+                        <template if:false={rcl.isRowApplicable}>
+                            <td>
+                                {rcl.reportLineObj.GMAEL_Engineering_Application__c}
+                            </td>
+                            <td colspan="9" class="no-result">
+                                <lightning-formatted-rich-text value={labels.GMAEL_Result_Not_Found}></lightning-formatted-rich-text>
+                            </td>
+                        </template>                
+                    </tr>
+                </template>
+            </template>
+            <template if:false={rc.legislationFound}>
+                <tr>
+                    <td colspan="10" class="no-result">
+                        <lightning-formatted-rich-text value={labels.GMAEL_Result_Not_Found}></lightning-formatted-rich-text>
+                    </td>
+                </tr>
+            </template>            
+        </table>
+    
+        <div key={rc.reportCountry.GMAEL_Country_Name__c} style="display: flex; gap:10%; margin-top: 30px;margin-bottom: 60px">
+            <table class="table"  >
+                <tr class="second-row">
+                    <th colspan="2" style="text-align: center;">
+                        <lightning-formatted-rich-text value={labels.GMAEL_Conformity_Method}></lightning-formatted-rich-text>
+                    </th>
+                </tr>
+                <tr>
+                    <template if:true={rc.reportCountry.GMAEL_Method_of_Conformity__c}>
+                        <td>
+                            <lightning-formatted-rich-text value={rc.reportCountry.GMAEL_Method_of_Conformity__c}></lightning-formatted-rich-text>
+                        </td>
+                    </template>
+                    <template if:false={rc.reportCountry.GMAEL_Method_of_Conformity__c}>
+                        <td style="text-align: center;">
+                            <lightning-formatted-rich-text value={labels.GMAEL_Result_Not_Found}></lightning-formatted-rich-text>
+                        </td>
+                    </template>
+                </tr>
+            </table>
+            <table class="table">
+                <tr class="second-row">
+                    <th colspan="2" style="text-align: center;">
+                        <lightning-formatted-rich-text value={labels.GMAEL_Scheme_Documents}></lightning-formatted-rich-text>
+                    </th>                
+                </tr>
+                <tr>                
+                    <template if:true={rc.reportCountry.GMAEL_Scheme_Document__c}>
+                        <td>
+                            {rc.reportCountry.GMAEL_Scheme_Document__c}
+                        </td>
+                    </template>
+                    <template if:false={rc.reportCountry.GMAEL_Scheme_Document__c}>
+                        <td style="text-align: center;">
+                            <lightning-formatted-rich-text value={labels.GMAEL_Result_Not_Found}></lightning-formatted-rich-text>
+                        </td>
+                    </template>
+                </tr>        
+            </table>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,75 @@
+<template>
+  
+  <div>
+    
+    <c-button
+      if:true={showDisconnect}
+      label={labels.DISCONNECT}
+      onclick={openModal}
+      variant="Delete pnlActionBtn"
+    ></c-button>
+
+    <c-button
+      if:true={showCancel}
+      label={labels.CANCEL_CONNECTION_REQUEST}
+      onclick={openModal}
+      variant="Delete pnlActionBtn"
+    ></c-button>
+    
+    <c-button
+      if:true={showApproveReject}
+      label={labels.REJECT}
+      onclick={openModal}
+      variant="Delete pnlActionBtn"
+    ></c-button>
+    <c-button
+      if:true={showApproveReject}
+      label={labels.APPROVE_CONNECTION_REQUEST}
+      onclick={openModal}
+      variant="Neutral pnlActionBtn"
+    ></c-button>
+
+    <c-button
+      if:true={showMakeInactiveUpdateTarget}
+      label={labels.UPDATE_CONFORMANCE_TARGET}
+      onclick={updateConformanceTarget}
+      variant="Neutral pnlActionBtn"
+    ></c-button>
+
+    <c-button
+      if:true={showMakeInactiveUpdateTarget}
+      label={labels.MARK_INACTIVE}
+      onclick={markInactive}
+      variant="IntkBrandTwoBtn pnlActionBtn"
+    ></c-button>
+    <c-button
+      if:true={showMakeActive}
+      label={labels.MARK_ACTIVE}
+      onclick={markActive}
+      variant="IntkBrandTwoBtn pnlActionBtn"
+    ></c-button>
+
+  </div>
+  <c-modal showmodal={showModal} maxwidth="830" additional-classes="noMob">
+    <span slot="header">{modalTitle}</span>
+    <div slot="content">
+      <div>
+        <h3>{modalContent}</h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={modalCancelBtnLabel}
+        onclick={closeModal}
+        disabled={disableBtn}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={modalConfirmBtnLabel}
+        onclick={modalConfirm}
+        disabled={disableBtn}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

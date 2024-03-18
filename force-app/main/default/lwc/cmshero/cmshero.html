@@ -1,0 +1,7 @@
+<template>
+    <c-tile if:true={data} style="margin-bottom: 0;" type="Hero" title={data.contentNodes.Title.value} title-colour={titleColour} sub-title={data.contentNodes.Subtitle.value} sub-title-colour={subTitleColour} content-text={data.contentNodes.Body.value} content-colour={bodyColour} img-src={data.contentNodes.Image.url} 
+            bg-src={data.contentNodes.Image.url} content-img-src={data.contentNodes.Icon.url} bg-size={bgSize} col-or-row-contents={colOrRowContents} align-contents-v={alignContentsV} align-contents-h={alignContentsH} reverse-contents={reverseContents} background-colour={backgroundColour}
+            background-colour-content={backgroundColourContent} background-overlay-colour={backgroundOverlayColour} hero-content-width={heroContentWidth} hero-min-height={heroMinHeight} additional-classes={additionalClasses}
+            disable-linkify={disableLinkify} button-label={data.contentNodes.Button_Label.value} button-variant={buttonVariant} nav-url={data.contentNodes.Button_Action.value} icon-1-src={data.contentNodes.Additional_Icon_1}
+            icon-2-src={data.contentNodes.Additional_Icon_2}></c-tile>
+</template>

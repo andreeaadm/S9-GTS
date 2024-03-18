@@ -1,0 +1,112 @@
+<template>
+  <div class="card" title={pageTitle}>
+    <h1 class="title">{pageTitle}</h1>
+    <div>
+    <template if:false={isReadOnly}>
+      <lightning-layout>
+        <lightning-layout-item size="12">
+          <div>
+            <lightning-combobox
+              name="documentType"
+              label="Document Attached"
+              value={documentType}
+              placeholder="Please Select"
+              options={options}
+              onchange={handleDocumentTypeSelect}
+              readonly={isReadOnly}
+            >
+            </lightning-combobox>
+          </div>
+        </lightning-layout-item>
+        <template if:true={isOtherValue}>
+          <lightning-layout-item size="12" padding="around-small">
+            <div>
+              <lightning-input
+                type="text"
+                label={labels.OTHER_VALUE}
+                value={otherValue}
+                onchange={handleOtherValueChange}
+              ></lightning-input>
+            </div>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+      <br />
+      <lightning-layout>
+        <lightning-layout-item size="12">
+          <div>
+            <!--<lightning-file-upload
+              label={labels.UPLOAD_DOCUMENTS_LABEL}
+              name="uploadFile"
+              accept={acceptedFormats}
+              disabled={isUploadDisabled}
+              onuploadfinished={handleUploadFinished}
+            >
+            </lightning-file-upload>-->
+            <lightning-input type="file" 
+                accept={acceptedFormats}
+                label={labels.UPLOAD_DOCUMENTS_LABEL} onchange={handleUploadFinished} disabled={isUploadDisabled}>
+            </lightning-input>
+            <p>
+              <lightning-formatted-text
+                value={labels.ICare_FileUpload_Format_Validation}
+              ></lightning-formatted-text>
+            </p>
+          </div>
+        </lightning-layout-item>
+      </lightning-layout>
+    </template>
+      <br />
+      <!--<template lwc:if={isGTSJobProgressionPage}></template>-->
+      <template if:false={isGtsJobProgressionPage}> 
+        <lightning-layout>
+          <lightning-layout-item size="12">
+            <div>
+              <template lwc:if={isFileUploaded}>
+                <h1><strong>Uploaded Files </strong></h1>
+                <br />
+                <table
+                  class="slds-table slds-table_cell-buffer slds-table_bordered"
+                >
+                  <thead>
+                    <tr class="slds-line-height_reset">
+                      <th class="" scope="col">
+                        <div class="slds-truncate" title="File Name">
+                          Document Name
+                        </div>
+                      </th>
+                      <th class="" scope="col">
+                        <div class="slds-truncate" title="File Type">
+                          Document Type
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template for:each={uploadedDocuments} for:item="document">
+                      <tr class="slds-hint-parent" key={document.docName}>
+                        <th data-label="Document Name" scope="row">
+                          <lightning-icon
+                            icon-name="doctype:image"
+                            size="small"
+                            title="Image"
+                          ></lightning-icon>
+                          {document.docName}
+                        </th>
+                        <td data-label="Document Type">
+                          <div class="slds-truncate" title="Cloudhub">
+                            {document.docType}
+                          </div>
+                        </td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+              </template>
+            </div>
+          </lightning-layout-item>
+        </lightning-layout>
+      </template>
+    </div>
+  </div>
+</template>

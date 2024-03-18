@@ -1,0 +1,23 @@
+:host > div {
+    padding-bottom:10px;
+}
+
+.message-body {    
+    max-width:430px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;   
+}
+
+.long-message-body {padding-left:22px;padding-right:22px;}
+
+.activate-review-facility__action {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.manage-facility-subscription__title {
+    text-align: center;
+    font-size: 1rem;
+    padding-bottom: 10px;
+  }

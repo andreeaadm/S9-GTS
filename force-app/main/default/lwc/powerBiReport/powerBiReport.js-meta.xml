@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Power BI Report</masterLabel>
+    <description>Demo component for embedding a Power BI Report</description>
+    <apiVersion>46.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+         <target>lightningCommunity__Page</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__HomePage,lightning__RecordPage,lightningCommunity__Default"> <!--Placeing 'lightningCommunity__Page' here casues error: 'force-app/main/default/lwc/powerBiReport/powerBiReport.js  The 'property' tag isn't supported for lightningCommunity__Page'-->
+            <property name="WorkspaceId" type="String" default="" label=" Workspace ID" description="Enter the Workspace ID"/>
+            <property name="ReportId" type="String" default="" label="Report ID" description=""/>
+            <property name="UserName" type="String" default="" label="User Name" description=""/>
+            <property name="Datasets" type="String" default="" label="Datasets" description=""/>
+            <property name="PageName" type="String" default="" label="Page Name" description=""/>
+            <property name="Visual" type="String" default="" label="Visual" description=""/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

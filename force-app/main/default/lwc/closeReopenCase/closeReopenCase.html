@@ -1,0 +1,16 @@
+<template>
+  <template if:true={isUpdateable}>
+    <c-button
+      if:false={isClosed}
+      label={labels.CLOSE}
+      onclick={handleClose}
+      variant="IntkBrandTwoBtn"
+    ></c-button>
+    <c-button
+      if:true={isClosed}
+      label={labels.REOPEN}
+      onclick={handleReopen}
+      variant="IntkBrandTwoBtn"
+    ></c-button>
+  </template>
+</template>

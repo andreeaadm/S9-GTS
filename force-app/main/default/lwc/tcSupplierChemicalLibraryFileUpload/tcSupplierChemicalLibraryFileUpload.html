@@ -1,0 +1,77 @@
+<template>
+<template if:false={isBrandUser}>
+<div class="slds-grid slds-p-vertical--medium empty"></div> 
+<div class="slds-grid slds-wrap main">
+<div class="slds-col slds-size_12-of-12">
+<h1 class="slds-m-bottom--none slds-wrap">
+    <span class="slds-show_inline-block" title={uploadFiles}>
+    Upload Files
+    </span>
+    </h1>
+</div>
+<div class="slds-col slds-size_6-of-12 slds-align_absolute-center">
+    <c-tc-safety-data-sheet-file 
+    record-id = {recordId}
+    onsdsupload={onSdsUpload}
+    ></c-tc-safety-data-sheet-file>
+</div>
+<div class="slds-col slds-size_6-of-12 slds-align_absolute-center">
+    <c-tc-m-r-s-l-certificate   
+    record-id = {recordId}
+    onmrslupload={onMrslUpload}
+    ></c-tc-m-r-s-l-certificate>
+</div>
+</div>
+<div class="slds-grid slds-p-vertical--medium" style="height : 10px !important"></div>
+</template>
+<template if:true={isBrandUser}>
+<div class="slds-grid slds-p-vertical--medium" style="height : 91px !important;"></div> 
+</template>
+<div class="slds-grid slds-wrap mainList" >
+    <lightning-card  variant="Narrow"  title={title} icon-name="standard:document">
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+    </template>
+        
+    <div class="slds-col slds-size_12-of-12">
+            <lightning-datatable
+                key-field="id"
+                data={dataList}
+                hide-checkbox-column
+                columns={columnsList}
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+    </div> 
+</lightning-card>
+</div>
+<c-modal
+      showmodal={deleteMode}
+      maxwidth="830"
+      additional-classes="narrowContent"
+    >
+      <span slot="header">Delete Files</span>
+      <div slot="content">
+        <lightning-radio-group name="radioGroup"
+        label="Please select type of file you are deleting"
+        options={options}
+        value={value}
+        type="radio"
+        onchange={handleChange}>
+    </lightning-radio-group>
+      </div>
+      <div slot="footer">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label="CANCEL"
+          disabled={isWorking}
+          onclick={toggleDELETE}
+        ></c-button>
+        <c-button
+          variant="IntkBrandTwoBtn ModalFooterBtn"
+          label="DELETE"
+          disabled={isWorking}
+          onclick={handleDeleteSelectedFile}
+        ></c-button>
+      </div>
+    </c-modal>
+</template>

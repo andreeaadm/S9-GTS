@@ -1,0 +1,18 @@
+<template>
+  <div if:false={emptyAndPinned}>
+    <p>{bulletinTitle}</p>
+
+    <div if:true={isEmpty} class="noitems">{labels.NO_RESULTS_FOUND}</div>
+
+    <c-datatable
+      if:false={isEmpty}
+      table-cols={tableData.columns}
+      table-rows={tableData.rows}
+      additional-classes="clickablecells-noabspos mob-longStringFix bulletin-list"
+      all-shown={allShown}
+      is-loading={isLoading}
+      onviewmore={handleViewMore}
+      mob-enabled="true"
+    ></c-datatable>
+  </div>
+</template>

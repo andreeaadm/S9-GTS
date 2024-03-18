@@ -1,0 +1,179 @@
+<template>
+  <lightning-card>
+    <img class="manage-formulator__logo" src={toxLogo} />
+
+    <div class="manage-formulator" if:true={user.data}>
+
+      <div class="message-body">
+        <template if:false={haveUserAccessKey}>{labels.TC_GET_USER_ACCESS_KEY_ERROR}</template>
+      </div>
+
+      <div if:true={showLinkAction} class="manage-formulator__action">
+        <lightning-button
+          variant="brand"
+          label={labels.TC_LINK_ZDHC_FORMULATOR_ACTION}
+          onclick={handleLinkToZdhc}
+        >
+        </lightning-button>
+      </div>
+      <div if:true={showUnlinkAction} class="manage-formulator__action">
+        <lightning-button
+          variant="brand"
+          label={labels.TC_UNLINK_ZDHC_FORMULATOR_ACTION}
+          onclick={handleUnlinkFromZdhc}
+        ></lightning-button>
+      </div>
+
+      <template if:true={selector.show}>
+        <section
+          role="dialog"
+          tabindex="-1"
+          aria-labelledby="modal-heading-01"
+          aria-modal="true"
+          aria-describedby="modal-content-id-1"
+          class="slds-modal slds-fade-in-open slds-modal_medium"
+        >
+          <div class="slds-modal__container">
+            <header class="slds-modal__header">
+              <h2 class="slds-text-heading_medium slds-var-m-top_x-small">
+                {labels.TC_RELATE_ZDHC_FORMULATOR_TITLE}
+              </h2>
+              <p
+                class="
+                  slds-text-align_center
+                  slds-var-m-top_small
+                  header-summary
+                "
+              >
+                {labels.TC_RELATE_ZDHC_FORMULATOR_HELPTEXT}
+              </p>
+            </header>
+            <div
+              class="slds-modal__content slds-var-p-around_medium manage-formulator__content"
+              id="modal-content-id-1"
+            >
+              <div
+                class="
+                  slds-grid slds-grid_vertical-align-center
+                  slds-m-bottom_medium
+                  align-buttons
+                "
+              >
+                <lightning-input
+                  class="slds-size_1-of-2"
+                  type="text"
+                  label="Formulator Name"
+                  value={selector.search}
+                  onchange={handleSearchChange}
+                >
+                </lightning-input>
+                <lightning-button
+                  variant="brand"
+                  label={labels.SEARCH}
+                  title={labels.SEARCH}
+                  onclick={handleSearch}
+                  disabled={notSearchable}
+                  class="slds-m-left_x-small"
+                ></lightning-button>
+                <lightning-button
+                  label={labels.RESET}
+                  title={labels.RESET}
+                  onclick={handleSearchReset}
+                  disabled={notSearchable}
+                  class="slds-m-left_x-small"
+                ></lightning-button>
+              </div>
+              <template if:false={selector.empty}>
+                <p class="slds-m-top_small slds-m-bottom_small">
+                  {labels.TC_RELATE_ZDHC_FORMULATOR_RESULTS}
+                </p>
+                <div class="manage-formulator__table">
+                  <!-- sldsValidatorIgnoreNextLine -->
+                  <lightning-datatable
+                    enable-infinite-loading
+                    key-field="formulatorGUID"
+                    hide-checkbox-column
+                    columns={selector.columns}
+                    data={selector.rows}
+                    onrowaction={handleRowAction}
+                    onloadmore={handleLoadMore}
+                  ></lightning-datatable>
+                </div>
+              </template>
+              <div
+                if:true={selector.loading}
+                style="height: 4rem; position: relative"
+              >
+                <div class="slds-spinner_container">
+                  <div role="status" class="slds-spinner slds-spinner_medium">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                  </div>
+                </div>
+              </div>
+              <p
+                if:true={noResults}
+                class="slds-m-top_small slds-m-bottom_small"
+              >
+                {labels.TC_RELATE_ZDHC_FORMULATOR_NO_RESULTS}
+              </p>
+            </div>
+            <footer class="slds-modal__footer">
+              <lightning-button
+                label={labels.CANCEL}
+                onclick={handleCancel}
+              ></lightning-button>
+              <lightning-button
+                if:true={selector.searched}
+                variant="brand"
+                label={labels.TC_ZDHC_ADD_FORMULATOR_BUTTON}
+                onclick={confirmAdd}
+                class="create-btn"
+              ></lightning-button>
+            </footer>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </template>
+
+      <template if:true={showConfirmModal}>
+        <section
+          role="dialog"
+          tabindex="-1"
+          aria-labelledby="modal-heading-01"
+          aria-modal="true"
+          aria-describedby="modal-content-id-1"
+          class="slds-modal slds-fade-in-open slds-modal_medium"
+        >
+          <div class="slds-modal__container create-formulator__modal">
+            <header class="slds-modal__header">
+              <h2 class="slds-text-heading_medium slds-var-m-top_x-small">
+                {labels.TC_RELATE_ZDHC_FORMULATOR_TITLE}
+              </h2>
+            </header>
+            <div
+              class="slds-modal__content slds-var-p-around_medium create-formulator__content"
+              id="modal-content-id-2"
+            >
+              <p class="create-formulator">{labels.TC_ARE_YOU_SURE_CREATE_FORMULATOR}</p>
+            </div>
+            <footer class="slds-modal__footer">
+              <lightning-button
+                label={labels.TC_NO_CANCEL}
+                onclick={handleReturnToSearch}
+              ></lightning-button>
+              <lightning-button
+                variant="brand"
+                label={labels.TC_YES_CONTINUE}
+                onclick={handleAddToZdhc}
+                class="create-btn"
+              ></lightning-button>
+            </footer>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

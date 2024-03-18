@@ -1,0 +1,40 @@
+<template>
+  <div class="tiles">
+    <template for:each={data} for:item="item">
+      <c-tile
+        key={item.contentKey}
+        type={tileType}
+        button-variant={buttonVariant}
+        button-label={buttonLabel}
+        nav-url={item.contentUrl}
+        title={item.contentNodes.title.value}
+        title-colour={titleColour}
+        content-text={item.contentNodes.subtitle.value}
+        sub-title-colour={subTitleColour}
+        content-colour={bodyColour}
+        img-src={item.contentNodes.image.url}
+        col-or-row-contents={colOrRowContents}
+        align-contents-v={alignContentsV}
+        align-contents-h={alignContentsH}
+        disable-linkify={disableLinkify}
+        reverse-contents={reverseContents}
+        additional-classes={additionalClasses}
+      ></c-tile>
+    </template>
+  </div>
+  <div class="pagination">
+    <c-button
+      variant="Neutral paging-btn"
+      label="Previous"
+      onclick={previousPage}
+      disabled={disablePrevious}
+    ></c-button>
+    <span>Page {pageNumberOffset}</span>
+    <c-button
+      variant="Neutral paging-btn"
+      label="Next"
+      onclick={nextPage}
+      disabled={disableNext}
+    ></c-button>
+  </div>
+</template>

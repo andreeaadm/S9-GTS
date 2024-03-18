@@ -1,0 +1,35 @@
+<template>
+  <c-i-care-file-upload
+    page-title={labels.DOCUMENTS_SOW}
+    is-read-only={isReadOnly}
+    gts-form-name="TRADEABLE"
+    content-version-ids={contentVersionIds}
+    ondocumentupload={handleDocumentUpload}
+  ></c-i-care-file-upload>
+  <br />
+
+ <!-- <lightning-layout>
+    <lightning-layout-item size="12">
+      <lightning-textarea
+        label={labels.STATEMENT_OF_WORK}
+        value={jobRequestRecord.GTS_Statement_of_Work__c}
+        readonly={isReadOnly}
+        onchange={handleSOWChange}
+        required=true
+      ></lightning-textarea>
+    </lightning-layout-item>
+  </lightning-layout>
+
+  <br />
+
+  <lightning-layout>
+    <lightning-layout-item size="12">
+      <lightning-textarea
+        label={labels.FINAL_REPORT_LABEL}
+        value={jobRequestRecord.GTS_Final_Report_Required__c}
+        readonly={isReadOnly}
+        onchange={handleFinalReportChange}
+      ></lightning-textarea>
+    </lightning-layout-item>
+  </lightning-layout>-->
+</template>

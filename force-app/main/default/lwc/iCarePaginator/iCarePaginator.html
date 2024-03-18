@@ -1,0 +1,67 @@
+<template>
+  <lightning-layout class="container">
+    <lightning-layout-item>
+      <lightning-button
+        label={label.FIRST_PAGE_LABEL}
+        icon-name="utility:chevronleft"
+        onclick={FirstPageHandler}
+        disabled={isFirstPageDisabled}
+      ></lightning-button>
+    </lightning-layout-item>
+    <lightning-layout-item>
+      <lightning-button
+        label={label.PREVIOUS_LABEL}
+        name="Previous"
+        icon-name="utility:chevronleft"
+        onclick={previousHandler}
+        class="Previous"
+        disabled={isPreviousDisabled}
+      ></lightning-button>
+    </lightning-layout-item>
+    <lightning-layout-item>
+      <template if:false={isGtsTrackJobTabel}>
+        <select
+          class="slds-select slds-text-color_success"
+          name="optionSelect"
+          onchange={changeHandler}
+        >
+          <option value="5" selected="selected">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </template>
+      <template if:true={isGtsTrackJobTabel}>
+        <select
+          class="slds-select slds-text-color_success"
+          name="optionSelect"
+          onchange={changeHandler}
+        >
+          <option value="25" selected="selected">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </template>
+    </lightning-layout-item>
+    <lightning-layout-item>
+      <lightning-button
+        label={label.NEXT_LABEL}
+        name="Next"
+        class="Next"
+        icon-name="utility:chevronright"
+        icon-position="right"
+        onclick={nextHandler}
+        disabled={isNextDisabled}
+      ></lightning-button>
+    </lightning-layout-item>
+    <lightning-layout-item>
+      <lightning-button
+        label={label.LAST_PAGE_LABEL}
+        icon-name="utility:chevronright"
+        icon-position="right"
+        onclick={LastPageHandler}
+        disabled={isLastPageDisabled}
+      ></lightning-button>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

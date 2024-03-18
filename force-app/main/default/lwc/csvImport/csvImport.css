@@ -1,0 +1,14 @@
+:host { display: block; }
+
+:host > lightning-card {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+lightning-button.importbtn {
+    display: inline-block;
+    padding-top: var(--lwc-varSpacingVerticalSmall,0.75rem);
+}
+
+c-input {font-size:13px;}

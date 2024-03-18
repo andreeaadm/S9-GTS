@@ -1,0 +1,28 @@
+<template>
+
+    <template lwc:if={isPicklistOptions}>
+    
+        <div class="slds-form-element">      
+            <label class="slds-form-element__label" for="multiSelect">{fieldLabel}</label>
+            <lightning-helptext content={customLabel.HELP_TEXT}></lightning-helptext>
+            <label class="slds-form-element__label slds-assistive-text" for="multiSelect" part="select-label"> </label>
+            <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                    <select
+                        id="multiSelect"
+                        name="multiSelect"
+                        multiple
+                        class="slds-select"
+                        onchange={handleSelection}
+                        size={size}
+                        part="select"
+                    >
+                        <template for:each={picklistOptions} for:item="option">
+                            <option key={option.value} value={option.value} selected={option.selected}>{option.label}</option>
+                        </template>
+                </select>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

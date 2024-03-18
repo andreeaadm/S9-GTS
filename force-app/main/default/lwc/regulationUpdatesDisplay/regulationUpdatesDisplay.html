@@ -1,0 +1,30 @@
+<template>
+    <div class="slds-grid slds-grid_vertical">
+        <template if:true={hasRecords}>
+            <div class="slds-col">
+                <div class="slds-text-heading_medium slds-text-align_center slds-p-top_small">
+                    <b>{label.recentUpdates}</b>
+                    &nbsp;<lightning-helptext data-id="regulationUpdateHelpText" icon-name="utility:question" content={label.helpText}></lightning-helptext>
+                </div>
+                <br>
+            </div>
+            <div class="slds-col">
+                <table class="orderTable">
+                    <thead>
+                        <tr>
+                            <th><div class="slds-wrap">{label.regName}</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                        <template iterator:it={selectedRecords}>
+                            <tr key={it.value.recordId}>
+                                <td if:false={it.last}><div class="slds-wrap">{it.value.name}</div></td>
+                                <td if:true={it.last} style="border-bottom: none;"><div class="slds-wrap">{it.value.name}</div></td>
+                            </tr>
+                        </template>
+                    </tbody>                
+                </table>
+            </div>
+        </template>
+    </div>
+</template>

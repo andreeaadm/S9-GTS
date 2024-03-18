@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    <apiVersion>50.0</apiVersion>
+    
+    
+    <isExposed>true</isExposed>
+    
+    
+    <masterLabel>Site Header</masterLabel>
+    
+    
+    <targets>
+        
+        
+        <target>lightningCommunity__Page</target>
+        
+        
+        <target>lightningCommunity__Default</target>
+        
+        
+    </targets>
+    
+    
+    <targetConfigs>
+        
+        
+        <targetConfig targets="lightningCommunity__Default">
+            
+            
+            <property name="menuName" label="Builder Nav Menu Name" type="String" default="Default Navigation" description="Enter the name of a Builder navigation menu you wish to use"/>
+            
+            
+            <property name="configDevName" label="Nav Icon Config" type="String" datasource="apex://NavIconConfiguration_DataSource"/>
+            
+            
+            <property name="iconType" label="Icon Type" type="String" default="Font Awesome" datasource="None,SVG,Font Awesome,Image"/>
+            
+            
+            <property name="allowRegistration" label="Allow Registration" type="Boolean" default="false"/>
+            
+            
+            <property name="showProfileMenu" label="Show Profile Menu" type="Boolean" default="false"/>
+            
+            
+        </targetConfig>
+        
+        
+    </targetConfigs>
+    
+    
+</LightningComponentBundle>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>CMS Tile</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="managedContentType" label="Content Type" type="String" default="Info" datasource="Info,CTA,TC_Article" required="true" description="The managed content type name chosen here must exactly match the managed content type of the Content Item you choose below."></property>
+            <property name="contentKey" label="Content Item" type="ContentReference"></property>
+            <property name="titleColour" label="Title Colour" type="Color" default="rgb(47, 46, 46)"></property>
+            <property name="subtitleColour" label="Subtitle Colour" type="Color" default="rgb(47, 46, 46)"></property>
+            <property name="bodyColour" label="Body Colour" type="Color" default="rgb(47, 46, 46)"></property>
+            <property name="buttonLabelColour" label="Button Label Colour" type="Color" default="rgb(47, 46, 46)"></property>
+            <property name="buttonBorderColour" label="Button Border Colour" type="Color" default="rgb(47, 46, 46)"></property>
+            <property name="buttonVariant" label="Button Type" type="String" default="btn2" description="Additional style classes that you'd like to apply to buttons within the CMS tile. This enables you to style one set of CMS tile buttons differently to another, in Theme CSS."></property>
+            <property name="colOrRowContents" label="Column or Row" type="String" default="row" datasource="col,row"></property>
+            <property name="alignContentsV" label="Align Contents Vertically" type="Boolean" default="true"></property>
+            <property name="alignContentsH" label="Align Contents Horizontally" type="Boolean"></property>
+            <property name="reverseContents" label="Reverse Layout" type="Boolean"></property>
+            <property name="imgFullWidth" label="Full Width Image" type="Boolean"></property>
+            <property name="additionalClasses" label="Additional Style Classes" type="String" default="cms-tile" description="Additional style classes that you'd like to apply to the component. This enables you to style one cms hero carousel differently to another, in Theme CSS."></property>
+            <property name="showTitle" label="Show CMS Item Title" type="Boolean" default="true"></property>
+            <property name="disableLinkify" label="Disable Linkifying" type="Boolean" description="Disables the linkification of URLs in tile content."></property>
+        </targetConfig>
+    </targetConfigs>
+    <capabilities>
+        <capability>lightningCommunity__RelaxedCSP</capability>
+    </capabilities>
+</LightningComponentBundle>

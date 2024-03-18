@@ -1,0 +1,64 @@
+.container {
+    background-color: var(--Intertek-Cerello);
+}
+
+.container-content {
+    width: 100%;
+    padding-right: 30px;
+    margin: auto;
+
+}
+
+.container-content ul {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+
+}
+
+.container-content ul li a {
+    font-family: var(--neo-sans-regular);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.03em;
+    color: var(--Dark-Blue);
+}
+
+.container-content li {
+    padding: 30px;
+}
+
+.container-content li:nth-child(1) {
+    border-left: 1px solid #E5B606;
+    border-right: 1px solid #E5B606;
+
+}
+
+.container-content li:nth-child(2) {
+    border-right: 1px solid #E5B606;
+}
+
+@media screen and (min-width:768px) {
+    .container-content {
+        padding-right: 30px;
+    }
+
+    .container-content ul {
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .container-content {
+        width: 1440px;
+    }
+
+}
+
+@media screen and (min-width:1441px) {
+    .container-content {
+        padding-right: 0px;
+    }
+}

@@ -1,0 +1,8 @@
+:host > div {
+    max-width:840px;
+    margin: 0 auto;
+}
+
+:host > div > div {
+    padding-bottom: 15px;
+}

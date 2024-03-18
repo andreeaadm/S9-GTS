@@ -1,0 +1,57 @@
+<template>
+  <c-object-home
+    title="Projects"
+    onbtnclick={handleBtnClick}
+    btn-label={conditionalExport}
+    table-data={tableData}
+    table-header-actions-visible={tableHeaderActionsVisible}
+    scroll-after-x-pixels={scrollAfterXPixels}
+    onviewmore={handleViewMore}
+    onorderby={handleOrderBy}
+    is-loading={isLoading}
+    load-more-message={loadMoreMessage}
+    all-shown={allShown}
+  >
+    <c-input
+      class="status"
+      slot="filters"
+      if:true={filterStatusOptions.data}
+      label="Status"
+      type="SelectList"
+      select-options={filterStatusOptions.data.values}
+      select-needs-empty-option
+      placeholder="Select status"
+      onchange={handleFilterChange}
+      field-id="filterStatus"
+      value={filterStatus}
+    ></c-input>
+    <c-input
+      slot="filters"
+      class="search"
+      label="Search"
+      placeholder="Project Number, Account, PO, Quote"
+      onchange={handleFilterChange}
+      field-id="filterSearch"
+      value={filterSearch}
+    ></c-input>
+    <div slot="filters" class="dates">
+      <c-input
+        slot="filters"
+        label="Scheduled start"
+        type="Date"
+        placeholder="From"
+        onchange={handleFilterChange}
+        field-id="filterDateFrom"
+        value={filterDateFrom}
+      ></c-input>
+      <c-input
+        slot="filters"
+        type="Date"
+        placeholder="To"
+        onchange={handleFilterChange}
+        field-id="filterDateTo"
+        value={filterDateTo}
+      ></c-input>
+    </div>
+  </c-object-home>
+</template>

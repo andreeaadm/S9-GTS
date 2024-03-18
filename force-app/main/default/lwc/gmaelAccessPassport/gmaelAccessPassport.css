@@ -1,0 +1,43 @@
+.table-section {
+    width: 100%;
+}
+
+.table-section-cell-left {
+    text-align: center;
+    width: 70%;
+    padding: 10px;
+}
+
+.table-section-cell-right {
+    text-align: left;
+    width: 30%;
+    padding-right: 50px;
+}
+
+.header-div {
+    width: 100%;
+    background-color: var(--yellow-primary);
+    padding: 10px;
+
+    font-family: var(--calibri-bold) !important;
+    font-size: 18px;
+    letter-spacing: 0.015em;
+    color: black;
+}
+
+.main-div {
+    border: 1px solid var(--yellow-primary);
+    border-radius: 1px;
+}
+
+.div-success-section {
+    padding: 20px;
+    display: none;
+}
+
+.div-success-message-header {
+    color:  var(--yellow-primary);
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 10px;
+}

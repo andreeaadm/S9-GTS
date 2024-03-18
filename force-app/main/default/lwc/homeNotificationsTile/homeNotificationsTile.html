@@ -1,0 +1,46 @@
+<template>
+  <c-intertek-tile if:false={hasLoaded} title="Notifications" has-loaded="true">
+    <div slot="contentSlotBottom">
+      <div>
+        <c-spinner></c-spinner>
+      </div>
+    </div>
+  </c-intertek-tile>
+  <c-intertek-tile title="Notifications" has-loaded={hasLoaded}>
+    <div slot="contentSlotBottom">
+      <div if:true={isEmpty}>
+        <p>
+          You're all up to date!<br />
+          We'll keep you in the know if there are any issues or actions required
+          relating to your reports and cases.
+        </p>
+        <c-notificationssvg></c-notificationssvg>
+      </div>
+      <div if:false={isEmpty}>
+        <div class="notificationwrap">
+          <template for:each={notifications} for:item="n">
+            <div class="notificationrow" key={n.title}>
+              <div class="icon">
+                <c-icondocsvg if:true={n.isReport}></c-icondocsvg>
+                <c-iconcasesearchsvg if:true={n.isCase}></c-iconcasesearchsvg>
+                <c-iconcasesearchsvg if:true={n.isUser}></c-iconcasesearchsvg>
+              </div>
+              <div class="info">
+                <span if:true={n.title}>
+                  <lightning-formatted-rich-text
+                    value={n.title}
+                  ></lightning-formatted-rich-text>
+                </span>
+                <span if:true={n.subtitle}>
+                  <lightning-formatted-rich-text
+                    value={n.subtitle}
+                  ></lightning-formatted-rich-text>
+                </span>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </c-intertek-tile>
+</template>

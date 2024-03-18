@@ -1,0 +1,22 @@
+:host {
+    display:block;
+    /*padding: 0 0 30px;*/
+}
+
+c-datatable {display:block;margin-top:30px;}
+
+.noitems {
+    text-align: center;
+    padding-left:10px;
+    padding-right:10px;
+    min-height: 170px;
+}
+
+@media screen and (min-width:768px) {
+    .noitems {margin-top:170px;}
+}
+
+@media screen and (max-width:767px) {
+    /*:host {min-height:600px;}*/
+    .noitems {margin-top: 150px;}
+}

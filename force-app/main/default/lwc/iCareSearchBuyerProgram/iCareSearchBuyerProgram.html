@@ -1,0 +1,36 @@
+<template>
+    <div class="container-background">
+        <div class="container-content">
+            <h1>{label.BUYER_PROGRAM_TITLE}</h1>
+            <p>{label.SEARCH_OR_SELECT_BUYER}</p>
+            <div>
+                <lightning-input name="search-buyer" placeholder={label.SEARCH_BUYER} type="search"
+                    value={searchedBuyerName} onchange={handleBuyerSearchInputChange} autocomplete="off" role="search">
+                </lightning-input>
+                <template if:true={showSuggestions}>
+                    <template if:true={filteredBuyers.length}>
+                        <div class=" search slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+                            role="listbox">
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                <template for:each={filteredBuyers} for:item="buyer">
+                                    <li key={buyer} data-id={buyer.id} data-name={buyer.buyerName} role="presentation"
+                                        onclick={handlePreselect}>
+                                        <span class="slds-lookup__item-action" role="option">
+                                            <span class="slds-truncate">{buyer.buyerName}</span>
+                                        </span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <div>
+                <div class="container-buttons">
+                    <button class="button-white" onclick={handleGoBackClick}>{label.BACK}</button>
+                    <button class="button-blue" onclick={handleSearchClick}>{label.SEARCH}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

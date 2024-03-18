@@ -1,0 +1,61 @@
+<template>
+  <template if:true={showMainLabel}>
+    <template if:true={label}>
+      <label for={fieldId}>
+        <abbr if:true={required} class="slds-required" title="required"
+          >*
+        </abbr>
+        {label}
+      </label>
+    </template>
+  </template>
+
+  <!-- prettier-ignore -->
+  <template if:false={disabled}>
+
+		<c-checkbox if:true={isCheckbox} class={styleClass} title={title} hide-label={hideLabel} label={label} checked={value} required={required} onchange={handleChange}></c-checkbox>
+		<c-radio if:true={isRadio} title={title} hide-label={hideLabel} label={label} checked={value} onchange={handleChange}></c-radio>
+		<c-selectlist if:true={isSelect} title={title} placeholder={placeholder} style-class={styleClass} options={selectOptions} needs-empty-option={selectNeedsEmptyOption} value={value} onchange={handleChange}></c-selectlist>
+		<input if:true={isCurrency} title={title} placeholder={placeholder} type="text" value={value} oninput={handleChange} />
+		<input if:true={isNumber} title={title} placeholder={placeholder} type="text" value={value} oninput={handleChange} />
+		<input if:true={isPercent} title={title} placeholder={placeholder} type="text" value={value} oninput={handleChange} />
+		<input if:true={isEmailAddress} title={title} placeholder={placeholder} class={styleClass} type="text" value={value} oninput={handleChange} />
+		<input if:true={isText} title={title} placeholder={placeholder} class={styleClass} type="text" value={value} oninput={handleChange} />
+		<textarea if:true={isTextarea} title={title} placeholder={placeholder} class="slds-textarea" oninput={handleChange}>{value}</textarea>
+		<span if:true={isFormula} title={title}>{value}</span>
+		<lightning-input if:true={isDate} title={title} type="date" class={styleClass} placeholder={placeholder} value={value} label={label} message-when-value-missing={errorOnRequired} required={required} onchange={handleChange}></lightning-input>
+		<lightning-input if:true={isDateTime} title={title} type="datetime" class={styleClass} placeholder={placeholder} value={value} label={label} message-when-value-missing={errorOnRequired} required={required} onchange={handleChange}></lightning-input>
+		<lightning-input if:true={isFile} title={title} type="file" class="file" label={label} accept={fileAcceptList} multiple={multipleFiles} message-when-value-missing={errorOnRequired} required={required} onchange={handleFilesChange}></lightning-input>
+		<lightning-record-edit-form if:true={isLookup} object-api-name={sObjectName} onchange={handleChange}>
+			<lightning-input-field title={title} class="lookup" field-name={fieldId} variant="label-hidden" value={value}></lightning-input-field>
+		</lightning-record-edit-form>
+		<c-slider if:true={isSlider} slider-config={sliderConfig} title={title} step={step} min-range={minRange} max-range={maxRange} values={values} onchange={handleSliderChange}></c-slider>
+		<lightning-input-rich-text if:true={isRichText} value={value} class={styleClass} placeholder={placeholder} message-when-bad-input={errorOnCustom} required={required} onchange={handleChange}></lightning-input-rich-text>
+		<template for:each={errors} for:item="e">
+			<div key={e} title="Error messages" class="error-messages">{e}</div>
+		</template>
+
+	</template>
+
+  <!-- prettier-ignore -->
+  <template if:true={disabled}>
+		<c-checkbox if:true={isCheckbox} title={title} disabled hide-label={hideLabel} label={label} checked={value}></c-checkbox>
+		<c-radio if:true={isRadio} title={title} disabled hide-label={hideLabel} label={label} checked={value}></c-radio>
+		<c-selectlist if:true={isSelect} title={title} disabled options={selectOptions}></c-selectlist>
+		<lightning-record-edit-form if:true={isLookup} record-id={value} object-api-name={sObjectName}>
+			<lightning-output-field title={title} field-name={fieldId}></lightning-output-field>
+		</lightning-record-edit-form>
+		<c-slider if:true={isSlider} slider-config={sliderConfig} title={title} step={step} min-range={minRange} max-range={maxRange} values={values} disabled></c-slider>
+		<lightning-input if:true={isDate} disabled title={title} type="date" class={styleClass} placeholder={placeholder} value={value} label={label} message-when-value-missing={errorOnRequired} required={required} onchange={handleChange}></lightning-input>
+		<template if:false={isCheckable}>
+			<template if:false={isDate}>
+				<span if:false={isTextarea} title={title} id={fieldId} class="input-result">{value}</span> 
+			</template>
+			<textarea if:true={isTextarea} title={title} class="slds-textarea" disabled>{value}</textarea>
+			<lightning-formatted-rich-text if:true={isRichText} value={value}></lightning-formatted-rich-text>
+			<template if:true={isPercent}>
+				<span title={title} class="symbol">%</span>
+			</template>
+		</template>
+	</template>
+</template>

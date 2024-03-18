@@ -1,0 +1,22 @@
+<template>
+    <label class="slds-form-element__label" for="input">
+        <template if:true={required}>
+            <abbr class="slds-required" title="required">* </abbr>
+        </template>
+        {label}
+    </label>
+    <div class="slds-form-element__control">
+        <input id="input" autocomplete="off" disabled={disabled} name="input" list="valueList" placeholder={placeholder}
+            required={required} class="slds-input custom-autocomplete" type="text" value={value}
+            onchange={handleChange} onblur={handleChange}/>
+        <datalist id="valueList" class="datalist-arrow">
+            <template for:each={values} for:item='item'>
+                <option key={item.key} value={item.value}>{item.value}</option>
+            </template>
+        </datalist>
+        <template if:true={requiredMsg}>
+            <div class="slds-form-element__help" id="help-message-107" data-help-message="" role="alert"
+                part="help-text" style="color: red;">Please select a valid value.</div>
+        </template>
+    </div>
+</template>

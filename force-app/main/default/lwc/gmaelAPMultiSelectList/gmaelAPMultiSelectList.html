@@ -1,0 +1,13 @@
+<template>
+    <template if:true={options}>
+        <lightning-dual-listbox name={labels.GMAEL_Countries} label={labels.GMAEL_Countries} source-label={labels.GMAEL_Available} selected-label={labels.GMAEL_Selected}
+            options={options} onchange={handleChange} value={_selected}></lightning-dual-listbox>
+
+        <section>
+            <div style="display: flex; width:45%; color:white; background: rgba(71, 78, 84, 0.5); margin-top: 20px;
+            padding: 10px;">
+                {labels.GMAEL_Country_List_View_Help_Text}
+            </div>
+        </section>
+    </template>
+</template>

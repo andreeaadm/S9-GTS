@@ -1,0 +1,40 @@
+<template>
+  <lightning-quick-action-panel header={labels.TC_IMPORT_INVENTORY_LINE_ITEMS}>
+    <div class="content">
+      <p>{labels.TC_LINEITEM_IMPORT_INSTRUCTIONS}</p>
+      <c-csv-import
+        hide-import-button
+        onfilechange={handleFileChange}
+        onimportsuccess={handleImportSuccess}
+        onimporterror={handleImportError}
+        import-label=""
+        download-c-s-v-label={labels.TC_DOWNLOAD_TEMPLATE}
+        download-c-s-v-error-title={labels.ERROR}
+        import-error-title={labels.ERROR}
+        setting-name="ToxClear_Inventory_Line_Items"
+        record-id={recordId}
+        import-action={importLineItems}
+      ></c-csv-import>
+      <div class="error" if:true={errors}>
+        <template for:each={errors} for:item="error">
+          <p key={error}>{error}</p>
+        </template>
+      </div>
+    </div>
+    <div slot="footer">
+      <lightning-button
+        variant="neutral"
+        label="Cancel"
+        onclick={closeAction}
+        disabled={isWorking}
+      ></lightning-button>
+      <lightning-button
+        variant="brand"
+        label="Import"
+        onclick={doImport}
+        disabled={disableImport}
+        class="slds-m-left_x-small"
+      ></lightning-button>
+    </div>
+  </lightning-quick-action-panel>
+</template>

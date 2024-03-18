@@ -1,0 +1,42 @@
+<template>
+    <div class='container' onscroll={handleScroll}>
+        <!-- <span class="arrow"></span> -->
+        <div class="container-dropdown">
+            <div class="title">
+                <h3>{title}</h3>
+            </div>
+            <div class="container-content">
+                <figure>
+                    <img src={intertek} alt="intertek">
+                </figure>
+                <div class="container-text">
+                    <p class="paragraph">
+                        <lightning-formatted-rich-text value={paragraph}></lightning-formatted-rich-text>
+                    </p>
+
+                    <ul>
+                        <li>{item1}</li>
+                        <li>{item2}</li>
+                        <li>{item3}</li>
+                        <li>{item4}</li>
+                        <li>{item5}</li>
+                        <li>{item6}</li>
+                        <li>{item7}</li>
+                        <li>{item8}</li>
+                    </ul>
+                    <p class="links">
+                        <lightning-formatted-rich-text value={links}></lightning-formatted-rich-text>
+                    </p>
+                    <div class="container-button">
+                        <button onclick={handleSendRequest}>{boton}</button>
+                    </div>
+                </div>
+               
+
+            </div>
+           
+        </div>
+    </div>
+    <c-gmael-send-a-request-model lwc:ref="sendARequestModel"></c-gmael-send-a-request-model>
+
+</template>

@@ -1,0 +1,267 @@
+<template>
+  <div class="form" if:true={objInfo.data}>
+    <h3>{labels.VOLUME_DETAILS}</h3>
+    <div class="input-group">
+      <c-input
+        type="SelectList"
+        select-options={unitOptions}
+        disabled={disableUnitInput}
+        label={objInfo.data.fields.Unit__c.label}
+        field-id="Unit__c"
+        data-id="Unit__c"
+        value={unit}
+        error-on-required={labels.TYPE_OF_UNIT_MANDATORY}
+        required
+        if:true={unitOptions}
+      ></c-input>
+    </div>
+    <div if:true={isUsageType} class="input-group stock">
+      <c-input
+        label={objInfo.data.fields.Stock_Take_Month_Begin__c.label}
+        field-id="Stock_Take_Month_Begin__c"
+        data-id="Stock_Take_Month_Begin__c"
+        disabled={isNotPending}
+        value={stockMonthBegin}
+        error-on-required={labels.STOCK_TAKE_MONTH_BEGIN_MANDATORY}
+        error-on-pattern={labels.STOCK_TAKE_MONTH_BEGIN_DECIMAL_PLACES}
+        required
+      ></c-input>
+      <c-input
+        label={objInfo.data.fields.Stock_Take_Month_End__c.label}
+        field-id="Stock_Take_Month_End__c"
+        data-id="Stock_Take_Month_End__c"
+        disabled={isNotPending}
+        error-on-required="Stock Take - month end is mandatory"
+        error-on-pattern={labels.STOCK_TAKE_MONTH_END_DECIMAL_PLACES}
+        value={stockMonthEnd}
+        required
+      ></c-input>
+      <c-input
+        disabled
+        label={objInfo.data.fields.Calculated_Usage__c.label}
+        value={calculatedUsage}
+        field-id="Calculated_Usage__c"
+      ></c-input>
+    </div>
+    <div class="input-group">
+      <div>
+        <div if:true={isUsageType}>
+          <c-input
+          disabled={disableDeliveredStockInput}
+          label={objInfo.data.fields.Delivered_Stock_This_Month__c.label}
+          field-id="Delivered_Stock_This_Month__c"
+          data-id="Delivered_Stock_This_Month__c"
+          error-on-pattern={labels.UPDATE_DELIVERED_STOCK_DECIMAL_PLACES}
+          regex-pattern={addStockRegex}
+          value={deliveredStock}
+          ></c-input>
+      </div>
+      <div if:false={isUsageType}>
+        <c-input
+          disabled={disableDeliveredStockInput}
+          label={objInfo.data.fields.Delivered_Stock_This_Month__c.label}
+          field-id="Delivered_Stock_This_Month__c"
+          data-id="Delivered_Stock_This_Month__c"
+          error-on-pattern={labels.UPDATE_DELIVERED_STOCK_DECIMAL_PLACES}
+          regex-pattern={addStockRegex}
+          value={deliveredStock}
+          error-on-required="Delivered Stock this month is mandatory"
+          required
+        ></c-input>
+      </div>
+        <c-button
+          if:true={disableDeliveredStockInput}
+          variant="IntkBrandOneBtn"
+          label={labels.EDIT}
+          onclick={toggleDeliveredStockEdit}
+          disabled={disableBtn}
+        ></c-button>
+        <!-- TWig:Start -->
+        <c-button
+          if:false={disableDeliveredStockInput}
+          variant="IntkBrandOneBtn"
+          label="Cancel"
+          onclick={toggleDeliveredStockEdit}
+          disabled={isNotPending}
+        ></c-button>
+        <!-- Twig:End -->
+        <span class="warning"> {labels.WARNING_RECTIFY_MISTAKE} </span>
+      </div>
+      <div>
+        <c-input
+          label={labels.ADD_MORE_DELIVERED_STOCK}
+          field-id="AddMoreStock"
+          data-id="AddMoreStock"
+          type="Number"
+          error-on-pattern={labels.UPDATE_DELIVERED_STOCK_DECIMAL_PLACES}
+          error-on-type={labels.UPDATE_DELIVERED_STOCK_DECIMAL_PLACES}
+          regex-pattern={addStockRegex}
+          disabled={isNotPending}
+        ></c-input>
+        <c-button
+          variant="IntkBrandOneBtn"
+          label={labels.ADD}
+          onclick={handleAddStock}
+          disabled={disableBtn}
+        ></c-button>
+      </div>
+      <c-input
+        disabled
+        label={objInfo.data.fields.Calculated_Weight_kg__c.label}
+        value={calculatedWeight}
+        field-id="Calculated_Weight_kg__c"
+      ></c-input>
+    </div>
+
+    <div class="texts">
+      <label>{labels.DELIVERED_STOCK_HISTORY}</label>
+      <lightning-formatted-rich-text
+        value={deliveredStockHistory}
+      ></lightning-formatted-rich-text>
+    </div>
+
+    <h3>{labels.NOTES}</h3>
+    <div class="input-group notes">
+      <c-input
+        label={objInfo.data.fields.Storage_Location__c.label}
+        field-id="Storage_Location__c"
+        data-id="Storage_Location__c"
+        value={storageLocation}
+        disabled={isNotPending}
+      ></c-input>
+      <c-input
+        label={objInfo.data.fields.Lot_Number__c.label}
+        field-id="Lot_Number__c"
+        data-id="Lot_Number__c"
+        value={lotNumber}
+        disabled={isNotPending}
+      ></c-input>
+      <c-input
+        type="Date"
+        label={objInfo.data.fields.Expiry_Date__c.label}
+        field-id="Expiry_Date__c"
+        data-id="Expiry_Date__c"
+        value={expiryDate}
+        disabled={isNotPending}
+      ></c-input></div>
+      <div class="input-group">
+      <c-input
+      label={objInfo.data.fields.Supplier_Reference_Name__c.label}
+      field-id="Supplier_Reference_Name__c"
+      data-id="Supplier_Reference_Name__c"
+      value={supplierReferenceName}
+      disabled>
+    </c-input>
+    <c-input
+      label={objInfo.data.fields.Supplier_Reference_Number__c.label}
+      field-id="Supplier_Reference_Number__c"
+      data-id="Supplier_Reference_Number__c"
+      value={supplierReferenceNumber}
+      disabled>
+    </c-input>
+    <c-input
+      label={objInfo.data.fields.Product_Name_Local_Language__c.label}
+      field-id="Product_Name_Local_Language__c"
+      data-id="Product_Name_Local_Language__c"
+      value={productNameLocalLanguage}
+      disabled>
+    </c-input>
+    <c-input
+      label={objInfo.data.fields.Formulator_Name_Local_Language__c.label}
+      field-id="Formulator_Name_Local_Language__c"
+      data-id="Formulator_Name_Local_Language__c"
+      value={formulatorNameLocalLanguage}
+      disabled>
+    </c-input>
+    </div>
+
+    <h3>{labels.TC_COMMODITY_CHEMICAL_HEADING}</h3>
+    <p class="para">{labels.TC_COMMODITY_CHEMICAL_PARA}</p>
+    <div class="input-group commodity" if:true={commodityChemicalOptions}>
+        <c-input
+        type="SelectList"
+        select-options={commodityChemicalOptions}
+        label={objInfo.data.fields.Commodity_Chemical_Standard_Name__c.label}
+        field-id="Commodity_Chemical_Standard_Name__c"
+        data-id="Commodity_Chemical_Standard_Name__c"
+        value={commodityChemicalStandardName}
+        disabled={disableComChem}
+        if:true={commodityChemicalOptions}
+        ></c-input>
+    </div>
+    <div class="input-group commodity" if:true={typeOfChemicalOptions}>
+      <c-input
+      type="SelectList"
+      select-options={typeOfChemicalOptions}
+      label={objInfo.data.fields.Type_of_Chemicals__c.label}
+      field-id="Type_of_Chemicals__c"
+      data-id="Type_of_Chemicals__c"
+      value={typeOfChemicals}
+      disabled={disableTypeOfChem}
+      if:true={typeOfChemicalOptions}
+      ></c-input>
+  </div>
+
+    <div class="texts">
+      <h3>{labels.CHEMICAL_DETAILS}</h3>
+      <p>{labels.PRODUCT_NAME}: {productName}</p>
+      <p>{labels.FORMULATOR_NAME}: {formulatorName}</p>
+      <p>{labels.OTHER_NAME}: {otherName}</p>
+      <p>{labels.ZDHCMRSLVersion}: {zdhcMrslVersion}</p>
+      <p>{labels.ZDHCMRSL20}: {zdhcMrsl}</p>
+      <div if:true={isBabies}><p>{labels.TC_INDITEXCLASSIFICATIONFORBABIES}: {inditexClassificationForBabies}</p></div>
+      <div if:true={isChildAdult}><p>{labels.TC_INDITEXCLASSIFICATIONFORCHILDRENADULT}: {inditexClassificationForChildAdult}</p></div>
+      <p>{labels.PRODUCT_ID}: {productId}</p>
+      <p>{labels.TC_PRODUCT_GUID}: {productGUID}</p>
+    </div>
+  </div>
+  <div class="buttons">
+    <c-button
+      variant="Delete pnlActionBtn"
+      label={labels.DELETE}
+      onclick={handleDelete}
+      disabled={disableBtn}
+      if:true={isPending}
+    ></c-button>
+    <div class="right-btn-container">
+      <c-button
+        variant="IntkBrandOneBtn"
+        label={labels.CANCEL}
+        onclick={handleCancel}
+        disabled={disableBtn}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn pnlActionBtn"
+        label={labels.SAVE}
+        onclick={handleSave}
+        disabled={disableBtn}
+      ></c-button>
+    </div>
+  </div>
+  <c-modal showmodal={showModal} maxwidth="830" additional-classes="noMob">
+    <span slot="header">{labels.ARE_YOU_SURE}</span>
+    <div slot="content">
+      <div>
+        <h3>
+          {labels.ARE_YOU_SURE_YOU_WANT_TO} {labels.DELETE}
+          {labels.THIS_LINE_ITEM}
+        </h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        onclick={toggleModal}
+        disabled={disableBtn}
+      ></c-button>
+      <c-button
+        variant="Delete ModalFooterBtn"
+        label="DELETE"
+        onclick={handleConfirmDelete}
+        disabled={disableBtn}
+      ></c-button>
+      <!-- {labels.SUBMIT} -->
+    </div>
+  </c-modal>
+</template>

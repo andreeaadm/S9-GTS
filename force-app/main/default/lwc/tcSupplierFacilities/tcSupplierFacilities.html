@@ -1,0 +1,12 @@
+<template>
+  <c-datatable
+    if:false={noData}
+    table-cols={tableData.columns}
+    table-rows={currentRows}
+    all-shown={allShown}
+    onviewmore={handleViewMore}
+    additional-classes="clickablecells-nowidth clickablecells-noabspos mob-longStringFix"
+    mob-enabled="true"
+  >
+  </c-datatable>
+</template>

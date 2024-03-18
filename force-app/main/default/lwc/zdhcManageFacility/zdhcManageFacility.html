@@ -1,0 +1,158 @@
+<template>
+  <lightning-card>
+    <img class="manage-facility__logo" src={toxLogo} />
+
+    <div class="manage-facility">
+      <c-zdhc-facility-manager-checks
+        record-id={recordId}
+        get-record-fields={recordFields}
+        no-facility-manager-label={labels.NO_FACILITY_MANAGER}
+        no-user-access-key-label={labels.FACILITY_MANAGER_NO_USER_ACCESS_KEY}
+        onfounduseraccesskey={handleFoundUserAccessKey}
+        onresetcmp={handleResetCmp}
+        onerror={handleError}
+      ></c-zdhc-facility-manager-checks>
+      <!-- Organisation Selector -->
+      <div if:true={showOrgLinkAction} class="manage-facility__action">
+        <lightning-button
+          variant="brand"
+          label={labels.ORG_SELECTOR_ACTION_TITLE}
+          onclick={handleLinkToZdhc}
+        ></lightning-button>
+      </div>
+      <div if:true={showPurchaseAction} class="manage-facility__action">
+        <lightning-button
+          variant="brand"
+          label={purchaseActionLabel}
+          onclick={handlePurchase}
+        ></lightning-button>
+      </div>
+      <template if:true={showModal}>
+        <section
+          role="dialog"
+          tabindex="-1"
+          aria-labelledby="modal-heading-01"
+          aria-modal="true"
+          aria-describedby="modal-content-id-1"
+          class="slds-modal slds-fade-in-open slds-modal_medium"
+        >
+          <div class="slds-modal__container">
+            <header class="slds-modal__header">
+              <img class="manage-facility__logo_small" src={toxLogo} />
+              <p class="slds-var-m-top_x-small manage-facility__title">
+                {labels.ORG_SELECTOR_ACTION_TITLE}
+              </p>
+            </header>
+            <div
+              class="slds-modal__content slds-var-p-around_medium"
+              id="modal-content-id-1"
+            >
+              <div
+                if:true={showLoader}
+                class="manage-facility__spinner manage-facility__spinner_large"
+              >
+                <lightning-spinner
+                  variant="brand"
+                  size="medium"
+                ></lightning-spinner>
+              </div>
+              <template if:true={tableRows}>
+                <p>{labels.SELECTOR_RESULTS}</p>
+                <div class="manage-facility__table">
+                  <!-- sldsValidatorIgnoreNextLine -->
+                  <lightning-datatable
+                    key-field="OrgGUID"
+                    hide-checkbox-column
+                    columns={tableCols}
+                    data={tableRows}
+                    onrowaction={handleRowAction}
+                  ></lightning-datatable>
+                </div>
+              </template>
+            </div>
+            <footer class="slds-modal__footer">
+              <lightning-button
+                label="Cancel"
+                onclick={handleCancel}
+              ></lightning-button>
+            </footer>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </template>
+      <!-- Subscription Manager -->
+      <div if:true={showLoader} class="manage-facility__spinner">
+        <lightning-spinner variant="brand" size="medium"></lightning-spinner>
+      </div>
+      <div if:true={showSubscriptionStatus}>
+        <p class="manage-facility-subscription__title">
+          {labels.UPDATE_SUBSCRIPTION_STATUS_TITLE}
+        </p>
+        <div class="slds-grid slds-wrap manage-facility-subscription__details">
+          <div class="slds-col slds-size_2-of-3">
+            {accountObjectInfo.data.fields.InCheck_Status__c.label}
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-text-align_right">
+            {_accountRecord.fields.InCheck_Status__c.value}
+          </div>
+          <div class="slds-col slds-size_2-of-3">
+            {accountObjectInfo.data.fields.InCheck_Subscription_Purchase_Date__c.label}
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-text-align_right">
+            <lightning-formatted-date-time
+              value={_accountRecord.fields.InCheck_Subscription_Purchase_Date__c.value}
+            ></lightning-formatted-date-time>
+          </div>
+          <div class="slds-col slds-size_2-of-3">
+            {accountObjectInfo.data.fields.InCheck_Subscription_Start_Date__c.label}
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-text-align_right">
+            <lightning-formatted-date-time
+              value={_accountRecord.fields.InCheck_Subscription_Start_Date__c.value}
+            ></lightning-formatted-date-time>
+          </div>
+          <div class="slds-col slds-size_2-of-3">
+            {accountObjectInfo.data.fields.InCheck_Subscription_Expiration_Date__c.label}
+          </div>
+          <div class="slds-col slds-size_1-of-3 slds-text-align_right">
+            <lightning-formatted-date-time
+              value={_accountRecord.fields.InCheck_Subscription_Expiration_Date__c.value}
+            ></lightning-formatted-date-time>
+          </div>
+        </div>
+        <div if:false={showComponentStatus} class="manage-facility__action">
+          <lightning-button
+            variant="brand"
+            label={labels.UPDATE_SUBSCRIPTION_STATUS_ACTION}
+            onclick={handleUpdateSubscriptionStatus}
+          ></lightning-button>
+        </div>
+      </div>
+      <div
+        if:true={showComponentStatus}
+        class="slds-align_absolute-center pad-bottom-sub-status"
+      >
+        <div class="slds-media slds-media_center">
+          <div class="slds-media__figure">
+            <lightning-icon
+              icon-name={statusIcon}
+              variant={componentStatus}
+              size="medium"
+            ></lightning-icon>
+          </div>
+          <div class="slds-media__body manage-facility__title">
+            {componentStatusLabel}
+          </div>
+        </div>
+      </div>
+    </div>
+  </lightning-card>
+
+  <!-- Activate/Renew actions -->
+  <lightning-card>
+    <c-zdhc-facility-activate-renew
+      record-id={recordId}
+      onerror={handleError}
+    ></c-zdhc-facility-activate-renew>
+  </lightning-card>
+</template>

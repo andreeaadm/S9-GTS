@@ -1,0 +1,466 @@
+/*** INTERTEK RE-BASE ***/
+
+/* scrolls */
+
+::-webkit-scrollbar {width:5px;cursor:pointer;height:5px;}
+::-webkit-scrollbar-track {box-shadow: inset 0 0 6px 6px rgba(243,242,242,1);}
+::-webkit-scrollbar-thumb {box-shadow: inset 0 0 6px 6px rgba(33,182,215,1);}	/*  border-radius: 5px; | bg: rgba(27, 82, 151, 0.5) */
+
+/* std 'mode' */
+
+.std.hscroll table {width:1400px;} /* example width */
+.std.hscroll div [data-id="overflow"] {overflow-x: auto;}
+
+/* Any v-scroll. Receives dynamic max-height. Required overflow + xtra pad for scroll left space */
+
+.vscroll-active div[data-id="overflow"] {overflow-y:auto;padding-right: 10px;}
+
+/* Fixed-th 'mode' (widths required for col align) */
+
+.fix-th-vscroll table {table-layout:fixed;} /* required */
+
+.fix-th-vscroll.modalTable .table-header table thead th {padding-bottom:10px!important;}
+.fix-th-vscroll.modalTable .wrapper {border-top: 1px solid #c7caca;}
+.fix-th-vscroll.modalTable .loadmore {padding:20px 0 25px!important;}
+
+.fix-th-vscroll.vscroll-active.modalTable .table-header {padding-right: 12px;/*background-color: #1b5297;*/}
+.fix-th-vscroll.vscroll-active.modalTable .wrapper table tbody tr:first-of-type td {padding-top:2px!important;}
+.fix-th-vscroll.vscroll-active.modalTable .wrapper {background:transparent;}
+.fix-th-vscroll.vscroll-active.modalTable div[data-id="overflow"] {margin-top: 10px;}
+
+/* general */
+
+tr th, tr td {
+	padding: 10px 14px;
+	font-size:15px!important;
+  	line-height:21px!important;
+  	vertical-align: top;
+	color:#080707;
+}
+
+tbody tr:nth-child(odd),
+.fix-td1-hscroll .wrapper .special > div:nth-child(odd) {background:#fff;border-bottom:2px solid #e3e4e4;}
+
+tbody tr:nth-child(even),
+.fix-td1-hscroll .wrapper .special > div:nth-child(even) {background:#F8F8F8;border-bottom:1px solid #c7caca;}
+
+tbody tr:last-of-type {border-bottom:0!important;}
+
+thead tr th,
+.fix-td1-hscroll .wrapper .thead {	
+	font-weight: unset;
+    font-size: 15px!important;
+    line-height: 22px!important;
+	font-family: 'NeoSans-ExtraBold';
+	padding-bottom: 25px;
+}
+
+.loadmore {
+	display: flex;
+	flex-direction:column;
+	text-align: center;
+	padding: 35px 0 8px;
+}
+
+.tile-table .loadmore {
+	padding: 0;
+}
+
+.loadmore > p {color:#7d8286;font-size:15px;line-height:22px;padding-bottom: 10px;}
+
+tbody tr td.clickable {color:#007D99!important;text-decoration:underline;cursor:pointer;}
+
+@media screen and (min-width:951px) and (max-width:1024px) {
+	tr th, tr td {
+		font-size:14px!important;
+		line-height:20px!important;
+		padding: 8px!important;
+	}
+	thead tr th,
+	.fix-td1-hscroll .wrapper .thead {	
+		font-size: 15px!important;
+		line-height: 21px!important;
+		padding: 8px!important;
+	}
+}
+
+/* Hidden for table headers? */
+
+.hidden {display:none;}
+
+/* Data-specific cell mgmt */ 
+
+table tbody tr td[data-header="Report name"],
+table tbody tr td[data-header="Email address"],
+table tbody tr td[data-header="Username"] {word-break:break-word;}
+
+table thead tr th[data-id="Check"],
+table tbody tr td[data-header="Check"] {
+	width: 45px!important;
+  padding-right: 0!important;
+}
+
+table thead tr th[data-id="View"],
+table tbody tr td.clickable {
+	width: 80px;
+  text-align:center;
+}
+
+.clickablecells-nowidth table tbody tr td.clickable {width:unset;text-align:left;}
+
+table thead tr th[data-id="Date_Issued__c"],
+table tbody tr td[data-header="Issued"],
+table thead tr th[data-id="Date_Revised__c"],
+table tbody tr td[data-header="Revised"] {width: 166px;}
+
+table thead tr th[data-id="Status__c"],
+table thead tr th[data-id="MTC_Status__c"],
+table tbody tr td[data-header="Status"] {width: 105px!important;}
+
+table thead tr th[data-id="Type__c"],
+table tbody tr td[data-header="Type"] {width: 140px!important;}
+
+/* Mob output */
+
+@media screen and (max-width:950px) {
+	
+	.mob-listoutput table {width:100%!important;}
+	.mob-listoutput .table-header {display:none;} 	/* .table-header is specific to fixed-header & vscroll tbody */
+	.mob-listoutput table thead {display:none;} 	/* thead for when not fixed-header tables */
+	.mob-listoutput table tbody tr {display:block;padding: 15px 0 5px;position:relative;}
+	.mob-listoutput table tbody tr td {
+		width: 100%!important;
+		display: flex;
+		font-size: 14px!important;
+    	line-height: 20px!important;
+		text-align: left;
+		padding: 0!important;
+		border-right: 0!important;
+		padding: 0 10px 10px!important;
+	}
+
+	.mob-listoutput table tbody td:before {
+		display:block;
+		content:attr(data-header);
+		font-family: 'NeoSans-Bold';
+		flex-basis: 130px;
+    	flex-shrink: 0;
+	}
+
+	.mob-listoutput.moblist-lg-lbl table tbody td:before {flex-basis:155px;}
+
+	.mob-listoutput table tbody td c-checkbox {margin:unset;}
+
+	.mob-listoutput table tbody tr td.clickable {
+		font-family: 'NeoSans-Bold';
+		font-size: 15px!important;
+		position: absolute;
+		top: 14px;
+		right: 0px;
+		width: unset!important;
+		display: block;
+	}
+
+	.clickablecells-noabspos table tbody tr td.clickable {position:unset!important;}
+	
+	.mob-listoutput table tbody tr td[data-header="Check"] {display:none;}
+	.mob-listoutput table tbody tr td[data-header="Report name"] {font-family:'NeoSans-ExtraBold';font-size:16px!important;line-height:22px!important;padding-bottom:15px!important;}
+	.mob-listoutput table tbody tr td[data-header="Report name"]:before {display:none!important;}
+	.mob-listoutput table tbody tr td[data-header="Email address"] {flex-direction: column;}
+	.mob-listoutput table tbody tr td[data-header="Email address"]:before {flex-basis:unset!important;}
+
+	/*
+	.mob-listoutput .wrapper {display:block;background:none;padding:0;}
+	.mob-listoutput .wrapper .special {display:none;}
+	.fix-td1-hscroll.mob-listoutput .wrapper tr td {height: unset;line-height: unset;}
+	*/
+}
+
+/* Mob Long Strings 'helper' class */
+
+@media screen and (max-width:460px) {
+	.mob-listoutput.mob-longStringFix table tbody tr td {
+		display:flex;flex-direction:column;
+	}
+	.mob-listoutput.mob-longStringFix table tbody tr td:before {flex-basis:unset;}
+}
+
+/* Sort */
+
+.sortable, .sorted-asc, .sorted-desc {cursor:pointer;}
+
+.sortable span {
+	display: inline-block;
+  margin-left: 6px;
+}
+
+.sortable span:before,
+.sortable span:after {
+	content:"";
+	display:block;
+	width: 0;
+	height: 0;
+}
+
+.sortable span:before {
+	border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+	border-bottom: 7px solid rgba(8,7,7,0.35);
+}
+
+.sortable span:after {
+	border-top: 7px solid rgba(8,7,7,0.35);
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+	margin-bottom: -3px;
+  margin-top: 2px;
+}
+
+.sorted-asc span:before {border-bottom-color: #1b1b1b;}
+.sorted-desc span:after {border-top-color: #1b1b1b;}
+
+/* loading spinner */
+
+.wrapper {position:relative;}
+
+c-spinner {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: .85;
+}
+
+/* Specific to tables in tiles */
+
+:host .tile-table table thead {display:none;}
+:host .tile-table table tr {background:none!important;border-top:0!important;border-bottom:1px solid #e9eaea!important;}
+:host .tile-table table tr:last-of-type {border-bottom:0!important;}
+:host .tile-table table tr td {padding: 8px!important;text-align: center;}
+:host .tile-table table tr:first-of-type td {padding-top:0!important;}
+:host .tile-table table tbody tr td:first-of-type {padding-left:0!important;text-align:left!important;}
+:host .tile-table table.main-table tbody tr td:last-of-type {padding-right:0!important;text-align:right!important;width:unset!important;}
+
+:host .valign td {vertical-align:middle;}
+
+/* tables with headers in tiles */
+
+@media screen and (min-width:951px) {
+
+	:host .tile-table.with-header table thead {display:table-header-group;}
+
+	:host .tile-table.with-header table th {text-align:center;padding:10px 8px 15px;}
+	:host .tile-table.with-header table td {text-align:center!important;padding:8px;}
+
+	:host .tile-table.with-header table thead tr th:first-of-type,
+	:host .tile-table.with-header table thead tr th:nth-child(2),
+	:host .tile-table.with-header table tbody tr td:first-of-type,
+	:host .tile-table.with-header table tbody tr td:nth-child(2) {padding-left:0!important;text-align:left!important;}
+
+	:host .tile-table.with-header table thead tr th:last-of-type,
+	:host .tile-table.with-header table.main-table tbody tr td:last-of-type {
+		width: 55px!important;
+		padding-left:0!important;
+		padding-right:0!important;
+		text-align:center!important;
+	}
+
+}
+
+@media screen and (max-width:950px) {
+	
+	:host .tile-table.with-header table tbody tr td {padding-left:0!important;padding-right:0!important;}
+	/*:host .tile-table.with-header table tbody tr td[data-header="Subject"] {width: 105px!important;}*/
+	
+	:host .tile-table.with-header.no-mob-hide-header table thead {display:table-header-group!important;}
+	
+}
+
+/* loadmore in a modal with headerfootertwo */
+
+.modal-loadmore .loadmore {padding: 20px 0;}
+
+
+
+/*** START: ***/
+
+/* fixedheader table inside a no-height flex area (such as modal contents) */
+/* table scroll area will be whatever space remains after other elements */
+/* scroll is auto */
+/* <c-tc-search-formulators> & <c-connections-request> */
+
+.heightlessVScrlFixedHeadTbl {height: 100%;display: flex;flex-direction: column;}
+
+.heightlessVScrlFixedHeadTbl .wrapper {flex:1;}
+
+.heightlessVScrlFixedHeadTbl .wrapper > div {
+	position: absolute;height: 100%;		/* for auto-height scroll inner */
+	overflow-y: auto;padding-right: 10px;	/* dupe of the .vscroll-active stuff no longer applied dynamically (no max height) */
+}
+
+@media screen and (min-width:951px) {
+
+	/* text-align & padding pinch some right-hand space to negate the right-padding now always visible as of no dynamic .vscroll-active */
+	
+	.heightlessVScrlFixedHeadTbl table tbody tr td.clickable {
+		width: 87px;
+		text-align: right;
+		padding-right: 0;
+	}
+	.heightlessVScrlFixedHeadTbl table thead tr th[data-id="select"] {width: 100px;} /* td width + scroll 5px + 10px padding */
+
+	.heightlessVScrlFixedHeadTbl.connect-brand-supp table tbody tr td.clickable {width: 101px;}
+	.heightlessVScrlFixedHeadTbl.connect-brand-supp table thead tr th:last-of-type {width: 116px;}
+
+}
+@media screen and (max-width:950px) {
+	.heightlessVScrlFixedHeadTbl table thead tr th:not(:last-of-type),
+	.heightlessVScrlFixedHeadTbl table tbody tr td:not(.clickable) {padding-right:80px!important;}
+}
+
+/* early mob-longStringFix (usually 450px) */
+
+@media screen and (max-width:650px) {
+	.heightlessVScrlFixedHeadTbl.mob-listoutput.mob-longStringFix table tbody tr td {display:flex;flex-direction:column;}
+	.heightlessVScrlFixedHeadTbl.mob-listoutput.mob-longStringFix table tbody tr td:before {flex-basis:unset;}
+}
+
+/*** END ***/
+
+
+
+/* <c-tc-search-formulators> data specific: deal with unbreakable strings */
+
+.heightlessVScrlFixedHeadTbl table thead tr th:not(:last-of-type),
+.heightlessVScrlFixedHeadTbl table tbody tr td:not(.clickable) {text-overflow: ellipsis;overflow: hidden;}
+
+
+table tbody tr td[data-header="Conformant"] c-checkbox {width:22px;}
+
+/* <c-connections-list> */
+
+@media screen and (min-width:951px) {
+	.conn-list.centeralignlastcols table thead tr th:last-of-type,
+	.conn-list.centeralignlastcols table tbody tr td:last-of-type {text-align:center;width: 180px;}
+	.conn-list.centeralignlastcols table tbody tr td:last-of-type c-checkbox {width:22px;}
+}
+
+/* Indicators */
+
+.indicators table thead tr th:first-of-type,
+.indicators table tbody tr td:first-of-type {width: 55px;padding: 0px 0px 0px 0px;}
+
+.indicators table tbody tr td.zdhcgw:before,
+.indicators table tbody tr td.intertek:before,
+.indicators table tbody tr td.crowdsourced:before,
+.indicators table tbody tr td.inditex:before {
+	content:"";
+	display:block;
+	width:25px;
+	height:25px;
+	border-radius:50%;
+	flex-basis:unset;
+}
+.indicators table tbody tr td.inditexzdhc {
+	display:flex;
+	width:35px;
+	height:25px;
+	border-radius:12px;
+    overflow: hidden;
+	margin: 10px 10px;
+}
+.indicators table tbody tr td.inditexzdhc:after, .indicators table tbody tr td.inditexzdhc:before {
+    content:'';
+    display:block;
+    width:50%;
+    height:100%;
+}
+.indicators table tbody tr td.inditexzdhc:after{
+    background: #c3771e;
+}
+.indicators table tbody tr td.inditexzdhc:before{
+    background: #21B6D7;
+}
+
+.indicators table tbody tr td.zdhcgw:before {background-color:#21B6D7;} 		/* design-attributes future*/
+.indicators table tbody tr td.intertek:before {background-color:#FFC700;}		/* design-attributes future*/
+.indicators table tbody tr td.crowdsourced:before {background-color:#474E54;}	/* design-attributes future*/
+.indicators table tbody tr td.inditex:before {background-color:#c3771e;}
+
+@media screen and (min-width:951px) {
+	.indicators table tbody tr td.zdhcgw:before,
+	.indicators table tbody tr td.intertek:before,
+	.indicators table tbody tr td.crowdsourced:before,
+	.indicators table tbody tr td.inditex:before {margin: 10px 10px;}
+}
+
+/* In-Check Reports */
+
+.incheck-reports table tbody tr td.clickable {width:unset;text-align:unset;}
+.incheck-reports table tbody tr td:last-of-type {width:211px!important;}
+/*.incheck-reports table tbody tr td:nth-child(7) {font-family: 'NeoSans-Regular'!important;} nt removed 01/04/22 */
+
+@media screen and (min-width:951px) {
+	.incheck-reports table tbody tr td:not(:last-of-type) {padding-top: 14px!important;}
+	/*.incheck-reports table tbody tr td:nth-child(7) {width:155px!important;text-align:center;padding-left:0;padding-right:0;} nt removed 01/04/22 */
+}
+
+@media screen and (max-width:950px) {
+	.incheck-reports table tbody tr td:last-of-type {padding-top:5px!important;}
+}
+
+/* Supplier conformance  */
+
+:host .tile-table.supp-conf-percent-tbl table tbody tr td.red {color:red;}
+:host .tile-table.supp-conf-percent-tbl table tbody tr td.green {color:green;}
+
+:host .tile-table.supp-conf-percent-tbl table thead tr th:nth-child(2),
+:host .tile-table.supp-conf-percent-tbl table thead tr th:nth-child(3),
+:host .tile-table.supp-conf-percent-tbl table.main-table tbody tr td:nth-child(2),
+:host .tile-table.supp-conf-percent-tbl table.main-table tbody tr td:nth-child(3) {
+	width: 75px!important;
+	padding-left:0!important;
+	padding-right:0!important;
+	text-align:center!important;
+}
+
+@media screen and (max-width:950px) {
+	:host .tile-table.supp-conf-percent-tbl table thead tr th {padding-left:0!important;}
+}
+
+/* Inventory Status Current Month */
+
+:host .tile-table.inv-status-current-mth-tbl table.main-table tbody tr td {text-align:left;}
+
+:host .tile-table.inv-status-current-mth-tbl table thead tr th:nth-child(3),
+:host .tile-table.inv-status-current-mth-tbl table.main-table tbody tr td:nth-child(3) {
+	width:75px!important;
+	padding-left:0!important;
+	padding-right:0!important;
+	text-align:center!important;
+}
+
+@media screen and (max-width:950px) {
+	:host .tile-table.inv-status-current-mth-tbl table thead tr th  {padding-left:0!important;}
+}
+
+/* Bulletin List */
+
+@media screen and (min-width:951px) {
+	.bulletin-list table tbody tr td:first-of-type {width: 180px!important;}
+	.bulletin-list table tbody tr td:nth-child(3) {width: 300px!important;}
+}
+
+/* Supplier Chemical Library */
+
+.chemical-details-col table tbody tr td[data-header="Chemical Product"] {width : 100px;}
+.chemical-details-col table tbody tr td[data-header="Safety Data Sheet"] {width : 20px;}
+.chemical-details-col table tbody tr td[data-header="MRSL Certificate"] {width : 20px;}
+.chemical-details-col table tbody tr td[data-header="Conformant Level"] {width : 20px;}
+.chemical-details-col table tbody tr td[data-header="Conformant"] {width : 20px;}
+.chemical-details-col table tbody tr td[data-header="Origin"] {width : 25px;}
+.chemical-details-col table tbody tr td {padding-left : 6px;}	
+.chemical-details-col table tbody tr td {padding-right : 6px;}	
+.chemical-details-col table thead tr th {padding-left : 6px;}
+.chemical-details-col table thead tr th {padding-right : 6px;}

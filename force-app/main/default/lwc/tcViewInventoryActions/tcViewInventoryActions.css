@@ -1,0 +1,17 @@
+:host {margin-top: 40px;}
+
+@media screen and (min-width:768px) {
+    :host {display: flex;}
+    .right-btn-container {margin-left:auto;}
+    .right-btn-container c-button + c-button {margin-left:15px;}
+}
+
+@media screen and (max-width:767px) {
+    /*.right-btn-container {display:flex;flex-direction:column;align-items: flex-end;}
+    .right-btn-container c-button + c-button {margin-top:10px;}*/
+    :host,
+    .right-btn-container {display:flex;flex-direction:column;}
+    .right-btn-container c-button {margin-top:15px;}
+}
+
+/*:host {display: flex;flex-direction:column;}*/

@@ -1,0 +1,6 @@
+<template>
+  <div if:true={noPrerequisites} class="message-body">
+    <template if:true={noFacilityManager}>{noFacilityManagerLabel}</template>
+    <template if:true={noUserAccessKey}>{noUserAccessKeyLabel}</template>
+  </div>
+</template>

@@ -1,0 +1,17 @@
+<template>
+    <template if:true={hasComments}>
+        <div if:true={hasUnread} class="comment-icon" onclick={openPopup}><c-iconcommentunread></c-iconcommentunread></div>
+        <div if:false={hasUnread} class="comment-icon" onclick={openPopup}><c-iconcomment></c-iconcomment></div>
+    </template>
+    <template if:false={hasComments}>
+        <div class="comment-icon" onclick={openPopup}><c-iconcomment></c-iconcomment></div>
+    </template>
+    <div class={popupClass} tabindex="0" onblur={handleBlur}>
+        <div class="close-container" onclick={closePopup}>
+            <div class="close"></div>
+        </div>
+        <div class="contents">
+            <c-commentfeed class="popup-feed" comments={comments} read-only={readOnly} reverse-feed={reverseFeed} onblur={handleBlur} onnewcomment={handleNewComment}></c-commentfeed>
+        </div>
+    </div>
+</template>

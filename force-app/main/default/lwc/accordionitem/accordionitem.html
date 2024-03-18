@@ -1,0 +1,18 @@
+<template>
+    <li class={accordionItemClass}>
+        <div class="item-header" onclick={doClick}>
+            <div class="label">
+                <slot name="labelContent"></slot>
+				{label}
+            </div>
+            <slot name="headerContentCenter"></slot>
+            <div class="right">
+                <slot name="headerContentRight"></slot>
+                <c-iconchevron></c-iconchevron>
+            </div>
+        </div>
+        <div class={contentClass}>
+            <slot name="content" class="contentslot"></slot>
+        </div>
+    </li>
+</template>

@@ -1,0 +1,11 @@
+<template>
+    <c-chart type="doughnut" responsive="true" aspectratio="1">
+        <c-dataset labels={chartLabels}>
+            <c-data label="Jobs" detail={chartJobsData} backgroundcolor={chartColors}></c-data>
+        </c-dataset>
+        <c-title text={totalRecsLabel}></c-title>
+        <c-legend display="true" position="bottom" align="start" labelusepointstyle="true" ></c-legend>
+        <c-arc-configuration bordercolor="rgba(91, 78, 84, 0.1)"></c-arc-configuration>
+    </c-chart>
+    
+</template>

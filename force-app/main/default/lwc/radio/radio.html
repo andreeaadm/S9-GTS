@@ -1,0 +1,11 @@
+<template>
+    <div class="radio">
+        <label class="radio" for={label}> <!--  no-txt -->
+            <input type="radio" value={label} id={label} name={fieldId} onclick={handleChange} checked={checked} disabled={disabled}>
+            <div></div>
+            <template if:false={hideLabel}>
+                <span if:true={label} class="cc">{label}</span>
+            </template>
+        </label>
+    </div>
+</template>

@@ -1,0 +1,124 @@
+<template>
+	<section class="container-content">
+		<template if:true={showGeneralInformation}>
+			<c-gts-co-c-general-information account-id={accountRecord.data.fields.Id.value}
+				is-applicant-type-populated={isAccountApplicantTypePopulated} job-request-record={jobRequestRecord}
+				is-required={showError} ongeneralinfochanged={handleGeneralInfoChange}></c-gts-co-c-general-information>
+		</template>
+
+		<template if:true={showJobInformation}>
+			<c-gts-co-c-job-information job-request-record={jobRequestRecord} is-required={showError}
+				onupdateapplicantpage={handleApplicantPageUpdate}></c-gts-co-c-job-information>
+		</template>
+
+		<template if:true={showShipmentDocument}>
+			<c-gts-co-c-shipment-document job-request-record={jobRequestRecord}
+				onshipmentdocumentchange={handleShipmentDocumentChange}></c-gts-co-c-shipment-document>
+		</template>
+
+		<template if:true={showDocuments}>
+			<c-i-care-lic-reg-file-upload form-name="COC" content-version-ids={contentVersionIds} ondocumentupload={handleDocumentUpload}></c-i-care-lic-reg-file-upload>
+		</template>
+
+		<template if:true={showDeclaration}>
+			<c-gts-declaration declaration6={jobRequestRecord.GTS_CoC_Declaration_1__c}
+				declaration4={jobRequestRecord.GTS_CoC_Declaration_2__c}
+				declaration5={jobRequestRecord.GTS_CoC_Declaration_3__c} is-co-c=true
+				ondeclarationcheckboxchange={handleDeclarationCheckboxChange}></c-gts-declaration>
+		</template>
+
+		<template if:true={showSummary}>
+			<template if:true={showSpinner}>
+					<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+			</template>
+			<template if:false={showSpinner}>
+				<template if:true={showErrorBox}>
+					<div class="container-summary">
+						<h2>{labels.REQUIRED_FIELDS}</h2>
+						<template for:each={missingFields} for:item="item">
+							<li key={item}>{item}</li>
+						</template>
+					</div>
+				</template>
+			</template>
+			<lightning-accordion allow-multiple-sections-open>
+				<lightning-accordion-section name={labels.GENERAL_INFO} label={labels.GENERAL_INFO}>
+					<c-gts-co-c-general-information is-read-only="true" account-id={accountRecord.data.fields.Id.value}
+						is-required={showError} job-request-record={jobRequestRecord}></c-gts-co-c-general-information>
+				</lightning-accordion-section>
+
+				<lightning-accordion-section name={labels.JOB_INFO} label={labels.JOB_INFO}>
+					<c-gts-co-c-job-information job-request-record={jobRequestRecord} is-required={showError}
+						is-read-only="true"></c-gts-co-c-job-information>
+				</lightning-accordion-section>
+
+				<lightning-accordion-section name={labels.SHIPMENT_DOC} label={labels.SHIPMENT_DOC}>
+					<c-gts-co-c-shipment-document job-request-record={jobRequestRecord}
+						is-read-only="true"></c-gts-co-c-shipment-document>
+				</lightning-accordion-section>
+
+				<lightning-accordion-section name={labels.DOCUMENTS} label={labels.DOCUMENTS}>
+					<c-i-care-lic-reg-file-upload form-name="COC" is-read-only=true content-version-ids={contentVersionIds}></c-i-care-lic-reg-file-upload>
+				</lightning-accordion-section>
+
+				<lightning-accordion-section name={labels.DECLARATION} label={labels.DECLARATION}>
+					<c-gts-declaration is-read-only="true" declaration6={jobRequestRecord.GTS_CoC_Declaration_1__c}
+						declaration4={jobRequestRecord.GTS_CoC_Declaration_2__c}
+						declaration5={jobRequestRecord.GTS_CoC_Declaration_3__c} is-co-c=true></c-gts-declaration>
+				</lightning-accordion-section>
+			</lightning-accordion>
+		</template>
+
+		<template if:true={showThankYouPage}>
+			<c-gts-thank-you-page
+					job-request-record={jobRequestRecord}
+					job-request-record-id={jobRequestRecordId}
+					onsavefavouritejobrequestevent={handleSaveFavouriteJobRequest}
+			></c-gts-thank-you-page>
+		</template>
+
+		<div class="container-buttons">
+			<div class="container-left-buttons">
+
+				<template if:true={showBackButton}>
+					<button variant="brand-outline" label={labels.BACK} onclick={handleClickBack} class="white-button">
+						{labels.BACK}
+					</button>
+				</template>
+				<template if:true={showCancelButton}>
+					<button variant="brand-outline" label={labels.CANCEL} onclick={handleClickCancel}
+						class="white-button">
+						{labels.CANCEL}
+					</button>
+				</template>
+
+			</div>
+
+			<div class="container-right-buttons">
+				<template if:false={showSummary}>
+					<template if:false={showThankYouPage}>
+						<button variant="brand-outline" label={labels.SAVE_DRAFT} onclick={handleClickSaveDraft}
+							class="white-button">
+							{labels.SAVE_DRAFT}
+						</button>
+					</template>
+				</template>
+
+				<template if:true={showContinueButton}>
+					<button  variant="brand" label={labels.CONTINUE} onclick={handleClickContinue} class={continueButtonClass} disabled={disableContinueButton}>
+						{labels.CONTINUE}
+					</button>
+				</template>
+				<template if:true={showSummary}>
+					<button variant="brand-outline" label={labels.BACK_TO_EDIT} onclick={handleClickBack}
+						class="blue-button">
+						{labels.BACK_TO_EDIT}
+					</button>
+					<button variant="brand" label={labels.SUBMIT} onclick={handleClickConfirm} class="blue-button">
+						{labels.SUBMIT}
+					</button>
+				</template>
+			</div>
+		</div>
+	</section>
+</template>

@@ -1,0 +1,139 @@
+<template>
+  <c-intertek-tile has-loaded title={title}>
+    <div slot="contentSlotBottom" class={containerClass}>
+      <div if:true={options}>
+        <c-input if:true={options.label} field-id={options.fieldId} label={options.label} type={options.type}
+          value={options.value} select-options={options.options} onchange={handleChange}></c-input>
+        <c-input if:true={secondOptions} field-id={secondOptions.fieldId} label={secondOptions.label}
+          type={secondOptions.type} value={secondOptions.value} select-options={secondOptions.options}
+          onchange={handleChange}></c-input>
+        <div class="location" if:true={showLocationDiv}>
+          <div class="slds-p-around_medium lgc-bg iBubble">
+            <lightning-helptext content={labels.All_Locations_Help_Text}></lightning-helptext>
+          </div>
+          <div class="locationInput">
+            <c-input field-id="location" label={labels.Filter_Country} value={labels.All_Locations}
+              select-options={_locations} type="SelectList" onchange={handleChange}></c-input>
+          </div>
+        </div>
+      </div>
+      <div if:false={isSupplierUser}>
+        <div if:true={options} class="typeDiv">
+          <div if:true={showSuppTypeDiv} class="suppType">
+            <c-input field-id="supplierType" label="Supplier Type:" value="All Types" select-options={_suppTypes}
+              type="SelectList" onchange={handleChange}></c-input>
+          </div>
+          <div if:true={showInvTypeDiv} class="invType">
+            <c-input field-id="inventoryType" label="Inventory Type:" value="All Types" select-options={_invTypes}
+              type="SelectList" onchange={handleChange}></c-input>
+          </div>
+          <div class="confType">
+            <c-input field-id="conformanceType" label="Conformance:" value="ZDHC MRSL" select-options={_confTypes}
+              type="SelectList" onchange={handleChange}></c-input>
+          </div>
+        </div>
+        <div></div>
+        <div></div>
+      </div>
+      <div if:false={isSupplierUser}>
+        <div if:true={options} class="typeDiv">
+          <div class="classfication">
+            <c-input field-id="classification" label="Classification:" value="All Types"
+              select-options={_classifications} type="SelectList" onchange={handleChange}
+              disabled={disableclassfInput}></c-input>
+          </div>
+        </div>
+      </div>
+      <div if:true={isSupplierUser}>
+        <div if:true={options} class="typeDiv">
+          <c-input field-id="conformanceType" label="Conformance:" value="ZDHC MRSL" select-options={_confTypes}
+            type="SelectList" onchange={handleChange}></c-input>
+          <c-input field-id="classification" label="Classification:" value="All Types" select-options={_classifications}
+            type="SelectList" onchange={handleChange} disabled={disableclassfInput}></c-input>
+        </div>
+      </div>
+
+      <br />
+      <template if:false={error}>
+        <template if:true={isLoaded}>
+          <div if:true={allZero} class="slds-illustration slds-m-vertical_small">
+            <div class="slds-text-longform" if:true={allZero}>
+              <p class="slds-text-body_regular">
+                {labels.LWCC_BUILDER_NO_DATA_AVAILABLE}
+              </p>
+            </div>
+          </div>
+
+          <!-- Old Chart code commented by Globant -->
+          <!-- <c-chart
+          if:false={allZero}
+          height="100%"
+          width="100%"
+          type={type}
+          responsive="true"
+          stylecss={styleCss}
+          onlwccerror={handleError}>
+            <c-dataset labels={dimensionsLabels}>
+              <template for:each={details} for:item="data">
+                <c-data
+                  key={data.uuid}
+                  label={data.labels}
+                  detail={data.detail}
+                  fill={data.fill}
+                  bordercolor={data.bgColor}
+                  backgroundcolor={data.bgColor}
+                ></c-data>
+              </template>
+            </c-dataset>  -->
+            <!-- title not painted in canvas-->
+            <!-- <template if:true={title}>
+              <c-title
+                text={title}
+                fontfamily={titleFontFamily}
+                fontcolor={titleFontColor}
+              ></c-title>
+            </template> -->
+            <!-- <c-legend
+              position={legendPosition}
+              label-fontfamily={legendFontFamily}
+              label-fontcolor={legendFontColor}
+            ></c-legend>
+            <template if:false={isCircular}>
+              <template if:false={isRadial}>
+                <c-cartesian-linear-axis
+                  axis="y"
+                  ticks-beginatzero="true"
+                ></c-cartesian-linear-axis>
+              </template>
+              <template if:true={isRadial}>
+                <c-radial-linear-axis
+                  ticks-beginatzero="true"
+                ></c-radial-linear-axis>
+              </template>
+            </template>
+          </c-chart> -->
+          
+          <!-- New Chart code been added by Globant -->
+          <c-chart-j-s chart-data={details} dimensions-labels={dimensionsLabels}></c-chart-j-s>
+        </template>
+        <div if:false={isLoaded} style="height: 6rem; position: relative">
+          <div class="slds-spinner_container">
+            <div role="status" class="slds-spinner slds-spinner_small">
+              <span class="slds-assistive-text">Loading</span>
+              <div class="slds-spinner__dot-a"></div>
+              <div class="slds-spinner__dot-b"></div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template if:true={error}>
+        <div class="slds-illustration slds-m-vertical_small">
+          <div class="slds-text-longform">
+            <h3 class="slds-text-heading_medium">{error}</h3>
+            <p class="slds-text-body_regular">{stack}</p>
+          </div>
+        </div>
+      </template>
+    </div>
+  </c-intertek-tile>
+</template>

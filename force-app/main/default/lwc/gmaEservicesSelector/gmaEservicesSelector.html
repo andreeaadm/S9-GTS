@@ -1,0 +1,71 @@
+<template>
+    <div class="shadow"></div>
+    <div class="slds-grid slds-grid_vertical">
+        <div class="slds-col">
+            <div id="wrapper">
+                <div class="inner1 slds-p-left_large">{label.introductionMessage1}</div>
+                <div class="inner2 slds-p-left_large">{label.introductionMessage2}</div>
+            </div>
+        </div>
+        <div class="slds-col">
+            <div class={parentWrapperClass}>
+                <div class={columnWrapperClass}>
+                    <div class="regulatorySheetCustomLink">
+                        <div class={imageWrapperClass}>
+                            <img onclick={openRegulatoryPage} class="regulatorySheetImage" src={logo.regulatorySheetLogo}/>
+                        </div> 
+                        <div class ="titleWrapper">
+                            <h3> REGULATORY </h3>
+                            <h3 style="color:#ffc604"> SHEET  </h3> 
+                        </div>                                       
+                    </div>
+                    <div class="eserviceSummary">             
+                        <lightning-formatted-rich-text value={label.regulatorySheetLabel}></lightning-formatted-rich-text>
+                    </div>
+                </div>
+                <div class={columnWrapperClass}>
+                    <div class="testPlanCustomLink">
+                        <div class={imageWrapperClass}>
+                            <img onclick={openTestPlanPage} class="testPlanImage" src={logo.testPlanLogo}/>
+                        </div>
+                        <div class ="titleWrapper">
+                            <h3> TEST </h3>
+                            <h3 style="color:#ffc604" > PLAN </h3> 
+                        </div>
+                    </div>
+                    <div class="eserviceSummary">
+                        <lightning-formatted-rich-text value={label.testPlanLabel}></lightning-formatted-rich-text>
+                    </div>
+                </div>
+                <div class={columnWrapperClass}>
+                    <div class="recallSummaryCustomLink">
+                        <div class={imageWrapperClass}>
+                            <img class="recallSummaryImage" onclick={openRecallPage} src={logo.recallSummaryLogo}/>
+                        </div>
+                        <div class ="titleWrapper">
+                            <h3> RECALL </h3>
+                            <h3 style="color:#ffc604" > SUMMARY </h3> 
+                        </div>
+                    </div>
+                    <div class="eserviceSummary">
+                        <lightning-formatted-rich-text value={label.recallSummaryLabel}></lightning-formatted-rich-text>
+                    </div>
+                </div>
+                <div class={columnWrapperClass}>
+                    <div class="gapAnalysisCustomLink">
+                        <div class={imageWrapperClass}>
+                            <img class="gapAnalysisImage" onclick={openGapAnalysisPage} src={logo.gapAnalysisLogo}/>
+                        </div>
+                        <div class ="titleWrapper">
+                            <h3> GAP </h3>
+                            <h3 style="color:#ffc604" > ANALYSIS </h3> 
+                        </div>
+                    </div>
+                    <div class="eserviceSummary">
+                        <lightning-formatted-rich-text value={label.gapAnalysisLabel}></lightning-formatted-rich-text>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

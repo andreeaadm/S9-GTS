@@ -1,0 +1,75 @@
+<template>
+  <c-tc-connection-details-actions
+    record-id={recordId}
+    context={context}
+    onupdateconformance={handleUpdateConformance}
+    disable-btn={disableBtn}
+  ></c-tc-connection-details-actions>
+  <lightning-record-view-form
+    object-api-name="Brand_Supplier_Connection__c"
+    record-id={recordId}
+  >
+    <lightning-output-field field-name="Name"> </lightning-output-field>
+    <lightning-output-field if:true={isSupplier} field-name="Brand_Name__c">
+    </lightning-output-field>
+    <lightning-output-field if:true={isBrand} field-name="Supplier_Name__c">
+    </lightning-output-field>
+    <lightning-output-field field-name="Requestor_Contact_Name__c">
+    </lightning-output-field>
+    <lightning-output-field field-name="Status__c"> </lightning-output-field>
+    <lightning-output-field
+      if:true={isStatusRequested}
+      field-name="CreatedDate"
+    >
+    </lightning-output-field>
+    <lightning-output-field
+      if:true={isStatusApproved}
+      field-name="Connection_Date__c"
+    >
+    </lightning-output-field>
+    <lightning-output-field
+      if:true={isStatusRejected}
+      field-name="Rejected_By_Name__c"
+    >
+    </lightning-output-field>
+    <lightning-output-field
+      if:true={isStatusApproved}
+      field-name="Supplier_Conformance_Target__c"
+    ></lightning-output-field>
+    <lightning-output-field field-name="Active__c"> </lightning-output-field>
+  </lightning-record-view-form>
+  <c-modal
+    if:true={wiredRecord.data}
+    showmodal={editConformanceTarget}
+    maxwidth="830"
+    additional-classes="noMob"
+  >
+    <span slot="header">{labels.EDIT_SUPPLIER_CONFORMANCE_TARGET}</span>
+    <div slot="content">
+      <c-input
+        type="Percent"
+        field-id="Supplier_Conformance_Target__c"
+        data-id="Supplier_Conformance_Target__c"
+        max-length="5"
+        regex-pattern={conformanceRegex}
+        error-on-pattern={labels.ENTER_VALID_PERCENTAGE}
+        value={wiredRecord.data.fields.Supplier_Conformance_Target__c.value}
+        label={labels.EDIT_SUPPLIER_CONFORMANCE_TARGET}
+      ></c-input>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        onclick={handleCancelConformance}
+        disabled={disableBtn}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={labels.SAVE}
+        onclick={handleSaveConformance}
+        disabled={disableBtn}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

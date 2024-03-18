@@ -1,0 +1,10 @@
+<template>
+  <template if:true={records}>
+    <template for:each={records} for:item="record">
+      <c-i-care-inspection-row
+        key={record.Id}
+        record={record}
+      ></c-i-care-inspection-row>
+    </template>
+  </template>
+</template>

@@ -1,0 +1,47 @@
+<template>
+    <div class="main-div">
+        <div class="header-div">
+            {labels.GMAEL_Search_Options}
+        </div>
+        <template if:true={data}>
+            <table class="table-section">
+                <tbody>
+                    <tr>
+                        <td class="table-section-cell-left" valign="top">
+                            <template if:false={countryListView}>
+                                <c-gmael-a-p-dynamic-map report-data={data}
+                                    oncountryselect={setSelectedCountries}></c-gmael-a-p-dynamic-map>
+                            </template>
+                            <template if:true={countryListView}>
+                                <c-gmael-a-p-multi-select-list 
+                                    report-data={data}
+                                    oncountryselect={setSelectedCountries}></c-gmael-a-p-multi-select-list>
+                            </template>
+                        </td>
+                        <td class="table-section-cell-right" valign="top">
+                            <c-gmael-a-p-search-options report-data={data}
+                                onresetcountries={handleResetCountries}
+                                oncountrylistviewtoggle={handleCountryListViewToggle}
+                                onpreview={setPreviewData} record-id={recordId}
+                                account-id={accountId} gin-number={ginNumber}
+                                selected-contact={selectedContact} report-id={reportId}>
+                            </c-gmael-a-p-search-options>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </template>
+    </div>
+    <br />
+    <template if:true={reportData}>
+        <c-gmael-a-p-table-container report-data={reportData}></c-gmael-a-p-table-container>
+    </template>
+    <div class="div-success-section">
+        <div class="div-success-message-header">
+            Report Submission Success
+        </div>
+        <div class="div-success-message-content">
+            Report G200494 ben successfully! It should be approved within 24 hours.
+        </div>
+    </div>
+</template>

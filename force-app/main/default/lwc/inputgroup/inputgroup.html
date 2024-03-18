@@ -1,0 +1,15 @@
+<template>
+    <div class="inputgroup">
+         <template if:true={errors}>
+            <div class="error">
+                <template for:each={errors} for:item="error">
+                    <p key={error}>{error}</p>
+                </template>
+            </div>
+        </template>
+        <fieldset>
+            <legend>{label}</legend>
+            <slot class="content" name="content"></slot>
+        </fieldset>
+    </div>
+</template>

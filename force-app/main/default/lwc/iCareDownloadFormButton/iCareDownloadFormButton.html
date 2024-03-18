@@ -1,0 +1,9 @@
+<template>
+    <div class="spinner-container">
+        <lightning-button  variant="brand" disabled={disableButton} label={customLabel.BUTTON_LABEL}  title={customLabel.BUTTON_LABEL}
+            onclick={handleDownloadClick}></lightning-button>
+        <template if:true={showSpinner} class="overlay">
+            <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+        </template>
+    </div>
+</template>

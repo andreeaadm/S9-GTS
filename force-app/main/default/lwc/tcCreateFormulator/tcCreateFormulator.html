@@ -1,0 +1,26 @@
+<template>
+  <c-spinner if:true={showLoader}></c-spinner>
+  <p if:true={showNoResultsContent}>{labels.TC_NO_FORMULATOR_RESULTS}</p>
+  <c-form
+    object-api-name={objectApiName}
+    field-api-names={fieldApiNames}
+    field-labels={fieldLabels}
+    required-field-api-names={requiredFieldApiNames}
+    onsuccess={handleSuccess}
+    onerror={handleError}
+    display-toasts
+  ></c-form>
+  <div>
+    <c-button
+      if:true={showCancelButton}
+      label={labels.CANCEL}
+      onclick={handleCancel}
+      variant="Neutral ModalFooterBtn"
+    ></c-button>
+    <c-button
+      label={labels.TC_CREATE_FORMULATOR_AND_PRODUCT_BUTTON}
+      onclick={handleCreateFormulator}
+      variant="IntkBrandTwoBtn ModalFooterBtn"
+    ></c-button>
+  </div>
+</template>

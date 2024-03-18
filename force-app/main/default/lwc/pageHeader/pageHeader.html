@@ -1,0 +1,12 @@
+<template>
+  <div class="header">
+    <h1>{title}</h1>
+    <template if:true={btnLabel}>
+      <c-button
+        label={btnLabel}
+        variant="IntkBrandTwoBtn"
+        onclick={handleBtnClick}
+      ></c-button>
+    </template>
+  </div>
+</template>

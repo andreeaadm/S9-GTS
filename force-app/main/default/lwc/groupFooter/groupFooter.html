@@ -1,0 +1,93 @@
+<template>
+  <template if:false={isDefaultGroup}>
+    <div if:true={showButton}>
+      <c-tile
+        onclick={handleBtnClick}
+        type="Info"
+        button-label="DEACTIVATE GROUP"
+        button-variant="Delete ModalFooterBtn"
+        col-or-row-contents="col"
+        align-contents-h
+        reverse-contents
+        hero-text-align-center
+        background-overlay-colour="rgba(0, 0, 0, 0)"
+        background-colour="rgba(0, 0, 0, 0)"
+        background-colour-content="rgb(26, 33, 94)"
+        border-colour="rgb(206, 206, 206)"
+        border-colour-hover="rgb(27, 82, 151)"
+        additional-classes="support-tile"
+        if:false={hasExpired}
+      ></c-tile>
+
+      <c-tile
+        onclick={toggleRestoreModal}
+        type="Info"
+        button-label="RESTORE GROUP"
+        button-variant="IntkBrandTwoBtn ModalFooterBtn"
+        col-or-row-contents="col"
+        align-contents-h
+        reverse-contents
+        hero-text-align-center
+        background-overlay-colour="rgba(0, 0, 0, 0)"
+        background-colour="rgba(0, 0, 0, 0)"
+        background-colour-content="rgb(26, 33, 94)"
+        border-colour="rgb(206, 206, 206)"
+        border-colour-hover="rgb(27, 82, 151)"
+        additional-classes="support-tile"
+        if:true={hasExpired}
+      ></c-tile>
+    </div>
+
+    <!--Deactivate Group Modal-->
+    <c-modal showmodal={showModal} maxwidth="830" additional-classes="noMob">
+      <span slot="header">Deactivate group?</span>
+      <div slot="content">
+        <div>
+          <h3>Are you sure you want to deactivate {name}?</h3>
+        </div>
+      </div>
+      <div slot="footer">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label="CANCEL"
+          disabled={isWorking}
+          onclick={toggleModal}
+        ></c-button>
+        <c-button
+          variant="Delete ModalFooterBtn"
+          label="DEACTIVATE"
+          disabled={isWorking}
+          onclick={handleConfirmDeactivate}
+        ></c-button>
+      </div>
+    </c-modal>
+
+    <!--Restore Group Modal-->
+    <c-modal
+      showmodal={showRestoreModal}
+      maxwidth="830"
+      additional-classes="noMob"
+    >
+      <span slot="header">Restore group?</span>
+      <div slot="content">
+        <div>
+          <h3>Are you sure you want to Restore {name}?</h3>
+        </div>
+      </div>
+      <div slot="footer">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label="CANCEL"
+          disabled={isWorking}
+          onclick={toggleRestoreModal}
+        ></c-button>
+        <c-button
+          variant="Delete IntkBrandTwoBtn"
+          label="RESTORE"
+          disabled={isWorking}
+          onclick={handleConfirmRestore}
+        ></c-button>
+      </div>
+    </c-modal>
+  </template>
+</template>

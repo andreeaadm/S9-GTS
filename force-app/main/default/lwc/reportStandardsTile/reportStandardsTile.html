@@ -1,0 +1,15 @@
+<template>
+  <template if:false={booleanExpiry}>
+  <c-intertek-tile
+    has-loaded={hasLoaded}
+    additional-classes={additionalClasses}
+    title="Standards"
+  >
+    <div slot="contentSlotBottom" class="groups">
+      <template for:each={standardRows} for:item="stdRow">
+        <div key={stdRow}>{stdRow}</div>
+      </template>
+    </div>
+  </c-intertek-tile>
+</template>
+</template>

@@ -1,0 +1,98 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table th, .table td {
+    border-bottom: 1px solid #f5f5f5;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    /* background-color: #f2f2f2; */
+}
+
+.table {
+    background-color: white;
+}
+
+.table-no-border td {
+    border: 0px !important;
+    padding: 8px;
+    text-align: left;
+}
+
+.no-result {
+    text-align: center !important;
+}
+
+.header-left {
+    font-family: var(--calibri-bold);
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+
+    background: #E8EAEB;
+}
+
+.header-right {
+    background: #727272;
+}
+
+.header-right td {
+    font-family: var(--calibri-bold);
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: white;
+
+}
+
+.second-row {
+    background: var(--yellow-primary);
+}
+
+.second-row th {
+    font-family: var(--calibri-bold);
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+}
+
+.third-row td:nth-child(1),
+.fourth-row td:nth-child(1),
+.fifth-row td:nth-child(1),
+.sixth-row td:nth-child(1){
+    font-family: var(--calibri-bold);
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+    background: #D0D3D6;
+}
+
+.third-row td:not(:nth-child(1)),
+.fourth-row td:not(:nth-child(1)),
+.fifth-row td:not(:nth-child(1)),
+.sixth-row td:not(:nth-child(1)){
+    font-family: var(--calibri-regular);
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+    background: white;
+}
+
+
+.third-row td:nth-child(2),
+.sixth-row td:nth-child(2){
+    color: #0176D3;
+}

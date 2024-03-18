@@ -1,0 +1,93 @@
+<template>
+<div class="slds-grid slds-p-vertical--medium">
+    <div class="slds-col">
+        <h1 class="slds-m-bottom--none slds-wrap">
+        <span class="slds-show_inline-block" title={chemicalProductName}>
+            {Name} - {chemicalProductName}
+        </span>
+        </h1>
+    </div>
+    <template if:false={isBrandUser}>
+        <div class="slds-no-flex slds-grid slds-align-top">
+        <c-button
+            if:false={editMode}
+            label="EDIT"
+            variant="IntkBrandTwoBtn"
+            onclick={toggleEdit}
+        ></c-button>
+        </div>
+    </template>
+    </div>
+    <div class="main">
+        <h1 class="slds-m-bottom--none slds-wrap">
+            <span class="slds-show_inline-block" title={chemicalProductDetails}>
+                Chemical Product Details
+            </span>
+            </h1>
+    <lightning-record-form
+    record-id={recordId}
+    object-api-name="Chemical_Product__c"
+    fields={fields}
+    mode="readonly"
+    density="comfy"
+></lightning-record-form>
+    </div>
+    <c-modal
+      showmodal={editMode}
+      maxwidth="830"
+      additional-classes="narrowContent"
+    >
+      <span slot="header">Edit {chemicalProductName}</span>
+      <div slot="content">
+        <lightning-textarea 
+        name="CASNumber" 
+        label="CAS Number" 
+        value={casNumber}
+        placeholder="Input the CAS Number"
+        onchange={handleChange}>
+      </lightning-textarea>
+      <lightning-textarea 
+        name="SupplierReferenceName" 
+        label="Supplier Reference Name" 
+        value={supplierReferenceName}
+        placeholder="Input the supplier Reference Name"
+        onchange={handleChange}>
+      </lightning-textarea>
+      <lightning-textarea 
+      name="SupplierReferenceNumber" 
+      label="Supplier Reference Number" 
+      value={supplierReferenceNumber}
+      placeholder="Input the supplier Reference Number"
+      onchange={handleChange}>
+    </lightning-textarea>
+    <lightning-textarea 
+        name="ProductNameLocalLanguage" 
+        label="Product Name (Local Language)" 
+        value={productNameLocalLanguage}
+        placeholder="Input the Product Name in Local Language"
+        onchange={handleChange}>
+      </lightning-textarea>
+      <lightning-textarea 
+        name="FormulatorNameLocalLanguage" 
+        label="Formulator Name (Local Language)" 
+        value={formulatorNameLocalLanguage}
+        placeholder="Input the Formulator Name in Local Language"
+        onchange={handleChange}>
+      </lightning-textarea>
+      </div>
+      <div slot="footer">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label="CANCEL"
+          disabled={isWorking}
+          onclick={toggleEdit}
+        ></c-button>
+        <c-button
+          variant="IntkBrandTwoBtn ModalFooterBtn"
+          label="SAVE"
+          disabled={isWorking}
+          onclick={handleUpdateChemicalProduct}
+        ></c-button>
+      </div>
+    </c-modal>
+</template>

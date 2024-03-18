@@ -1,0 +1,10 @@
+<template>
+  <h1 if:true={header}>
+    <span>
+      {header}
+      <span class="sub-header" if:true={subHeader}>{subHeader}</span>
+    </span>
+    
+    <slot></slot>
+  </h1>
+</template>

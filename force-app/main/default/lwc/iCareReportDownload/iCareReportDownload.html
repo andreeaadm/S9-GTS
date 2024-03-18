@@ -1,0 +1,18 @@
+<template>
+    <template if:true={showButton}>
+        <div class="container">
+            <h1>{customLabel.TITLE_REPORTS}</h1>
+            <button onclick={handleClick}>{customLabel.DOWNLOAD_TEST_REPORT}</button>
+            <!--<template if:true={urlReport}>
+                <div class="download-link">
+                    <lightning-icon icon-name='utility:download' alternative-text='download' size='x-small'
+                        title='download'></lightning-icon>
+                    <a href={urlReport} target="_blank" rel="noopener noreferrer" download>Download my Report</a>
+                </div>
+            </template>-->
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+    </template>
+</template>

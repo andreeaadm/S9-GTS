@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>  
+
+    <targetConfigs>
+            <targetConfig targets="lightning__FlowScreen">
+                <!-- Input -->
+                <property name="buttonLabel" label="Button Label" type="String" role="inputOnly"></property>
+                <property name="buttonValue" label="Button Value" type="String" role="inputOnly"></property>
+                <property name="buttonColor" label="Button Color" type="String" role="inputOnly"></property>
+                <property name="buttonDescriptionText" label="Button Description Text" type="String" role="inputOnly"></property>
+                <property name="alignment" label="Button position" type="String" description="Enter 'left', 'center', or 'right'. Defaults to right." default="right" role="inputOnly"></property>
+                <property name="selectedValue" label="Selected Value" type="String" description="Value that holds the label of the button that's clicked, pass this to a Decision block to route the Flow"></property>
+                <property name="isDisabled" label="Disable button?" type="Boolean" description="Indicates whether the button should be clickable or not" role="inputOnly" default="false"></property>
+            </targetConfig>
+    </targetConfigs>
+
+</LightningComponentBundle>

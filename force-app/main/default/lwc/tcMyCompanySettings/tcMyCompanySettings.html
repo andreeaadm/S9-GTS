@@ -1,0 +1,39 @@
+<template>
+  <lightning-record-edit-form
+    object-api-name="Account"
+    record-id={recordId}
+    onsuccess={handleSuccess}
+    onerror={handleError}
+    onload={handleLoad}
+  >
+    <div if:true={hasLoaded}>
+      <lightning-output-field field-name="Name"> </lightning-output-field>
+      <lightning-output-field field-name="BillingAddress">
+      </lightning-output-field>
+      <lightning-input-field
+        if:true={isSupplierAdmin}
+        field-name="Monthly_Inventory_Due__c"
+      >
+      </lightning-input-field>
+      <lightning-input-field
+        if:true={isBrandAdmin}
+        field-name="General_Supplier_Conformance_Target__c"
+      >
+      </lightning-input-field>
+      <div if:true={isAdmin}>
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label={labels.CANCEL}
+          onclick={handleCancel}
+        ></c-button>
+        <c-button
+          variant="IntkBrandTwoBtn ModalFooterBtn"
+          label={labels.SAVE}
+          onclick={handleSave}
+        ></c-button>
+      </div>
+    </div>
+    <input type="submit" class="hidden" />
+  </lightning-record-edit-form>
+  <c-spinner if:false={hasLoaded}></c-spinner>
+</template>

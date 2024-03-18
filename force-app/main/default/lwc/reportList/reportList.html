@@ -1,0 +1,172 @@
+<template>
+  <template if:true={isCellClicked}>
+    <c-asset-expiry-banners
+    record-id={selectedRowId}
+    ></c-asset-expiry-banners>
+  </template>
+  <template if:true={isCellClicked}>
+    <c-report-list-back
+    record-id={selectedRowId}
+    onbacktoreportlist={onBackToReportList}
+    ></c-report-list-back>
+  </template>
+  <template if:false={isCellClicked}>
+  <c-object-home
+    title="Reports"
+    onbtnclick={handleBtnClick}
+    btn-label={conditionalExport}
+    table-data={tableData}
+    table-header-actions-visible={tableHeaderActionsVisible}
+    scroll-after-x-pixels={scrollAfterXPixels}
+    onviewmore={handleViewMore}
+    actions={actions}
+    onactionclick={handleActionClick}
+    onactionscheckboxchange={handleActionsCheckboxChange}
+    onselectedrowschange={handleSelectedRowsChange}
+    onorderby={handleOrderBy}
+    is-loading={isLoading}
+    load-more-message={loadMoreMessage}
+    all-shown={allShown}
+    oncellclicked={onCellClicked}
+  >
+    <c-input
+      class="status"
+      slot="filters"
+      label="Status"
+      type="SelectList"
+      select-options={filterStatusOptions}
+      select-needs-empty-option
+      placeholder="Select status"
+      onchange={handleFilterChange}
+      field-id="filterStatus"
+      value={filterStatus}
+    ></c-input>
+    <c-input
+      class="report-type"
+      slot="filters"
+      if:true={filterReportTypeOptions.data}
+      label="Report type"
+      type="SelectList"
+      select-options={filterReportTypeOptions.data.values}
+      select-needs-empty-option
+      placeholder="Report type"
+      onchange={handleFilterChange}
+      field-id="filterReportType"
+      value={filterReportType}
+    ></c-input>
+    <c-input
+      slot="filters"
+      class="search"
+      label="Search"
+      placeholder="Report Name, Client Ref. or Product"
+      onchange={handleFilterChange}
+      field-id="filterSearch"
+      value={filterSearch}
+    ></c-input>
+    <div slot="filters" class="dates">
+      <c-input
+        label="Issued or Revised"
+        type="Date"
+        placeholder="From"
+        onchange={handleFilterChange}
+        field-id="filterDateFrom"
+        value={filterDateFrom}
+      ></c-input>
+      <c-input
+        label=""
+        type="Date"
+        placeholder="To"
+        onchange={handleFilterChange}
+        field-id="filterDateTo"
+        value={filterDateTo}
+      ></c-input>
+    </div>
+    <template if:true={adminOrCGA}>
+      <c-input
+        class="checkbox"
+        slot="filters"
+        type="Checkbox"
+        label={labels.USER_LIST_FILTER_TABLE_UNASSIGNED_CHECKBOXFIELD}
+        onchange={handleFilterChange}
+        field-id="filterUnassignedOnly"
+        value={filterUnassignedOnly}
+      ></c-input>
+    </template>
+    <c-input
+      class="checkbox"
+      slot="filters"
+      label="Hidden reports only"
+      type="Checkbox"
+      onchange={handleHiddenFilterChange}
+      field-id="filterHiddenOnly"
+      value={filterHiddenOnly}
+    ></c-input>
+  </c-object-home>
+
+  <c-manage-report-access
+    if:true={showManageModal}
+    onclose={handleCancelModal}
+    selected-row-ids={selectedRowIds}
+    mode={manageMode}
+  ></c-manage-report-access>
+
+  <c-modal showmodal={showHideModal} maxwidth="830" additional-classes="noMob">
+    <span slot="header">Hide/Unhide Reports?</span>
+    <div slot="content">
+      <div>
+        <h3>
+          Are you sure you want to hide/unhide the {selectedRowCount} selected
+          report(s)?
+        </h3>
+      </div>
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label="CANCEL"
+        onclick={handleCancelModal}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label="CONFIRM"
+        onclick={handleConfirmHideUnhide}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>
+  <template if:true={isCellClicked}>
+    <div class="slds-grid">
+      <div class="slds-col slds-size_6-of-12" style="padding: 12px">
+        <c-report-detail
+        record-id={selectedRowId}
+        is-brand-user={isBrandUser}
+        ></c-report-detail>
+      </div>
+      <div class="slds-col slds-size_6-of-12" style="padding: 12px">
+      <div class="slds-grid slds-grid_vertical">
+        <div class="slds-col" style="padding-bottom:24px">
+          <span>
+            <c-report-deliverables-tile
+            record-id={selectedRowId}
+            ></c-report-deliverables-tile>
+          </span>
+        </div>
+        <div class="slds-col" style="padding-bottom:24px">
+          <span>
+            <c-report-standards-tile
+            record-id={selectedRowId}
+            ></c-report-standards-tile>
+          </span>
+        </div>
+        <div class="slds-col">
+          <span>
+            <c-report-assigned-groups-tile
+            record-id={selectedRowId}
+            ></c-report-assigned-groups-tile>
+          </span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </template>
+</template>

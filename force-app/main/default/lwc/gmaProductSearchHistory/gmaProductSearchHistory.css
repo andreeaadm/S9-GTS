@@ -1,0 +1,54 @@
+.downloadSpinner {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-image: url("/sfsites/c/resource/gmaFavIcon?v=2");
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    width: 100%;
+}
+
+.historyWrapper {
+    margin-top: 3vh;
+}
+
+.historyWrapper h2 {
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.historyWrapper a {
+    color: #21B6D7;
+    text-decoration-color: #21B6D7;
+}
+
+.historyTable {
+    border-collapse: separate;
+    -webkit-border-vertical-spacing: 2px;
+    width: 100%;
+}
+
+.historyTable td,
+.historyTable th {
+    background-color : #fcf4cf;
+    text-align: center;
+    padding: 5px;
+}
+
+.historyTable .forcedCellWidth {
+    width: 15%;
+}
+
+.historyTable .setWidth5p {
+    width: 12%;
+}
+
+.historyTable th{
+    background-color : #ffc604 !important;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

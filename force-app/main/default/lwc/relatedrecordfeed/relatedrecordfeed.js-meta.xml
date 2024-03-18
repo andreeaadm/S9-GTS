@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Related Record Feed</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" label="Parent Record Id" type="String"/>
+            <property name="childObjectType" label="Child SObject Name" type="String"/>
+            <property name="relationshipFieldName" label="Relationship Field Name" type="String"/>
+            <property name="commentFieldName" label="Comment Field Name" type="String"/>
+            <property name="markAsReadFieldName" label="Mark As Read Field Name" type="String"/>
+            <property name="popupMode" label="Popup mode" type="Boolean"/>
+            <property name="reverseFeed" label="Reverse feed" type="Boolean"/>
+            <property name="readOnly" label="Read only" type="Boolean"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

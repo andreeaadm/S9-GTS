@@ -1,0 +1,10 @@
+:host > div {
+
+    /* 1. adjust for  space between slider & label */
+    margin-top:15px;
+
+    /* 2a adjust top/bottom to emulate height of slider elements (no accurate height due to pos abs*/
+    /* 2b adjust left right amount of x-overflow needed for no. of digits */
+    padding: 13px 17px 40px;
+    
+}

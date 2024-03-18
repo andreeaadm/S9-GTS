@@ -1,0 +1,18 @@
+:host > c-button {margin: 30px 0 0;}
+
+c-datatable {display:block;margin-top:30px;}
+
+.noitems {
+    text-align: center;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+@media screen and (min-width:768px) {
+    .noitems {margin-top:140px;}
+}
+
+@media screen and (max-width:767px) {
+    /*:host {min-height:600px;}*/
+    .noitems {margin-top: 80px;}
+}

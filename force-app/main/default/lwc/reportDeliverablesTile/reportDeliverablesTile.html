@@ -1,0 +1,28 @@
+<template>
+  <template if:false={booleanExpiry}>
+  <c-intertek-tile
+    has-loaded={hasLoaded}
+    additional-classes={additionalClasses}
+    title="Available Downloads"
+  >
+    <div slot="contentSlotBottom">
+      <c-datatable
+        is-loading={isLoading}
+        table-cols={tableData.columns}
+        table-rows={tableData.rows}
+        additional-classes="tile-table valign"
+        oncellclick={handleActionClick}
+        no-results-message="No downloads found"
+        all-shown
+      ></c-datatable>
+      <template if:true={error}>
+        <div class="slds-illustration slds-m-vertical_small">
+          <div class="slds-text-longform">
+            <p class="slds-text-body_regular">{error}</p>
+          </div>
+        </div>
+      </template>
+    </div>
+  </c-intertek-tile>
+  </template>
+</template>

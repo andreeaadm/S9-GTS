@@ -1,0 +1,59 @@
+<template>
+  <!-- Button -->
+  <c-button
+    label={buttonLabel}
+    onclick={toggleModal}
+    variant="IntkBrandTwoBtn"
+  ></c-button>
+  <!-- Modal -->
+  <c-modal
+    showmodal={modalShowing}
+    maxwidth="880"
+    additional-classes="headerfootertwo footerBtnRightAlign heightlessTableScroll"
+  >
+    <span slot="header">{modalHeaderLabel}</span>
+    <div slot="content" class="modalContentSlot">
+      <div class="searchactions">
+        <c-input
+          type="Text"
+          label={nameSearchLabel}
+          value={nameSearch}
+          onchange={nameChanged}
+        ></c-input>
+        <c-input
+          type="Text"
+          label={labels.COUNTRY}
+          value={countrySearch}
+          onchange={countryChanged}
+        ></c-input>
+        <c-button
+          label={labels.SEARCH}
+          onclick={searchTable}
+          variant="IntkBrandTwoBtn"
+        ></c-button>
+        <a onclick={resetSearch}>{labels.RESET}</a>
+      </div>
+
+      <p if:false={searchPerformed}>{preSearchLabel}</p>
+      <c-datatable
+        if:true={modalResultsFound}
+        table-cols={modalTable.columns}
+        table-rows={modalTable.rows}
+        all-shown={allShown}
+        onviewmore={handleViewMore}
+        oncellclick={handleConnect}
+        additional-classes="modal-loadmore heightlessVScrlFixedHeadTbl mob-longStringFix connect-brand-supp"
+        mode="fixed-header"
+        mob-enabled="true"
+      ></c-datatable>
+      <div if:true={noResults} class="noitems">{labels.NO_RESULTS_FOUND}</div>
+    </div>
+    <div slot="footer">
+      <c-button
+        label={labels.CANCEL}
+        onclick={toggleModal}
+        variant="Neutral ModalFooterBtn"
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

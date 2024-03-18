@@ -1,0 +1,97 @@
+section{
+    background: var(--blue-snow-light);
+}
+.container-background{
+    background-image: url(/sfsites/c/resource/iconsiCare/background-ask-our-experts.svg);
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: right;
+    width: 100%;
+    /* height: 288px; */
+}
+.container {
+    width: 100%;
+}
+
+.container {
+    padding: 30px 20px;
+    position: relative;
+}
+
+
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+}
+
+p {
+    font-family: var(--calibri-regular);
+    font-size: 16px;
+    line-height: 140%;
+    color: black;
+    width: 100%;
+}
+
+
+.regulatory-background{
+    background-color: var(--yellow-primary);
+    background-image: url(/sfsites/c/resource/RegulatoryUpdates);
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+.buttons-header {
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 80px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+.blue-button {
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 80px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+.container-card-inf {
+    width: 342px;
+    height: 471px;
+}
+.container-cards {
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+@media screen and (min-width:768px) {
+    .container-background{
+        position: absolute;
+        background-position: right;
+        width: 100%;
+        height: 150px;
+    }
+    p {
+        width: 75%;
+    }
+    .regulatory-background{
+        background-position: right;
+        background-size: contain;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .container {
+        width: 1280px;
+        margin: auto;
+    }
+}

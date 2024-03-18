@@ -1,0 +1,12 @@
+:host {display:block;margin:25px 0 30px;}
+
+c-button {margin-top:15px;}
+
+@media screen and (min-width:781px) {
+    :host > div {display: flex;flex-wrap:wrap;justify-content:flex-end;}
+    c-button:not(:first-of-type) {margin-left:15px;}
+}
+
+@media screen and (max-width:780px) {
+    c-button {display:block;}
+}

@@ -1,0 +1,23 @@
+<template>
+	<div>
+
+		<lightning-datatable
+			key-field="Id"
+			data={currentPageRecords}
+			columns={columns}
+			hide-checkbox-column="true"
+		></lightning-datatable>
+
+		<div>
+			<lightning-button disabled={isFirstPage} label="First Page" onclick={handleFirstPage}></lightning-button>
+			<lightning-button disabled={isFirstPage} label="Previous" onclick={handlePreviousPage}></lightning-button>
+			<select id="pageSize" onchange={handlePageSizeChange}>
+				<template for:each={pageSizeOptions} for:item="option">
+					<option key={option} value={option}>{option}</option>
+				</template>
+			</select>
+			<lightning-button disabled={isLastPage} label="Next" onclick={handleNextPage}></lightning-button>
+			<lightning-button disabled={isLastPage} label="Last Page" onclick={handleLastPage}></lightning-button>
+		</div>
+	</div>
+</template>

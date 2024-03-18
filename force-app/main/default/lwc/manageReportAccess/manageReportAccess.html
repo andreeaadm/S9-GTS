@@ -1,0 +1,100 @@
+<template>
+  <c-modal
+    showmodal
+    maxwidth="1050"
+    additional-classes="headerfootertwo dataSummary footerBtnRightAlign"
+  >
+    <span slot="header">{title}</span>
+    <div slot="content">
+      <div class="content-top">
+        <div if:true={reportDetailId} class="panel-info">
+          <div>
+            <h3>Report name</h3>
+            <span><!--100687312NYM-001-->{name}</span>
+          </div>
+          <div>
+            <p>
+              Report type: <span><!--Report-->{type}</span>
+            </p>
+            <p>
+              Client reference: <span><!--100687312NYM-001-->{ref}</span>
+            </p>
+            <p>
+              Status: <span><!--Withdrawn-->{status}</span>
+            </p>
+          </div>
+        </div>
+        <div if:false={reportDetailId} class="panel-info">
+          <span>{selectedRowCount} report(s) selected</span>
+        </div>
+        <div class="notice">
+          <div>
+            <div>
+              Select the groups you would like to <b>{mode}</b> the selected
+              reports {suffix}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="filters">
+        <c-input
+          class="status"
+          slot="filters"
+          type="SelectList"
+          select-options={filterStatusOptions}
+          label="Status"
+          placeholder="Active"
+          onchange={handleFilterChange}
+          field-id="filterStatus"
+          value={filterStatus}
+        ></c-input>
+        <c-input
+          label="Search"
+          class="search"
+          placeholder="Group name"
+          onchange={handleFilterChange}
+          field-id="filterSearch"
+          value={filterSearch}
+        ></c-input>
+      </div>
+      <div class="table">
+        <c-datatable
+          load-more-message={loadMoreMessage}
+          all-shown={allShown}
+          is-loading={isLoading}
+          onviewmore={handleViewMore}
+          scrollafterxpixels="285"
+          mode="fixed-header"
+          oncheckboxchange={handleCheckboxChange}
+          table-cols={tableData.columns}
+          table-rows={tableData.rows}
+          additional-classes="modalTable"
+          onsortclick={handleSortClick}
+        ></c-datatable>
+      </div>
+    </div>
+    <div slot="footer" class="slds-grid">
+      <div class="notice slds-col footerNotice" if:true={showGroupAssignmentNotice}>
+        <div>
+          <div>
+            Assigned Groups must be within the same assigned Account as the Report.
+          </div>
+        </div>
+      </div>
+      <div class="slds-col">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label="CANCEL"
+          disabled={isLoading}
+          onclick={handleCancel}
+        ></c-button>
+        <c-button
+          variant="IntkBrandTwoBtn ModalFooterBtn"
+          label={buttonLabel}
+          disabled={isLoading}
+          onclick={handleConfirm}
+        ></c-button>
+      </div>
+    </div>
+  </c-modal>
+</template>

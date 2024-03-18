@@ -1,0 +1,39 @@
+<template>
+  <p class="manage-facility-subscription__title">
+    {labels.ZDHC_ACTIVATE_RENEW_TITLE}
+  </p>
+  <div if:true={noPrerequisites}>
+    <div class="message-body">
+      <template if:true={noFacilityManager}
+        >{labels.ZDHC_ACTIVATE_RENEW_NO_FACILITY_MANAGER}</template
+      >
+      <template if:true={noUserAccessKey}
+        >{labels.ZDHC_ACTIVATE_RENEW_NO_USER_ACCESS_KEY}</template
+      >
+      <template if:true={noToxSubscription}
+        >{labels.ZDHC_ACTIVATE_RENEW_NO_TOXCLEAR_SUB}</template
+      >
+    </div>
+    <div class="long-message-body">
+      <template if:true={noOrgGUID}
+        >{labels.ZDHC_ACTIVATE_RENEW_NO_ORG_GUID}</template
+      >
+    </div>
+  </div>
+
+  <div class="activate-review-facility__action" if:false={noPrerequisites}>
+   <!-- <lightning-button
+      if:true={canActivate}
+      variant="brand"
+      label={labels.ZDHC_ACTIVATE}
+      onclick={activateFacility}
+    ></lightning-button>-->
+
+    <lightning-button
+      if:true={canRenew}
+      variant="brand"
+      label={labels.ZDHC_RENEW}
+      onclick={renewFacility}
+    ></lightning-button>
+  </div>
+</template>

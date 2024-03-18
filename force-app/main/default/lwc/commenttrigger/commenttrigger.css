@@ -1,0 +1,101 @@
+:host {
+	position:relative;
+	display: block;
+	/*width: 42px;*/		/* twig: lastminute add */
+	width: 26px;			/* new width - consistent width icons used in PG version */
+	margin: 0 auto;			/* twig: lastminute add */
+}
+.comment-icon {
+	/*display:block;*/		/* twig: lastminute delete */
+	/*margin:0 auto;*/ 		/* twig: lastminute delete */
+	/*height:38px; */		/* twig: removed - pushes valign out for disagg stuff */
+	/*line-height:38px;*/	/* twig: removed - pushes valign out for disagg stuff */
+	cursor:pointer;
+}
+.popup {
+	position: absolute;
+	right: -7px;			/* twig: lastminute change */
+	/*top:100%;*/
+	width:364px;
+}
+
+.popup .contents {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+	background:#fff;
+	/*padding:25px 20px 20px;*/
+	padding:25px 0 25px 20px;		/* scroll/overflow */
+	border: 1px solid #70707048;
+	border-top-left-radius:8px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
+	position:relative;
+	z-index: 4;
+}
+
+.popup .contents:before {
+	content:"";
+	display:block;
+	width: 54px;
+	height:10px;
+	background:#fff;
+	top:-10px;
+	right:0;
+	position:absolute;
+}
+
+.popup .close-container,
+.popup .contents {
+	visibility:hidden;
+	opacity:0;
+	transition: visibility .3s, opacity .2s ease;
+}
+
+.popup:not(.active) {max-height:0;}
+.popup.active  .close-container,
+.popup.active .contents {
+	visibility:visible;
+	opacity:1;
+}
+.popup .contents {text-align: right;}
+
+/* close */
+
+.popup .close-container {
+	background:#fff;
+	padding: 14px 8px 0 18px;
+	height: 40px;
+	width: 56px;
+	position: absolute;
+	top: -39px;
+	right: 0;
+	border: 1px solid #70707048;
+	border-bottom:0;
+	border-top-left-radius:8px;
+	border-top-right-radius:8px;
+	cursor:pointer;
+	box-shadow: 0 3px 6px rgba(0,0,0,.16);
+	z-index: 3;
+}
+
+.popup .close-container .close {
+	text-decoration:none;
+	border-top:2px solid #0E8FCE;
+	width:18px;
+	height:18px;
+	transform:rotate(-45deg);
+	margin: 3px 4px -3px 6px;
+}
+
+.popup .close-container .close:after {
+	content:"";
+	height:2px;
+	width:18px;
+	display:block;
+	background-color:#0E8FCE;
+	transform:rotate(90deg);
+	margin-top: -2px;
+}
+
+.popup:focus {
+    outline: unset;
+}

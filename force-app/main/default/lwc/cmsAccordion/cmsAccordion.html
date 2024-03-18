@@ -1,0 +1,17 @@
+<template>
+  <c-accordion true-accordion open-item="0" if:true={items}>
+    <template for:each={items} for:item="item">
+      <c-accordionitem
+        key={item.contentKey}
+        slot="content"
+        label={item.contentNodes.title.value}
+      >
+        <div slot="content">
+          <lightning-formatted-rich-text
+            value={item.contentNodes.content.value}
+          ></lightning-formatted-rich-text>
+        </div>
+      </c-accordionitem>
+    </template>
+  </c-accordion>
+</template>

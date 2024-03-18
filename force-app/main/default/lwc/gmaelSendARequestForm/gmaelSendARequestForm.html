@@ -1,0 +1,146 @@
+<template>
+    <lightning-layout class="container-content" horizontal-align="center" multiple-rows pull-to-boundary="small"
+        vertical-align="center">
+        <template lwc:if={firstStep}>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <lightning-input type="text" max-length="80" label={clabels.GMAEL_Portal_Request_First_Name}
+                    value={data.iConnectLead.INTK_First_Name__c} onchange={handleInputChange}
+                    data-field="INTK_First_Name__c" placeholder={clabels.GMAEL_Portal_Request_First_Name} required></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <lightning-input type="text" max-length="80" label={clabels.GMAEL_Portal_Request_Last_Name} onchange={handleInputChange}
+                    value={data.iConnectLead.INTK_Last_Name__c} data-field="INTK_Last_Name__c" placeholder={clabels.GMAEL_Portal_Request_Last_Name}
+                    required></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <lightning-input type="text" max-length="128" label={clabels.GMAEL_Portal_Request_Job_Title} onchange={handleInputChange}
+                    value={data.iConnectLead.INTK_Job_Title__c} data-field="INTK_Job_Title__c" placeholder={clabels.GMAEL_Portal_Request_Job_Title}
+                    required></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <lightning-input type="text" max-length="100" label={clabels.GMAEL_Portal_Request_Company} onchange={handleInputChange}
+                    value={data.iConnectLead.INTK_Company_Name__c} data-field="INTK_Company_Name__c"
+                    placeholder={clabels.GMAEL_Portal_Request_Company} required></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <lightning-input type="text" max-length="50" label={clabels.GMAEL_Portal_Request_City} onchange={handleInputChange}
+                    value={data.iConnectLead.INTK_Address__City__s} data-field="INTK_Address__City__s"
+                    placeholder={clabels.GMAEL_Portal_Request_City} required></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item  size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <lightning-layout class="country-state" multiple-rows>
+                    <lightning-layout-item size="12" large-device-size="6" medium-device-size="12"
+                        small-device-size="12">
+                        <c-gmael-autocomplete label={clabels.GMAEL_Portal_Request_Country} required="true" placeholder={clabels.GMAEL_Portal_Request_Country}
+                            default-value={data.iConnectLead.INTK_Address__CountryCode__s}
+                            data-field="INTK_Address__CountryCode__s" values={formCountries}
+                            onautochange={handleInputChange} lwc:ref="countryField"></c-gmael-autocomplete>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="status" size="12" large-device-size="5" medium-device-size="12"
+                        small-device-size="12">
+                        <c-gmael-autocomplete label={clabels.GMAEL_Portal_Request_State} required={stateRequired} placeholder={clabels.GMAEL_Portal_Request_State}
+                            default-value={data.iConnectLead.INTK_Address__StateCode__s}
+                            data-field="INTK_Address__StateCode__s" values={formStates} onautochange={handleInputChange}
+                            lwc:ref="stateField" disabled={enableStates}></c-gmael-autocomplete>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <lightning-input type={clabels.GMAEL_Portal_Request_Email} max-length="50" label="Email" onchange={handleInputChange}
+                    value={data.iConnectLead.INTK_Email__c} data-field="INTK_Email__c" placeholder={clabels.GMAEL_Portal_Request_Email}
+                    required></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <lightning-input type="text" min-length="4" max-length="50" label={clabels.GMAEL_Portal_Request_Phone} onchange={handleInputChange}
+                    value={data.iConnectLead.INTK_Business_Phone__c} data-field="INTK_Business_Phone__c"
+                    placeholder={clabels.GMAEL_Portal_Request_Phone} pattern="^^[+][0-9,\(\)\-]*$"
+                    message-when-pattern-mismatch={clabels.GMAEL_Portal_Request_Phone_Error_Msg}
+                    required></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <c-gmael-autocomplete label={clabels.GMAEL_Portal_Request_Industry} required="true" placeholder={clabels.GMAEL_Portal_Request_Industry}
+                    default-value={data.iConnectLead.INTK_Industry__c} data-field="INTK_Industry__c"
+                    values={data.industries} onautochange={handleInputChange}
+                    lwc:ref="industryField"></c-gmael-autocomplete>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="container-button">
+                <button class="blue-button-next blue-button" onclick={handleNext}
+                    disabled={disableNextButton}>{clabels.GMAEL_Portal_Next}</button>
+            </lightning-layout-item>
+        </template>
+        <template lwc:if={secondStep}>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+
+                <div style="text-align: left;color: var(--Dark-Blue);">
+                    <p style="font-family: var(--neo-sans-medium); font-size:18px;">
+                        <span style="color:red">*</span>{clabels.GMAEL_Portal_Request_Services}</p>
+                    <p style="font-family: var(--neo-sans-regular); font-size:12px; margin-bottom: 10px;">{clabels.GMAEL_Portal_Request_Sub_Services}</p>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <div class="service-ul-container">
+                    <ul class="service-ul">
+                        <template for:each={data.services} for:item="service">
+                            <li class="service-li" key={service}>
+                                <div onclick={handleServiceClick} data-service={service} class="service-item">
+                                    {service}
+                                </div>
+                                <div data-service={service} class="green-circle hide"></div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <h1 class="country-section-title"
+                    style="font-family: var(--neo-sans-medium); font-size:18px; color: var(--Dark-Blue);">
+                    {clabels.GMAEL_Portal_Request_Country_Selection}
+                </h1>
+                <template if:true={countriesListView}>
+                    <c-gmael-portal-country-list-view countries-list-view={countriesListView}
+                        lwc:ref="countriesListView"></c-gmael-portal-country-list-view><br />
+                </template>
+
+                <h1 style="font-family:var(--neo-sans-medium); color: var(--Dark-Blue); font-size:18px;">
+                    {clabels.GMAEL_Portal_Request_Additional_Information}
+                </h1>
+                <lightning-textarea max-length="5000" variant="standard" onchange={handleTextAreaChange}
+                    value={additionalInformation}></lightning-textarea>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="container-button">
+                <button class="blue-button" onclick={handleSubmit} disabled={enableSubmitButton}>{clabels.GMAEL_Portal_Request_Submit}</button>
+            </lightning-layout-item>
+        </template>
+        <template lwc:if={thirdStep}>
+            <lightning-layout-item size="10">
+                <div class="step-third">
+                    <div data-service={service} class="yellow-circle"></div>
+                    <h1 style="font-family: var(--neo-sans-regular);color: var(--Dark-Blue);font-size: 35px;">{clabels.GMAEL_Portal_Request_Thanks_Msg}
+                    </h1>
+                    <h2 style="font-family: var(--neo-sans-regular);color: var(--Dark-Blue);font-size: 20px;">{clabels.GMAEL_Portal_Request_Thanks_Msg_Paragraph}</h2>
+                    <h3
+                        style="font-family: var(--neo-sans-light);color: var(--Intertek-Mid-Gray);font-size: 15px;margin-top: 5px;">
+                        {clabels.GMAEL_Portal_Request_Thanks_Msg_Sub_Paragraph}</h3>
+                </div>
+
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="container-button">
+
+                <button class="blue-button blue-button-close" onclick={handleClose}>{clabels.GMAEL_Portal_Request_Close}</button>
+            </lightning-layout-item>
+        </template>
+        <template if:true={enableLoader}>
+            <lightning-layout-item size="10" large-device-size="7" medium-device-size="10" small-device-size="10">
+                <div style="height:6rem;position:relative">
+                    <div class="slds-spinner_container">
+                        <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                            <span class="slds-assistive-text">Loading</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </div>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

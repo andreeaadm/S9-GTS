@@ -1,0 +1,10 @@
+<template>
+    <a class={itemClass} href={href} onclick={handleClick}>
+        <!-- FONT AWESOME -->
+        <i if:true={faValue} class={faValue}></i>
+        <!-- IMAGE -->
+        <img if:true={imgUrl} src={imgUrl}></img>
+        <!-- LABEL -->
+        {item.label}
+    </a>
+</template>

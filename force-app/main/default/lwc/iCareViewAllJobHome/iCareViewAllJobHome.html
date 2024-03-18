@@ -1,0 +1,22 @@
+<template>
+  <section class="container-header">
+    <div class="header">
+      <a href={hrefString} class="track-jobs"
+        >{label.HOME_LABEL}&nbsp;<span class="arrow">>&nbsp;</span></a
+      >
+      <div class="track-jobs-number">
+        <span>{label.VIEW_ALL_LABEL} &nbsp;</span>
+      </div>
+    </div>
+  </section>
+  <div class="container-content">
+    <div class="container-datatable">
+      <c-i-care-home-table
+        table-name={tableName}
+        is-report-to-be-shown={isReportToBeShown}
+        number-of-records="5"
+        pagination="true"
+      ></c-i-care-home-table>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,37 @@
+<template>
+  <c-intertek-tile if:false={hasLoaded} title="Groups" has-loaded="true">
+    <div slot="contentSlotBottom">
+      <div>
+        <c-spinner></c-spinner>
+      </div>
+    </div>
+  </c-intertek-tile>
+  <c-intertek-tile
+    title="Groups"
+    header-btn-label-1="MANAGE GROUPS"
+    onbtn1click={navToGroupList}
+    has-loaded={hasLoaded}
+    header-btn-class-1="IntkBrandOneBtn arrow"
+    header-btn-icon-1="iconarrowsvg"
+    header-btn-icon-fill=""
+    header-btn-icon-stroke="#007d99"
+  >
+    <div slot="contentSlotBottom">
+      <div if:true={isEmpty}>
+        <p>
+          Access to your reports is being managed automatically. If you would
+          like to manage report access, create a new group and add users.&nbsp;
+          <a onclick={navToGroupList}>Create a group to start</a>.
+        </p>
+        <c-groupssvg></c-groupssvg>
+      </div>
+      <c-datatable
+        if:false={isEmpty}
+        table-cols={tableData.columns}
+        table-rows={tableData.rows}
+        additional-classes="tile-table"
+        all-shown
+      ></c-datatable>
+    </div>
+  </c-intertek-tile>
+</template>

@@ -1,0 +1,182 @@
+<template>
+  <div class={wrapperClass}>
+    <h3 if:true={title}>{title}</h3>
+
+    <!-- for Intertek we'll use this mode mostly -->
+    <div class="table-header" if:true={isFixedHeader}>
+      <table>
+        <thead>
+          <tr>
+            <template for:each={tableCols} for:item="col">
+              <template if:true={col.isCheckbox}>
+                <th key={col.id} data-id={col.id} class={col.thClass}>
+                  <c-checkbox
+                    title=""
+                    hide-label="true"
+                    label={col.label}
+                    required
+                    onchange={headerCheckboxChange}
+                  ></c-checkbox>
+                </th>
+              </template>
+              <template if:false={col.isCheckbox}>
+                <th
+                  if:true={col.isSortable}
+                  key={col.id}
+                  data-id={col.id}
+                  data-sort={col.sortOrder}
+                  onclick={handleSortClick}
+                  class={col.thClass}
+                >
+                  {col.label}<span></span>
+                </th>
+                <th
+                  if:false={col.isSortable}
+                  key={col.id}
+                  data-id={col.id}
+                  class={col.thClass}
+                >
+                  {col.label}
+                </th>
+              </template>
+            </template>
+          </tr>
+        </thead>
+      </table>
+      <div class="header-actions hidden">
+        <slot name="tableHeaderActions"></slot>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div if:true={isFixedColumn} class="special">
+        <template if:true={firstCol}>
+          <div class="thead">{firstCol.label}</div>
+          <template for:each={firstColCells} for:item="row" for:index="i">
+            <template for:each={row.rowCells} for:item="cell" for:index="ii">
+              <div class="cell" data-header={cell.columnLabel} key={cell.id}>
+                {cell.value}
+              </div>
+            </template>
+          </template>
+        </template>
+      </div>
+
+      <div data-id="overflow">
+        <table class="main-table">
+          <template if:false={isFixedHeader}>
+            <thead>
+              <tr>
+                <template for:each={tableCols} for:item="col">
+                  <th key={col.id}>{col.label}</th>
+                </template>
+              </tr>
+            </thead>
+          </template>
+          <tbody>
+            <template for:each={tableRows} for:item="row" for:index="i">
+              <tr key={row.rowId}>
+                <template
+                  for:each={row.rowCells}
+                  for:item="cell"
+                  for:index="ii"
+                >
+                  <template if:true={cell.isAction}>
+                    <template if:true={cell.isButton}>
+                      <td
+                        key={cell.id}
+                        class={cell.styleClass}
+                        data-row={i}
+                        data-cell={ii}
+                      >
+                        <c-button
+                          label={cell.value}
+                          index-two={ii}
+                          index-one={i}
+                          onclick={handleCellClick}
+                          variant={cell.buttonVariant}
+                          disabled={cell.disabled}
+                        ></c-button>
+                      </td>
+                    </template>
+                    <template if:false={cell.isButton}>
+                      <td
+                        key={cell.id}
+                        class={cell.styleClass}
+                        data-row={i}
+                        data-cell={ii}
+                        onclick={handleCellClick}
+                      >
+                        {cell.value}
+                      </td>
+                    </template>
+                  </template>
+                  <template if:false={cell.isAction}>
+                    <template if:true={cell.isCheckbox}>
+                      <td
+                        data-header={cell.columnLabel}
+                        key={cell.id}
+                        class={cell.styleClass}
+                      >
+                        <c-checkbox
+                          title=""
+                          hide-label="true"
+                          label={cell.value}
+                          required
+                          onchange={checkboxChange}
+                          disabled={cell.disabled}
+                          data-id={row.rowId}
+                          checked={cell.value}
+                        ></c-checkbox>
+                      </td>
+                    </template>
+                    <template if:false={cell.isCheckbox}>
+                      <template if:true={cell.isSelectList}>
+                        <td
+                          data-header={cell.columnLabel}
+                          key={cell.id}
+                          class={cell.styleClass}
+                        >
+                          <c-selectlist
+                            options={cell.selectListOptions}
+                            onchange={selectListChange}
+                            field-id={cell.value}
+                            disabled={cell.disabled}
+                          ></c-selectlist>
+                        </td>
+                      </template>
+                      <template if:false={cell.isSelectList}>
+                        <td
+                          data-header={cell.columnLabel}
+                          key={cell.id}
+                          class={cell.styleClass}
+                        >
+                          {cell.value}
+                        </td>
+                      </template>
+                    </template>
+                  </template>
+                </template>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      <c-spinner if:true={isLoading}></c-spinner>
+    </div>
+    <div class="loadmore" if:false={isLoading}>
+      <template if:true={tableIsEmpty}>
+        <p>{noResultsMessage}</p>
+      </template>
+      <template if:false={tableIsEmpty}>
+        <p if:true={loadMoreMessage}>{loadMoreMessage}</p>
+        <c-button
+          if:false={allShown}
+          label={labels.LOAD_MORE}
+          index-one="Load More"
+          onclick={handleButtonClick}
+          variant="IntkBrandTwoBtn"
+        ></c-button>
+      </template>
+    </div>
+  </div>
+</template>

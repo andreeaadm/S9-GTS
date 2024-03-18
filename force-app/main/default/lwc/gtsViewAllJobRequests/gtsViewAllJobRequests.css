@@ -1,0 +1,70 @@
+.header {
+    width: 100%;
+    background-color: var(--blue-snow-light);
+    padding: 16px;
+}
+
+
+
+.track-jobs {
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 27px;
+    color: var(--blue-light);
+}
+
+.track-jobs span:nth-child(2),
+.track-jobs-number {
+    font-family: var(--neo-sans-bold);
+    font-size: 18px;
+    line-height: 32px;
+    color: var(--black-primary);
+}
+.container-content {
+  padding: 15px;
+}
+@media screen and (min-width:768px) {
+  
+    .container-header{
+        background-color: var(--blue-snow-light);
+    }
+
+    .header {
+        display: flex;
+        align-items: baseline;
+        padding: 30px 0 30px 20px;
+        margin-bottom: 30px;
+       
+    }
+
+    .track-jobs,
+    .track-jobs span:nth-child(2) {
+        font-family: var(--neo-sans-bold);
+        font-size: 24px;
+        line-height: 32px;
+        color: var(--blue-light);
+    }
+
+    .track-jobs-number {
+        font-family: var(--neo-sans-bold);
+        font-size: 24px;
+        line-height: 32px;
+        color: var(--black-primary);
+    }
+
+}
+
+@media screen and (min-width:1280px) {
+    .header {
+        width: 1280px;
+        margin: auto;
+    }
+
+}
+
+@media screen and (min-width:1280px) {
+    .container-content {
+        width: 1280px;
+        margin: auto;
+    }
+}

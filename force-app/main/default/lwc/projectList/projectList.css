@@ -1,0 +1,22 @@
+.dates {display:flex;}
+
+/* all desktops & tablets: flex */
+@media screen and (min-width:768px) {
+    c-input {flex:1;margin-right:20px;}
+    .dates {flex-basis: 340px;}
+    .dates c-input:last-of-type {margin-right:0!important;}
+    .status {flex-basis:155px;flex-grow:0;}
+    .search {max-width: 500px;}
+}
+
+/* sml desktops & sml tablets */
+@media screen and (min-width:768px) and (max-width:900px) {
+    c-input {margin-right:10px!important;}
+}
+
+/* mob: no flex */
+@media screen and (max-width:767px) {
+    c-input {padding-bottom:20px;}
+    .dates {justify-content: space-between;}
+    .dates c-input {flex-basis: calc(50% - 8px);min-width: 0;padding-bottom: 30px;}
+}

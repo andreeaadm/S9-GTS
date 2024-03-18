@@ -1,0 +1,23 @@
+<template>
+    <lightning-quick-action-panel header="Modify Products">
+        <lightning-dual-listbox
+        id="selectOptions"
+        name="Select Options"
+        label="Select Products"
+        source-label="Available"
+        selected-label="Selected"
+        options={listOptions}
+        value={selectedOptions}
+        onchange={handleChange}
+        disable-reordering=true
+        if:true={renderingCompleted}
+    >
+    </lightning-dual-listbox>
+
+        <div slot="footer" if:true={renderingCompleted}>
+          <lightning-button variant="neutral" label="Cancel" onclick={handleCancel} disabled={buttonsDisabled}></lightning-button>
+          <lightning-button variant="brand" label="Save" class="slds-m-left_x-small" onclick={handleSubmit} disabled={buttonsDisabled}></lightning-button>
+        </div>
+      </lightning-quick-action-panel>
+
+</template>

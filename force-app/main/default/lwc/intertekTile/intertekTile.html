@@ -1,0 +1,30 @@
+<template>
+  <c-tile if:true={hasLoaded} type="Info" additional-classes={intertekTileClasses}>
+    <div slot="contentSlotTop" class="header">
+      <h3>{title}</h3>
+      <c-button
+        if:true={headerBtnLabel1}
+        label={headerBtnLabel1}
+        variant={headerBtnClass1}
+        icon={headerBtnIcon1}
+        icon-fill={headerBtnIconFill}
+        icon-stroke={headerBtnIconStroke}
+        onclick={handleBtnClick1}
+      ></c-button>
+      <c-button
+        if:true={headerBtnLabel2}
+        label={headerBtnLabel2}
+        variant={headerBtnClass2}
+        icon={headerBtnIcon2}
+        icon-fill={headerBtnIconFill}
+        icon-stroke={headerBtnIconStroke}
+        onclick={handleBtnClick2}
+      ></c-button>
+    </div>
+    <slot
+      class="bottom"
+      name="contentSlotBottom"
+      slot="contentSlotBottom"
+    ></slot>
+  </c-tile>
+</template>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    <apiVersion>48.0</apiVersion>
+    
+    <isExposed>true</isExposed>
+    
+    <masterLabel>Nav Button</masterLabel>
+    
+    <targets>
+        
+        <target>lightningCommunity__Page</target>
+        
+        <target>lightningCommunity__Default</target>
+        
+    </targets>
+    
+    <targetConfigs>
+        
+        <targetConfig targets="lightningCommunity__Default">
+            
+            <property name="label" label="Label" type="String" default="Button"/>
+            
+            <property name="icon" label="Icon" type="String" default=""/>
+            
+            <property name="iconStroke" label="Icon stroke" type="Color" default=""/>
+            
+            <property name="iconFill" label="Icon fill" type="Color" default=""/>
+            
+            <property name="variant" label="Variant" type="String" default="main" datasource="main,main cta,main cta cta_sml,neutral,neutral cta,neutral cta cta_sml,main back,neutral back, IntkBrandTwoBtn arrow lg back, IntkBrandOneBtn, IntkBrandOneBtn top30-bottom20, IntkBrandOneBtn arrow back, IntkBrandTwoBtn, IntkBrandTwoBtn top30-bottom20" />
+            
+            <property name="disabled" label="Disabled" type="Boolean" default="false"/>
+            
+            <property name="destinationPage" label="Destination Page" type="String" default=""/>
+            
+            <property name="destinationUrl" label="Destination URL" type="String" default=""/>
+            
+        </targetConfig>
+        
+    </targetConfigs>
+    
+    <capabilities>
+        
+        <capability>lightningCommunity__RelaxedCSP</capability>
+        
+    </capabilities>
+    
+</LightningComponentBundle>

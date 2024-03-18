@@ -1,0 +1,19 @@
+<template>
+	<template if:true={showForm}>
+		<div class="content">
+			<lightning-record-form
+					record-id={recordId}
+					object-api-name={objectApiName}
+					layout-type={layoutType}
+					columns={columns}
+					mode={mode}
+					fields={fields}>
+			</lightning-record-form>
+		</div>
+	</template>
+	<template if:false={showForm}>
+		<div class="error">
+			Record Detail is incorrectly configured
+		</div>
+	</template>
+</template>

@@ -1,0 +1,52 @@
+.Blue{
+	background: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    border-radius: 5px;
+    padding: 12px 48px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+button[disabled]{
+    cursor: not-allowed;
+    opacity: 0.7;
+    background: var(--grey-snow-light);
+    border: none;
+}
+.White{
+	background: white;
+    border: 1px solid #BFBFBF;
+    border-radius: 5px;
+    padding: 12px 48px;
+
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.015em;
+    color: var(--blue-link);
+}
+.TnCBlue{
+    background-color: var(--blue-light) !important;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid var(--blue-link);
+    padding: 12px 40px;
+    border-radius: 3px;
+}
+.TnCWhite{
+    background-color: white !important;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: var(--blue-link);
+    border: var(--yellow-primary);
+    padding: 12px 50px;
+    border: 1px solid var(--grey-light);
+    border-radius: 3px;
+}

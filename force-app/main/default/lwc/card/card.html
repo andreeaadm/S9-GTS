@@ -1,0 +1,20 @@
+<template>
+    <article class="slds-card">
+        <header class="slds-card__header slds-grid">
+            <div class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2>
+                        <span class="title">{title}</span>
+                    </h2>
+                </div>
+            </div>
+            <div class="slds-no-flex">
+                <slot name="actions"></slot>
+            </div>
+        </header>
+        <div class="slds-card__body">
+            <slot name="body"></slot>
+            <slot name="footer"></slot>
+        </div>
+    </article>
+</template>

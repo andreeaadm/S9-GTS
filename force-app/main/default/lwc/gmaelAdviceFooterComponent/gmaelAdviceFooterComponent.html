@@ -1,0 +1,41 @@
+<template>
+    <section class="container">
+
+        <div class="container-card">
+            <div class="advice-container-footer">
+                <h2>Need Some Advice?</h2>
+                <p>{customLabel.PARAGRAPH}</p>
+                <span><a class="call-specialist-button" href={telephone}>Call our Local ACCESS specialist: {clientBrowserGeoCountryPhone}</a></span>
+                <button class="blue-button" onclick={handleSendRequest}>Send us a request</button>
+                <iframe id="LWCWithVFPage" src={geolocationVFURL} width="0%" height="0px"> </iframe>
+            </div>
+            <c-gmael-send-a-request-model lwc:ref="sendARequestModel"></c-gmael-send-a-request-model>
+            <div class="img-advice-footer">
+                <img src={AdviceFooterImg} alt="Advice footer Image">
+            </div>
+        </div>
+    </section>
+   
+        <section class="container-footer">
+                
+            <div class="footer">
+
+            <div class="container-list"> 
+                <img src={IntertekRoundelOrange} alt="Intertek Roundel">
+                <ul>
+                    <li><a target="_blank" href={link1}>Disclaimer</a></li>
+                    <li><a target="_blank" href={link2}>Terms</a></li>
+                    <li><a target="_blank" href={link3}>Privacy</a></li>
+                    <li><a target="_blank" href={link4}>Cookies</a></li>
+                    <li><a target="_blank" href={link5}>Modern Slavery Act Statement</a></li>
+                </ul>
+            </div>
+
+            <div class="img-intertek-footer">
+                <img src={IntertekStrap} alt="Intertek Strap">
+            </div>
+        </div>
+
+        </section>
+
+</template>

@@ -1,0 +1,55 @@
+<template>
+	<lightning-tabset>
+		<template if:false= {checkIsRegistration}>
+			<template if:true={showInspection}>
+				<lightning-tab label={labels.INSPECTION}>
+					<c-i-care-inspection-table
+						record-id={recordId}
+					></c-i-care-inspection-table>
+				</lightning-tab>
+			</template>
+
+			<template if:true={showShipment}>
+				<lightning-tab label={labels.SHIPMENT}>
+					<c-gts-shipment-table
+						record-id={recordId}
+					></c-gts-shipment-table>
+				</lightning-tab>
+
+			</template>
+		</template>
+		<template if:true= {checkIsRegistration}>
+			<lightning-tab label='Renew/Revision'>
+				<c-gts-track-job-renew-revision-container
+					record-id={recordId}
+					account-id={accountId}
+				></c-gts-track-job-renew-revision-container>
+			</lightning-tab>
+		</template>
+
+		<template if:true={showSupportingDocs}>
+			<lightning-tab label={labels.SUPPORTING_DOC}>
+				<c-gts-files-list
+					record-id={recordId}
+				>
+				</c-gts-files-list>
+			</lightning-tab>
+		</template>
+
+		<template if:true={showHistory}>
+			<lightning-tab label={labels.HISTORY}>
+				<template if:false={checkIsRegistration}>
+					<c-gts-job-history
+            record-id={recordId}
+          ></c-gts-job-history>
+				</template>
+
+				<template if:true={checkIsRegistration}>
+					<c-gts-job-history_-licence-and-resgistration
+            record-id={recordId}
+          ></c-gts-job-history_-licence-and-resgistration>
+				</template>
+			</lightning-tab>
+		</template>
+	</lightning-tabset>
+</template>

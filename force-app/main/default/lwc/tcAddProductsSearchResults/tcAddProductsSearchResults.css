@@ -1,0 +1,103 @@
+.key-and-add-products {padding-top: 30px;}
+
+.key-and-add-products > div:not(.key-indicators) {
+    display: flex;
+    align-items: center;
+    font-size:14px;
+    margin:0 auto; /* added so this center aligns if no key-indicators */
+}
+
+.key-indicators > div {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.key-indicators > div:not(.key-indicators-inditex, .inditexmatchedwithzdhc):before {
+    content:"";
+	display:block;
+	width:25px;
+	height:25px;
+	border-radius:50%;
+	flex-basis:unset;
+    margin-right:10px;
+    flex-shrink: 0;
+}
+
+.key-indicators-inditex {
+	display:flex;
+	width:40px;
+	height:25px;
+	border-radius:12px;
+    overflow: hidden;
+    margin: 10px 10px;
+}
+
+
+.key-indicators .zdhcgw:before {background-color:#21B6D7;} 		/* design-attributes future*/
+.key-indicators .intertek:before {background-color:#FFC700;}		/* design-attributes future*/
+.key-indicators .crowdsourced:before {background-color:#474E54;}	/* design-attributes future*/
+.key-indicators .inditex:before {background-color:#c3771e;}
+
+.key-indicators-inditex:after, .key-indicators-inditex:before {
+    content:'';
+    display:block;
+    width:50%;
+    height:100%;
+}
+.key-indicators-inditex:after{
+    background: #c3771e;
+}
+.key-indicators-inditex:before{
+    background: #21B6D7;
+}
+
+.createproductsection {
+    margin-left: 10px !important;
+}
+.noitems {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 150px;
+    min-height: 120px;
+}
+
+/* All on one line */
+
+@media screen and (min-width:1161px) {
+    .key-and-add-products {display:flex;}
+    .key-indicators {flex:1;display:flex;}
+}
+
+/* Separate lines, centered */
+
+@media screen and (max-width:1160px) {
+    .key-and-add-products > div:not(.key-indicators) {width: 100%;justify-content:center;padding-top:35px;}
+}
+
+@media screen and (min-width:701px) and (max-width:1160px) {
+    .key-indicators {display:flex;justify-content:center;}
+}
+
+@media screen and (min-width:701px) {
+    .key-indicators > div:not(:last-of-type, .key-indicators-inditex) {margin-right: 20px;}
+}
+
+@media screen and (min-width:500px) {
+    .key-and-add-products > div:not(.key-indicators) > div {margin-right:20px;}
+}
+
+/* Add: Stack Key-indicators */
+
+@media screen and (max-width:700px) {
+    .key-and-add-products {align-items:flex-start;flex-direction: column;}
+    .key-indicators > div:not(:last-of-type) {margin-bottom:10px;}
+}
+
+/* Add: Stack Add-new-products */
+
+@media screen and (max-width:499px) {
+    .key-and-add-products > div:not(.key-indicators) {flex-direction:column;}
+    .key-and-add-products > div:not(.key-indicators) > div {margin-bottom:15px;}
+}

@@ -1,0 +1,15 @@
+.download-icon {
+    --sds-c-icon-color-foreground-default: var(--blue-link);
+    margin-right: 10px;
+}
+
+hr {
+    margin: 10px 0;
+}
+
+a {
+    color: var(--blue-link);
+    font-family: var(--calibri-regular);
+    font-size: 16px;
+    line-height: normal;
+}

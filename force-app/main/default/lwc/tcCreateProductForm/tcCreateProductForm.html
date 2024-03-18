@@ -1,0 +1,33 @@
+<template>
+  <c-tc-get-page-reference-data
+    onretrievedstate={handleRetrievedState}
+  ></c-tc-get-page-reference-data>
+  <c-spinner if:true={showLoader}></c-spinner>
+  <c-tc-search-formulators-input
+    required
+    onselectformulator={handleSelectFormulator}
+    oncreatedformulator={handleCreatedFormulator}
+    onremoveformulator={handleRemoveFormulator}
+    allow-create-formulator
+  ></c-tc-search-formulators-input>
+  <c-form
+    object-api-name={objectApiName}
+    field-api-names={fieldApiNames}
+    field-labels={fieldLabels}
+    required-field-api-names={requiredFieldApiNames}
+    onsuccess={handleSuccess}
+    onerror={handleError}
+  ></c-form>
+  <div>
+    <c-button
+      label={labels.CANCEL}
+      destination-page="Back"
+      variant="Neutral ModalFooterBtn"
+    ></c-button>
+    <c-button
+      label={labels.TC_CREATE_PRODUCT_BUTTON}
+      onclick={handleCreateProduct}
+      variant="IntkBrandTwoBtn ModalFooterBtn"
+    ></c-button>
+  </div>
+</template>

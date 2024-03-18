@@ -1,0 +1,28 @@
+.container-buttons{
+    display: flex;
+    gap: 16px;
+}
+
+.blue-button{
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+
+.disable-button{
+    background-color: var(--grey-light);
+    border: 1px solid var(--grey-light);
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+ }

@@ -1,0 +1,26 @@
+<template>
+    <div class="slds-form container-form">
+        <!-- TODO CHANGE LABELS NAMES FOR CUSTOM LABELS -->
+        <div class="slds-form-element slds-form-element_stacked">
+            <div>
+                <label class="slds-form-element__label" for="stacked-input-id-01">{customLabel.ENQUIRY_HEADER}</label>
+            </div>
+            <div>
+                <label class="slds-form-element__label" for="stacked-input-id-02">{customLabel.ENQUIRY_SUBJECT}</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="stacked-input-id-01" class="slds-input" value={subjectInformation} onchange={handleSubjectChange}/>
+                </div>
+            </div>
+            <div>
+                <label class="slds-form-element__label" for="stacked-input-id-03">{customLabel.ENQUIRY_BODY}</label>
+                <div class="slds-form-element__control">
+                    <textarea id="stacked-input-id-04" class="slds-input" onchange={handleEnquiryChange}>{enquiryInformation}</textarea>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="button-blue" onclick={sendEnquiry}>{customLabel.ENQUIRY_BUTTON}
+            </button>
+        </div>
+    </div>
+</template>

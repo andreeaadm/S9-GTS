@@ -1,0 +1,46 @@
+.container-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    background: rgba(71, 78, 84, 0.1);
+    padding: 16px 20px;
+    color: #474E54;
+   
+}
+
+.container-image span {
+    margin-left: 8px;
+}
+
+.container-list ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.container-list ul li a {
+    color: #474E54;
+}
+
+.bullet {
+    display: inline-flex;
+    width: 2.5px;
+    height: 3.5px;
+    background-color: #FFC700;
+    margin-right: 15px;
+}
+
+@media screen and (min-width:769px) {
+    .container-footer {
+        flex-direction: row;
+        padding: 16px 50px;
+        
+    }
+
+    .container-list ul {
+        flex-direction: row;
+    }
+
+}

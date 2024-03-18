@@ -1,0 +1,6 @@
+<template>
+    <!-- important - onmousedown is used instead of onclick so that the value is set before the onblur for the selectlist trigger anchor happens -->
+    <a role="menuitemradio" title={label} class={styleClass} onmousedown={handleMouseDown}>
+        <b></b>{label}
+    </a>
+</template>

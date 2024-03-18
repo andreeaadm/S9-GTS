@@ -1,0 +1,33 @@
+:host {display:block;}
+h3 {font-size: 15px;padding:10px 0 15px;}
+.input-group {display:flex;padding-bottom:25px;}
+.input-group > div {display:flex;flex-wrap:wrap;}
+.input-group c-input {padding-right:15px;max-width: 265px;width: 100%;flex: 1;}
+.input-group c-button {display: block;margin-top: 38px;}
+.input-group.commodity c-input {max-width: 550px;}
+
+.warning {max-width: 220px;/*color:#c23934;*/padding-top: 5px;}
+.texts {font-size:15px;padding-bottom: 25px;}
+p.para {padding-bottom: 15px; max-width: 933px;}
+
+.buttons {display:flex;margin:30px 0 10px;}
+.right-btn-container {margin-left:auto;}
+.right-btn-container c-button + c-button {margin-left:15px;}
+
+@media screen and (min-width:951px) {
+    .input-group > div {flex-basis: 345px;}
+    .input-group > div + c-input {padding-right:0;}
+    .input-group c-button {display: block;margin-top: 38px;margin-right:25px;}
+}
+
+@media screen and (max-width:950px) {
+    .input-group {display:block;}
+    .input-group > div {padding-bottom:25px;max-width: 316px;}
+    .input-group.notes > c-input:not(:last-of-type),
+    .input-group.stock > c-input:not(:last-of-type) {padding-bottom:25px;}
+}
+
+@media screen and (max-width:400px) {
+    .input-group c-input {max-width:unset;}
+    .input-group > c-input {max-width:unset;padding-right:0;}
+}

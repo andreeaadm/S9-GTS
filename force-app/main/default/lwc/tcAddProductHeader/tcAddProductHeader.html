@@ -1,0 +1,20 @@
+<template>
+  <c-button
+    if:true={inventoryRecordId}
+    label={labels.TC_BACK_TO_INVENTORY_BUTTON}
+    variant="IntkBrandOneBtn arrow back"
+    destination-record-id={inventoryRecordId}
+    icon="iconarrowsvg"
+    icon-stroke="rgb(0, 125, 153)"
+  ></c-button>
+  <c-tc-get-page-reference-data
+    get-record-data
+    fields={headerFields}
+    onretrievedstate={handleRetrievedState}
+    onretrievedrecord={handleRetrievedRecord}
+  ></c-tc-get-page-reference-data>
+  <c-tc-dynamic-header
+    if:true={inventoryRecord}
+    header-segments={headerSegments}
+  ></c-tc-dynamic-header>
+</template>

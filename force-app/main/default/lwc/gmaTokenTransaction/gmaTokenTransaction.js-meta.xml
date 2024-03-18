@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>GMA Token Transaction</masterLabel>
+    <targets>
+       <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>  
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="ListViewOne" type="String" default="All Token Transactions" label="First List view for Token Transaction" description="Please specify first List View Name"/>
+            <property name="ListViewOneDaysCount" type="String" default="All" label="First List view days count" description="Please specify number of days for first List View Name"/>
+            <property name="ListViewTwo" type="String" default="Token Transactions Last 3 Months" label="Second List view for Token Transaction" description="Please specify second List View Name"/>
+            <property name="ListViewTwoDaysCount" type="String" default="90" label="Second List view days count" description="Please specify number of days for second List View Name"/>
+            <property name="ListViewThree" type="String" default="Token Transactions Last 6 Months" label="Third List view for Token Transaction" description="Please specify third List View Name"/>
+            <property name="ListViewThreeDaysCount" type="String" default="182" label="Third List view days count" description="Please specify number of days for third List View Name"/>
+            <property name="ListViewFour" type="String" default="Token Transactions Last Year" label="Fourth List view for Token Transaction" description="Please specify fourth List View Name"/>
+            <property name="ListViewFourDaysCount" type="String" default="365" label="Fourth List view days count" description="Please specify number of days for fourth List View Name"/>
+            <property name="ListViewFive" type="String" default="" label="Fifth List view for Token Transaction" description="Please specify fifth List View Name"/>
+            <property name="ListViewFiveDaysCount" type="String" default="" label="Fifth List view days count" description="Please specify number of days for fifth List View Name"/>
+        </targetConfig>
+     </targetConfigs>
+</LightningComponentBundle>

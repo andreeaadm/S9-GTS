@@ -1,0 +1,17 @@
+.item-header {
+	display:flex;
+	/* justify-content:space-between; */
+	padding: 0 15px 0 15px;
+	background:#123865;
+	align-items: center;
+	min-height: 34px;
+	transition: 1s;
+}
+
+.item-header .label {
+	flex-basis: 40%;
+	flex-grow: 1;
+	font-size: 15px;
+	line-height: 15px;
+	color:#fff;
+}

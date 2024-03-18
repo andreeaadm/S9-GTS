@@ -1,0 +1,9 @@
+:host {
+    display: block;
+    min-height: 600px;
+}
+
+/* sits within lightning-record-edit-form-edit so had to move elsewhere */
+/*@media screen and (max-width: 767px) {
+    .slds-grid {display:block;}
+}*/

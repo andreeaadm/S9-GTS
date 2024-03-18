@@ -1,0 +1,71 @@
+<template>
+    
+    <section class="sec-wide">
+        <div if:true={displayDefaultSection}>
+            <slot data-id="slotdefault" name="defaultsection"></slot>
+        </div>
+    </section>
+
+    <section class="sec-grey">
+        <div if:true={displaySection1}>
+            <slot data-id="slot1" name="section1"></slot>
+        </div>
+    </section>
+
+    <section class="sec-light">
+        <div if:true={displaySection2} class="layoutwrap">
+            <div>
+                <slot data-id="slot2left" name="section2left"></slot>
+            </div>
+            <div>
+                <slot data-id="slot2right" name="section2right"></slot>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-dark">
+        <div if:true={displaySection3} class="layoutwrap">
+            <div>
+                <slot data-id="slot3left" name="section3left"></slot>
+            </div>
+            <div>
+                <slot data-id="slot3right" name="section3right"></slot>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-grey">
+        <div if:true={displaySection4} class="layoutwrap">
+            <div>
+                <slot data-id="slot4left" name="section4left"></slot>
+            </div>
+            <div>
+                <slot data-id="slot4right" name="section4right"></slot>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-light sec-wide">
+        <div if:true={displaySection5}>
+            <slot data-id="slot5" name="section5"></slot>
+        </div>
+    </section>
+
+    <section class="sec-grey">
+        <div if:true={displaySection6} class="layoutwrap">
+            <div>
+                <slot data-id="slot6left" name="section6left"></slot>
+            </div>
+            <div>
+                <slot data-id="slot6right" name="section6right"></slot>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-light">
+        <div if:true={displaySection7}>
+            <slot data-id="slot7" name="section7"></slot>
+        </div>
+    </section>
+
+</template>

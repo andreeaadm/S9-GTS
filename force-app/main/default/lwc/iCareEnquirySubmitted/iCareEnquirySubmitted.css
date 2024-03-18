@@ -1,0 +1,78 @@
+section {
+    display: block;
+    background: var(--blue-snow-light);
+    height: 100vh;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-image: url(/sfsites/c/resource/iconsiCare/background-ask-our-experts.svg);
+    background-repeat: no-repeat;
+    background-position: top right;
+    gap: 40px;
+    padding: 20px;
+    align-items: center;
+
+}
+
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--black-primary);
+    text-align: center;
+}
+
+p {
+    font-family: var(--calibri-regular);
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.005em;
+    color: var(--black-primary);
+    margin-bottom: 40px;
+    margin-top: 18px;
+    width: 100%;
+
+}
+
+.button-blue {
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 45px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+    width: 100%;
+}
+
+@media screen and (min-width:768px) {
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        gap: 124px;
+        padding: 62px;
+    }
+    h1{
+        text-align: left;
+    }
+    p {
+        width: 80%;
+    }
+    .button-blue {
+        width: unset;
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .container {
+        width: 1280px;
+        margin: auto;
+    }
+}

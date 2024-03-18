@@ -1,0 +1,115 @@
+.background {
+    background: url(/sfsites/c/resource/iconsiCare/background-ask-our-experts.svg) top right no-repeat, var(--blue-snow-light);
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    position: absolute;
+    z-index: 0;
+    top: 50px;
+}
+
+section {
+    display: flex;
+    gap: 7%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content-left {
+    position: relative;
+}
+
+.content-right {
+    position: relative;
+}
+
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 40px;
+    line-height: normal;
+    color: var(--black-primary);
+    margin-bottom: 23px;
+
+}
+
+h2 {
+    font-family: var(--calibri-regular);
+    font-size: 20px;
+    font-style: normal;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+    margin-bottom: 23px;
+}
+
+p {
+    font-family: var(--calibri-regular);
+    font-size: 16px;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: 0.08px;
+    color: black;
+    margin-bottom: 23px;
+}
+lightning-input{
+    margin-top: -10px;
+    margin-bottom: 23px;
+}
+.grey-button {
+    background-color: var(--grey-light);
+    border: 1px solid var(--grey-link);
+    padding: 10px 55px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+
+.white-button {
+    background-color: white;
+    border: 1px solid var(--grey-light);
+    padding: 10px 55px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: var(--blue-link);
+}
+
+.blue-button {
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 55px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+
+.container-buttons {
+    justify-content: space-between;
+    align-items: baseline;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+@media screen and (min-width:768px) {
+
+    .background {
+        top: 100px;
+    }
+}

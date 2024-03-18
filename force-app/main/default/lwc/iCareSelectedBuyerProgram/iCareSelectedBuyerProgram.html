@@ -1,0 +1,33 @@
+<template>
+    <div class="container-background">
+        <div class="container-content">
+            <div>
+                <template if:true={displayFoundBuyer}>
+                    <h1>{label.YOU_HAVE_SELECTED} <span> {selectedBuyer.buyerName}</span> {label.AS_THE_BUYER}</h1>
+                    <p>{label.CONTINUE_WITH_BUYER}</p>
+                </template>
+                <template if:false={displayFoundBuyer}>
+                    <h1 class="title">{label.BUYER_NOT_FOUND}</h1>
+                    <p>{label.CONTACT_CUSTOMER_SUPPORT}</p>
+                </template>
+
+            </div>
+            <div class="container-buttons">
+                    <button class="button-white" 
+                        onclick={handleChangeBuyer}>{label.CHANGE_BUYER}</button>
+
+                    <template if:true={displayInterlinkBuyer}>
+
+                        <button class="button-blue" 
+                            onclick={handleContinueToInterlink}>{label.CONTINUE_TO_INTERLINK}</button>
+                    </template>
+
+                    <template if:false={displayInterlinkBuyer}>
+
+                        <button class="button-blue" 
+                            onclick={handleSubmitATestRequest}>{label.SUBMIT_A_TEST_REQUEST}</button>
+                    </template>
+            </div>
+        </div>
+    </div>
+</template>

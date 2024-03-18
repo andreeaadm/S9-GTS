@@ -1,0 +1,46 @@
+<template>
+  <div>
+    <c-tc-search-formulators-input
+      onselectformulator={handleSelectFormulator}
+      onremoveformulator={handleRemoveFormulator}
+    ></c-tc-search-formulators-input>
+    <c-input
+      label={labels.TC_PRODUCT_NAME}
+      field-id="search"
+      onchange={handleChange}
+    ></c-input>
+    <c-input
+      label={labels.TC_OTHER_NAME}
+      field-id="OtherName"
+      onchange={handleChange}
+    ></c-input>
+    <c-input
+      label={labels.TC_PRODUCT_GUID}
+      field-id="productGUID"
+      onchange={handleChange}
+    ></c-input>
+    <c-input
+      if:true={sourceOptions}
+      label={labels.TC_PRODUCT_SOURCE}
+      field-id="Source"
+      type="SelectList"
+      select-options={sourceOptions}
+      value={sourceValue}
+      onchange={handleChange}
+    ></c-input>
+
+    <div class="formulator-actions">
+      <div>
+        <c-button
+          disabled={searchDisabled}
+          label={labels.TC_SEARCH_PRODUCTS_BUTTON}
+          onclick={handleSearch}
+          variant="IntkBrandTwoBtn"
+        ></c-button>
+        <a onclick={handleResetForm}
+          >{labels.TC_RESET_SEARCH_PRODUCTS_BUTTON}</a
+        >
+      </div>
+    </div>
+  </div>
+</template>

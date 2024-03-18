@@ -1,0 +1,78 @@
+<template>
+  <c-modal
+    showmodal="true"
+    maxwidth="880"
+    additional-classes="headerfootertwo footerBtnRightAlign heightlessTableScroll mobOverflow deskOverflow createFormulator"
+  >
+    <!-- maxheight="880" -->
+    <span slot="header">{labels.TC_FORMULATOR_SEARCH_TITLE}</span>
+
+    <div slot="content" class="modalContentSlot">
+      <template if:false={showCreateFormulator}>
+        <div class="searchactions">
+          <c-input
+            label={labels.TC_FORMULATOR_NAME}
+            value={searchString}
+            data-id="formulatorName"
+            required
+          ></c-input>
+
+          <c-button
+            label={labels.USER_LIST_FILTER_TABLE_SEARCHFIELD}
+            onclick={handleSearch}
+            variant="IntkBrandTwoBtn"
+          ></c-button>
+
+          <a onclick={handleReset}>{labels.RESET}</a>
+        </div>
+
+        <p if:false={searchPerformed}>{labels.TC_FORMULATOR_PRE_SEARCH}</p>
+        <c-datatable
+          if:true={hasSearchResults}
+          table-cols={tableColumns}
+          table-rows={searchResults}
+          is-loading={isLoading}
+          all-shown={allResultsShown}
+          mob-enabled
+          mode="fixed-header"
+          additional-classes="modal-loadmore heightlessVScrlFixedHeadTbl mob-longStringFix"
+          onviewmore={handleViewMore}
+          oncellclick={handleSelectFormulator}
+        ></c-datatable>
+        <!-- scrollafterxpixels="210" -->
+        <!-- search-select-formulator -->
+        <div if:true={noSearchResults} class="noitems">
+          {labels.TC_NO_FORMULATORS_FOUND}
+        </div>
+      </template>
+
+      <template if:true={showCreateFormulator}>
+        <c-tc-create-formulator
+          show-cancel-button={hasSearchResults}
+          show-no-results-content={noSearchResults}
+          oncancelcreateformulator={handleCancelCreate}
+        ></c-tc-create-formulator>
+      </template>
+
+      <c-spinner if:true={isLoading}></c-spinner>
+    </div>
+    <!--Modal content slot-->
+
+    <div slot="footer">
+      <div class="closebtn">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label={labels.CLOSE}
+          onclick={handleClose}
+        ></c-button>
+      </div>
+      <div if:true={showCreateFormulatorBtn} class="createformulatorbtn">
+        <c-button
+          label={labels.TC_CREATE_FORMULATOR_BUTTON}
+          onclick={handleDisplayFormulatorForm}
+          variant="IntkBrandTwoBtn ModalFooterBtn"
+        ></c-button>
+      </div>
+    </div>
+  </c-modal>
+</template>

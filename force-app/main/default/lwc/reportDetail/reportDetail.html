@@ -1,0 +1,62 @@
+<template>
+  <template if:false={booleanExpiry}>
+  <template if:false={isHiddenByITK}>
+    <div class="userDetailHeader slds-grid slds-p-vertical--medium">
+      <div class="slds-col">
+        <h1 class="h1 slds-m-bottom--none slds-wrap">
+          <span class="profileName slds-show_inline-block" title={name}>
+            {name}
+          </span>
+        </h1>
+        <p class="userBadge"></p>
+      </div>
+      <template if:true={isUpdateable}>
+        <div class="userActions slds-no-flex slds-grid slds-align-top"></div>
+        <div class="slds-no-flex slds-grid slds-align-top">
+          <c-button
+            if:false={editMode}
+            label="EDIT"
+            variant="IntkBrandTwoBtn"
+            onclick={toggleEdit}
+          ></c-button>
+        </div>
+      </template>
+    </div>
+    <lightning-record-form
+      record-id={recordId}
+      object-api-name="Asset"
+      layout-type="Full"
+      mode="readonly"
+      density="comfy"
+    ></lightning-record-form>
+    <c-modal
+      showmodal={editMode}
+      maxwidth="830"
+      additional-classes="narrowContent"
+    >
+      <span slot="header">Edit {name}</span>
+      <div slot="content">
+        <c-input
+          label="Client Reference"
+          value={reference}
+          field-id="Client_Reference__c"
+        ></c-input>
+      </div>
+      <div slot="footer">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label="CANCEL"
+          disabled={isWorking}
+          onclick={toggleEdit}
+        ></c-button>
+        <c-button
+          variant="IntkBrandTwoBtn ModalFooterBtn"
+          label="SAVE"
+          disabled={isWorking}
+          onclick={handleUpdateReport}
+        ></c-button>
+      </div>
+    </c-modal>
+  </template>
+</template>
+</template>

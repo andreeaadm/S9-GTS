@@ -1,0 +1,118 @@
+section{
+    background: var(--blue-snow-light);
+    
+}
+.container-background {
+    background-image: url('/sfsites/c/resource/iconsiCare/background-ask-our-experts.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 159px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-progress div:nth-child(4) .container-dots {
+    display: none;
+}
+
+.header {
+    width: 100%;
+    background-color: var(--blue-snow-light);
+    padding: 16px;
+}
+
+.container-progress {
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.track-jobs {
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 27px;
+    color: var(--blue-light);
+    text-decoration: none;
+}
+.arrow{
+    color: var(--black-primary);
+}
+.track-jobs span:nth-child(2),
+.track-jobs-number {
+    font-family: var(--neo-sans-bold);
+    font-size: 18px;
+    line-height: 32px;
+    color: var(--black-primary);
+}
+
+.track-jobs-description span:nth-child(1) {
+    display: none;
+}
+
+.track-jobs-description {
+    font-family: var(--neo-sans-regular);
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--black-primary);
+}
+
+@media screen and (min-width:768px) {
+    .container-progress {
+        flex-direction: row;
+        align-items: baseline;
+    }
+    .container-header{
+        background-color: var(--blue-snow-light);
+    }
+
+    .header {
+        display: flex;
+        align-items: baseline;
+        padding: 30px 0 30px 20px;
+        margin-bottom: 30px;
+       
+    }
+
+    .track-jobs,
+    .track-jobs span:nth-child(2) {
+        font-family: var(--neo-sans-bold);
+        font-size: 24px;
+        line-height: 32px;
+        color: var(--blue-light);
+    }
+
+    .track-jobs-number {
+        font-family: var(--neo-sans-bold);
+        font-size: 24px;
+        line-height: 32px;
+        color: var(--black-primary);
+    }
+
+    .track-jobs-description span:nth-child(1) {
+        display: contents;
+    }
+
+    .track-jobs-description {
+        font-family: var(--neo-sans-regular);
+        font-size: 24px;
+        line-height: 32px;
+        color: var(--black-primary);
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .header {
+        width: 1280px;
+        margin: auto;
+    }
+
+    .container-content {
+        width: 1280px;
+        margin: auto;
+    }
+
+}

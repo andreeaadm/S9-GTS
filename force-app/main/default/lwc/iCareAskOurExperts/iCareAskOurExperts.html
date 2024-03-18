@@ -1,0 +1,38 @@
+<template>
+  <section>
+    <div class="container-background"></div>
+    <div class="container">
+      <h1>{selectedTitle}</h1>
+      <p style="padding-top: 1% !important">{selectedText}</p>
+    </div>
+  </section>
+  <template lwc:if={isRegulatoryUpdatesVisible}>
+    <div>
+      <div class="container">
+        <h1 style="padding-bottom: 10px">{selectedRegulatory}</h1>
+        <div></div>
+        <div class="regulatory-background">
+          <p style="font-weight: 800; width: 50%; padding: 15px 26px">
+            {selectedRegulatoryText}
+          </p>
+          <div
+            class="slds-p-top_small"
+            style="
+              padding-bottom: 40px !important;
+              padding-left: 26px !important;
+            "
+          >
+            <button
+              class="blue-button"
+              title="View All News"
+              label="View All News"
+              onclick={handleConnectWithUsClick}
+            >
+              {selectedViewAllNews}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</template>

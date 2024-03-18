@@ -1,0 +1,37 @@
+<template>
+  <template if:false={approvalRequestedOrRejected}>
+    <!-- we should conditionally display this but at the moment it is stubbed and always present-->
+    <c-intertek-tile
+      has-loaded={hasLoaded}
+      additional-classes={additionalClasses}
+      header-btn-label-1={conditionalButtonAddGroup}
+      header-btn-class-1="IntkBrandOneBtn"
+      header-btn-label-2={conditionalButtonRemoveGroup}
+      header-btn-class-2="IntkBrandOneBtn"
+      title={labels.USER_GROUP_MGMT_ASSIGNED_GROUPS}
+      onbtn1click={showAddToGroupModal}
+      onbtn2click={showRemoveFromGroupModal}
+    >
+      <div slot="contentSlotBottom" class="groups">
+        <template for:each={groups} for:item="groupItem">
+          <div key={groupItem.Contact_Group__r.Group_Name_FF__c}>
+            {groupItem.Contact_Group__r.Group_Name_FF__c}
+          </div>
+        </template>
+        <div
+          if:false={hasGroups}
+          style="display: flex; flex-direction: column; text-align: center"
+        >
+          <p>No groups found</p>
+        </div>
+      </div>
+    </c-intertek-tile>
+
+    <c-manage-user-group-access
+      if:true={showManageModal}
+      onclose={handleCloseModal}
+      selected-row-ids={selectedRowIds}
+      mode={manageMode}
+    ></c-manage-user-group-access>
+  </template>
+</template>

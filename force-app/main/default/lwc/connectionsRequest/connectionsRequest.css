@@ -1,0 +1,57 @@
+:host .searchactions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding-top: 10px;
+    padding-bottom:20px!important;
+}
+
+:host c-input {
+    flex: 1;
+    padding-bottom: 0;
+    margin-right: 15px;
+}
+
+:host .searchactions c-button {
+    margin-bottom: 1px;
+    border: 1px solid #21B6D7;
+}
+
+:host > c-button {margin-bottom:30px;}
+
+.modalContentSlot {padding-top:10px;}
+
+:host .searchactions a {font-size:15px;}
+
+:host p,
+:host .noitems {
+    text-align: center;
+    margin: auto;
+    padding-bottom: 20px;
+    max-width: calc(100% - 15px);
+}
+
+@media screen and (min-width:768px) {
+    :host .searchactions a {
+        padding: 0 0 12px 0;
+        margin-left: 15px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    :host .searchactions > c-input:first-of-type {margin: 0 0 15px;flex-basis: 100%;}
+    :host .searchactions a {flex-basis: 100%;margin-top:15px;text-align:right;}
+    
+}
+
+/* this stuff is ONLY needed in conjunction with .heightlessScrollArea */
+/* otherwise things will break */
+/* lwc forces me to split things up funny */
+
+.modalContentSlot {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+c-datatable {flex: 1;}

@@ -1,0 +1,68 @@
+.select-list {position:relative;}
+
+/* Generic Select */
+
+.select-list .trigger a.select {
+	height:auto!important;
+	display:block;
+	line-height: normal;
+	min-height: 36px; /* covers no default value scenarios */
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNzYgMjEwIj48cGF0aCBmaWxsPSIjNTU2OThkIiBkPSJNNTYgNTBoMTY0YzQgMCA4IDYgNCAxMGwtODAgOThjLTMgMy05IDMtMTIgMEw1MiA2MGMtNC00LTEtMTAgNC0xMHoiLz48L3N2Zz4=)!important;
+	background-repeat:no-repeat;
+	background-size: 0.8125rem 0.8125rem, 100% 100%;
+	text-decoration:none;
+}
+
+.select-list > div > .select-options {
+	min-width: 100%;
+	max-width: 100%;
+}
+
+.select-list ul li:hover {transition: 300ms background ease;}
+
+.select-list .trigger a.select:active,
+.select-list .trigger a.select:focus,
+.select-list .select-options:focus,
+.select-list .select-options ul:focus {box-shadow:none;outline:none;}
+
+.select-list a.select.placeholder {color: #707070!important;}
+/*** STYLE (std) ***/
+
+.select-list {color:#707070;}
+
+.select-list:not(.bigselect) .trigger a.select {
+	padding: 12px 30px 12px 10px;
+	border-radius:0;
+	color: inherit;
+	background-position: right 10px bottom 50%;
+}
+
+.select-list:not(.bigselect) .trigger a.select,
+.select-list:not(.bigselect) > div > .select-options {border: 1px solid #d8d8d8;}
+
+.select-list:not(.bigselect) > div > .select-options ul li {padding: 8px;}
+.select-list:not(.bigselect) > div > .select-options ul li:hover {background:#e4e4e4;}
+
+/*** STYLE (big) ***/
+
+.select-list.bigselect {color:#1b5297;}
+
+.select-list.bigselect .trigger a.select {
+	padding: 20px 50px 20px 20px;
+	color: inherit;
+	border-radius:4px;
+	background-position: right 20px bottom 50%;
+	min-height: 62px; /* covers no default value scenarios */
+}
+
+.select-list.bigselect .trigger a.select,
+.select-list.bigselect > div > .select-options {border: 2px solid #1b5297;}
+
+.select-list.bigselect > div > .select-options ul li {padding: 8px 22px 8px 20px;}
+.select-list.bigselect > div > .select-options ul li:hover {color:#fff!important;background:#1b5297;}
+
+.select-list.has-error a.select, .select-list.bigselect.has-error .trigger a.select {box-shadow: inset 0 0 0 1px #c23934; border:none;}
+
+/* STYLE (pnlActionSelect) */
+
+.select-list.pnlActionSelect .trigger a.select {padding: 7px 30px 7px 10px;min-height:unset;}

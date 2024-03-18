@@ -1,0 +1,21 @@
+/**
+ * Created by andreea.adam on 11.10.2023.
+ */
+
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 18px;
+}
+
+.check-input {
+    width: 100%;
+}
+
+label {
+    font-family: var(--calibri-regular);
+    font-size: 14px;
+    line-height: normal;
+    color: var(--black-labels);
+}

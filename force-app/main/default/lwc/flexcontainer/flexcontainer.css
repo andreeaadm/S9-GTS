@@ -1,0 +1,17 @@
+.flexcontainer {display: flex;flex-wrap:wrap;}
+
+/*** Un-comment the below when LWC supports the ::slotted pseudo and we have a truly generic and reusable flex container for any scenario! ***/
+/*
+.flexcontainer.flex-50 > ::slotted(*) {flex-basis: 50%}
+.flexcontainer.flex-33 > ::slotted(*) {flex-basis: 33.33%}
+.flexcontainer.flex-25 > ::slotted(*) {flex-basis: 25%}
+.flexcontainer.flex-20 > ::slotted(*) {flex-basis: 20%}
+.flexcontainer.flex-33-66 > ::slotted(*:nth-child(1)) {flex-basis: 33.33%}
+.flexcontainer.flex-33-66 > ::slotted(*:nth-child(2)) {flex-basis: 66.66%}
+.flexcontainer.flex-66-33 > ::slotted(*:nth-child(1)) {flex-basis: 66.66%}
+.flexcontainer.flex-66-33 > ::slotted(*:nth-child(2)) {flex-basis: 33.33%}
+.flexcontainer.flex-25-75 > ::slotted(*:nth-child(1)) {flex-basis: 25%}
+.flexcontainer.flex-25-75 > ::slotted(*:nth-child(2)) {flex-basis: 75%}
+.flexcontainer.flex-75-25 > ::slotted(*:nth-child(1)) {flex-basis: 75%}
+.flexcontainer.flex-75-25 > ::slotted(*:nth-child(2)) {flex-basis: 25%}
+*/

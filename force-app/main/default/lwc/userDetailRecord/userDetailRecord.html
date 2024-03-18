@@ -1,0 +1,66 @@
+<template>
+  <template if:true={showForm}>
+    <div class="content">
+      <lightning-record-edit-form
+        object-api-name="Contact"
+        onsuccess={handleSuccess}
+        onerror={handleError}
+        onsubmit={handleCreateUser}
+        onload={handleOnLoad}
+      >
+        <c-input
+          required
+          type="Text"
+          label="First Name"
+          field-id="FirstName"
+          data-id="FirstName"
+          error-on-custom="Please enter a first name"
+        >
+        </c-input>
+        <c-input
+          required
+          type="Text"
+          label="Last Name"
+          field-id="LastName"
+          data-id="LastName"
+          error-on-custom="Please enter a last name"
+        >
+        </c-input>
+        <c-input
+          required
+          type="Text"
+          label="Email"
+          field-id="Email"
+          data-id="Email"
+          error-on-custom="Please enter an email address"
+          error-on-pattern="Please enter a valid email address"
+          regex-pattern={emailRegex}
+        >
+        </c-input>
+        <c-input
+          placeholder="Select an option"
+          data-id="AccountId"
+          label="Select primary account"
+          field-id="AccountId"
+          title={labels.selectAccountLabel}
+          required
+          type="SelectList"
+          select-options={accountOptions}
+          onchange={handleSelectAccount}
+        ></c-input>
+        <c-input
+          placeholder="Select an option"
+          label="Select access level"
+          data-id="accessLevel"
+          field-id="accessLevel"
+          title="Select access Level"
+          required
+          type="SelectList"
+          select-options={roles}
+          onchange={handleSelectRole}
+        ></c-input>
+        <input type="submit" class="hidden" />
+      </lightning-record-edit-form>
+    </div>
+  </template>
+</template>

@@ -1,0 +1,27 @@
+<template>
+  <div class="slds-grid slds-grid_vertical">
+    <div
+      class="slds-var-m-vertical_medium"
+      lwc:if={analystInformation}
+    >
+      <div class="card">
+        <h1 class="title">{pageTitle}</h1>
+        <p class="names">
+          {firstName} {lastName}
+        </p>
+        <p class="email">{email}
+        </p>
+      </div>
+    </div>
+    <div class="slds-col">
+      <c-i-care-file-upload
+        page-title={fileUploadTitle}
+        gts-form-name={formName}
+        is-gts-job-progression-page={jobProgressionPage}
+        content-version-ids={contentVersionIds}
+        ondocumentupload={handleDocumentUpload}
+      >
+      </c-i-care-file-upload>
+    </div>
+  </div>
+</template>

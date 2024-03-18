@@ -1,0 +1,34 @@
+.card {
+     border-radius: 8px;
+     border: 1px solid #D8D8D8;
+     background: white;
+     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+     padding: 16px 20px;
+ }
+
+ .title {
+     font-family: var(--neo-sans-bold);
+     font-size: 16px;
+     font-style: normal;
+     line-height: 28px;
+     color: var(--black-primary);
+
+ }
+
+ .names {
+     font-family: var(--calibri-bold);
+     font-size: 16px;
+     font-style: normal;
+     line-height: 120%;
+     color: var(--black-primary);
+     opacity: 0.8;
+     margin: 3px 0;
+ }
+
+ .email {
+     font-family: var(--calibri-regular);
+     font-size: 14px;
+     font-style: normal;
+     line-height: normal;
+     color: black;
+ }

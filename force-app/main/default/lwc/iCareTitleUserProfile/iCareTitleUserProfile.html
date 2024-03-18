@@ -1,0 +1,19 @@
+<template>
+    <section>
+        <div class="container-background"> </div>
+        <div class="container">
+            <div class="container-avatar-upload">
+                <lightning-avatar variant="circle" size="large" src={currentPhotoUrl}></lightning-avatar>
+                <!--<template if:false={photoId}>-->
+                <lightning-file-upload label="" name="profilePictureUploader" accept={acceptedFormats}
+                    record-id={USER_ID} onuploadfinished={handleUploadFinished}>
+                </lightning-file-upload>
+            </div>
+
+            <div class="profile-description">
+                <h1> {labels.USER_PROFILE_LABEL} </h1>
+                <p>{labels.USER_PROFILE_DETAILS_LABEL}</p>
+            </div>
+        </div>
+    </section>
+</template>

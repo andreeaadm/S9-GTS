@@ -1,0 +1,39 @@
+<template>
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container gmaModal">
+                
+                <!--<div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Please log in first</h1>
+                </div> -->
+                
+                <div class="slds-modal__content slds-p-around_medium dialog-box" id="modal-content-id-1">
+                    <template if:false={hasLoaded}>
+                        <div class="downloadSpinner">
+                            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                        </div>
+                    </template>
+                    <template if:true={hasLoaded}>
+                        <p>
+                            <template if:false={proceedButtonUnavailable}>
+                                <lightning-formatted-rich-text value={label.tokenDeductionMessage}></lightning-formatted-rich-text>
+                            </template>
+                            <template if:true={proceedButtonUnavailable}>
+                                <lightning-formatted-rich-text value={label.tokenNotAvailableMessage}></lightning-formatted-rich-text>
+                            </template>
+                        </p>
+
+                        <div class="slds-col slds-align_absolute-center">
+                            <button class="slds-button slds-button_outline-brand slds-m-left_x-small hoverClass" label="CONFIRM" title="CONFIRM" onclick={handleOkClick} disabled={proceedButtonUnavailable} type="button">CONFIRM</button>
+                            <button class="slds-button slds-button_outline-brand slds-m-left_x-small hoverClass" title="DECLINE" label="DECLINE"  onclick={handleCancelClick} type="button">DECLINE</button>
+                        </div>
+                    </template>
+                </div>
+                
+                <!--<div class="slds-modal__footer">
+                </div> -->
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+</template>

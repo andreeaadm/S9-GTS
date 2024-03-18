@@ -1,0 +1,16 @@
+<template>
+  <template if:true={showButton}>
+    <c-button
+      if:false={isFollowing}
+      label={labels.FOLLOW}
+      onclick={handleFollow}
+      variant="IntkBrandTwoBtn pnlActionBtn"
+    ></c-button>
+    <c-button
+      if:true={isFollowing}
+      label={labels.UNFOLLOW}
+      onclick={handleUnfollow}
+      variant="IntkBrandTwoBtn pnlActionBtn"
+    ></c-button>
+  </template>
+</template>

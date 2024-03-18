@@ -1,0 +1,52 @@
+<template>
+  <c-button
+    if:true={isPending}
+    label={labels.TC_ADD_PRODUCTS_TO_INVENTORY_BUTTON}
+    onclick={handleAddProducts}
+    variant="IntkBrandTwoBtn pnlActionBtn"
+  ></c-button>
+
+  <div class="right-btn-container">
+    <c-button
+      label={labels.TC_DOWNLOAD_INVENTORY}
+      variant="Neutral pnlActionBtn MinWidthBtn"
+      onclick={handleDownloadClick}
+    ></c-button>
+    <c-button
+    if:true={showVOCReport}
+      label="Download VOC Report"
+      variant="Neutral pnlActionBtn MinWidthBtn"
+      onclick={handleDownloadInventoryForBrand}
+    ></c-button>
+    <c-button
+      if:true={isPending}
+      label={labels.TC_MARK_COMPLETE}
+      onclick={handleMarkComplete}
+      variant="IntkBrandTwoBtn pnlActionBtn"
+    ></c-button>
+    <c-button
+      if:true={isComplete}
+      label={labels.TC_REVERT_TO_PENDING}
+      onclick={handleRevertToPending}
+      variant="IntkBrandTwoBtn pnlActionBtn"
+      disabled={submitIsDisabled}
+    ></c-button>
+    <c-button
+      if:true={isComplete}
+      label={labels.TC_SUBMIT_INVENTORY_BUTTON}
+      onclick={handleSubmit}
+      variant="IntkBrandTwoBtn pnlActionBtn"
+      disabled={submitIsDisabled}
+    ></c-button>
+    <c-button
+      if:true={showInCheckReportButton}
+      label={labels.TC_VIEW_INCHECK_REPORT}
+      onclick={handleViewInCheckReport}
+      variant="IntkBrandTwoBtn pnlActionBtn MinWidthBtn"
+    ></c-button>
+  </div>
+  <c-tc-download-inventory></c-tc-download-inventory>
+  <c-zdhc-post-in-check-report></c-zdhc-post-in-check-report>
+  <c-zdhc-get-in-check-report></c-zdhc-get-in-check-report>
+  <c-tc-brand-download-inventory></c-tc-brand-download-inventory>
+</template>

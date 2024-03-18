@@ -1,0 +1,25 @@
+.item-container {
+    box-shadow: 3px 4px 6px rgba(0,0,0,.16);
+	border: 1px solid #efefef;
+}
+.item-header {
+    color: #21B6D7;
+    font-size: 17px;
+    cursor: pointer;
+}
+.item-header lightning-icon {
+    transition: transform 250ms ease;
+}
+.header-icon {
+    --sds-c-icon-color-foreground-default: #0e8fce;
+}
+.item-content {
+    transition: max-height 1s ease;
+    overflow: hidden;
+    max-height: 0;
+    font-size: 16px;
+}
+
+.active > .item-header lightning-icon {
+    transform:rotate(180deg);
+}

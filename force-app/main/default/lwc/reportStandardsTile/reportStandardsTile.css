@@ -1,0 +1,8 @@
+.groups {
+    text-align:left;
+    font-size:15px;
+}
+.groups > div {padding:7px 0;}
+.groups > div:first-of-type {padding-top:0!important;}
+.groups > div:last-of-type {padding-bottom:0!important;}
+.groups > div:not(:last-of-type) {border-bottom: 1px solid #e9eaea!important;}

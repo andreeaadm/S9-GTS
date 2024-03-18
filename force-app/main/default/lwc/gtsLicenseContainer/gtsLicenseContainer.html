@@ -1,0 +1,126 @@
+<template>
+    <section class="container-content">
+
+    <template if:true={showPurposeOfApplicant}>
+        <c-gts-license-purpose-of-applicant
+                job-request-record={jobRequestRecord}
+                application-type-value={jobRequestRecord.GTS_Type_of_Application__c}
+                other-text-value={jobRequestRecord.GTS_Other_No_please_specify__c}
+                is-required={showError}
+                onpurposeofapplicationchanged={handlePurposeOfApplication}
+        >
+        </c-gts-license-purpose-of-applicant>
+    </template>
+
+    <template if:true={showApplicant}>
+        <c-gts-license-applicant
+                account={accountRecord}
+                job-request-record={jobRequestRecord}
+                onupdateapplicantpage={handleApplicantPageUpdate}
+                is-required={showError}
+        >
+        </c-gts-license-applicant>
+    </template>
+
+    <template if:true={showDocuments}>
+        <c-i-care-lic-reg-file-upload content-version-ids={contentVersionIds} ondocumentupload={handleDocumentUpload}></c-i-care-lic-reg-file-upload>
+    </template>
+
+    <template if:true={showDeclaration}>
+        <c-gts-declaration
+            declaration6={jobRequestRecord.GTS_LRF_Declaration_1__c}
+            declaration4={jobRequestRecord.GTS_LRF_Declaration_2__c}
+            declaration5={jobRequestRecord.GTS_LRF_Declaration_3__c}
+            is-co-c=true
+            ondeclarationcheckboxchange={handleDeclarationCheckboxChange}
+        ></c-gts-declaration>
+    </template>
+
+    <template if:true={showSummary}>
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <template if:false={showSpinner}>
+            <template if:true={showErrorBox}>
+                <div class="container-summary">
+                    <h2>{labels.REQUIRED_FIELDS}</h2>
+                    <template for:each={missingFields} for:item="item">
+                        <li key={item}>{item}</li>
+                    </template>
+                </div>
+            </template>
+        </template>
+        <lightning-accordion allow-multiple-sections-open>
+            <lightning-accordion-section name={labels.PURPOSE_APPLICATION} label={labels.PURPOSE_APPLICATION}>
+                <c-gts-license-purpose-of-applicant
+                        job-request-record={jobRequestRecord}
+                        application-type-value={jobRequestRecord.GTS_Type_of_Application__c}
+                        other-text-value={jobRequestRecord.GTS_Other_No_please_specify__c}
+                        is-read-only=true>
+                </c-gts-license-purpose-of-applicant>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name={labels.APPLICANT} label={labels.APPLICANT}>
+                <c-gts-license-applicant
+                        job-request-record={jobRequestRecord}
+                        is-read-only=true>
+                </c-gts-license-applicant>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name={labels.DOCUMENTS} label={labels.DOCUMENTS}>
+                <c-i-care-lic-reg-file-upload is-read-only="true" content-version-ids={contentVersionIds}></c-i-care-lic-reg-file-upload>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name={labels.DECLARATION} label={labels.DECLARATION}>
+                <c-gts-declaration
+                        declaration6={jobRequestRecord.GTS_LRF_Declaration_1__c}
+                        declaration4={jobRequestRecord.GTS_LRF_Declaration_2__c}
+                        declaration5={jobRequestRecord.GTS_LRF_Declaration_3__c}
+                        is-co-c=true
+                        is-read-only=true
+                ></c-gts-declaration>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </template>
+
+    <template if:true={showThankYouPage}>
+        <c-gts-thank-you-page 
+            job-request-record={jobRequestRecord}
+            job-request-record-id={jobRequestRecordId}
+            onsavefavouritejobrequestevent={handleSaveFavouriteJobRequest} 
+        ></c-gts-thank-you-page> 
+    </template> 
+    
+    <div class="container-buttons">
+        <div class="container-left-buttons">
+        <template if:true= {showBackButton}>
+            <button variant="brand-outline" label={labels.BACK} onclick={handleClickBack}
+            class="white-button">{labels.BACK}</button>
+        </template>
+        <template if:true={showCancelButton}>
+            <button variant="brand-outline" label={labels.CANCEL} onclick={handleClickCancel}
+            class="white-button">{labels.CANCEL}</button>
+        </template>
+    </div>
+
+        <div class="container-right-buttons">
+
+        <template if:false={showSummary}>
+            <template if:false={showThankYouPage}>
+            <button variant="brand-outline" label={labels.SAVE_DRAFT} onclick={handleClickSaveDraft}
+                              class="white-button">{labels.SAVE_DRAFT}</button>
+            </template>
+        </template>
+        <template if:true={showContinueButton}>
+            <button variant="brand" label={labels.CONTINUE} onclick={handleClickContinue}
+                              class={continueButtonClass} disabled={disableContinueButton}>{labels.CONTINUE}</button>
+        </template>
+        <template if:true= {showSummary}>
+            <button variant="brand" label={labels.CONFIRM} onclick={handleClickConfirm}
+                              class="blue-button">{labels.CONFIRM}</button>
+        </template>
+    </div>
+</div>
+
+</section>
+</template>

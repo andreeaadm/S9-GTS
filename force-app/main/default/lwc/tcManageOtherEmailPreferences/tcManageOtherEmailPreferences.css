@@ -1,0 +1,15 @@
+.otherEmailTitle {
+    font-family: var(--lwc-fontFamilyBody,NeoSans-Regular);
+    font-weight: var(--lwc-fontWeightRegular,400);
+    font-size: var(--lwc-fcFontSizeLarge,1rem);
+    padding-bottom: 10px;
+}
+
+:host > div > p {padding-bottom: 20px;}
+c-input {padding-bottom:20px;}
+:host > div > div {
+    margin-top: 20px;
+    text-align: right;
+}
+
+:host > div > div c-button + c-button {margin-left:4px;margin-right:4px;}

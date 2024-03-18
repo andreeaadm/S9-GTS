@@ -1,0 +1,19 @@
+<template>
+  <div class="userDetailHeader slds-grid slds-p-vertical--medium">
+    <div class="slds-col">
+      <h1 class="h1 slds-m-bottom--none slds-wrap">
+        <span class="profileName slds-show_inline-block" title={name}>
+          {name}
+        </span>
+      </h1>
+      <p class="userBadge"></p>
+    </div>
+  </div>
+  <lightning-record-form
+    record-id={recordId}
+    object-api-name="MTC_Project__c"
+    layout-type="Full"
+    mode="readonly"
+    density="comfy"
+  ></lightning-record-form>
+</template>

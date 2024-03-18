@@ -1,0 +1,31 @@
+.container-card{
+    padding: 50px;
+    background-color: var(--Light-Grey);
+    /* width: 50%; */
+}
+h1{
+    font-family: var(--neo-sans-regular);
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: -0.03em;
+    color: var(--Dark-Blue);
+    margin-bottom: 10px;
+
+}
+
+p{
+    font-family: var(--neo-sans-regular);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.03em;
+    color: var(--Dark-Blue);
+    margin-bottom: 10px;
+
+}
+
+@media screen and (min-width:1024px) {
+    .container-card{
+        height: 285px;
+        
+}
+}

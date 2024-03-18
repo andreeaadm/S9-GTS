@@ -1,0 +1,7 @@
+:host {width:16px;box-sizing: content-box;}
+
+svg {
+    fill: inherit;
+    width:100%;
+    height:auto;
+}

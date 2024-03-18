@@ -1,0 +1,27 @@
+<template>
+   
+    <article>
+        <lightning-record-view-form record-id={recordid} object-api-name={objectApiName}>
+            <div class="container">
+                <div>
+                    <lightning-output-field variant="label-hidden" field-name={expertPicture}
+                        class="expert-picture"></lightning-output-field>
+                </div>
+                <div>
+                    <div>
+                        <lightning-output-field variant="label-hidden" field-name={expertName}
+                            class="expert-name"></lightning-output-field>
+                    </div>
+                    <div>
+                        <lightning-formatted-text value={gtsExpertRole} 
+                        class="expert-role"></lightning-formatted-text>  
+                <lightning-formatted-text value={countryValue} 
+                    class="expert-country"></lightning-formatted-text>
+                    </div>
+                    <lightning-formatted-text value={gtsExpertBio} 
+                    class="expert-bio"></lightning-formatted-text>
+                </div>
+            </div>
+        </lightning-record-view-form>
+    </article>
+</template>

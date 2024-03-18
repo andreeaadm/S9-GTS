@@ -1,0 +1,48 @@
+<template>
+
+    <c-gts-company-info
+            section-name={labels.APPLICANT_DETAILS}
+            account-name={jobRequestRecord.GTS_Applicant_Company_Name__c}
+            address-city={jobRequestRecord.iCare_Applicant_Address__City__s}
+            address-country= {jobRequestRecord.iCare_Applicant_Address__CountryCode__s}
+            address-postal-code= {jobRequestRecord.iCare_Applicant_Address__PostalCode__s}
+            address-street= {jobRequestRecord.iCare_Applicant_Address__Street__s}
+            address-province= {jobRequestRecord.iCare_Applicant_Address__StateCode__s}
+            account-id= {jobRequestRecord.iCare_Applicant_Company__c}
+            contact-id={jobRequestRecord.GTS_Applicant_Contact_Person__c}
+            contact-name= {jobRequestRecord.iCare_Applicant_Contact_Person_Name__c}
+            contact-email= {jobRequestRecord.iCare_Applicant_Email__c}
+            contact-phone= {jobRequestRecord.GTS_Applicant_Contact_Number__c}
+            contact-commercial-nr={jobRequestRecord.GTS_Commercial_Registration_No_TIN__c}
+            account-record-type={accountRecordType}
+            is-account-read-only=true
+            is-read-only={isReadOnly}
+            is-required=true
+            oncompanyinfochanged= {handleUpdateExporterInfo}
+    ></c-gts-company-info>
+
+    <c-gts-company-info
+            section-name={labels.PAYER}
+            account-id= {jobRequestRecord.GTS_Payer_Company_Name__c}
+            account-name={jobRequestRecord.GTS_Payer_Company_Name_Text__c}
+            address-city={jobRequestRecord.GTS_Payer_Company_Address__City__s}
+            address-country= {jobRequestRecord.GTS_Payer_Company_Address__CountryCode__s}
+            address-postal-code= {jobRequestRecord.GTS_Payer_Company_Address__PostalCode__s}
+            address-street= {jobRequestRecord.GTS_Payer_Company_Address__Street__s}
+            address-province= {jobRequestRecord.GTS_Payer_Company_Address__StateCode__s}
+            contact-id={jobRequestRecord.GTS_Payer_Contact_Person__c}
+            contact-name= {jobRequestRecord.GTS_Payer_Contact_Person_Text__c}
+            contact-email= {jobRequestRecord.GTS_Payer_Email__c}
+            contact-phone= {jobRequestRecord.GTS_Payer_Contact_Number__c}
+            contact-p-o-nr= {jobRequestRecord.GTS_Purchase_Order_Number__c}
+            contact-p-o= {jobRequestRecord.GTS_Purchase_Order__c}
+            account-filters={payerFieldsFiltering}
+            account-record-type={accountRecordType}
+            is-read-only={isReadOnly}
+            show-tradeable-payer=true
+            show-copy-button=true
+            job-request-record={jobRequestRecord}
+            show-p-o-nr=true
+            oncompanyinfochanged={handleUpdatePayerInfo}
+    ></c-gts-company-info>
+</template>

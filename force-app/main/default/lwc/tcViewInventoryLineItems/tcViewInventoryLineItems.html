@@ -1,0 +1,19 @@
+<template>
+  <c-datatable
+    if:true={lineItemData}
+    table-cols={lineItemData.columns}
+    table-rows={lineItemData.rows}
+    is-loading={loadingMoreLineItems}
+    all-shown={allLineItemsShown}
+    onviewmore={handleViewMore}
+    mob-enabled="true"
+    additional-classes="mob-longStringFix"
+  ></c-datatable>
+  <div if:true={noLineItems} class="noitems">
+    {labels.TC_NO_INVENTORY_LINE_ITEMS}
+  </div>
+  <c-tc-delete-inventory-button
+    record-id={recordId}
+    line-items-loaded={hasLoaded}
+  ></c-tc-delete-inventory-button>
+</template>

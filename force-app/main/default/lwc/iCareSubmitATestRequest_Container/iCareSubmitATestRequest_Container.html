@@ -1,0 +1,80 @@
+<template>
+    <template if:true={sumbitJobRequestPage}>
+        <div class="slds-grid slds-grid_vertical">
+            <div class="container-background">
+                <div class="container-content">
+                    <div class="slds-col">
+                        <h1>{customLabel.TITLE}</h1>
+                        <p>{customLabel.TIP1}</p>
+                        <p>{customLabel.TIP2}</p>
+                    </div>
+                    <div class="container-buttons">
+                        <button class="buttons-header" title="Self-Reference Test" name="Self-Reference Test"
+                            onclick={launchSelfReferenceFlow}>{customLabel.SELF_REFERENCE_TEST}</button>
+                        <button class="buttons-header" title="Buyer Program" name="Buyer Program" onclick={handleBuyerProgramClick}>{customLabel.BUYER_PROGRAM}</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-tables">
+                <lightning-layout>
+                    <lightning-layout-item >
+                        <lightning-card title={customLabel.SAVED_DRAFTS}>
+                            <lightning-datatable key-field="Id" data={draftData} columns={draftColumns}
+                                hide-checkbox-column="true" onrowaction={handleRowAction}>
+                            </lightning-datatable>
+                            <button class="buttons-table" name="iCare_Job_Request" title={customLabel.VIEW_ALL}
+                                onclick={viewAllRecords}>{customLabel.VIEW_ALL}</button>
+                        </lightning-card>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item >
+                        <lightning-card title={customLabel.FAVOURITES}>
+                            <lightning-datatable key-field="Id" data={favouritesData} columns={favouriteColumns}
+                                hide-checkbox-column="true" onrowaction={handleRowAction}>
+                            </lightning-datatable>
+                            <button class="buttons-table" name="Favourite_Job_Request" title={customLabel.VIEW_ALL}
+                                onclick={viewAllRecords}>{customLabel.VIEW_ALL}</button>
+                        </lightning-card>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+    </template>
+    
+    <template if:true={launchFlow}>
+        <lightning-flow
+                flow-api-name={flowApiName}
+                flow-input-variables={inputVariables}
+                onstatuschange={handleFlowStatusChange}
+        ></lightning-flow>
+    </template>
+    
+    <template if:true={viewAllJobRequests}>
+        <c-i-care-view-all-job-requests 
+            selected-record-type={selectedRecordTypeName}
+            onlaunchflow={handleViewAllLaunchFlow}>
+        </c-i-care-view-all-job-requests>
+    </template>
+
+    <template if:true={displaySubmitAJobByBuyerProgram}>
+        <c-i-care-search-buyer-program
+                account-id={accountId}
+                onsearchclick={handleSearchClick}
+                ongobackclick= {handleGoBackClick}
+        ></c-i-care-search-buyer-program>
+        <c-i-care-frequent-used-buyer-program
+                account-id={accountId}
+                onfrequentlybuyerclick={handleFrequentlyBuyerClick}
+        ></c-i-care-frequent-used-buyer-program>
+    </template>
+
+    <template if:true={displaySearchedBuyer}>
+        <c-i-care-selected-buyer-program
+                selected-buyer = {selectedBuyer}
+                onchangebuyer={handleChangeBuyerClick}
+                onsubmittestrequest= {handleSubmitTestRequestSelectedBuyer}
+        ></c-i-care-selected-buyer-program>
+    </template>
+
+</template>

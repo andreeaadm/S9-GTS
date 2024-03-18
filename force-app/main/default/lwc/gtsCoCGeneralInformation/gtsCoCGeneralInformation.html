@@ -1,0 +1,46 @@
+<template>
+  <h1>{labels.GENERAL_INFO}</h1>
+  <div class="container">
+    <template if:true={isReadOnly}>
+      <lightning-input
+        label={labels.SHIPMENT_CERTIFICATE}
+        value={jobRequestRecord.ProgramName}
+        disabled="true"
+        required={isRequired}
+      ></lightning-input>
+    </template>
+    <template if:false={isReadOnly}>
+      <div class="container-search">
+        <c-gts-custom-lookup
+          icon-name="standard:asset_object"
+          s-object-api-name="GTS_Program__c"
+          label={labels.SHIPMENT_CERTIFICATE}
+          onlookupupdate={handleCertificateSelection}
+          placeholder={labels.SEARCH_COMPANY}
+          fields-api-name-with-value-map={programFilters}
+          value={jobRequestRecord.ProgramName}
+          label-api-name="Name"
+          value-api-name="Id"
+          is-required={isRequired}
+        >
+        </c-gts-custom-lookup>
+      </div>
+    </template>
+    <lightning-combobox
+      class="container-applicant"
+      label={labels.APPLICANT_TYPE}
+      value={applicantTypeOption}
+      options={options}
+      onchange={handleApplicantTypeChange}
+      readonly={isApplicantTypeReadOnly}
+      required={isRequired}
+    ></lightning-combobox>
+
+    <lightning-input
+      label={labels.CLIENT_REFERENCE}
+      value={jobRequestRecord.GTS_Client_Reference__c}
+      onchange={handleClientReferenceChange}
+      disabled={isReadOnly}
+    ></lightning-input>
+  </div>
+</template>

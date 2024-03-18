@@ -1,0 +1,80 @@
+<template>
+  <div class="userDetailHeader slds-grid slds-p-vertical--medium">
+    <div class="slds-col">
+      <h1 class="h1 slds-m-bottom--none slds-wrap">
+        <span class="profileName slds-show_inline-block" title={name}>
+          {name}
+        </span>
+      </h1>
+      <p class="userBadge"></p>
+    </div>
+    <template if:true={isUpdateable}>
+      <div class="userActions slds-no-flex slds-grid slds-align-top"></div>
+      <div class="slds-no-flex slds-grid slds-align-top">
+        <c-button
+          if:false={editMode}
+          label="EDIT"
+          variant="IntkBrandTwoBtn"
+          onclick={toggleEdit}
+        ></c-button>
+      </div>
+    </template>
+  </div>
+  <lightning-record-view-form
+    record-id={currentUser}
+    object-api-name="User"
+    density="comfy"
+  >
+    <lightning-output-field
+      field-name={firstNameField}
+    ></lightning-output-field>
+    <lightning-output-field field-name={lastNameField}></lightning-output-field>
+    <lightning-output-field field-name={emailField}></lightning-output-field>
+    <lightning-output-field field-name={isActiveField}></lightning-output-field>
+    <lightning-output-field field-name={emailOptOutField}></lightning-output-field>
+    <lightning-output-field
+      field-name={createdDateField}
+    ></lightning-output-field>
+  </lightning-record-view-form>
+  <c-modal
+    showmodal={editMode}
+    maxwidth="830"
+    additional-classes="narrowContent"
+  >
+    <span slot="header">Edit {name}</span>
+    <div slot="content" class="form">
+      <c-input
+        label="First name"
+        value={firstName}
+        field-id="FirstName"
+      ></c-input>
+      <c-input
+        required
+        label="Last name"
+        value={lastName}
+        field-id="LastName"
+      ></c-input>
+      <c-input
+      type="Checkbox"
+        label="Email Opt Out"
+        value={emailOptOut}
+        field-id="Email_Opt_Out__c"
+       ></c-input>
+      <!--<c-input label="Email address" value={email} field-id="Email"></c-input>-->
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label="CANCEL"
+        disabled={isWorking}
+        onclick={toggleEdit}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label="SAVE"
+        disabled={isWorking}
+        onclick={handleUpdateUser}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

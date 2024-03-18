@@ -1,0 +1,116 @@
+<template>
+    <h1>{labels.JOB_INFO}</h1>
+  <template if:true={showSpinner}>
+    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+  </template>
+
+  <template if:false= {showSpinner}>
+    <c-gts-company-info
+            section-name={labels.EXPORTER}
+            show-commercial-registration-nr=true
+            account-name={jobRequestRecord.GTS_Applicant_Company_Name__c}
+            address-city={jobRequestRecord.iCare_Applicant_Address__City__s}
+            address-country= {jobRequestRecord.iCare_Applicant_Address__CountryCode__s}
+            address-postal-code= {jobRequestRecord.iCare_Applicant_Address__PostalCode__s}
+            address-street= {jobRequestRecord.iCare_Applicant_Address__Street__s}
+            address-province= {jobRequestRecord.iCare_Applicant_Address__StateCode__s}
+            account-id= {jobRequestRecord.iCare_Applicant_Company__c}
+            contact-id={jobRequestRecord.GTS_Applicant_Contact_Person__c}
+            contact-name= {jobRequestRecord.iCare_Applicant_Contact_Person_Name__c}
+            contact-email= {jobRequestRecord.iCare_Applicant_Email__c}
+            contact-phone= {jobRequestRecord.GTS_Applicant_Contact_Number__c}
+            contact-commercial-nr={jobRequestRecord.GTS_Commercial_Registration_No_TIN__c}
+            account-record-type={accountRecordType}
+            is-account-read-only=true
+            is-read-only={isReadOnly}
+            is-required={isRequired}
+            oncompanyinfochanged= {handleUpdateExporterInfo}
+    ></c-gts-company-info>
+    <c-gts-company-info
+            section-name={labels.IMPORTER}
+            show-commercial-registration-nr=true
+            account-id= {jobRequestRecord.GTS_Importer_Company_Name__c}
+            account-name={jobRequestRecord.GTS_Importer_Company_Name_Text__c}
+            address-city={jobRequestRecord.GTS_Importer_Company_Address__City__s}
+            address-country= {jobRequestRecord.GTS_Importer_Company_Address__CountryCode__s}
+            address-postal-code= {jobRequestRecord.GTS_Importer_Company_Address__PostalCode__s}
+            address-street= {jobRequestRecord.GTS_Importer_Company_Address__Street__s}
+            address-province= {jobRequestRecord.GTS_Importer_Company_Address__StateCode__s}
+            contact-id={jobRequestRecord.GTS_Importer_Contact_Person__c}
+            contact-name= {jobRequestRecord.GTS_Importer_Contact_Person_Name_Text__c}
+            contact-email= {jobRequestRecord.GTS_Importer_Email__c}
+            contact-phone= {jobRequestRecord.GTS_Importer_Contact_Number__c}
+            contact-commercial-nr={jobRequestRecord.GTS_Importer_Commercial_Reg_No_TIN__c}
+            account-record-type={accountRecordType}
+            account-filters={importerFieldsFiltering}
+            is-read-only={isReadOnly}
+            is-required={isRequired}
+            oncompanyinfochanged={handleUpdateImporterInfo}
+    ></c-gts-company-info>
+
+    <c-gts-company-info
+            section-name={labels.INSPECTION}
+            account-id= {jobRequestRecord.GTS_Inspection_Location_Company_Name__c}
+            account-name={jobRequestRecord.GTS_Inspection_Location_Company_Text__c}
+            address-city={jobRequestRecord.GTS_Inspection_Location_Company_Address__City__s}
+            address-country= {jobRequestRecord.GTS_Inspection_Location_Company_Address__CountryCode__s}
+            address-postal-code= {jobRequestRecord.GTS_Inspection_Location_Company_Address__PostalCode__s}
+            address-street= {jobRequestRecord.GTS_Inspection_Location_Company_Address__Street__s}
+            address-province= {jobRequestRecord.GTS_Inspection_Location_Company_Address__StateCode__s}
+            contact-id={jobRequestRecord.GTS_Inspection_Location_Contact_Person__c}
+            contact-name= {jobRequestRecord.GTS_Inspection_Loc_Contact_Name_Text__c}
+            contact-email= {jobRequestRecord.GTS_Inspection_Location_Email__c}
+            contact-phone= {jobRequestRecord.GTS_Inspection_Location_Contact_Number__c}
+            account-record-type={accountRecordType}
+            account-filters={inspectionLocationFieldsFiltering}
+            is-read-only={isReadOnly}
+            oncompanyinfochanged={handleUpdateInspectionInfo}
+    ></c-gts-company-info>
+
+
+  <br />
+
+  <div>
+    <label>
+      {labels.INVIEW_REQUESTED_TITLE1} &nbsp;
+      <a href={labels.INVIEW_TECHNOLOGY_LINK} target="_blank"
+        >{labels.INVIEW_REQUESTED_TITLE2}</a
+      >
+    </label>
+
+    <lightning-input
+      class="check-input"
+      type="checkbox"
+      label={labels.INVIEW_REQUESTED_LABEL}
+      checked={jobRequestRecord.GTS_Inview_Requested__c}
+      disabled={isReadOnly}
+      onchange={handleInviewRequestedChange}
+    ></lightning-input>
+  </div>
+
+  <br />
+
+    <c-gts-company-info
+            section-name={labels.PAYER}
+            account-id= {jobRequestRecord.GTS_Payer_Company_Name__c}
+            account-name={jobRequestRecord.GTS_Payer_Company_Name_Text__c}
+            address-city={jobRequestRecord.GTS_Payer_Company_Address__City__s}
+            address-country= {jobRequestRecord.GTS_Payer_Company_Address__CountryCode__s}
+            address-postal-code= {jobRequestRecord.GTS_Payer_Company_Address__PostalCode__s}
+            address-street= {jobRequestRecord.GTS_Payer_Company_Address__Street__s}
+            address-province= {jobRequestRecord.GTS_Payer_Company_Address__StateCode__s}
+            contact-id={jobRequestRecord.GTS_Payer_Contact_Person__c}
+            contact-name= {jobRequestRecord.GTS_Payer_Contact_Person_Text__c}
+            contact-email= {jobRequestRecord.GTS_Payer_Email__c}
+            contact-phone= {jobRequestRecord.GTS_Payer_Contact_Number__c}
+            contact-p-o-nr= {jobRequestRecord.GTS_Purchase_Order_Number__c}
+            account-record-type={accountRecordType}
+            account-filters={payerFieldsFiltering}
+            is-read-only={isReadOnly}
+            show-p-o-nr=true
+            show-copy-button=true
+            job-request-record={jobRequestRecord}
+            oncompanyinfochanged={handleUpdatePayerInfo}
+    ></c-gts-company-info>
+  </template>
+</template>

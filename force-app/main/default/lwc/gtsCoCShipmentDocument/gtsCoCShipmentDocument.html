@@ -1,0 +1,118 @@
+<template>
+	<h1>{labels.SHIPMENT_DOC}</h1>
+	<template if:true={showSpinner}>
+		<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+	</template>
+	<template if:false={showSpinner}>
+		<template if:false={showFields}>
+			<div>{labels.NO_FIELDS}</div>
+		</template>
+		<template if:true={showFields}>
+
+
+			<div class="container-inputs">
+				<template if:true={showACID}>
+					<lightning-input label={labels.ACID_NO} value={jobRequestRecord.GTS_ACID_No__c} onchange={handleACIDNo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+
+				<template if:true={showAWB}>
+					<lightning-input label={labels.AWB_NO} value={jobRequestRecord.GTS_AWB_No__c} onchange={handleAWBNo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showBL}>
+					<lightning-input label={labels.BL_NO} value={jobRequestRecord.GTS_BL_No__c} onchange={handleBLNo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+
+				<template if:true={showCertNo}>
+					<lightning-input label={labels.CERTIFICATE_NO} value={jobRequestRecord.GTS_Certificate_Origin_No__c}
+					                 onchange={handleCertificateNo} disabled={isReadOnly}></lightning-input>
+					<lightning-input type="date" label={labels.CERTIFICATE_DATE}
+					                 value={jobRequestRecord.GTS_Certificate_Origin_Date__c} onchange={handleCertificateDate}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+
+				<template if:true={showCustDealerNo}>
+					<lightning-input label={labels.CUSTOMER_NO} value={jobRequestRecord.GTS_Customer_Dealer_No__c}
+					                 onchange={handleCustomerNo} disabled={isReadOnly}></lightning-input>
+				</template>
+
+				<template if:true={showDocument}>
+					<lightning-input label={labels.DOCUMENT_NO} value={jobRequestRecord.GTS_Transport_Document_No__c}
+					                 onchange={handleDocumentNo} disabled={isReadOnly}></lightning-input>
+					<lightning-input type="date" label={labels.DOCUMENT_DATE}
+					                 value={jobRequestRecord.GTS_Transport_Document_Date__c} onchange={handleDocumentDate}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+
+
+				<template if:true={showFaseh}>
+					<lightning-input label={labels.FASEH_No} value={jobRequestRecord.GTS_FASEH_Request_No__c}
+					                 onchange={handleFASEHNo} disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showFDI}>
+					<lightning-input label={labels.FDI_NO} value={jobRequestRecord.GTS_FDI_No__c} onchange={handleFDINo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showIDF}>
+					<lightning-input label={labels.IDF_NO} value={jobRequestRecord.GTS_IDF_No__c} onchange={handleIDFNo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showImpLicense}>
+					<lightning-input label={labels.IMPORT_LICENCE_NO} value={jobRequestRecord.GTS_Import_Licence_No__c}
+					                 onchange={handleImportLicenceNo} disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showImpConde}>
+					<lightning-input label={labels.IMPORTER_CODE} value={jobRequestRecord.GTS_Importer_Code__c}
+					                 onchange={handleImporterCode} disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showICE}>
+					<lightning-input label={labels.ICE_NO} value={jobRequestRecord.GTS_ICE_No__c} onchange={handleICENo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+
+
+				<template if:true={showLC}>
+					<lightning-input label={labels.LC_NO} value={jobRequestRecord.GTS_LC_No__c} onchange={handleLCNo}
+					                 disabled={isReadOnly}></lightning-input>
+					<lightning-input type="date" label={labels.LC_DATE} value={jobRequestRecord.GTS_LC_Date__c}
+					                 onchange={handleLCDate} disabled={isReadOnly}></lightning-input>
+				</template>
+
+				<template if:true={showEpNo}>
+					<lightning-input label={labels.EXPORTER_NO} value={jobRequestRecord.GTS_No_of_Exporter__c}
+					                 onchange={handleExporterNo} disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showImpNo}>
+					<lightning-input label={labels.IMPORTER_NO} value={jobRequestRecord.GTS_No_of_Importer__c}
+					                 onchange={handleImporterNo} disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showPRNo}>
+					<lightning-input label={labels.PR_NO} value={jobRequestRecord.GTS_PR_No__c} onchange={handlePRNo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+
+				<template if:true={showProforma}>
+					<lightning-input label={labels.PROFORMA_NO} value={jobRequestRecord.GTS_Invoice_No__c}
+					                 onchange={handleProformaNo} disabled={isReadOnly}></lightning-input>
+					<lightning-input type="date" label={labels.PROFORMA_DATE} value={jobRequestRecord.GTS_Invoice_Date__c}
+					                 onchange={handleProformaDATE} disabled={isReadOnly}></lightning-input>
+				</template>
+
+				<template if:true={showUESW}>
+					<lightning-input label={labels.UESW_NO} value={jobRequestRecord.GTS_UESW_Application_No__c}
+					                 onchange={handleUESWDATE} disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showURC}>
+					<lightning-input label={labels.URC_NO} value={jobRequestRecord.GTS_UCR_No__c} onchange={handleURCNo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+				<template if:true={showOther}>
+					<lightning-input label={labels.OTHER_NO} value={jobRequestRecord.GTS_Other_No_please_specify__c} onchange={handleOtherNo}
+					                 disabled={isReadOnly}></lightning-input>
+				</template>
+			</div>
+		</template>
+	</template>
+</template>

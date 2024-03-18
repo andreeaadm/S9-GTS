@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Community Notice LWC</masterLabel>
+    <targets>
+        <target>lightning__HomePage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="communityName" label="Community Name" type="String" required="true"/>
+            <property name="bgColor" label="Background Color" type="String" default="#ffc700"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

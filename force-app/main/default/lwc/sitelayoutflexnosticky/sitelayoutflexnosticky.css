@@ -1,0 +1,15 @@
+/*** SECTION STUFF ***/
+
+section:not(.sec-wide) > div {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 30px;
+}
+
+/*** LAYOUT STUFF ***/
+
+@media screen and (min-width:681px) {
+    .layoutwrap {display: flex;flex-wrap: wrap;}
+    .layoutwrap > div:first-of-type {flex-basis:65%;padding-right: 40px;}
+    .layoutwrap > div:last-of-type {flex-basis:35%;}
+}

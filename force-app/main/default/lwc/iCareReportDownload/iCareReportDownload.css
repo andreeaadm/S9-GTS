@@ -1,0 +1,29 @@
+.container{
+    padding: 0px 18px 10px 18px;
+    border-bottom: 1px solid #D8D8D8;
+
+}
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--black-primary);
+}
+.download-link{
+    margin-top: 10px;
+}
+.download-link lightning-icon {
+    --sds-c-icon-color-foreground-default: var(--blue-link);
+    margin-right: 10px;
+}
+
+button {
+    border: 1px solid var(--blue-link);
+    border-radius: 5px;
+    background-color: var(--blue-light);
+    color: white;
+    font-family: var(--calibri-regular);
+    font-size: 14px;
+    letter-spacing: 0.015em;
+    padding: 5px 10px;
+}

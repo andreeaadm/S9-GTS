@@ -1,0 +1,32 @@
+.custom-record-form .slds-button-group {
+    display: none;
+}
+.container-search,
+.container-applicant{
+    width: 100%;
+}
+h1{
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px; 
+    margin-bottom: 18px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+}
+
+@media screen and (min-width:768px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        gap: 45px;
+    }
+    .container-search,
+    .container-applicant{
+        width: 50%;
+    }
+}

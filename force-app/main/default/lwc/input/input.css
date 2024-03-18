@@ -1,0 +1,97 @@
+input {
+	display: block;
+	width: 100%;
+	outline:0;
+}
+
+/*** STYLE ***/
+
+:host {
+	display: block;
+	/*padding: 0 0 20px;*/
+	padding:0;
+	font-size: 16px;
+	line-height: 22px;
+}
+
+input {
+	color:#707070;
+	border: 1px solid #D8D8D8!important;
+	padding: 12px 10px;
+	/*border-radius:4px;*/
+}
+
+:host > label {
+	display: block;
+	color:#080707;
+	padding-bottom:2px;
+}
+
+input::placeholder {color:#707070;text-overflow:ellipsis;font-size:16px;line-height:22px;}
+input::-webkit-input-placeholder {color:#707070;text-overflow:ellipsis;font-size:16px;line-height:22px;}
+input:-moz-placeholder {color:#707070;text-overflow:ellipsis;font-size:16px;line-height:22px;}
+input::-moz-placeholder {color:#707070;text-overflow:ellipsis;font-size:16px;line-height:22px;}
+input:-ms-input-placeholder {color:#707070;text-overflow:ellipsis;font-size:16px;line-height:22px;} 
+
+.input-result {
+	display:block;
+	color:#707070;
+	border: 1px solid #D8D8D8!important;
+	padding: 12px 10px;
+	background:#efefef;
+	line-height:normal;
+	min-height: 45px;
+}
+
+/*:host[slot="filters"] {max-width:380px;}*/
+
+textarea {
+	resize:none;
+	overflow:auto;
+	color:#707070;
+	padding: 12px 10px;
+	/*border-radius:4px;*/
+	border: 1px solid #D8D8D8;
+	box-shadow:none;
+}
+
+.slds-textarea:focus {
+	border: 1px solid #D8D8D8;
+	box-shadow:none;
+}
+
+@media screen and (min-width:768px) {
+	:host.modalFooterCheckBox {
+		position:absolute;
+		left:30px;
+		top: 25px;
+	}
+}
+@media screen and (max-width:767px) {
+	:host.modalFooterCheckBox {
+		width: 222px;
+    	margin: 10px auto 0;
+	}
+}
+
+
+/*** ERRORS ***/
+
+.error-messages {
+	font-size: 14px;
+    line-height: 20px;
+	color: #c23934;
+}
+.has-error:not(c-checkbox), .has-error:focus:not(c-checkbox) {box-shadow: inset 0 0 0 1px #c23934;}
+
+/*** FLEX ***/
+
+:host.flex-50 {flex-basis: 49.375%;}
+:host.flex-33 {flex-basis: 32.5%;}
+:host.flex-25 {flex-basis: 24.0625%;}
+:host.flex-20 {flex-basis: 19%;}
+
+:host.flex-50:nth-child(even),
+:host.flex-33:nth-child(3n),
+:host.flex-25:nth-child(4n),
+:host.flex-20:nth-child(5n) {margin-right:0;}

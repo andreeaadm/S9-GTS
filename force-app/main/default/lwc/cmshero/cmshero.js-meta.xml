@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>CMS Hero</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="managedContentType"         label="Managed Content Type"        type="String"   default="Hero"  description="The managed content type name entered here must exactly match the managed content type of the Content Item you choose below."></property>
+            <property name="contentKey"                 label="Content Item"                type="ContentReference"></property>
+            <property name="titleColour"                label="Title Colour"                type="Color"    default="rgb(47, 46, 46)"></property>
+            <property name="subTitleColour"             label="Subtitle Colour"             type="Color"    default="rgb(47, 46, 46)"></property>
+            <property name="bodyColour"                 label="Body Colour"                 type="Color"    default="rgb(47, 46, 46)"></property>
+            <property name="buttonLabelColour"          label="Button Label Colour"         type="Color"    default="rgb(47, 46, 46)"></property>
+            <property name="buttonBorderColour"         label="Button Border Colour"        type="Color"    default="rgb(47, 46, 46)"></property>
+            <property name="buttonVariant"              label="Button Type"                 type="String"   default="btn1"  description="Additional style classes that you'd like to apply to buttons within the hero. This enables you to style one set of hero buttons differently to another, in Theme CSS."></property>
+            <property name="backgroundOverlayColour"    label="Background Overlay Colour"   type="Color"    default="rgb(32, 165, 199)"></property>
+            <property name="backgroundColour"           label="Background Colour"           type="Color"    default="rgba(255, 255, 255, 0)"></property>
+            <property name="backgroundColourContent"    label="Background Colour Content"   type="Color"    default="rgb(32, 165, 199)"></property>
+            <property name="bgSize"                     label="Background Image Size"       type="String"   default="100% auto"></property>
+            <property name="heroContentWidth"           label="Content Width"               type="String"   default="1180px"></property>
+            <property name="heroMinHeight"              label="Min Height"                  type="String"   default="380px"></property>
+            <property name="colOrRowContents"           label="Column or Row"               type="String"   default="row"   datasource="col,row"></property>
+            <property name="alignContentsV"             label="Align Contents Vertically"   type="Boolean"  default="true"></property>
+            <property name="alignContentsH"             label="Align Contents Horizontally" type="Boolean"  default="true"></property>
+            <property name="reverseContents"            label="Reverse Layout"              type="Boolean"></property> 
+            <property name="additionalClasses"          label="Additional Style Classes"    type="String"   default="hero bg-v title-separator" description="Additional style classes that you'd like to apply to the component. This enables you to style one hero differently to another, in Theme CSS."></property>
+            <property name="disableLinkify"             label="Disable Linkifying"          type="Boolean"  default="false" description="Disables the linkification of URLs in hero content."></property>
+            <property name="showTitle"                  label="Show CMS Item Title"         type="Boolean"  default="true"></property>
+        </targetConfig>
+    </targetConfigs>
+    <capabilities>
+        <capability>lightningCommunity__RelaxedCSP</capability>
+    </capabilities>
+</LightningComponentBundle>

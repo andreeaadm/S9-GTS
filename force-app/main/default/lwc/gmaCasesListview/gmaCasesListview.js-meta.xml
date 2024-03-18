@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>GMA Cases Listview</masterLabel>
+    <targets>
+       <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>  
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="ListViewOne" type="String" default="All Cases" label="1st listview" />
+            <property name="ListViewOneDaysCount" type="String" default="All" label="1st listview days count" />
+            <property name="ListViewTwo" type="String" default="Cases Last 3 Months" label="2nd listview" />
+            <property name="ListViewTwoDaysCount" type="String" default="90" label="2nd listview days count" />
+            <property name="ListViewThree" type="String" default="Cases Last 6 Months" label="3rd listview" />
+            <property name="ListViewThreeDaysCount" type="String" default="182" label="3rd listview days count" />
+            <property name="ListViewFour" type="String" default="Cases Last Year" label="4th listview" />
+            <property name="ListViewFourDaysCount" type="String" default="365" label="4th listview days count" />
+            <property name="ListViewFive" type="String" default="" label="5th listview" />
+            <property name="ListViewFiveDaysCount" type="String" default="" label="5th listview days count" />
+        </targetConfig>
+     </targetConfigs>
+</LightningComponentBundle>

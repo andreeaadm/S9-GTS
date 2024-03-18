@@ -1,0 +1,10 @@
+<template>
+    <template for:each={crumbs} for:item="crumb" for:index="i">
+        <span key={crumb.id} class="crumb">
+            <a if:true={crumb.action} id={crumb} data-crumb={i} key={crumb.id} onclick={handleClick}>{crumb.label}</a>
+            <template if:false={crumb.action}>
+                {crumb.label}
+            </template>
+        </span>
+    </template>
+</template>

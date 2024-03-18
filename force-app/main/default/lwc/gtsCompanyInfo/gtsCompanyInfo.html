@@ -1,0 +1,172 @@
+<template>
+    <h1>{sectionName}</h1>
+    <template if:false={isReadOnlyValue}>
+      <template if:true={showCopyButton}>
+        <button
+            variant="brand"
+            label={labels.BUTTON_LABEL}
+            onclick={handleCopyExporterInfoClick}
+            class="blue-button"
+        >
+          {labels.BUTTON_LABEL}
+        </button>
+      </template>
+    </template>
+    <div class="container-inputs">
+      <template if:false={isReadOnlyValue}>
+        <template if:true={isAccountReadOnly}>
+          <lightning-input
+            label={labels.COMPANY_NAME}
+            value={accountName}
+            disabled="true"
+            required={isRequired}
+          ></lightning-input>
+        </template>
+  
+        <template if:false={isAccountReadOnly}>
+          <c-gts-custom-lookup
+            icon-name="standard:asset_object"
+            s-object-api-name="GTS_Account_Relationship_History__c"
+            label={labels.COMPANY_NAME}
+            onlookupupdate={handleAccountSelection}
+            placeholder={labels.SEARCH_COMPANY}
+            value={accountName}
+            is-read-only={isReadOnly}
+            is-required={isRequired}
+            fields-api-name-with-value-map={accountFilters}
+            label-api-name="GTS_Associated_Account_Name__c"
+            value-api-name="GTS_Associated_Account__c"
+          >
+          </c-gts-custom-lookup>
+        </template>
+      </template>
+      <template if:true={isReadOnlyValue}>
+        <lightning-input
+          label={labels.COMPANY_NAME}
+          value={accountName}
+          disabled="true"
+          required={isRequired}
+        ></lightning-input>
+      </template>
+
+      <template if:true={isReadOnlyValue}>
+        <lightning-input
+          label={labels.CONTACT_PERSON}
+          value={contactName}
+          disabled="true"
+          required={isRequired}
+        ></lightning-input>
+      </template>
+
+      <template if:false={isReadOnlyValue}>
+        <c-gts-custom-lookup
+          icon-name="standard:asset_object"
+          s-object-api-name="Contact"
+          label={labels.CONTACT_PERSON}
+          onlookupupdate={handleContactSelection}
+          placeholder={labels.SEARCH_PERSON}
+          value={contactName}
+          is-required={isRequired}
+          fields-api-name-with-value-map={contactFieldsFiltering}
+        >
+        </c-gts-custom-lookup>
+      </template>
+
+      <lightning-combobox
+        label={labels.COUNTRY}
+        value={addressCountry}
+        options={countryOptions}
+        disabled={editAddress}
+        required={isRequired}
+        onchange={handleCountryChange}
+      ></lightning-combobox>
+      <lightning-input
+          type="text"
+          label={labels.STREET}
+          value={addressStreet}
+          onchange={handleAddressStreetChange}
+          disabled={editAddress}
+          required={isRequired}
+      ></lightning-input>
+      <lightning-combobox
+        label={labels.STATE}
+        value={addressProvince}
+        options={stateOptions}
+        onchange={handleAddressStateChange}
+        disabled={editAddress}
+        required={isRequired}
+      ></lightning-combobox>
+      <lightning-input
+          type="text"
+          label={labels.CITY}
+          value={addressCity}
+          onchange={handleAddressCityChange}
+          disabled={editAddress}
+          required={isRequired}
+      ></lightning-input>
+      <lightning-input
+          type="text"
+          label={labels.POSTAL_CODE}
+          value={addressPostalCode}
+          onchange={handleAddressPostalCodeChange}
+          disabled={editAddress}
+          required={isRequired}
+      ></lightning-input>
+
+
+      <lightning-input
+        type="text"
+        label={labels.CONTACT_NUMBER}
+        value={contactPhone}
+        onchange={handleContactPhoneChange}
+        disabled={isContactPhoneReadOnly}
+        required={isRequired}
+      ></lightning-input>
+      <lightning-input
+        type="email"
+        label={labels.EMAIL}
+        value={contactEmail}
+        onchange={handleContactEmailChange}
+        disabled={isContactEmailReadOnly}
+        required={isRequired}
+      ></lightning-input>
+      <template if:true={showCommercialRegistrationNr}>
+        <lightning-input
+          type="text"
+          label={labels.COMMERCIAL_NR}
+          value={contactCommercialNr}
+          onchange={handleCommercialNrChange}
+          disabled={isReadOnlyValue}
+          required={isRequired}
+        ></lightning-input>
+      </template>
+  
+      <template if:true={showPONr}>
+        <lightning-input
+          type="text"
+          label={labels.PO_NUMBER}
+          value={contactPONr}
+          onchange={handlePONrChange}
+          disabled={isReadOnlyValue}
+        ></lightning-input>
+      </template>
+      <template if:true={showApplicantType}>
+        <lightning-combobox
+          label={labels.APPLICANT_TYPE}
+          value={applicantType}
+          options={options}
+          onchange={handleApplicantTypeChange}
+          disabled={checkApplicantTypeReadOnly}
+        ></lightning-combobox>
+      </template>
+      <template if:true={showPaymentType}>
+        <lightning-input
+          type="text"
+          label={labels.PAYMENT_TYPE}
+          value={paymentType}
+          onchange={handlePaymentTypeChange}
+          disabled={isReadOnlyValue}
+        ></lightning-input>
+      </template>
+    </div>
+  </template>

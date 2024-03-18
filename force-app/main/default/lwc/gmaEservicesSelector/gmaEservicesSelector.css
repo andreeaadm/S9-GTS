@@ -1,0 +1,87 @@
+.inner1 {
+    float:left; 
+    font-weight: 900;
+    font-size: large;
+    text-shadow: 0px 0.5px, 0.5px 0px, 0.5px 0.5px;
+  }
+  
+  .inner2{
+    float:left; 
+    clear: left;
+    font-size: large;
+  }
+  
+  .titleWrapper{
+   margin-top: 10px;
+   text-align: center;
+   font-size: medium;
+  }
+  
+  .hyperlinkedImage {
+    cursor: pointer;
+  }
+  
+  .eserviceSummary{
+    margin-top: 15px;
+    font-size: medium;
+    text-align: left;
+  }
+
+  @media only screen and (min-width: 600px){
+    .eserviceSummary{
+      width: 115%;
+    }
+  }  
+
+  .regulatoryImageWrapper {
+    text-align: center;
+    margin-right: 0 !important;
+  }
+
+  .regulatorySheetCustomLink:hover .regulatorySheetImage{
+    content: url("/sfsites/c/resource/gmaRegulatorySheetBlueLogo");
+  }
+  
+  .regulatorySheetCustomLink:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .testPlanCustomLink:hover .testPlanImage{
+    content: url("/sfsites/c/resource/gmaTestPlanBlueLogo");
+  }
+  
+  .testPlanCustomLink:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .recallSummaryCustomLink:hover .recallSummaryImage{
+    content: url("/sfsites/c/resource/gmaRecallSummaryBlueLogo");
+  }
+
+  .shadow{
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    content:  url("/sfsites/c/resource/gmaGapAnalysisBlueLogo")
+              url("/sfsites/c/resource/gmaRegulatorySheetBlueLogo")
+              url("/sfsites/c/resource/gmaTestPlanBlueLogo")
+              url("/sfsites/c/resource/gmaRecallSummaryBlueLogo");
+ }
+  
+  .recallSummaryCustomLink:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .gapAnalysisCustomLink:hover .gapAnalysisImage{
+    content: url("/sfsites/c/resource/gmaGapAnalysisBlueLogo");
+  }
+  
+  .gapAnalysisCustomLink:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }

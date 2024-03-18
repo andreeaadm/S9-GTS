@@ -1,0 +1,67 @@
+<template>
+  <header class="slds-grid slds-p-vertical--medium" if:true={showHeader}>
+    <div class="slds-col">
+      <h1 class="slds-m-bottom--none slds-wrap" if:true={title}>
+        <span title={title}>{title}</span>
+      </h1>
+    </div>
+    <template if:true={isUpdateable}>
+      <div class="slds-no-flex slds-grid slds-align-top">
+        <c-button
+          if:false={editMode}
+          label={labels.EDIT}
+          variant="IntkBrandTwoBtn"
+          onclick={toggleEdit}
+        ></c-button>
+      </div>
+    </template>
+  </header>
+  <lightning-record-form
+    record-id={recordId}
+    object-api-name={objectApiName}
+    layout-type="Full"
+    mode="readonly"
+    density={viewDensity}
+    columns={viewColumns}
+  ></lightning-record-form>
+  <c-modal
+    showmodal={editMode}
+    maxwidth="830"
+    additional-classes="narrowContent mobOverflow deskOverflow"
+  >
+    <span slot="header">{labels.EDIT} {title}</span>
+    <div slot="content">
+      <c-form
+        record-id={recordId}
+        object-api-name={objectApiName}
+        field-api-names={editableFieldApiNames}
+        field-labels={editableFieldLabels}
+        record-type-label={recordTypeLabel}
+        title-field-api-name={titleFieldApiName}
+        required-field-api-names={requiredFieldApiNames}
+        select-options-override={selectOptionsOverride}
+        onsuccess={handleSuccess}
+        onerror={handleError}
+        oncancel={handleCancel}
+      ></c-form>
+      <!-- 
+        save-btn-label="SAVE"
+        cancel-btn-label="CANCEL" 
+      -->
+    </div>
+    <div slot="footer">
+      <c-button
+        variant="Neutral ModalFooterBtn"
+        label={labels.CANCEL}
+        disabled={isWorking}
+        onclick={toggleEdit}
+      ></c-button>
+      <c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={labels.SAVE}
+        disabled={isWorking}
+        onclick={save}
+      ></c-button>
+    </div>
+  </c-modal>
+</template>

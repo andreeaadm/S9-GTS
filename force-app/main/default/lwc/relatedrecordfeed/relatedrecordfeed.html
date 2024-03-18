@@ -1,0 +1,4 @@
+<template>
+    <c-commenttrigger if:true={popupMode}  comments={relatedRecords}    has-unread={hasUnread}  reverse-feed={reverseFeed} read-only={readOnly} onreadcomments={handleReadRecords} onnewcomment={handleNewComment}></c-commenttrigger>
+    <c-commentfeed    if:false={popupMode} comments={relatedRecords}                            reverse-feed={reverseFeed} read-only={readOnly} onreadcomments={handleReadRecords} onnewcomment={handleNewComment}></c-commentfeed>
+</template>

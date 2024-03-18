@@ -1,0 +1,3 @@
+/*:host {display:block;}*/ /* Removed so height matches row sibling */
+
+c-datatable {display:block;margin-top:25px;}

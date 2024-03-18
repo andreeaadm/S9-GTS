@@ -1,0 +1,24 @@
+/**
+ * Created by andreea.adam on 30.05.2023.
+ * Modified by cristian.acero on 06.06.2023.
+ */
+
+h1 {
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+    padding-left: 20px;
+
+}
+
+lightning-input {
+    font-family: var(--calibri-regular);
+    font-size: 14px;
+    line-height: 17px;
+    color: #282828 !important;
+}
+
+.container{
+    padding-left: 20px;
+}

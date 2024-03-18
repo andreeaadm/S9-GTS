@@ -1,0 +1,192 @@
+/*** ALL <=1024 ***/
+
+@media screen and (max-width: 1024px) {
+  :host {
+    font-size: 21px;
+  }
+
+  span.hbm-cnt {
+    display: block;
+    width: 22px;
+    height: 20px;
+    position: absolute;
+    top: calc(50% - 10px);
+    right: 20px;
+    z-index: 5;
+  }
+
+  span.hbm-cnt a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /*border-top: 4px solid #fff;*/
+    /*transition: all 200ms ease;*/
+    position: relative;
+    cursor: pointer;
+  }
+
+  span.hbm-cnt a span {
+    background: #fff;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition: all 0.25s ease-in-out;
+  }
+
+  span.hbm-cnt a span:first-of-type {
+    top: 0px;
+  }
+  span.hbm-cnt a span:not(:first-of-type):not(:last-of-type) {
+    top: calc(50% - 1px);
+  }
+  span.hbm-cnt a span:last-of-type {
+    bottom: 0px;
+  }
+
+  .active span.hbm-cnt a span:first-of-type {
+    transform: translateY(10px) translateY(-50%) rotate(-45deg);
+  }
+  .active span.hbm-cnt a span:not(:first-of-type):not(:last-of-type) {
+    opacity: 0;
+  }
+  .active span.hbm-cnt a span:last-of-type {
+    transform: translateY(-10px) translateY(50%) rotate(45deg);
+  }
+
+  /*.mnuPnl a.x {
+		width: 38px;
+		height: 38px;
+		display: flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+		position: absolute;
+		top: 25px;
+		right: 20px;
+		border-radius: 20px;
+		text-decoration:none;
+	}
+
+	.mnuPnl a.x:after {
+		font-family:"Font Awesome 5 Free";
+		font-weight:900;
+		content:"\f00d";
+		color:#3B598C;
+		font-size:27px;
+		height:20px;
+		line-height:20px;
+		transition:color 300ms ease;
+	}
+	
+	.mnuPnl a.x:hover:after {color:#1589ee;}*/
+
+  /*** OEGEN.CO.UK ***/
+
+  /*.topnav .logo {
+    width: 110px;
+    display: block;
+  }
+
+  .topnav .container-top > div {padding: 10px 20px;}*/
+
+  /*.topnav > div {
+    padding: 30px 0 24px;
+    position: relative;
+  }*/
+
+  .mnuPnl {
+    position: fixed;
+    z-index: 10;
+    height: 100%;
+    width: 300px;
+    top: 0;
+    padding-top: 27px;
+    left: -300px;
+    background: #130c0e;
+    display: block !important;
+    flex: none;
+  }
+
+  .mnuPnl ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+  }
+
+  .active .mnuPnl {
+    transition: all 500ms;
+    transform: translateX(300px);
+    box-shadow: 0 0 20px rgb(0 0 0); /* new: for separation on darker content colors & bg's */
+  }
+}
+
+/* TWIG NEW */
+
+:host {
+  transition: all 300ms ease;
+  font-size: 15px;
+  color: #fff;
+}
+
+:host > div > div > div {
+  display: flex;
+  max-width: 1680px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.container-top {
+  background: #ffc700;
+}
+.container-top > div {
+  padding: 15px 30px 15px;
+  position: relative; /* required for header SVG */
+  overflow: hidden; /* required for header SVG */
+}
+.container-bottom > div {
+  padding: 14px 30px;
+}
+
+.container-bottom {
+  background: #130c0e;
+}
+.container-bottom > div {
+  padding: 14px 30px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "NeoSans-Regular";
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+.home a {
+  display: flex;
+  font-size: 22px;
+  line-height: 30px;
+  align-items: center;
+  text-align: left;
+  width: 184px;
+  font-family: "NeoSans-Bold";
+}
+
+.topnav .mnuPnl {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  align-items: flex-end;
+}

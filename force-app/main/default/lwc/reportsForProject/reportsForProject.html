@@ -1,0 +1,19 @@
+<template>
+  <c-intertek-tile
+    has-loaded={hasLoaded}
+    additional-classes={additionalClasses}
+    title="Reports"
+  >
+    <div slot="contentSlotBottom">
+      <c-datatable
+        is-loading={isLoading}
+        if:false={isEmpty}
+        table-cols={tableData.columns}
+        table-rows={tableData.rows}
+        additional-classes="tile-table"
+        no-results-message="No reports found"
+        all-shown
+      ></c-datatable>
+    </div>
+  </c-intertek-tile>
+</template>

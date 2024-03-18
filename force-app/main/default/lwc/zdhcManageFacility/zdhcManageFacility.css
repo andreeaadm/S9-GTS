@@ -1,0 +1,24 @@
+.manage-facility {padding: 0 1rem;}
+.manage-facility__action {text-align: center;padding-bottom: 10px;}
+.manage-facility__spinner {
+  position: relative;
+  height: 8rem;
+}
+.manage-facility__spinner_large {height: 30rem;}
+.manage-facility__table {
+  height: 28rem;
+  margin-top: 1rem;
+}
+.manage-facility__logo {
+  display: block;  
+  max-width: 150px;
+  margin: 0 auto 25px; 
+}
+.manage-facility__logo_small {max-width: 20%;}
+.manage-facility-subscription__title {
+  text-align: center;
+  font-size: 1rem;
+}
+.manage-facility-subscription__details {padding: 1.5rem 2rem;}
+.manage-facility__title {font-size: 1rem;}
+.pad-bottom-sub-status {padding-bottom:10px;}

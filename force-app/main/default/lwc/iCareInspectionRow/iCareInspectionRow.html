@@ -1,0 +1,22 @@
+<template>
+  <div class="container-datatable">
+    <template if:true={record}>
+      <template if:true={records}>
+        <lightning-datatable
+          key-field="Id"
+          data={records}
+          columns={columns}
+          hide-checkbox-column="true"
+        ></lightning-datatable>
+      </template>
+      <lightning-accordion allow-multiple-sections-open>
+        <lightning-accordion-section name="1" label={labels.INSPECTION_DOC}>
+          <c-gts-files-list
+          record-id={record.Id}
+          >
+          </c-gts-files-list>
+        </lightning-accordion-section>
+      </lightning-accordion>
+    </template>
+  </div>
+</template>

@@ -1,0 +1,106 @@
+.container-background {
+    background-image: url('/sfsites/c/resource/iconsiCare/background-submit-a-test-buyer.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+.container-content {
+    padding: 54px 0 92px 0;
+}
+
+
+h1 {
+    font-family: var(--neo-sans-regular);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+}
+
+h1 span,
+.title{
+    font-family: var(--neo-sans-bold);
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--black-primary);
+}
+
+p {
+    font-family: var(--calibri-regular);
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.005em;
+    color: var(--black-primary);
+}
+
+.container-buttons {
+    display: flex;
+    flex-direction: column;
+}
+.button-white {
+    background-color:white;
+    border: 1px solid #D8D8D8;
+    padding: 10px 45px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: var(--blue-link);
+}
+
+.button-blue {
+    background-color: var(--blue-light);
+    border: 1px solid var(--blue-link);
+    padding: 10px 45px;
+    border-radius: 5px;
+    font-family: var(--calibri-bold);
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: white;
+}
+
+@media screen and (min-width:769px) {
+   
+    .container-buttons {
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+        top: 35px;
+    }
+
+    .container-background {
+        height: 246px;
+        margin-bottom: 50vh;
+    }
+    
+}
+
+@media screen and (min-width:460px) {
+    .container-content {
+        width: 462px;
+        margin: auto;
+    }
+}
+
+
+
+@media screen and (min-width:1920px) {
+
+    .container-background {
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .container-buttons {
+        gap: 20px;
+        margin-top: 30px;
+    }
+    .container-content {
+        padding: 54px 16px 92px 16px;
+    }
+    
+}

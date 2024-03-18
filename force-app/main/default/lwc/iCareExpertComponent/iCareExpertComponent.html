@@ -1,0 +1,81 @@
+<template>
+  <template lwc:if={displayExpertListTemplate}>
+    <c-i-care-ask-our-experts
+      is-regulatory-updates-visible={isRegulatoryUpdatesVisible}
+      title={title}
+      text={text}
+    >
+    </c-i-care-ask-our-experts>
+    <div class="container-cards">
+      <div>
+        <h1>{selectedOurExperts}</h1>
+        <template lwc:if={isCountrySelectionEnabled}>
+          <div style="padding-top: 1%">
+            <lightning-radio-group
+              name="radioGroup"
+              label="Country of Expertise"
+              options={options}
+              value={output}
+              onchange={handleClickRadioButton}
+              type="radio"
+            ></lightning-radio-group>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div
+      class="
+        slds-grid slds-wrap
+        slds-max-medium-table_stacked-horizontal
+        container-cards
+      "
+    >
+      <template for:each={experts} for:item="expert">
+        <div key={expert.Id} class="container-card-inf">
+          <c-i-care-expert-card
+            onselectedexpert={handleSelectedExpert}
+            recordid={expert.Id}
+            experttype={output}
+            usercountry={currentUserCountry}
+          >
+          </c-i-care-expert-card>
+        </div>
+      </template>
+      <template if:true={error}> {error} </template>
+    </div>
+  </template>
+  <template lwc:if={displayEnquiryTemplate}>
+    <c-i-care-expert-detail-header
+      onreturntoexperts={handleReturnToExperts}
+      expertname={selectedExpertName}
+    >
+    </c-i-care-expert-detail-header>
+  </template>
+  <template lwc:if={displayEnquiryTemplate}>
+    <div
+      class="
+        slds-grid slds-wrap
+        slds-max-medium-table_stacked-horizontal
+        container-cards
+      "
+    >
+      <c-i-care-expert-detail
+        recordid={selectedExpertId}
+        experttype={output}
+        usercountry={currentUserCountry}
+      >
+      </c-i-care-expert-detail>
+    </div>
+  </template>
+  <template lwc:if={displayEnquiryTemplate}>
+    <div class="container-form">
+      <c-i-care-enquiry-form onsendenquiry={handleSendEnquiry}>
+      </c-i-care-enquiry-form>
+    </div>
+  </template>
+
+  <template lwc:if={displayExpertSubmittedTemplate}>
+    <c-i-care-enquiry-submitted onfindanotherexpert={handleReturnToExperts}>
+    </c-i-care-enquiry-submitted>
+  </template>
+</template>

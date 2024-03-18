@@ -1,0 +1,87 @@
+<template>
+  <div class="navactions">
+    <ul>
+      <template if:true={userIsGuest}>
+        <li if:true={allowRegistration}>
+          <c-button
+            variant="main"
+            label="Register"
+            data-id="register"
+            onclick={handleClick}
+          ></c-button>
+        </li>
+        <li>
+          <c-button
+            variant="transparent"
+            label="Login"
+            data-id="login"
+            onclick={handleClick}
+          ></c-button>
+        </li>
+      </template>
+      <template if:false={userIsGuest}>
+        <template if:true={showProfileMenu}>
+          <li class="sub-list-wrapper">
+            <span><i class="fas fa-user"></i>{userFullName}</span>
+            <ul class="sub-list">
+              <li>
+                <a
+                  class="cCommunitymenuitem"
+                  data-id="profile"
+                  onclick={handleClick}
+                  >{labels.TC_MY_PROFILE}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="cCommunitymenuitem"
+                  data-id="settings"
+                  onclick={handleClick}
+                  >{labels.TC_MY_SETTINGS}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="cCommunitymenuitem"
+                  data-id="account"
+                  onclick={handleClick}
+                  >{labels.TC_ACCOUNT_SETTINGS}</a
+                >
+              </li>
+              <li class="logout">
+                <a
+                  class="cCommunitymenuitem"
+                  data-id="logout"
+                  onclick={handleClick}
+                >
+                  {labels.TC_LOG_OUT}
+                  <c-iconlogoutsvg></c-iconlogoutsvg>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </template>
+        <template if:false={showProfileMenu}>
+          <!--
+            <li class="profile-nodd">
+              <a class="cCommunitymenuitem" data-id="profile"	onclick={handleClick}>
+                <img src={profileIconUrl}></img>
+                My Profile
+              </a>
+            </li>
+          -->
+          <li class="logout">
+            <a
+              class="cCommunitymenuitem"
+              data-id="logout"
+              onclick={handleClick}
+            >
+              {labels.LOG_OUT}
+              <c-iconlogoutsvg></c-iconlogoutsvg>
+            </a>
+          </li>
+        </template>
+      </template>
+    </ul>
+  </div>
+</template>

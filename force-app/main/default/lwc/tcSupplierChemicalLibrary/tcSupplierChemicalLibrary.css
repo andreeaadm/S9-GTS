@@ -1,0 +1,56 @@
+:host {
+  display:block;
+  /*padding: 0 0 30px;*/
+}
+.reset {
+  margin-top: 50px !important;
+  padding-left : 0px !important;
+
+}
+.facility {
+  width : 170px !important;
+}
+
+.chekboxgrp {
+  margin-top : 45px !important;
+}
+
+c-datatable {
+  display : block;
+  margin-top : 30px !important;
+}
+
+.main {
+  background-color: #F8F8F8 !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.selectFacilityBanner {
+  height : 20rem !important;
+}
+
+.noitems {
+  text-align: center;
+  padding-left:10px;
+  padding-right:10px;
+  min-height: 170px;
+}
+
+.detailsCol {
+  margin-right: 15px !important;
+}
+
+.heading {
+  font-size: 16px !important;
+  margin-bottom: 10px !important;
+}
+
+@media screen and (min-width:768px) {
+  .noitems {margin-top:170px;}
+}
+
+@media screen and (max-width:767px) {
+  /*:host {min-height:600px;}*/
+  .noitems {margin-top: 150px;}
+}

@@ -1,0 +1,37 @@
+<template>
+    <div class={styleClass}>
+
+        <template if:false={disabled}>
+            <div title={fieldId} class="uiInput uiInputSelect forceInputPicklist uiInput--default uiInput--select forceInputField">
+                <div class="trigger uiPopupTrigger">
+                    <div>
+                        <div>
+                            <a aria-required="true" class={anchorClass} onclick={toggleOptions} onblur={hideOptions} href="javascript:void(0);">{label}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="select-options popupTargetContainer uiPopupTarget uiMenuList uiMenuList--default uiMenuList--left uiMenuList--short">
+                    <div class="select-options" role="menu">
+                        <ul data-id="thelist" tabindex="0" class="scrollable" role="presentation" onblur={hideOptions} onmousedown={setMouseDownFlag}>
+                            <template if:true={needsEmptyOption}>
+                                <li role="presentation" class="uiMenuItem uiRadioMenuItem">
+                                    <c-selectitem value="" label="--" onchange={handleChange}></c-selectitem>
+                                </li>
+                            </template>
+                            <template for:each={options} for:item="o">
+                                <li key={o.value} role="presentation" class="uiMenuItem uiRadioMenuItem">
+                                    <c-selectitem value={o.value} label={o.label} current-value={value} onchange={handleChange}></c-selectitem>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={disabled}>
+            {value}
+        </template>
+
+    </div>
+</template>

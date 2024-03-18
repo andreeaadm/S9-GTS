@@ -1,0 +1,13 @@
+.container{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.messageStyle{
+    border: 1px solid orange;
+    font-weight: 300;
+    color: red;
+    background-color: var(--bgColor, #ffc700);
+    padding: 2px;
+    margin-bottom: 4px !important;
+}

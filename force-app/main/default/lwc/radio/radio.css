@@ -1,0 +1,67 @@
+:host {
+	/* margin: 0 auto; */
+	display: block;
+}
+
+label.radio {
+    cursor:pointer;
+	display: flex;
+}
+
+label.radio input {display:none!important;}
+
+label.radio > div {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing:border-box;
+	transition: border-color 0.1s ease-in;		/* for transition of other 'states' such as disabled */
+	flex-shrink: 0; 							/* stops squashing in some contexts */
+}
+
+label.radio > div:before {
+	opacity:0;
+	transition: opacity 0.1s ease-in;			/* for transition of disc:checked */
+	display:block;
+	content:"";
+}
+
+label.radio input:checked + div:before {opacity:1;}		/* :checked */
+
+label.radio.disabled {cursor: not-allowed;}
+label.radio.disabled > div {border-color:#CCCCCC!important;}
+label.radio.disabled > div:before {background:#CCCCCC!important;}
+
+label.radio span.cc {
+	display:flex;
+	align-items:center;
+}
+
+label.radio.no-txt {
+    display: inline-block;
+    width:26px;
+	padding:0;
+    text-indent:-9999em;
+}
+
+/*** STYLE  ***/
+
+:host {min-width: 22px;}
+
+label.radio > div {
+	width:22px;
+	height:22px;
+	border: 2px solid;
+	border-color:#1b5297;
+	border-radius: 13px;
+	background-color: #fff;
+}
+
+label.radio div:before {
+	width:10px;
+	height:10px;
+	border-radius:50%;
+	background:#1b5297;
+}
+
+label.radio > span.cc{margin: 0 0 0 10px;}

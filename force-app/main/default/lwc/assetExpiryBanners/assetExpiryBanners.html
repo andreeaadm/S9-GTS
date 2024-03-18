@@ -1,0 +1,37 @@
+<template>
+  <template if:true={booleanExpiry}>
+    <c-tile
+      title={messagePartOne}
+      sub-title={messagePartTwo}
+      button-label={conditionalButtonLabel}
+      button-variant="IntkBrandTwoBtn arrow noticeBtn"
+      type="Info"
+      additional-classes="notice"
+      btn-icon="iconarrowsvg"
+      btn-icon-stroke="#fff"
+      onclick={toggleModal}
+    ></c-tile>
+    <c-modal showmodal={showModal} maxwidth="830" additional-classes="noMob">
+      <span slot="header">{labels.ARE_YOU_SURE}</span>
+      <div slot="content">
+        <div>
+          <h3>{labels.ARE_YOU_SURE_REQUEST_ACCESS}</h3>
+        </div>
+      </div>
+      <div slot="footer">
+        <c-button
+          variant="Neutral ModalFooterBtn"
+          label={labels.CANCEL}
+          onclick={toggleModal}
+          disabled={disableBtn}
+        ></c-button>
+        <c-button
+          variant="IntkBrandTwoBtn ModalFooterBtn"
+          label={labels.PROCEED}
+          onclick={handleConfirm}
+          disabled={disableBtn}
+        ></c-button>
+      </div>
+    </c-modal>
+  </template>
+  </template>

@@ -1,0 +1,14 @@
+<template>
+    <div class="checkbox">
+        <label class={labelClass}>
+            <input disabled={disabled} onclick={handleChange} type="checkbox" checked={checked}>
+			<div><c-icontick></c-icontick></div>
+            <template if:false={hideLabel}>
+                <span if:true={label} class="cc">
+                    <lightning-formatted-rich-text value={label}></lightning-formatted-rich-text>
+                    <abbr if:true={required} class="slds-required" title="required"> *</abbr>
+                </span>
+            </template>
+        </label>
+    </div>
+</template>

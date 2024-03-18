@@ -1,0 +1,367 @@
+<template>
+    
+    <!-- SEARCH VIEW FOR REGULATORY AND TEST PLAN -->
+    <template if:true={showRegulatory}>      
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_4-of-4">
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Product__c" ismultiselect ="false" show-required = "true" picklistlabel ={label.productPicklistLabel} onselectionchange ={handleProductChange} pre-selected-values={selectedProductValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Market__c" ismultiselect ="true" show-required = "true" picklistlabel ={label.marketPicklistLabel} onselectionchange ={handleMarketChange} pre-selected-values={selectedMarketValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Material__c" ismultiselect ="true" picklistlabel ={label.materialPicklistLabel} onselectionchange ={handleMaterialChange} pre-selected-values={selectedMaterialValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Age_Range__c" ismultiselect ="true" show-required = "true" display-as-drop-down="true" picklistlabel ={label.ageGroupPicklistLabel} onselectionchange ={handleAgeRangeChange} pre-selected-values={selectedAgeRangeValues}></c-dynamic-picklist>
+                <div class="mandatoryTextWrapper">
+                    <p style="color: red; float: left;"> * </p><p style="font-style: italic; float: left;">{label.mandatoryFieldExplanationLabel}</p>
+                </div>
+                <div class="actionButton" style="margin-top: 1.5% !important;">
+                    <button class="slds-button slds-button_brand searchButton" label="Search" title="Search" onclick={searchProduct}>Search</button>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- SEARCH VIEW FOR RECALLS -->
+    <template if:true={showRecall}>      
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_4-of-4">
+                <c-dynamic-picklist objectapiname = "Recall__c" fieldapiname = "Product__c" ismultiselect ="false" show-required = "true" picklistlabel ={label.productPicklistLabel} onselectionchange ={handleProductChange} pre-selected-values={selectedProductValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Recall__c" fieldapiname = "Risk_Type__c" ismultiselect ="true" picklistlabel ={label.riskTypeLabel} onselectionchange ={handleRiskTypeChange} pre-selected-values={selectedRiskTypeValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Recall__c" fieldapiname = "Market__c" ismultiselect ="true" show-required = "true" picklistlabel ={label.marketPicklistLabel} onselectionchange ={handleMarketChange} pre-selected-values={selectedMarketValues}></c-dynamic-picklist>
+                <div class="datePickerWrapper" style="margin-right: 2%;"> 
+                    <p class="required"> * </p>
+                    <lightning-input value={fromDate} variant="label-hidden" class="datePicker" type="date" min="2019-01-01T00:00:00" max={todayDateForDatePicker} name="From date" placeholder="Period From" onchange={handleDateChange}></lightning-input>
+                </div>
+                <div class="datePickerWrapper"> 
+                    <p class="required"> * </p> 
+                    <lightning-input value={toDate} variant="label-hidden" class="datePicker" type="date" min="2019-01-01T00:00:00" max={todayDateForDatePicker} name="To date" placeholder="Period To" onchange={handleDateChange}></lightning-input>
+                </div>
+                <div class="mandatoryTextWrapper">
+                    <p style="color: red; float: left;"> * </p><p style="font-style: italic; float: left;">{label.mandatoryFieldExplanationLabel}</p>
+                </div>
+                <div class="actionButton">
+                    <button class="slds-button slds-button_brand searchButton" label="Search" title="Search" onclick={searchRecall}>Search</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- SEARCH VIEW FOR GAP ANALYSIS -->
+    <template if:true={showLoginMessage}>
+        <div class="slds-box downloadWrapper">
+            <p>
+                <b>{label.loginMessage}</b>
+            </p>
+            <div class="actionButton" style="margin-top: 1.5% !important;">
+                <button class="slds-button slds-button_brand searchButton" label="Login" title="Login" onclick={userLogin}>Login</button>
+            </div>
+        </div>
+        <c-gma-portal-login-form show-modal={showLoginModal} sucess-message-type={loginOkMessage} abort-message-type={loginAbortMessage}></c-gma-portal-login-form>
+    </template>
+    <template if:true={showGapAnalysis}>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_4-of-4">
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Product__c" ismultiselect ="false" show-required = "true" picklistlabel ={label.productPicklistLabel} onselectionchange ={handleProductChange} pre-selected-values={selectedProductValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Material__c" ismultiselect ="true" picklistlabel ={label.materialPicklistLabel} onselectionchange ={handleMaterialChange} pre-selected-values={selectedMaterialValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Age_Range__c" ismultiselect ="true" show-required = "true" display-as-drop-down="true" picklistlabel ={label.ageGroupPicklistLabel} onselectionchange ={handleAgeRangeChange} pre-selected-values={selectedAgeRangeValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Market__c" ismultiselect ="false" show-required = "true" picklistlabel ={label.currentMarketPicklistLabel} onselectionchange ={handleCurrentMarketChange} pre-selected-values={selectedCurrentMarketValues}></c-dynamic-picklist>
+                <c-dynamic-picklist objectapiname = "Regulation__c" fieldapiname = "Market__c" ismultiselect ="true" show-required = "true" picklistlabel ={label.targetMarketPicklistLabel} onselectionchange ={handleTargetMarketChange} pre-selected-values={selectedTargetMarketValues}></c-dynamic-picklist>
+                <div class="mandatoryTextWrapper">
+                    <p style="color: red; float: left;"> * </p><p style="font-style: italic; float: left;">{label.mandatoryFieldExplanationLabel}</p>
+                </div>
+                <template if:true={pageHasLoaded}>
+                    <div if:true={showCheckbox}>
+                        <div style="margin-top: 1.5% !important;">
+                            <lightning-input value={gapAnalysisCheckbox} data-id="gapAnalysisCheckbox" type="checkbox" label={gapAnalysisSearchConfirmationMessage} onchange={handleGapAnalysisCheckbox}></lightning-input>
+                        </div>
+                        <div class="actionButton" style="margin-top: 1.5% !important;">
+                            <button if:true={gapAnalysisCheckbox} class="slds-button slds-button_brand searchButton" label="Search" title="Search" onclick={searchGapAnalysis}>Search</button>
+                            <button if:false={gapAnalysisCheckbox} disabled class="slds-button slds-button_brand" label={Search} title="Search" >Search</button>
+                        </div>
+                    </div>
+                    <div if:false={showCheckbox} class="insufficientTokenMessage">
+                        <p if:true={searchCostIsSingleToken}>{label.insufficientTokenMessage}<br />{searchCost} {label.singleTokenMessage}</p>
+                        <p if:false={searchCostIsSingleToken}>{label.insufficientTokenMessage}<br />{searchCost} {label.multipleTokenMessage}</p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+
+    <!-- SEARCH RESULTS VIEW FOR REGULATORY AND TEST PLAN -->
+    <template if:true={showRegulatorySheet}> 
+        <div style="text-align: center">
+            <h3>Your {titleOneSmall} {titleTwoSmall} search: </h3>
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-4 regulationItem">
+                <div class="regulationType">
+                    <h3>Product</h3>
+                </div>
+                <div> 
+                    <template iterator:it={selectedProductValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Market</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedMarketValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Material</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedMaterialValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Age</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedAgeRangeValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="slds-box regulationBox">
+            <div if:true={downloadInProgress} class="downloadSpinner" style="margin-top: -4.2% !important;">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+            <div if:false={downloadInProgress}>
+                <template if:false={noRegulationsFound}>
+                    <p if:true={renderRegulatoryReportView}>
+                        Found {regulatoryResultsCount} regulations
+                    </p>
+                    <p if:true={renderTestPlanView}>
+                        Tests found: {regulatoryResultsCount}
+                    </p>
+                </template>
+                <p if:true={noRegulationsFound}>
+                   {label.noRegulationMessage}
+                </p>
+            </div>
+        </div>
+        <div class="actionButton" if:false={downloadInProgress}>
+            <button if:false={noRegulationsFound} style="margin-bottom: 0.5%" class="slds-button slds-button_brand searchButton" label={searchButtonLabels} title={searchButtonLabels} onclick={handleConfirmButtonClick}>{searchButtonLabels}</button>
+            <button if:true={noRegulationsFound} style="margin-bottom: 0.5%" disabled class="slds-button slds-button_brand" label={searchButtonLabels} title={searchButtonLabels} onclick={handleConfirmButtonClick}>{searchButtonLabels}</button>
+        </div>
+        <lightning-button if:false={downloadInProgress} class="slds-align_absolute-center slds-m-left_x-medium" variant="neutral" label={label.runSearchAgainLabel} title={label.runSearchAgainLabel} onclick={handleResetButtonClick}></lightning-button>
+        <c-gma-portal-login-form show-modal={showLoginModal} sucess-message-type={loginOkMessage} abort-message-type={loginAbortMessage}></c-gma-portal-login-form>
+        <c-gma-portal-order-confirmation-dialog tokens-required={tokenCost} show-modal={showOrderConfirmationModal} sucess-message-type={orderOkMessage} abort-message-type={orderAbortMessage}></c-gma-portal-order-confirmation-dialog>
+    </template>
+    
+    <!-- SEARCH RESULTS VIEW FOR RECALLS -->
+    <template if:true={showRecallSummary}> 
+        <div style="text-align: center">
+            <h3>{label.recallSummarySearchMessage}</h3> 
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-4 regulationItem">
+                <div class="regulationType">
+                    <h3>Product</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedProductValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template> 
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Market</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedMarketValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Risk Type</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedRiskTypeValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Period</h3>
+                </div>
+                <div>
+                    <span>{fromDate} - {toDate}</span>
+                </div>
+            </div>
+        </div>
+        <div class="slds-box regulationBox">
+            <div if:true={downloadInProgress} class="downloadSpinner" style="margin-top: -4.2% !important;">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+            <div if:false={downloadInProgress}>
+                <p if:false={noRecallsFound}>
+                    Recalls Found: {recallCount}
+                </p>
+                <p if:true={noRecallsFound}>
+                    {label.noRecallMessage}
+                </p>
+            </div>
+        </div>
+        <div class="actionButton" if:false={downloadInProgress}>
+            <button if:false={noRecallsFound} style="margin-bottom: 0.5%" class="slds-button slds-button_brand searchButton" label={label.generateRecallSummaryLabel} title={label.generateRecallSummaryLabel} onclick={handleConfirmButtonClick}>{label.generateRecallSummaryLabel}</button>
+            <button if:true={noRecallsFound} style="margin-bottom: 0.5%" disabled class="slds-button slds-button_brand" label={label.generateRecallSummaryLabel} title={label.generateRecallSummaryLabel} onclick={handleConfirmButtonClick}>{label.generateRecallSummaryLabel}</button>
+        </div>
+        <lightning-button if:false={downloadInProgress} class="slds-align_absolute-center slds-m-left_x-medium" variant="neutral" label={label.runSearchAgainLabel} title={label.runSearchAgainLabel} onclick={handleResetButtonClick}></lightning-button>
+        <c-gma-portal-login-form show-modal={showLoginModal} sucess-message-type={loginOkMessage} abort-message-type={loginAbortMessage}></c-gma-portal-login-form>
+        <c-gma-portal-order-confirmation-dialog tokens-required={tokenCost} show-modal={showOrderConfirmationModal} sucess-message-type={orderOkMessage} abort-message-type={orderAbortMessage}></c-gma-portal-order-confirmation-dialog>
+    </template>
+
+    <!-- SEARCH RESULTS VIEW FOR GAP ANALYSIS -->
+    <template if:true={showGapAnalysisReport}> 
+        <div style="text-align: center">
+            <h3> {label.gapAnalysisSearchMessage} </h3> 
+        </div>
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-5 regulationItem">
+                <div class="regulationType">
+                    <h3>Product</h3>
+                </div>
+                <div> 
+                    <template iterator:it={selectedProductValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-5 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Current Market</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedCurrentMarketValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-5 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Material</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedMaterialValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-5 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Age</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedAgeRangeValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-5 regulationItem regulationItemBorder">
+                <div class="regulationType">
+                    <h3>Target Market</h3>
+                </div>
+                <div>
+                    <template iterator:it={selectedTargetMarketValues}>
+                        <span key={it.value}>{it.value}</span><span key={it.value} if:false={it.last}>;</span><wbr key={it.value}>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="slds-box regulationBox">
+            <div if:true={downloadInProgress} class="downloadSpinner" style="margin-top: -4.2% !important;">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+            <div if:false={downloadInProgress}>
+                <p if:false={noGapsFound}>
+                    Gaps Found: {gapCount}
+                </p>
+                <p if:true={noGapsFound}>
+                    {label.noGapMessage}
+                </p>
+            </div>
+        </div>
+
+        <div class="actionButton">
+            <button if:false={noGapsFound} style="margin-bottom: 0.5%" class="slds-button slds-button_brand searchButton" label={label.generateGapAnalysisLabel}  title={label.generateGapAnalysisLabel} onclick={handleConfirmButtonClick}>{label.generateGapAnalysisLabel}</button>
+            <button if:true={noGapsFound} style="margin-bottom: 0.5%" disabled class="slds-button slds-button_brand" label={label.generateGapAnalysisLabel}  title={label.generateGapAnalysisLabel}  onclick={handleConfirmButtonClick}>{label.generateGapAnalysisLabel}</button>
+        </div>
+
+        <lightning-button class="slds-align_absolute-center slds-m-left_x-medium" variant="neutral" label={label.runSearchAgainLabel} title={label.runSearchAgainLabel} onclick={handleResetButtonClick}></lightning-button>
+
+        <c-gma-portal-login-form show-modal={showLoginModal} sucess-message-type={loginOkMessage} abort-message-type={loginAbortMessage}></c-gma-portal-login-form>
+        <c-gma-portal-order-confirmation-dialog tokens-required={tokenCost} show-modal={showOrderConfirmationModal} sucess-message-type={orderOkMessage} abort-message-type={orderAbortMessage}></c-gma-portal-order-confirmation-dialog>
+
+    </template>
+
+    <!-- VIEW OF PAST SEARCH RESULTS -->
+    <template if:true={showSearchHistory}>
+        <c-gma-product-search-history order-type={orderType}></c-gma-product-search-history>
+    </template>
+
+    <!-- VIEW FOR DOWNLOADING GENERATED DOC FOR REGULATORY, TEST PLAN AND RECALLS -->
+    <template if:true={showOrderGeneratedPage}> 
+        <template if:true={downloadInProgress}>
+            <div class="slds-box downloadWrapper">
+                <p>
+                    <b if:true={renderRegulatoryReportView}>{label.generateReportMessage}</b>
+                    <b if:true={renderRecallReportView}>{label.generateRecallReportMessage}</b>
+                    <b if:true={renderTestPlanView}>{label.generateTestPlanReportMessage}</b>
+                </p>
+                <div class="downloadSpinner">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </div>
+        </template>
+        <template if:false={downloadInProgress}>
+            <div if:true={downloadLink} class="slds-box downloadWrapper">
+                <p if:true={renderRegulatoryReportView}>{label.downloadRegulatoryReportMessage}</p>
+                <p if:true={renderRecallReportView}>{label.downloadRecallReportMessage}</p>
+                <p if:true={renderTestPlanView}>{label.downloadTestPlanReportMessage}</p>
+                <a class="slds-button slds-button_brand searchButton" style="margin-top: 10px;" title={label.downloadButtonText} href={downloadLink} target="_blank">{label.downloadButtonText}</a>
+                <div style="margin-top: 5vh;">
+                    <p>{label.myOrdersText}</p>
+                    <button class="slds-button slds-button_brand searchButton" style="margin-top: 10px;" title={label.myOrdersButton} onclick={openMyOrdersPage}>{label.myOrdersButton}</button>
+                </div>
+            </div>
+            <div if:false={downloadLink} class="slds-box downloadWrapper">
+                <p>
+                    <b>{label.downloadLinkMessage1}<br />
+                    {label.downloadLinkMessage2} <a href={mailtoLinkForReportQueries}>{label.intertekAdminEmail}</a>.</b>
+                </p>
+                <div style="margin-top: 5vh;">
+                    <p>{label.myOrdersText}</p>
+                    <button class="slds-button slds-button_brand searchButton" style="margin-top: 10px;" title={label.myOrdersButton} onclick={openMyOrdersPage}>{label.myOrdersButton}</button>
+                </div>
+            </div>
+        </template>
+    </template>
+
+    <!-- VIEW FOR CONFIRMING GAP ANALYSIS ORDER RECEIVED-->
+    <template if:true={showGapAnalysisOrderGeneratedPage}> 
+        <div class="slds-box downloadWrapper">
+            <p>
+                <b>{label.gapAnalysisOrderGenerateLabel}</b>
+            </p>
+            <div style="margin-top: 5vh;">
+                <p>{label.myOrdersText}</p>
+                <button class="slds-button slds-button_brand searchButton" style="margin-top: 10px;" title={label.myOrdersButton} onclick={openMyOrdersPage}>{label.myOrdersButton}</button>
+            </div>
+        </div>
+    </template>
+</template>

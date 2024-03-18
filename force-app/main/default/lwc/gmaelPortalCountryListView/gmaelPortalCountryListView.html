@@ -1,0 +1,32 @@
+<template>
+
+    <template if:true={countriesListView}>
+        <ul class="slds-accordion">
+            <template for:each={countriesListView} for:item="continent">
+                <li key={continent.key} class="slds-accordion__list-item">
+                    <section class="slds-accordion__section slds-is-open">
+                        <div class="slds-accordion__summary">
+                            <h2 class="slds-accordion__summary-heading">
+                                <button
+                                    class="slds-button slds-button_reset slds-accordion__summary-action"
+                                    aria-controls={continent.key} aria-expanded="true"
+                                    title="Accordion summary" onclick={handleAccordionClick}>
+                                    <span class="slds-accordion__summary-content">{continent.key}</span>
+                                </button>
+                            </h2>
+                        </div>
+                        <div class="slds-accordion__content" id={continent.key}>
+                            <ul class="four-column-list">
+                                <template for:each={continent.value} for:item="country">
+                                    <li key={country.Name} data-countrynamed={country.Name} data-countryid={country.Id}
+                                        onclick={handleCountryClick} class="li-padding">{country.Name}
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </section>
+                </li>
+            </template>
+        </ul>
+    </template>
+</template>

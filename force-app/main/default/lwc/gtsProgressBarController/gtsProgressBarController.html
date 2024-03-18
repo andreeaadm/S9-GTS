@@ -1,0 +1,16 @@
+<template>
+    <template if:true={steps}></template>
+        <section >
+            <div class="background">
+                <div class="container-progress slds-grid slds-max-medium-table_stacked-horizontal">
+                    <template for:each={steps} for:item="step">
+                        <div key={step.name} class="container-checks">
+                            <c-gts-phat-element step={step}>
+                            </c-gts-phat-element>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+    </template>
+</template>

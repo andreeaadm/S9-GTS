@@ -1,0 +1,37 @@
+<template>
+    <c-i-care-file-upload gts-form-name={formName} is-read-only={isReadOnly} content-version-ids={contentVersionIds} 
+        ondocumentupload={handleDocumentUpload}></c-i-care-file-upload>
+<br/>
+    <template if:false={isReadOnly}>
+        <lightning-card>
+            <h1> <strong>{labels.Product_Details_Title}</strong> </h1>
+            <h4>{labels.Product_Details_Sub_Title}</h4>
+    <br/>
+            <template if:true={isCOCForm}>
+                <a href={vehicleDetailsSheet} download>
+                    <lightning-icon icon-name="utility:download" class="download-icon" size="x-small"></lightning-icon>{labels.GTS_VehicleDetailsLabel}
+                </a>
+                <hr>
+                <a href={cosmeticsAndPerfumeryProductDetailsSheet} download>
+                    <lightning-icon icon-name="utility:download" class="download-icon" size="x-small"></lightning-icon>{labels.GTS_CosmeticsAndPerfumeryProductDetailsLabel}
+                </a>
+                <hr>
+                <a href={generalAndFoodProductDetailsSheet} download>
+                    <lightning-icon icon-name="utility:download" class="download-icon" size="x-small"></lightning-icon>{labels.GTS_GeneralAndFoodProductDetailsLabel}
+                </a>
+                <hr>
+            </template>
+            
+            <template if:false={isCOCForm}>
+                <a href={GeneralProductDetails_LicRegSheet} download>
+                    <lightning-icon icon-name="utility:download" class="download-icon" size="x-small"></lightning-icon>{labels.GTS_GeneralProductDetails_LicRegLabel}
+                </a>
+                <hr>
+                <a href={VehicleDetails_LicRegSheet} download>
+                    <lightning-icon icon-name="utility:download" class="download-icon" size="x-small"></lightning-icon>{labels.GTS_VehicleDetails_LicRegLabel}
+                </a>
+                <hr>
+            </template>
+        </lightning-card>
+    </template>
+</template>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+  <targets>
+    <target>lightning__AppPage</target>
+    <target>lightning__RecordPage</target>
+    <target>lightning__HomePage</target>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+    <targetConfigs>
+		<targetConfig targets="lightningCommunity__Default">
+			<property name="link1" label="link Disclaimer" description="Insert link" type="String"></property>
+      <property name="link2" label="link Terms" description="Insert link" type="String"></property>
+			<property name="link3" label="link Privacy" description="Insert link" type="String"></property>
+			<property name="link4" label="link Cookies" description="Insert link" type="String"></property>
+			<property name="link5" label="link Modern Slavery Act Statement" description="Insert link" type="String"></property>
+    </targetConfig>
+	</targetConfigs>
+</LightningComponentBundle>

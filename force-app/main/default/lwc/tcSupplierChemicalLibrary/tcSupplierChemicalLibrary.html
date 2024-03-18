@@ -1,0 +1,140 @@
+<template>
+<template if:true={isCellClicked}>
+  <c-tc-supplier-chemical-library-back
+    onbacktolibrary={onBackToLibrary}
+  ></c-tc-supplier-chemical-library-back>
+</template>
+<div class="heading">
+  <span>
+      <h1>Chemical Library</h1>
+
+      Review your chemical products used in the inventories and manage your files
+  </span>
+</div>
+  
+<template if:false={isCellClicked}>
+<div class="slds-grid slds-grid_pull-padded-medium main">
+  <template if:true={isBrandUser}>
+  <div class="slds-col slds-p-horizontal_small facility">
+    <span><c-input
+      label="Supplier:"
+      value="None"
+      select-options={_suppliers}
+      type="SelectList"
+      onchange={handleSupplierChange}
+    ></c-input>
+  </span>
+  </div>
+</template>
+  <div class="slds-col slds-p-horizontal_small facility">
+    <span><c-input
+      label={labels.Filter_Facility}
+      value={labels.Facility_None_Filter}
+      select-options={_facilities}
+      type="SelectList"
+      onchange={handleFacilityChange}
+    ></c-input>
+  </span>
+  </div>
+  <div class="slds-col slds-p-horizontal_small">
+    <span><c-input
+      slot="filters"
+      class="search"
+      label="Search:"
+      placeholder="Chemical Product Name"
+      onchange={handleSearchChange}
+      field-id="filterSearch"
+      value={filterSearch}
+    ></c-input>
+  </span>
+  </div>
+  <div class="slds-col slds-p-horizontal_small chekboxgrp">
+  <span>
+  <c-input
+    class="checkbox"
+    slot="filters"
+    label="Conformant"
+    type="Checkbox"
+    onchange={handleConformantChange}
+    field-id="filterConformant"
+    value={filterConformant}
+  ></c-input>
+  </span>
+  </div>
+  <div class="slds-col slds-p-horizontal_small chekboxgrp">
+    <span>
+    <c-input
+      class="checkbox"
+      slot="filters"
+      label="Safety Data Sheet"
+      type="Checkbox"
+      onchange={handleSafetyDataSheetChange}
+      field-id="filterSafetyDataSheet"
+      value={filterSafetyDataSheet}
+    ></c-input>
+    </span>
+    </div>
+    <div class="slds-col slds-p-horizontal_small chekboxgrp">
+      <span>
+      <c-input
+        class="checkbox"
+        slot="filters"
+        label="MRSL Certificate"
+        type="Checkbox"
+        onchange={handleMRSLCertChange}
+        field-id="filterMRSLCert"
+        value={filterMRSLCert}
+      ></c-input>
+      </span>
+      </div>
+      <div class="slds-col slds-p-horizontal_small reset">
+        <span>
+          <a onclick={resetAllFilters}>{labels.RESET}</a>
+        </span>
+      </div>
+</div> 
+<template if:true={selectFacilityNone}>
+  <div class="slds-grid">
+    <div class="slds-col slds-size_12-of-12 slds-align_absolute-center selectFacilityBanner">
+  <p>Please select a Facility from filter</p>
+</div>
+</div>  
+</template>
+<template if:true={noDataFoundForFacility}>
+  <div class="slds-grid">
+    <div class="slds-col slds-size_12-of-12 slds-align_absolute-center selectFacilityBanner">
+  <p>No results found for the selected Facility</p>
+</div>
+</div>  
+</template>
+<template if:true={selectFacility}>
+<c-datatable
+    if:true={chemicalProductData}
+    table-cols={chemicalProductData.columns}
+    table-rows={chemicalProductData.rows}
+    all-shown={allChemicalProductsShown}
+    onviewmore={handleViewMore}
+    is-loading={isLoading}
+    mob-enabled="true"
+    additional-classes="chemical-details-col"
+    oncellclick={onCellClick}
+  ></c-datatable>
+</template>
+</template>
+<template if:true={isCellClicked}>
+  <div class="slds-grid">
+    <div class="slds-col slds-size_6-of-12 detailsCol">
+      <c-tc-supplier-chemical-library-details
+      record-id={selectedRowId}
+      is-brand-user={isBrandUser}
+      ></c-tc-supplier-chemical-library-details>
+    </div>
+    <div class="slds-col slds-size_6-of-12">
+      <c-tc-supplier-chemical-library-file-upload
+      record-id={selectedRowId}
+      is-brand-user={isBrandUser}
+      ></c-tc-supplier-chemical-library-file-upload>
+    </div>
+  </div>
+</template>
+</template>

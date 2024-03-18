@@ -1,0 +1,43 @@
+<template>
+    <div class="slds-m-top_medium customInputBoxWrapper">
+        <p if:true={showRequired} class ="required"> * </p>
+        <div class="inputLabel">
+            {label}
+        </div>
+
+        <div class="customInputBox">
+            <div class="selectionContainer">
+                <template for:each={selectedValues} for:item="selection" for:index="index">
+                    <div key={selection} class="slds-box slds-box_xx-small selectionBox">
+                        {selection}
+                        <div data-id={index} class="selectionRemoveIcon" onclick={removeSelection}>
+                            <lightning-icon icon-name="utility:close" size="xx-small"></lightning-icon>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <lightning-input class={box} disabled={valuesAreNotLoaded} type="text" placeholder={showPicklistValue} onchange={handleInputChange} onfocus={hanldeOnFocus} variant="label-hidden"></lightning-input>
+        </div>
+
+        <div if:true={hasMatchingValues} class="optionsContainer">
+            <div class="optionsDropdown">
+                <template for:each={matchingValues} for:item="match" for:index="index">
+                    <div if:true={renderProductCategoriesView} key={match} data-id={match} class="slds-box slds-box_x-small optionSelectBox" style="font-weight: bold; text-align: left;" onclick={addToSelection}>
+                        {match}
+                    </div>
+                    <template if:false={renderProductCategoriesView}>
+                        <div if:true={renderProductPicklistBasedOnCategories} key={match} data-id={match} class="slds-box slds-box_x-small optionSelectBox productOptions" onclick={addToSelection}>
+                            {match}
+                        </div>
+
+                        <div if:false={renderProductPicklistBasedOnCategories} key={match} data-id={match} class="slds-box slds-box_x-small optionSelectBox" onclick={addToSelection}>
+                            {match}
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <lightning-icon class="collapseButton" icon-name="action:close" size="xx-small" title="collapse" alternative-text="collapse" onclick={collapsePicklist}></lightning-icon>
+        </div>
+
+    </div>
+</template>

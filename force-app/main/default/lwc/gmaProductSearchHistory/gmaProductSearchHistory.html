@@ -1,0 +1,44 @@
+<template>
+
+    <div if:true={loading} class="downloadSpinner">
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+
+    <template if:false={loading}>
+        <div if:true={hasPastSearches} class="historyWrapper">
+            <h2> Your organisation's past searches </h2>
+            <table class="historyTable">
+                <tr>
+                    <th class="setWidth5p">{timestampColumnNme}</th>
+                    <th class="setWidth5p">Product</th>
+                    <th class="forcedCellWidth" if:false={renderGapAnalysisView}>Market</th>
+                    <th class="forcedCellWidth" if:true={renderGapAnalysisView}>Current Market</th>
+                    <th class="forcedCellWidth" if:false={renderRecallReportView}>Material</th>
+                    <th class="forcedCellWidth" if:false={renderRecallReportView}>Age</th>
+                    <th class="forcedCellWidth" if:true={renderRecallReportView}>Risk Type</th>
+                    <th class="forcedCellWidth" if:true={renderGapAnalysisView}>Target Market</th>
+                    <th if:true={renderRecallReportView}>Period</th>
+                    <th class="setWidth5p">Action</th>
+                </tr>
+                <template for:each={pastSearches} for:item="record" for:index="index">
+                    <tr key={record.key}>
+                        <td><div class="slds-wrap">{record.searchDate}</div></td>
+                        <td><div class="slds-wrap">{record.productList}</div></td>
+                        <td if:false={renderGapAnalysisView}><div class="slds-wrap">{record.marketList}</div></td>
+                        <td if:true={renderGapAnalysisView}><div class="slds-wrap">{record.marketList}</div></td>
+                        <td if:false={renderRecallReportView}><div class="slds-wrap">{record.materialList}</div></td>
+                        <td if:false={renderRecallReportView}><div class="slds-wrap">{record.ageRangeList}</div></td>
+                        <td if:true={renderRecallReportView}><div class="slds-wrap">{record.riskTypeList}</div></td>
+                        <td if:true={renderGapAnalysisView}><div class="slds-wrap">{record.targetMarketList}</div></td>
+                        <td if:true={renderRecallReportView}><div class="slds-wrap">{record.fromDate} - {record.toDate}</div></td>
+                        <td>
+                            <div class="slds-wrap">
+                                <a class="href" onclick={rerunSearch} data-id={record.key}>Run Search</a>
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+            </table>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,68 @@
+<template>
+  <c-modal
+    showmodal
+    maxwidth="1050"
+    additional-classes="headerfootertwo dataSummary footerBtnRightAlign"
+  >
+    <span slot="header">{title}</span>
+    <div slot="content">
+      <div class="content-top">
+          <div if:true={userDetailId} class="panel-info">
+          <div>
+            <h3>{labels.USERNAME}</h3>
+            <span>{username}</span>
+          </div>
+        </div>
+        <div if:false={userDetailId} class="panel-info">
+          <span>{selectedRowCount} {labels.USER_GROUP_MGMT_SELECTED_COUNT_SUFFIX}</span>
+        </div>
+        <div class="notice">
+          <div>
+            <div>
+              {labels.USER_GROUP_MGMT_NOTICE_START} <b>{action}</b> {labels.USER_GROUP_MGMT_NOTICE_END} {suffix}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="filters">
+        <c-input
+          label="Search"
+          class="search"
+          placeholder="Group name"
+          onchange={handleFilterChange}
+          field-id="filterSearch"
+          value={filterSearch}
+        ></c-input>
+      </div>
+      <div class="table">
+        <c-datatable
+          load-more-message={loadMoreMessage}
+          all-shown={allShown}
+          is-loading={isLoading}
+          onviewmore={handleViewMore}
+          scrollafterxpixels="285"
+          mode="fixed-header"
+          oncheckboxchange={handleCheckboxChange}
+          table-cols={tableData.columns}
+          table-rows={tableData.rows}
+          additional-classes="modalTable"
+          onsortclick={handleSortClick}
+        ></c-datatable>
+      </div>
+    </div>
+    <div slot="footer">
+		<c-button
+		  variant="Neutral ModalFooterBtn"
+		  label={labels.CANCEL}
+		  disabled={isLoading}
+		  onclick={handleCancel}
+		></c-button>
+		<c-button
+        variant="IntkBrandTwoBtn ModalFooterBtn"
+        label={confirmButtonLabel}
+        disabled={isLoading}
+        onclick={handleConfirm}
+		></c-button>
+    </div>
+  </c-modal>
+</template>

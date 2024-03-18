@@ -1,0 +1,120 @@
+<template>
+  <div class="container-table">
+    <template if:true={tabLabels}>
+      <lightning-tabset>
+        <template for:each={tabLabels} for:item="tab">
+          <lightning-tab
+            key={tab.key}
+            label={tab.tabLabel}
+            value={tab.value}
+            onactive={handleTabChange}
+          ></lightning-tab>
+        </template>
+      </lightning-tabset>
+    </template>
+
+    <div class="container-datatable">
+      <lightning-layout multiple-rows>
+        <lightning-layout-item
+          size="10"
+          class="container-selectors slds-p-bottom--large"
+        >
+          <template if:true={isGTSTrackJobs}>
+            <!--<div style="position: relative; right: 15%; font-size: 18px">
+              <b>{sectionTitle}</b>
+            </div>--> 
+
+            <template if:true={isCOC}>
+                <lightning-input
+                  class="checkbox"
+                  type="checkbox"
+                  label={label.CONTAINS_SHIPMENT_LABEL}
+                  checked={isChecked}
+                  onchange={handleCheckboxChange}
+                ></lightning-input>
+            </template>
+          </template>
+
+          <!--Search section-->
+          <lightning-combobox
+            class="dates-filter"
+            id="datesfilter"
+            label={datesPicklistLabel}
+            value={datesPicklistValue}
+            placeholder="Select Dates"
+            options={options}
+            onchange={handleDatesChange}
+          >
+          </lightning-combobox>
+          <template if:true={showDates}>
+            <lightning-input
+              type="date"
+              name="startDate"
+              label={label.START_DATE_LABEL}
+              onchange={handleStartDateChange}
+            ></lightning-input>
+            <lightning-input
+              type="date"
+              name="endDate"
+              label={label.END_DATE_LABEL}
+              onchange={handleEndDateChange}
+            ></lightning-input>
+          </template>
+          <template if:true={showBuyerFilter}>
+            <lightning-combobox
+              id="buyerfilter"
+              value={buyerPicklistValue}
+              placeholder="Select Buyer"
+              options={buyerOptionsValues}
+              onchange={handleBuyerChange}
+            >
+            </lightning-combobox>
+          </template>
+
+          <template if:true={isGTSTrackJobs}>
+            <lightning-combobox
+              class="status-options"
+              options={statusOptions}
+              placeholder={label.STATUS_LABEL}
+              value={status}
+              onchange={handleStatusChange}
+            >
+            </lightning-combobox>
+          </template>
+
+          <lightning-input
+            class="search-box"
+            type="search"
+            id="searchbox"
+            placeholder={enterLable}
+            onchange={handleSearchBoxChange}
+            value={searchKey}
+          ></lightning-input>
+        </lightning-layout-item>
+      </lightning-layout>
+
+      <!--Data Table-->
+      <template if:true={isGTSTrackJobs}>
+        <c-i-care-track-jobs-table
+          table-name={gtsTableName}
+          days-to-search={difDays}
+          is-report-to-be-shown={isReportToBeShown}
+          number-of-records="5000"
+          view-all="true"
+          pagination="true"
+          record-type-id={recordTypeId}
+        ></c-i-care-track-jobs-table>
+      </template>
+      <template if:false={isGTSTrackJobs}>
+        <c-i-care-track-jobs-table
+          table-name={tableName}
+          days-to-search={difDays}
+          is-report-to-be-shown={isReportToBeShown}
+          number-of-records="5000"
+        ></c-i-care-track-jobs-table>
+      </template>
+      <div class="total-number"><span>{totalRecsLabel}</span></div>
+      <template if:true={error}> {error}> </template>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,21 @@
+:host {
+  width: 19.285px;
+  height: 14.337px;
+  margin-left: 9px;
+}
+svg {
+  width: 100%;
+  display: block;
+}
+.a {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-width: 1.5px;
+}
+
+@media screen and (max-width: 1024px) {
+  :host {
+    margin-top: 2px;
+  }
+}
