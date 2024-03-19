@@ -49,7 +49,6 @@ public with sharing class GTSJobLifecycle {
           RecordType.DeveloperName,
           iCare_Job_Status__c,
           GTS_Inspection_Required__c,
-          GTS_Astra_Confirmed__c,
           CreatedDate,
           (
             SELECT
@@ -74,7 +73,6 @@ public with sharing class GTSJobLifecycle {
           RecordType.DeveloperName,
           iCare_Job_Status__c,
           GTS_Inspection_Required__c,
-          GTS_Astra_Confirmed__c,
           CreatedDate,
           (
             SELECT
@@ -100,7 +98,6 @@ public with sharing class GTSJobLifecycle {
     GTS_Job_Lifecycle__mdt jobLifecycleRecord = [
       SELECT
         Label,
-        GTS_Has_Submitted_Value__c,
         (
           SELECT
             GTS_Status__c,
@@ -114,7 +111,6 @@ public with sharing class GTSJobLifecycle {
         GTS_Job_Record_Type__c = :job.RecordType.DeveloperName
         AND GTS_Is_Cancelled__c = :cancelledPath
         AND GTS_Path_with_inspection__c = :job.GTS_Inspection_Required__c
-        AND GTS_Astra_Confirmed__c = :job.GTS_Astra_Confirmed__c
       WITH SYSTEM_MODE
       LIMIT 1
     ];
@@ -159,7 +155,7 @@ public with sharing class GTSJobLifecycle {
             )
           );
         } else {
-          if (isAfterCurrentStep || job.GTS_Astra_Confirmed__c) {
+          if (isAfterCurrentStep) {
             statusPath.add(
               new StepWrapper(
                 String.valueOf(step.get('translatedStatus')),

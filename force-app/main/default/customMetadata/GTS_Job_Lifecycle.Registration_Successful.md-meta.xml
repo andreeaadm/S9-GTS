@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Registration Successful</label>
+    <protected>false</protected>
+    <values>
+        <field>GTS_Is_Cancelled__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>GTS_Job_Record_Type__c</field>
+        <value xsi:type="xsd:string">GTS_Registration_License_Product_Certificate</value>
+    </values>
+    <values>
+        <field>GTS_Path_with_inspection__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+</CustomMetadata>
